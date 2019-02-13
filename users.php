@@ -5,27 +5,27 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Edit Profile</h4>
+                                <h4 class="title">Sing Up</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form method="POST" action="model.php">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input type="text" class="form-control" >
+                                                <input type="text" name="name" class="form-control" >
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Status</label>
-                                                <input type="text" class="form-control"  >
+                                                <label>username</label>
+                                                <input type="text" name="username" class="form-control"  >
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Year</label>
-                                                <input type="email" class="form-control" >
+                                                <label for="exampleInputEmail1">date</label>
+                                                <input type="date" name="date" class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -33,26 +33,26 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Journet</label>
-                                                <input type="text" class="form-control" >
+                                                <label>email</label>
+                                                <input type="email" name="email" class="form-control" >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Grade</label>
-                                                <input type="text" class="form-control"  >
+                                                <label>address</label>
+                                                <input type="text" name="address" class="form-control"  >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Place</label>
-                                                <input type="text" class="form-control" >
+                                                <label>password</label>
+                                                <input type="text" name="password" class="form-control" >
                                             </div>
                                         </div>
                                     </div>
 
                                     
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Create User</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
