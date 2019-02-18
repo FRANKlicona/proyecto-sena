@@ -9,8 +9,6 @@ $date      = (!isset($_REQUEST['date']) ? '' : $_REQUEST['date']);
 $address   = (!isset($_REQUEST['address']) ? '' : $_REQUEST['address']);
 $password  = (!isset($_REQUEST['password']) ? '' : $_REQUEST['password']);
 
-print_r($_POST);
-
 
 $query = "INSERT INTO users VALUES (null,'$name','$username','$email','$date','$address','$password')";
         
