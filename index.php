@@ -1,14 +1,27 @@
-<?php 
-$view = (!isset($_REQUEST['v']) ? 'home.': $_REQUEST['v'] );
+<?php
+require_once 'model/database.php';
 
-require_once("view/header.html");
-if ($view != null and $view != '' ){
- require_once($view."php");
-}else{
-    
-require_once "home.html";
+$controller = 'cliente';
 
+// Todo esta lógica hara el papel de un FrontController
+if(!isset($_REQUEST['c']))
+{
+    require_once "controller/$controller.controller.php";
+    $controller = ucwords($controller) . 'Controller';
+    $controller = new $controller;
+    $controller->Index();    
 }
-require_once("view/footer.html");
-
-?>
+else
+{
+    // Obtenemos el controlador que queremos cargar
+    $controller = strtolower($_REQUEST['c']);
+    $accion = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'Index';
+    
+    // Instanciamos el controlador
+    require_once "controller/$controller.controller.php";
+    $controller = ucwords($controller) . 'Controller';
+    $controller = new $controller;
+    
+    // Llama la accion
+    call_user_func( array( $controller, $accion ) );
+}
