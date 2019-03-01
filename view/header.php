@@ -27,55 +27,56 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                    CT
+                <a href="?c=home" class="simple-text logo-mini">
+                    BA
                 </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    Creative Tim
+                <a href="?c=home" class="simple-text logo-normal">
+                    Bienestar Al aprendiz
                 </a>
             </div>
             <div class="sidebar-wrapper" id="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active ">
-                        <a href="./dashboard.html">
+                    <?php $_REQUEST['c'] = !isset($_REQUEST['c']) ? 'home' : $_REQUEST['c']; ?>
+                    <li <?= ($_REQUEST['c'] == 'apoyo') ? "class='active'" : ""; ?>>
+                        <a href="?c=apoyo">
                             <i class="now-ui-icons design_app"></i>
-                            <p>Dashboard</p>
+                            <p>Apoyo y sostenimiento</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./icons.html">
+                    <li <?= ($_REQUEST['c'] == 'salud') ? "class='active'" : ""; ?>>
+                        <a href="?c=salud">
                             <i class="now-ui-icons education_atom"></i>
-                            <p>Icons</p>
+                            <p>Salud</p>
                         </a>
                     </li>
                     <li>
                         <a href="./map.html">
                             <i class="now-ui-icons location_map-big"></i>
-                            <p>Maps</p>
+                            <p>Psicologia</p>
                         </a>
                     </li>
                     <li>
                         <a href="./notifications.html">
                             <i class="now-ui-icons ui-1_bell-53"></i>
-                            <p>Notifications</p>
+                            <p>Deporte y Recreacion</p>
                         </a>
                     </li>
                     <li>
                         <a href="./user.html">
                             <i class="now-ui-icons users_single-02"></i>
-                            <p>User Profile</p>
+                            <p>Cultura</p>
                         </a>
                     </li>
                     <li>
                         <a href="./tables.html">
                             <i class="now-ui-icons design_bullet-list-67"></i>
-                            <p>Table List</p>
+                            <p>Liderazgo</p>
                         </a>
                     </li>
                     <li>
                         <a href="./typography.html">
                             <i class="now-ui-icons text_caps-small"></i>
-                            <p>Typography</p>
+                            <p>desercion</p>
                         </a>
                     </li>
                     <li class="active-pro">
@@ -99,7 +100,8 @@
                                 <span class="navbar-toggler-bar bar3"></span>
                             </button>
                         </div>
-                        <a class="navbar-brand" href="#pablo">Dashboard</a>
+                        <a class="navbar-brand" href="?c=home">Inicio</a> <a href="?c=<?= $_REQUEST['c']; ?>">
+                            <?= " >      " . $_REQUEST['c']; ?></a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar navbar-kebab"></span>
