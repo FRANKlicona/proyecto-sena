@@ -12,6 +12,7 @@ class clienteController{
     public function Index(){
         require_once 'view/header.php';
         require_once 'view/cliente/cliente.php';
+        require_once 'view/footer.php';
        
     }
     
