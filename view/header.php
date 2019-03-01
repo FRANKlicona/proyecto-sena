@@ -45,16 +45,10 @@
                             <p>Apoyo y sostenimiento</p>
                         </a>
                     </li>
-                    <li <?= ($_REQUEST['c'] == 'salud') ? "class='active'" : ""; ?>>
-                        <a href="?c=salud">
-                            <i class="now-ui-icons education_atom"></i>
-                            <p>Salud</p>
-                        </a>
-                    </li>
-                    <li <?= ($_REQUEST['c'] == 'psicologia') ? "class='active'" : ""; ?>>
-                        <a href="?c=psicologia">
-                            <i class="now-ui-icons location_map-big"></i>
-                            <p>Psicologia</p>
+                    <li <?= ($_REQUEST['c'] == 'cultura') ? "class='active'" : ""; ?>>
+                        <a href="?c=cultura">
+                            <i class="now-ui-icons users_single-02"></i>
+                            <p>Cultura</p>
                         </a>
                     </li>
                     <li <?= ($_REQUEST['c'] == 'deporte') ? "class='active'" : ""; ?>>
@@ -63,16 +57,22 @@
                             <p>Deporte y Recreacion</p>
                         </a>
                     </li>
-                    <li <?= ($_REQUEST['c'] == 'cultura') ? "class='active'" : ""; ?>>
-                        <a href="?c=cultura">
-                            <i class="now-ui-icons users_single-02"></i>
-                            <p>Cultura</p>
-                        </a>
-                    </li>
                     <li <?= ($_REQUEST['c'] == 'liderazgo') ? "class='active'" : ""; ?>>
                         <a href="?c=liderazgo">
                             <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Liderazgo</p>
+                        </a>
+                    </li>
+                    <li <?= ($_REQUEST['c'] == 'psicologia') ? "class='active'" : ""; ?>>
+                        <a href="?c=psicologia">
+                            <i class="now-ui-icons location_map-big"></i>
+                            <p>Psicologia</p>
+                        </a>
+                    </li>
+                    <li <?= ($_REQUEST['c'] == 'salud') ? "class='active'" : ""; ?>>
+                        <a href="?c=salud">
+                            <i class="now-ui-icons education_atom"></i>
+                            <p>Salud</p>
                         </a>
                     </li>
                     <li class=<?= ($_REQUEST['c'] == 'desersion') ? "active active-pro" : "active-pro"; ?> >

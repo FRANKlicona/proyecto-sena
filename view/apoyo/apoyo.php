@@ -5,124 +5,52 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Simple Table</h4>
+                    <h4 class="card-title"> Actividades de
+                        <?= strtoupper($_REQUEST['c']); ?>
+                    </h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>
-                                    Name
+                                    Nombre
                                 </th>
                                 <th>
-                                    Country
+                                    Ficha
                                 </th>
                                 <th>
-                                    City
+                                    Programa
                                 </th>
                                 <th class="text-right">
-                                    Salary
+                                    Fecha
+                                </th>
+                                <th class="text-center">
+                                    Acciones
                                 </th>
                             </thead>
                             <tbody>
+                                <?php foreach ($this->model->Listar() as $r): ?>
                                 <tr>
                                     <td>
-                                        Dakota Rice
+                                        <?php echo $r->name; ?>
                                     </td>
                                     <td>
-                                        Niger
+                                        <?php echo $r->token; ?>
                                     </td>
                                     <td>
-                                        Oud-Turnhout
+                                        <?php echo $r->program; ?>
                                     </td>
                                     <td class="text-right">
-                                        $36,738
+                                        <?php echo $r->date; ?>
                                     </td>
+                                    <td class="text-center">
+                                        <a class="btn btn-warning" href="?c=cliente&a=Crud&id=<?php echo $r->id; ?>">Editar</a>
+
+                                        <a class="btn btn-danger" onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=cliente&a=Eliminar&id=<?php echo $r->id; ?>">Eliminar</a>
+                                        </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        Minerva Hooper
-                                    </td>
-                                    <td>
-                                        Curaçao
-                                    </td>
-                                    <td>
-                                        Sinaai-Waas
-                                    </td>
-                                    <td class="text-right">
-                                        $23,789
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Sage Rodriguez
-                                    </td>
-                                    <td>
-                                        Netherlands
-                                    </td>
-                                    <td>
-                                        Baileux
-                                    </td>
-                                    <td class="text-right">
-                                        $56,142
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Philip Chaney
-                                    </td>
-                                    <td>
-                                        Korea, South
-                                    </td>
-                                    <td>
-                                        Overland Park
-                                    </td>
-                                    <td class="text-right">
-                                        $38,735
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Doris Greene
-                                    </td>
-                                    <td>
-                                        Malawi
-                                    </td>
-                                    <td>
-                                        Feldkirchen in Kärnten
-                                    </td>
-                                    <td class="text-right">
-                                        $63,542
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Mason Porter
-                                    </td>
-                                    <td>
-                                        Chile
-                                    </td>
-                                    <td>
-                                        Gloucester
-                                    </td>
-                                    <td class="text-right">
-                                        $78,615
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Jon Porter
-                                    </td>
-                                    <td>
-                                        Portugal
-                                    </td>
-                                    <td>
-                                        Gloucester
-                                    </td>
-                                    <td class="text-right">
-                                        $98,615
-                                    </td>
-                                </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
