@@ -7,7 +7,9 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Now UI Dashboard by Creative Tim
+        <?php $_REQUEST['c'] = !isset($_REQUEST['c']) ? 'home' : $_REQUEST['c']; ?>
+        Bienestar -
+        <?= ucfirst($_REQUEST['c']); ?>
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -36,7 +38,7 @@
             </div>
             <div class="sidebar-wrapper" id="sidebar-wrapper">
                 <ul class="nav">
-                    <?php $_REQUEST['c'] = !isset($_REQUEST['c']) ? 'home' : $_REQUEST['c']; ?>
+
                     <li <?= ($_REQUEST['c'] == 'apoyo') ? "class='active'" : ""; ?>>
                         <a href="?c=apoyo">
                             <i class="now-ui-icons design_app"></i>
@@ -49,40 +51,34 @@
                             <p>Salud</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./map.html">
+                    <li <?= ($_REQUEST['c'] == 'psicologia') ? "class='active'" : ""; ?>>
+                        <a href="?c=psicologia">
                             <i class="now-ui-icons location_map-big"></i>
                             <p>Psicologia</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./notifications.html">
+                    <li <?= ($_REQUEST['c'] == 'deporte') ? "class='active'" : ""; ?>>
+                        <a href="?c=deporte">
                             <i class="now-ui-icons ui-1_bell-53"></i>
                             <p>Deporte y Recreacion</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./user.html">
+                    <li <?= ($_REQUEST['c'] == 'cultura') ? "class='active'" : ""; ?>>
+                        <a href="?c=cultura">
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Cultura</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./tables.html">
+                    <li <?= ($_REQUEST['c'] == 'liderazgo') ? "class='active'" : ""; ?>>
+                        <a href="?c=liderazgo">
                             <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Liderazgo</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./typography.html">
-                            <i class="now-ui-icons text_caps-small"></i>
-                            <p>desercion</p>
-                        </a>
-                    </li>
-                    <li class="active-pro">
-                        <a href="./upgrade.html">
+                    <li class=<?= ($_REQUEST['c'] == 'desersion') ? "active active-pro" : "active-pro"; ?> >
+                        <a href="?c=desercion">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                            <p>Upgrade to PRO</p>
+                            <p>desercion</p>
                         </a>
                     </li>
                 </ul>
@@ -100,8 +96,8 @@
                                 <span class="navbar-toggler-bar bar3"></span>
                             </button>
                         </div>
-                        <a class="navbar-brand" href="?c=home">Inicio</a> <a href="?c=<?= $_REQUEST['c']; ?>">
-                            <?= " >      " . $_REQUEST['c']; ?></a>
+                        <a class="navbar-brand" href="?c=home">Inicio</a><a class="navbar-brand" href="?c=<?= $_REQUEST['c']; ?>">
+                            <?= "  <b>></b>   " . strtoupper($_REQUEST['c']); ?></a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar navbar-kebab"></span>
