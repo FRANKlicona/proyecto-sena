@@ -77,7 +77,7 @@ class cliente
 						dni      		= ?,
 						Nombre          = ?, 
 						Apellido        = ?,
-                        Correo        = ?,
+                        Correo        	= ?,
                         Telefono        = ?
 						
 				    WHERE id = ?";

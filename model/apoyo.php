@@ -4,11 +4,11 @@ class apoyo
     private $pdo;
 
     public $id;
+    public $name;
     public $token;
     public $program;
     public $date;
-    public $long;
-    public $name;
+    public $duration;
 
     public function __CONSTRUCT()
     {
@@ -63,26 +63,34 @@ class apoyo
     {
         try {
             $sql = "UPDATE apoyo SET                         
-                        name        = ?,
-						token      		= ?,
-						program          = ?, 
-						date        = ?,
-                        long        = ?
+                        name    = ?,
+                        token   = ?,
+                        program = ?,
+                        date    = ?,
+                        duration= ?
 						
-				    WHERE id = ?";
-
+                    WHERE id = ?";
+                echo"<pre>";
+                print_r($sql);             
+                echo"</pre>";
+                echo"<pre>";
+                print_r($data);             
+                echo"</pre>";
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
+                        $data->name,
                         $data->token,
                         $data->program,
                         $data->date,
-                        $data->long,
-                        $data->name,
+                        $data->duration,
                         $data->id
+                        
                     )
-                );
-        } catch (Exception $e) {
+                    );
+                print_r($data);
+        } catch (Exception $e) 
+        {
             die($e->getMessage());
         }
     }
@@ -90,7 +98,7 @@ class apoyo
     public function Registrar(apoyo $data)
     {
         try {
-            $sql = "INSERT INTO apoyo (name,token,program,date,long) 
+            $sql = "INSERT INTO apoyo (name,token,program,date,duration) 
 		        VALUES (?, ?, ?, ?, ?)";
 
             $this->pdo->prepare($sql)
@@ -100,7 +108,7 @@ class apoyo
                         $data->token,
                         $data->program,
                         $data->date,
-                        $data->long,
+                        $data->duration
                     )
                 );
         } catch (Exception $e) {
