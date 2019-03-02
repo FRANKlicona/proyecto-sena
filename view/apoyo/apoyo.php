@@ -1,8 +1,18 @@
+<?php
+
+// if ($_COOKIE['delete'] == 'well') {
+//     echo "<script type='text/javasript'> showNotification('bottom', 'right');</script>";
+// } else {
+//     setcookie('');
+// }?>
+
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
     <div class="row">
         <div class="col-md-12">
+            <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','right')">Bottom Right</button>
+
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Actividades de
@@ -62,6 +72,7 @@
 
     </div>
 </div>
+
 <div class="modal fade modal-mini modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

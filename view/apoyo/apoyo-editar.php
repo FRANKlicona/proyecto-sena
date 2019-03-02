@@ -54,7 +54,6 @@
                             <button class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>
-                    <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','right')">Bottom Right</button>
                 </div>
             </div>
         </div>

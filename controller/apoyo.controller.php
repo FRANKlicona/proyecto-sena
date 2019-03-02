@@ -53,7 +53,7 @@ class apoyoController
     public function Eliminar()
     {
         $this->model->Eliminar($_REQUEST['id']);
-        setcookie("delete","well",time()+1000);
+        setcookie("delete","well",time()+1);
         header('Location: index.php?c=apoyo');
 
     }
