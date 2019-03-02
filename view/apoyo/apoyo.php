@@ -1,24 +1,14 @@
-<?php if ($_COOKIE['delete'] == 'well') {
-    echo "<script tipe='text/javasrcipt'>
-    function onclick(event) 
-    {
-    nowuiDashboard.showNotification('bottom', 'right')
-    }
-    </script>";
-} ?>
+
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
     <div class="row">
-        <div class="col-md-12">
-            <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','right')">Bottom Right</button>
-
+        <div class="col-md-12">           
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Actividades de
                         <?= strtoupper($_REQUEST['c']); ?><a class="btn btn-primary btn-round pull-right" href="?c=apoyo&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
-
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
