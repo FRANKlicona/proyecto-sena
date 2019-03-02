@@ -46,14 +46,31 @@
 <script src="assets/js/now-ui-dashboard.min.js?v=1.3.0" type="text/javascript"></script>
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
 <script src="assets/demo/demo.js"></script>
+<script src="assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
 <script>
     $(document).ready(function() {
         demo.initDashboardPageCharts();
         // Javascript method's body can be found in assets/js/demos.js
     });
-        
-        
-    
+</script>
+<script>
+    $('.date-picker').each(function() {
+        $(this).datepicker({
+            templates: {
+                leftArrow: '<i class="now-ui-icons arrows-1_minimal-left"></i>',
+                rightArrow: '<i class="now-ui-icons arrows-1_minimal-right"></i>'
+            }
+        }).on('show', function() {
+            $('.datepicker').addClass('open');
+
+            datepicker_color = $(this).data('datepicker-color');
+            if (datepicker_color.length != 0) {
+                $('.datepicker').addClass('datepicker-' + datepicker_color + '');
+            }
+        }).on('hide', function() {
+            $('.datepicker').removeClass('open');
+        });
+    });
 </script>
 </body>
 
