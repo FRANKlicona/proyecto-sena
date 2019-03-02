@@ -1,10 +1,10 @@
 <?php
 
-// if ($_COOKIE['delete'] == 'well') {
-//     echo "<script type='text/javasript'> showNotification('bottom', 'right');</script>";
-// } else {
-//     setcookie('');
-// }?>
+if ($_COOKIE['delete'] == 'well') {
+    echo "<script type='text/javasript'> showNotification('bottom', 'right');</script>";
+} else {
+    setcookie('');
+}?>
 
 <div class="panel-header panel-header-sm">
 </div>
