@@ -1,11 +1,11 @@
-<?php
-
-if ($_COOKIE['delete'] == 'well') {
-    echo "<script type='text/javasript'> showNotification('bottom', 'right');</script>";
-} else {
-    setcookie('');
-}?>
-
+<?php if ($_COOKIE['delete'] == 'well') {
+    echo "<script tipe='text/javasrcipt'>
+    function onclick(event) 
+    {
+    nowuiDashboard.showNotification('bottom', 'right')
+    }
+    </script>";
+} ?>
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
