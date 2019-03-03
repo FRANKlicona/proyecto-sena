@@ -1,5 +1,5 @@
 <?php
-class actividades
+class apoyo
 {
     private $pdo;
 
@@ -25,7 +25,7 @@ class actividades
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT * FROM actividades");
+            $stm = $this->pdo->prepare("SELECT * FROM actividades INNER JOIN dimensiones on dimension_id=dimensiones.id");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);

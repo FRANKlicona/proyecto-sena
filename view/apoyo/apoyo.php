@@ -1,9 +1,8 @@
-
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
     <div class="row">
-        <div class="col-md-12">           
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Actividades de
@@ -23,6 +22,9 @@
                                 <th>
                                     Programa
                                 </th>
+                                <th>
+                                    Dimension
+                                </th>
                                 <th class="text-right">
                                     Fecha
                                 </th>
@@ -41,6 +43,9 @@
                                     </td>
                                     <td>
                                         <?php echo $r->program; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->dimensiones.name; ?>
                                     </td>
                                     <td class="text-right">
                                         <?php echo $r->date; ?>
