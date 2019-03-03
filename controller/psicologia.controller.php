@@ -34,12 +34,13 @@ class psicologiaController
     {
         $psicologia = new psicologia();
 
-        $psicologia->id = $_REQUEST['id'];
-        $psicologia->dni = $_REQUEST['dni'];
-        $psicologia->Nombre = $_REQUEST['Nombre'];
-        $psicologia->Apellido = $_REQUEST['Apellido'];
-        $psicologia->Correo = $_REQUEST['Correo'];
-        $psicologia->telefono = $_REQUEST['telefono'];
+        $psicologia->id      = $_REQUEST['id'];
+        $psicologia->name    = $_REQUEST['name'];
+        $psicologia->token   = $_REQUEST['token'];
+        $psicologia->program = $_REQUEST['program'];
+        $psicologia->date    = $_REQUEST['date'];
+        $psicologia->duration    = $_REQUEST['duration'];
+        $psicologia->dimension_id = '5';
 
 
         $psicologia->id > 0

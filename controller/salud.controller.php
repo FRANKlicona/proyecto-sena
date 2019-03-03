@@ -34,12 +34,13 @@ class saludController
     {
         $salud = new salud();
 
-        $salud->id = $_REQUEST['id'];
-        $salud->dni = $_REQUEST['dni'];
-        $salud->Nombre = $_REQUEST['Nombre'];
-        $salud->Apellido = $_REQUEST['Apellido'];
-        $salud->Correo = $_REQUEST['Correo'];
-        $salud->telefono = $_REQUEST['telefono'];
+        $salud->id      = $_REQUEST['id'];
+        $salud->name    = $_REQUEST['name'];
+        $salud->token   = $_REQUEST['token'];
+        $salud->program = $_REQUEST['program'];
+        $salud->date    = $_REQUEST['date'];
+        $salud->duration    = $_REQUEST['duration'];
+        $salud->dimension_id = '6';
 
 
         $salud->id > 0

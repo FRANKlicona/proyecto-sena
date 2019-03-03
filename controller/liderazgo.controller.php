@@ -34,12 +34,13 @@ class liderazgoController
     {
         $liderazgo = new liderazgo();
 
-        $liderazgo->id = $_REQUEST['id'];
-        $liderazgo->dni = $_REQUEST['dni'];
-        $liderazgo->Nombre = $_REQUEST['Nombre'];
-        $liderazgo->Apellido = $_REQUEST['Apellido'];
-        $liderazgo->Correo = $_REQUEST['Correo'];
-        $liderazgo->telefono = $_REQUEST['telefono'];
+        $liderazgo->id      = $_REQUEST['id'];
+        $liderazgo->name    = $_REQUEST['name'];
+        $liderazgo->token   = $_REQUEST['token'];
+        $liderazgo->program = $_REQUEST['program'];
+        $liderazgo->date    = $_REQUEST['date'];
+        $liderazgo->duration    = $_REQUEST['duration'];
+        $liderazgo->dimension_id = '4';
 
 
         $liderazgo->id > 0

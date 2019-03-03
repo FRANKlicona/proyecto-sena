@@ -113,7 +113,7 @@ class cliente
                     $data->Nombre,
                     $data->Apellido, 
                     $data->Correo, 
-                     $data->telefono 
+                    $data->telefono 
                    
                 )
 			);

@@ -11,7 +11,7 @@
 
                 </div>
                 <div class="card-body">
-                    <form class="form-group" action="?c=apoyo&a=Guardar" method="post">
+                    <form class="form-group" action="?c=cultura&a=Guardar" method="post">
                         <input type="hidden" name="id" value="<?= $apoyo->id; ?>">
                         <div class="row">
                             <div class="col-md-6 pr-1">

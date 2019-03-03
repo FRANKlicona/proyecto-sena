@@ -4,12 +4,12 @@ class deporte
     private $pdo;
 
     public $id;
-    public $dni;
-    public $Nombre;
-    public $Apellido;
-    public $Correo;
-    public $Telefono;
-    public $dimension_id='3';
+    public $name;
+    public $token;
+    public $program;
+    public $date;
+    public $duration;
+    public $diemension_id='3';
 
     public function __CONSTRUCT()
     {
@@ -64,25 +64,25 @@ class deporte
     {
         try {
             $sql = "UPDATE actividades SET 
-						dni      		= ?,
-						Nombre          = ?, 
-						Apellido        = ?,
-                        Correo        = ?,
-                        Telefono        = ?,
-                        dimension_id = ?
+                        name    = ?,
+                        token   = ?,
+                        program = ?,
+                        date    = ?,
+                        duration= ?,
+                        dimension_id ='3'
 						
 				    WHERE id = ?";
 
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->dni,
-                        $data->Nombre,
-                        $data->Apellido,
-                        $data->Correo,
-                        $data->telefono,
-                        $data->id,
-                        $data->dimension_id
+                        $data->name,
+                        $data->token,
+                        $data->program,
+                        $data->date,
+                        $data->duration,
+                        $data->dimension_id,
+                        $data->id
                     )
                 );
         } catch (Exception $e) {
@@ -93,17 +93,17 @@ class deporte
     public function Registrar(deporte $data)
     {
         try {
-            $sql = "INSERT INTO actividades (dni,Nombre,Apellido,Correo,telefono,dimension_id) 
+            $sql = "INSERT INTO actividades (name,token,program,date,duration,dimension_id) 
 		        VALUES (?, ?, ?, ?, ?, ?)";
 
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->dni,
-                        $data->Nombre,
-                        $data->Apellido,
-                        $data->Correo,
-                        $data->telefono,
+                        $data->name,
+                        $data->token,
+                        $data->program,
+                        $data->date,
+                        $data->duration,
                         $data->dimension_id
 
                     )

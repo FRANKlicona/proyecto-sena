@@ -34,12 +34,13 @@ class deporteController
     {
         $deporte = new deporte();
 
-        $deporte->id = $_REQUEST['id'];
-        $deporte->dni = $_REQUEST['dni'];
-        $deporte->Nombre = $_REQUEST['Nombre'];
-        $deporte->Apellido = $_REQUEST['Apellido'];
-        $deporte->Correo = $_REQUEST['Correo'];
-        $deporte->telefono = $_REQUEST['telefono'];
+        $deporte->id      = $_REQUEST['id'];
+        $deporte->name    = $_REQUEST['name'];
+        $deporte->token   = $_REQUEST['token'];
+        $deporte->program = $_REQUEST['program'];
+        $deporte->date    = $_REQUEST['date'];
+        $deporte->duration    = $_REQUEST['duration'];
+        $deporte->dimension_id = '3';
 
 
         $deporte->id > 0

@@ -34,12 +34,13 @@ class culturaController
     {
         $cultura = new cultura();
 
-        $cultura->id = $_REQUEST['id'];
-        $cultura->dni = $_REQUEST['dni'];
-        $cultura->Nombre = $_REQUEST['Nombre'];
-        $cultura->Apellido = $_REQUEST['Apellido'];
-        $cultura->Correo = $_REQUEST['Correo'];
-        $cultura->telefono = $_REQUEST['telefono'];
+        $cultura->id      = $_REQUEST['id'];
+        $cultura->name    = $_REQUEST['name'];
+        $cultura->token   = $_REQUEST['token'];
+        $cultura->program = $_REQUEST['program'];
+        $cultura->date    = $_REQUEST['date'];
+        $cultura->duration    = $_REQUEST['duration'];
+        $cultura->dimension_id = '2';
 
 
         $cultura->id > 0
