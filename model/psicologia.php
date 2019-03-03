@@ -90,7 +90,7 @@ class psicologia
         }
     }
 
-    public function Registrar(actividades $data)
+    public function Registrar(psicologia $data)
     {
         try {
             $sql = "INSERT INTO actividades (dni,Nombre,Apellido,Correo,telefono, dimension_id) 

@@ -90,7 +90,7 @@ class salud
         }
     }
 
-    public function Registrar(actividades $data)
+    public function Registrar(salud $data)
     {
         try {
             $sql = "INSERT INTO actividades (dni,Nombre,Apellido,Correo,telefono, dimension_id) 
