@@ -1,17 +1,8 @@
-<?php if ($_COOKIE['delete'] == 'well') {
-    echo "<script tipe='text/javasrcipt'>
-    function onclick(event) 
-    {
-    nowuiDashboard.showNotification('bottom', 'right')
-    }
-    </script>";
-} ?>
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','right')">Bottom Right</button>
 
             <div class="card">
                 <div class="card-header">

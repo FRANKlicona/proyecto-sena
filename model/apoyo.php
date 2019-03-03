@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-class aopoyo
-=======
 class apoyo
->>>>>>> 64c6612e4c21b2f022fe2039cb4b7e304c0bc221
 {
     private $pdo;
 
