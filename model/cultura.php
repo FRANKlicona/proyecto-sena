@@ -69,7 +69,7 @@ class cultura
 						Apellido        = ?,
                         Correo        = ?,
                         Telefono        = ?,
-						dimension_id = ?
+						dimension_id = '2'
 
 				    WHERE id = ?";
 
