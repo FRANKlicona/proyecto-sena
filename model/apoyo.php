@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 class aopoyo
+=======
+class apoyo
+>>>>>>> 64c6612e4c21b2f022fe2039cb4b7e304c0bc221
 {
     private $pdo;
 
@@ -25,7 +29,7 @@ class aopoyo
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT * FROM actividades");
+            $stm = $this->pdo->prepare("SELECT * FROM actividades INNER JOIN dimensiones on dimension_id=dimensiones.id");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);

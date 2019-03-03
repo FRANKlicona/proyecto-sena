@@ -36,26 +36,51 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-8 pr-1">
+                            <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Programa</label>
                                     <input type="text" name="program" class="form-control" placeholder="Email" value="<?= $apoyo->program; ?>">
                                 </div>
                             </div>
-                            <div class="btn-group bootstrap-select"><button type="button" class="dropdown-toggle bs-placeholder btn btn-primary btn-round" data-toggle="dropdown" role="button" title="Single Select"><span class="filter-option pull-left">Single Select</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button>
-                                <div class="dropdown-menu open" role="combobox">
-                                    <ul class="dropdown-menu inner" role="listbox" aria-expanded="false">
-                                        <li data-original-index="1" class="disabled"><a tabindex="-1" class="" data-tokens="null" role="option" href="#" aria-disabled="true" aria-selected="false"><span class="text">Choose city</span><span class="material-icons  check-mark"> done </span></a></li>
-                                        <li data-original-index="2"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Foobar</span><span class="material-icons  check-mark"> done </span></a></li>
-                                        <li data-original-index="3"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Is great</span><span class="material-icons  check-mark"> done </span></a></li>
-                                    </ul>
-                                </div><select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7" tabindex="-98">
+                            <div class="col-lg-5 col-md-8 col-sm-5 mb-3">
+                                <div class="dropdown bootstrap-select">
+                                    <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Single Select" tabindex="-1">
+                                        <option class="bs-title-option" value=""></option>
+                                        <?php foreach ($this->model->ListarDimension() as $d) : ?>
+                                        <option value="<?= $d->id; ?>">
+                                            <?= $d->name; ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <button type="button" class="dropdown-toggle btn btn-primary btn-round" data-toggle="dropdown" role="button" title="Single Option">
+                                        <div class="filter-option">
+                                            <div class="filter-option-inner">
+                                                <div class="filter-option-inner-inner">Single Option</div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <div class="dropdown-menu " role="combobox">
+                                        <div class="inner show" role="listbox" aria-expanded="false" tabindex="-1">
+                                            <ul class="dropdown-menu inner show"></ul>
+                                            <?php foreach ($this->model->ListarDimension() as $d) : ?>
+                                            <option value="<?= $d->id; ?>">
+                                                <?= $d->name; ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 pr-1">
+                                <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7" tabindex="-98">
                                     <option class="bs-title-option" value="">Single Select</option>\
                                     <?php foreach ($this->model->ListarDimension() as $d) : ?>
-                                    <option value="<?= $d->id; ?>"><?= $d->name; ?></option>
+                                    <option value="<?= $d->id; ?>">
+                                        <?= $d->name; ?>
+                                    </option>
                                     <?php endforeach; ?>
                                 </select>
-                            </div>                            
+                            </div>
                             <div class="col-md-2 pl-1">
                                 <div class="form-group">
                                     <label>Duracion</label>
