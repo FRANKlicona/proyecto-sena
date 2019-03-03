@@ -47,6 +47,7 @@
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
 <script src="assets/demo/demo.js"></script>
 <script src="assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="../../assets/js/jquery.select-bootstrap.js"></script>
 <script>
     $(document).ready(function() {
         demo.initDashboardPageCharts();

@@ -32,6 +32,19 @@ class apoyo
             die($e->getMessage());
         }
     }
+    public function ListarDimension()
+    {
+        try {
+            $result = array();
+
+            $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 
     public function Obtener($id)
     {
@@ -70,12 +83,7 @@ class apoyo
                         duration= ?
 						
                     WHERE id = ?";
-                echo"<pre>";
-                print_r($sql);             
-                echo"</pre>";
-                echo"<pre>";
-                print_r($data);             
-                echo"</pre>";
+
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
