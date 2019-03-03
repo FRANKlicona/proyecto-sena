@@ -90,7 +90,7 @@ class liderazgo
         }
     }
 
-    public function Registrar(actividades $data)
+    public function Registrar(liderazgo $data)
     {
         try {
             $sql = "INSERT INTO actividades (dni,Nombre,Apellido,Correo,telefono, dimension_id) 

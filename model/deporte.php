@@ -90,7 +90,7 @@ class deporte
         }
     }
 
-    public function Registrar(actividades $data)
+    public function Registrar(deporte $data)
     {
         try {
             $sql = "INSERT INTO actividades (dni,Nombre,Apellido,Correo,telefono,dimension_id) 

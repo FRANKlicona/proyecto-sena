@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="text-right form-group">
-                            <a type="button" href="?c=apoyo" class="btn btn-link btn-primary btn-round" ">Volver</a>
+                            <a type="button" href="?c=deporte" class="btn btn-link btn-primary btn-round" ">Volver</a>
                             <button class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>
