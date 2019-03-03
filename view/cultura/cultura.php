@@ -1,128 +1,68 @@
+<?php if ($_COOKIE['delete'] == 'well') {
+    echo "<script tipe='text/javasrcipt'>
+    function onclick(event) 
+    {
+    nowuiDashboard.showNotification('bottom', 'right')
+    }
+    </script>";
+} ?>
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
     <div class="row">
         <div class="col-md-12">
+            <button class="btn btn-primary btn-block" onclick="nowuiDashboard.showNotification('bottom','right')">Bottom Right</button>
+
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Simple Table</h4>
+                    <h4 class="card-title"> Actividades de
+                        <?= strtoupper($_REQUEST['c']); ?><a class="btn btn-primary btn-round pull-right" href="?c=apoyo&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                    </h4>
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>
-                                    Name
+                                    Nombre
                                 </th>
                                 <th>
-                                    Country
+                                    Ficha
                                 </th>
                                 <th>
-                                    City
+                                    Programa
                                 </th>
                                 <th class="text-right">
-                                    Salary
+                                    Fecha
+                                </th>
+                                <th class="text-center">
+                                    Acciones
                                 </th>
                             </thead>
                             <tbody>
+                                <?php foreach ($this->model->Listar() as $r) : ?>
                                 <tr>
                                     <td>
-                                        Dakota Rice
+                                        <?php echo $r->name; ?>
                                     </td>
                                     <td>
-                                        Niger
+                                        <?php echo $r->token; ?>
                                     </td>
                                     <td>
-                                        Oud-Turnhout
+                                        <?php echo $r->program; ?>
                                     </td>
                                     <td class="text-right">
-                                        $36,738
+                                        <?php echo $r->date; ?>
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="btn btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                        <button class="btn btn-danger btn-round" data-toggle="modal" data-target="#myModal1">
+                                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                                        </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        Minerva Hooper
-                                    </td>
-                                    <td>
-                                        Curaçao
-                                    </td>
-                                    <td>
-                                        Sinaai-Waas
-                                    </td>
-                                    <td class="text-right">
-                                        $23,789
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Sage Rodriguez
-                                    </td>
-                                    <td>
-                                        Netherlands
-                                    </td>
-                                    <td>
-                                        Baileux
-                                    </td>
-                                    <td class="text-right">
-                                        $56,142
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Philip Chaney
-                                    </td>
-                                    <td>
-                                        Korea, South
-                                    </td>
-                                    <td>
-                                        Overland Park
-                                    </td>
-                                    <td class="text-right">
-                                        $38,735
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Doris Greene
-                                    </td>
-                                    <td>
-                                        Malawi
-                                    </td>
-                                    <td>
-                                        Feldkirchen in Kärnten
-                                    </td>
-                                    <td class="text-right">
-                                        $63,542
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Mason Porter
-                                    </td>
-                                    <td>
-                                        Chile
-                                    </td>
-                                    <td>
-                                        Gloucester
-                                    </td>
-                                    <td class="text-right">
-                                        $78,615
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Jon Porter
-                                    </td>
-                                    <td>
-                                        Portugal
-                                    </td>
-                                    <td>
-                                        Gloucester
-                                    </td>
-                                    <td class="text-right">
-                                        $98,615
-                                    </td>
-                                </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -130,5 +70,24 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<div class="modal fade modal-mini modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <div class="modal-profile">
+                    <i class="now-ui-icons travel_info"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea eliminar este registro?</p>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-link btn-neutral" href="?c=apoyo&a=Eliminar&id=<?php echo $r->id; ?>">SI</a>
+                <button type="button" class="btn btn-link btn-neutral" data-dismiss="modal">NO</button>
+            </div>
+        </div>
     </div>
 </div> 
