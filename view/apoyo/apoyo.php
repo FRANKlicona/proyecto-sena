@@ -45,7 +45,7 @@
                                         <?php echo $r->program; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->dimensiones.name; ?>
+                                        <?php echo $r->dimension; ?>
                                     </td>
                                     <td class="text-right">
                                         <?php echo $r->date; ?>

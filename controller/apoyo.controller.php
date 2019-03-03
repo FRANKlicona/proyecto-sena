@@ -42,6 +42,7 @@ class apoyoController
         $apoyo->program = $_REQUEST['program'];
         $apoyo->date    = $_REQUEST['date'];
         $apoyo->duration    = $_REQUEST['duration'];
+        $apoyo->dimension_id= '1';
 
         $apoyo->id > 0
             ? $this->model->Actualizar($apoyo)

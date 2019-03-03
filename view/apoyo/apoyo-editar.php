@@ -42,44 +42,17 @@
                                     <input type="text" name="program" class="form-control" placeholder="Email" value="<?= $apoyo->program; ?>">
                                 </div>
                             </div>
-                            <div class="col-lg-5 col-md-8 col-sm-5 mb-3">
-                                <div class="dropdown bootstrap-select">
-                                    <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Single Select" tabindex="-1">
-                                        <option class="bs-title-option" value=""></option>
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <select name="dimension" class="form-control">
+                                        <option class="" value=""></option>
                                         <?php foreach ($this->model->ListarDimension() as $d) : ?>
                                         <option value="<?= $d->id; ?>">
                                             <?= $d->name; ?>
                                         </option>
                                         <?php endforeach; ?>
                                     </select>
-                                    <button type="button" class="dropdown-toggle btn btn-primary btn-round" data-toggle="dropdown" role="button" title="Single Option">
-                                        <div class="filter-option">
-                                            <div class="filter-option-inner">
-                                                <div class="filter-option-inner-inner">Single Option</div>
-                                            </div>
-                                        </div>
-                                    </button>
-                                    <div class="dropdown-menu " role="combobox">
-                                        <div class="inner show" role="listbox" aria-expanded="false" tabindex="-1">
-                                            <ul class="dropdown-menu inner show"></ul>
-                                            <?php foreach ($this->model->ListarDimension() as $d) : ?>
-                                            <option value="<?= $d->id; ?>">
-                                                <?= $d->name; ?>
-                                            </option>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 pr-1">
-                                <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7" tabindex="-98">
-                                    <option class="bs-title-option" value="">Single Select</option>\
-                                    <?php foreach ($this->model->ListarDimension() as $d) : ?>
-                                    <option value="<?= $d->id; ?>">
-                                        <?= $d->name; ?>
-                                    </option>
-                                    <?php endforeach; ?>
-                                </select>
                             </div>
                             <div class="col-md-2 pl-1">
                                 <div class="form-group">
