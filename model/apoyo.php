@@ -1,5 +1,5 @@
 <?php
-class apoyo
+class actividades
 {
     private $pdo;
 
@@ -9,6 +9,7 @@ class apoyo
     public $program;
     public $date;
     public $duration;
+    public $diemsion_id='1';
 
     public function __CONSTRUCT()
     {
@@ -24,7 +25,7 @@ class apoyo
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT * FROM apoyo");
+            $stm = $this->pdo->prepare("SELECT * FROM actividades");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -50,7 +51,7 @@ class apoyo
     {
         try {
             $stm = $this->pdo
-                ->prepare("SELECT * FROM apoyo WHERE id = ?");
+                ->prepare("SELECT * FROM actividades WHERE id = ?");
 
 
             $stm->execute(array($id));
@@ -64,7 +65,7 @@ class apoyo
     {
         try {
             $stm = $this->pdo
-                ->prepare("DELETE FROM apoyo WHERE id = ?");
+                ->prepare("DELETE FROM actividades WHERE id = ?");
 
             $stm->execute(array($id));
         } catch (Exception $e) {
@@ -75,12 +76,13 @@ class apoyo
     public function Actualizar($data)
     {
         try {
-            $sql = "UPDATE apoyo SET                         
+            $sql = "UPDATE actividades SET                         
                         name    = ?,
                         token   = ?,
                         program = ?,
                         date    = ?,
-                        duration= ?
+                        duration= ?,
+                        dimension_id =?
 						
                     WHERE id = ?";
 
@@ -92,7 +94,9 @@ class apoyo
                         $data->program,
                         $data->date,
                         $data->duration,
+                        $data->dimension_id,
                         $data->id
+                        
                         
                     )
                     );
@@ -103,11 +107,11 @@ class apoyo
         }
     }
 
-    public function Registrar(apoyo $data)
+    public function Registrar(actividades $data)
     {
         try {
-            $sql = "INSERT INTO apoyo (name,token,program,date,duration) 
-		        VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO actividades (name,token,program,date,duration,dimension_id) 
+		        VALUES (?, ?, ?, ?, ?,?)";
 
             $this->pdo->prepare($sql)
                 ->execute(
@@ -116,7 +120,8 @@ class apoyo
                         $data->token,
                         $data->program,
                         $data->date,
-                        $data->duration
+                        $data->duration,
+                        $data->dimension_id
                     )
                 );
         } catch (Exception $e) {
