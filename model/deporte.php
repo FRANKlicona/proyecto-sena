@@ -9,6 +9,7 @@ class deporte
     public $Apellido;
     public $Correo;
     public $Telefono;
+    public $dimension_id='3';
 
     public function __CONSTRUCT()
     {
@@ -24,7 +25,7 @@ class deporte
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT * FROM deporte");
+            $stm = $this->pdo->prepare("SELECT * FROM actividades");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -37,7 +38,7 @@ class deporte
     {
         try {
             $stm = $this->pdo
-                ->prepare("SELECT * FROM deporte WHERE id = ?");
+                ->prepare("SELECT * FROM actividades WHERE id = ?");
 
 
             $stm->execute(array($id));
@@ -51,7 +52,7 @@ class deporte
     {
         try {
             $stm = $this->pdo
-                ->prepare("DELETE FROM deporte WHERE id = ?");
+                ->prepare("DELETE FROM actividades WHERE id = ?");
 
             $stm->execute(array($id));
         } catch (Exception $e) {
@@ -62,12 +63,13 @@ class deporte
     public function Actualizar($data)
     {
         try {
-            $sql = "UPDATE deporte SET 
+            $sql = "UPDATE actividades SET 
 						dni      		= ?,
 						Nombre          = ?, 
 						Apellido        = ?,
                         Correo        = ?,
-                        Telefono        = ?
+                        Telefono        = ?,
+                        dimension_id = ?
 						
 				    WHERE id = ?";
 
@@ -79,7 +81,8 @@ class deporte
                         $data->Apellido,
                         $data->Correo,
                         $data->telefono,
-                        $data->id
+                        $data->id,
+                        $data->dimension_id
                     )
                 );
         } catch (Exception $e) {
@@ -87,11 +90,11 @@ class deporte
         }
     }
 
-    public function Registrar(deporte $data)
+    public function Registrar(actividades $data)
     {
         try {
-            $sql = "INSERT INTO deporte (dni,Nombre,Apellido,Correo,telefono) 
-		        VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO actividades (dni,Nombre,Apellido,Correo,telefono,dimension_id) 
+		        VALUES (?, ?, ?, ?, ?, ?)";
 
             $this->pdo->prepare($sql)
                 ->execute(
@@ -100,7 +103,8 @@ class deporte
                         $data->Nombre,
                         $data->Apellido,
                         $data->Correo,
-                        $data->telefono
+                        $data->telefono,
+                        $data->dimension_id
 
                     )
                 );

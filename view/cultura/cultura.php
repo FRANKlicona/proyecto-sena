@@ -1,4 +1,5 @@
-<?php if ($_COOKIE['delete'] == 'well') {
+<?php
+ if ($_COOKIE['delete'] == 'well') {
     echo "<script tipe='text/javasrcipt'>
     function onclick(event) 
     {

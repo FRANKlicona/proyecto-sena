@@ -9,6 +9,7 @@ class cultura
     public $Apellido;
     public $Correo;
     public $Telefono;
+    public $dimension_id = '2';
 
     public function __CONSTRUCT()
     {
@@ -24,7 +25,7 @@ class cultura
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT * FROM cultura");
+            $stm = $this->pdo->prepare("SELECT * FROM actividades");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -37,7 +38,7 @@ class cultura
     {
         try {
             $stm = $this->pdo
-                ->prepare("SELECT * FROM cultura WHERE id = ?");
+                ->prepare("SELECT * FROM actividades WHERE id = ?");
 
 
             $stm->execute(array($id));
@@ -51,7 +52,7 @@ class cultura
     {
         try {
             $stm = $this->pdo
-                ->prepare("DELETE FROM cultura WHERE id = ?");
+                ->prepare("DELETE FROM actividades WHERE id = ?");
 
             $stm->execute(array($id));
         } catch (Exception $e) {
@@ -62,13 +63,14 @@ class cultura
     public function Actualizar($data)
     {
         try {
-            $sql = "UPDATE cultura SET 
+            $sql = "UPDATE actividades SET 
 						dni      		= ?,
 						Nombre          = ?, 
 						Apellido        = ?,
                         Correo        = ?,
-                        Telefono        = ?
-						
+                        Telefono        = ?,
+						dimension_id = ?
+
 				    WHERE id = ?";
 
             $this->pdo->prepare($sql)
@@ -79,7 +81,8 @@ class cultura
                         $data->Apellido,
                         $data->Correo,
                         $data->telefono,
-                        $data->id
+                        $data->id,
+                        $data->dimension_id
                     )
                 );
         } catch (Exception $e) {
@@ -87,11 +90,11 @@ class cultura
         }
     }
 
-    public function Registrar(cultura $data)
+    public function Registrar(actividades $data)
     {
         try {
-            $sql = "INSERT INTO cultura (dni,Nombre,Apellido,Correo,telefono) 
-		        VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO actividades (dni,Nombre,Apellido,Correo,telefono, dimension_id) 
+		        VALUES (?, ?, ?, ?, ?, ?)";
 
             $this->pdo->prepare($sql)
                 ->execute(
@@ -100,7 +103,8 @@ class cultura
                         $data->Nombre,
                         $data->Apellido,
                         $data->Correo,
-                        $data->telefono
+                        $data->telefono,
+                        $data->dimension_id
 
                     )
                 );

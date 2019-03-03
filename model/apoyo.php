@@ -1,5 +1,5 @@
 <?php
-class actividades
+class aopoyo
 {
     private $pdo;
 
@@ -9,7 +9,7 @@ class actividades
     public $program;
     public $date;
     public $duration;
-    public $diemsion_id='1';
+    public $diemension_id='1';
 
     public function __CONSTRUCT()
     {
