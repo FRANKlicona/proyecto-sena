@@ -9,7 +9,7 @@ class apoyo
     public $program;
     public $date;
     public $duration;
-    public $diemension_id='1';
+    public $dimension_id;
 
     public function __CONSTRUCT()
     {
@@ -24,11 +24,12 @@ class apoyo
     {
         try {
             $result = array();
-
-            $stm = $this->pdo->prepare("SELECT * FROM actividades INNER JOIN dimensiones on dimension_id=dimensiones.id as dimension");
+            
+            $stm = $this->pdo->prepare( "SELECT actividades.id,actividades.name,token,program,date,duration,dimensiones.id as dim_id,dimensiones.name as dim_name FROM actividades INNER JOIN dimensiones on dimension_id=dimensiones.id");
             $stm->execute();
-
             return $stm->fetchAll(PDO::FETCH_OBJ);
+            die;
+
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -77,12 +78,12 @@ class apoyo
     {
         try {
             $sql = "UPDATE actividades SET                         
-                        name    = ?,
-                        token   = ?,
-                        program = ?,
-                        date    = ?,
-                        duration= ?,
-                        dimension_id ='1'
+                        name        = ?,
+                        token       = ?,
+                        program     = ?,
+                        date        = ?,
+                        duration    = ?,
+                        dimension_id= ?
 						
                     WHERE id = ?";
 
@@ -100,7 +101,6 @@ class apoyo
                         
                     )
                     );
-                print_r($data);
         } catch (Exception $e) 
         {
             die($e->getMessage());
@@ -110,9 +110,9 @@ class apoyo
     public function Registrar(apoyo $data)
     {
         try {
-            $sql = "INSERT INTO actividades (name,token,program,date,duration,dimension_id) 
-		        VALUES (?, ?, ?, ?, ?,?)";
-
+            $sql = "INSERT INTO actividades 
+                VALUES (null,?, ?, ?, ?, ?, ?)";
+            
             $this->pdo->prepare($sql)
                 ->execute(
                     array(

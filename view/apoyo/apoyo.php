@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Actividades de
-                        <?= strtoupper($_REQUEST['c']); ?><a class="btn btn-primary btn-round pull-right" href="?c=apoyo&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                        <?= strtoupper($_REQUEST['c']); ?><a class="btn btn-sm btn-primary btn-round pull-right" href="?c=apoyo&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -45,14 +45,14 @@
                                         <?php echo $r->program; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->dimension; ?>
+                                        <?php echo $r->dim_name ; ?>
                                     </td>
                                     <td class="text-right">
                                         <?php echo $r->date; ?>
                                     </td>
                                     <td class="text-center">
-                                        <a class="btn btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
-                                        <button class="btn btn-danger btn-round" data-toggle="modal" data-target="#myModal1">
+                                        <a class="btn btn-sm btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                        <button class="btn btn-sm btn-danger btn-round" data-toggle="modal" data-target="#myModal1">
                                             <i class="now-ui-icons ui-1_simple-remove"></i>
                                         </button>
                                     </td>
@@ -85,4 +85,4 @@
             </div>
         </div>
     </div>
-</div> 
+</div>

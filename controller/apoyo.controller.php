@@ -33,6 +33,7 @@ class apoyoController
 
     public function Guardar()
     {
+
         
         $apoyo = new apoyo();
         
@@ -42,8 +43,7 @@ class apoyoController
         $apoyo->program = $_REQUEST['program'];
         $apoyo->date    = $_REQUEST['date'];
         $apoyo->duration    = $_REQUEST['duration'];
-        $apoyo->dimension_id= '1';
-
+        $apoyo->dimension_id= $_REQUEST['dimension_id'];
         $apoyo->id > 0
             ? $this->model->Actualizar($apoyo)
             : $this->model->Registrar($apoyo);

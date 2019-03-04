@@ -1,8 +1,8 @@
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content ">
-    <div class="row offset-md-2 ">
-        <div class="col-md-9 ">
+    <div class="row offset-md-1 ">
+        <div class="col-md-11 ">
             <div class="card">
                 <div class="card-header">
                     <h5 class="title">
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 pr-1">
+                            <div class="col-md-6 pr-1">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Programa</label>
                                     <input type="text" name="program" class="form-control" placeholder="Email" value="<?= $apoyo->program; ?>">
@@ -44,20 +44,22 @@
                             </div>
                             <div class="col-md-4 pr-1">
                                 <div class="form-group">
-                                    <select name="dimension" class="form-control">
-                                        <option class="" value=""></option>
+                                    <label for="exampleInputEmail1">Dimension</label>
+                                    <select name="dimension_id" class="form-control">
                                         <?php foreach ($this->model->ListarDimension() as $d) : ?>
-                                        <option value="<?= $d->id; ?>">
+                                        <option <?= isset($_REQUEST['id']) ?( ($d->id == $apoyo->dimension_id) ? 'Selected' : ''): ""; ?> value="
+                                            <?= $d->id; ?>">
                                             <?= $d->name; ?>
                                         </option>
                                         <?php endforeach; ?>
+
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-2 pl-1">
                                 <div class="form-group">
                                     <label>Duracion</label>
-                                    <input type="number" name="duration" class="form-control" placeholder="Last Name" value="<?= $apoyo->duration; ?>">
+                                    <input type="text" name="duration" class="form-control" placeholder="Last Name" value="<?= $apoyo->duration; ?>">
                                 </div>
                             </div>
                         </div>
