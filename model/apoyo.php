@@ -83,7 +83,7 @@ class apoyo
                         program     = ?,
                         date        = ?,
                         duration    = ?,
-                        dimension_id= ?
+                        dimension_id= $data->dimension_id
 						
                     WHERE id = ?";
 
@@ -95,9 +95,9 @@ class apoyo
                         $data->program,
                         $data->date,
                         $data->duration,
-                        $data->dimension_id,
-                        $data->id
                         
+                        $data->id
+                         
                         
                     )
                     );
@@ -111,7 +111,7 @@ class apoyo
     {
         try {
             $sql = "INSERT INTO actividades (name,token,program,date,duration,dimension_id) 
-                VALUES ( ? ,? ,? ,? ,? ,? )";
+                VALUES ( ? ,? ,? ,? ,? ,$data->dimension_id)";
             
             $this->pdo->prepare($sql)
                 ->execute(
@@ -120,8 +120,7 @@ class apoyo
                         $data->token,
                         $data->program,
                         $data->date,
-                        $data->duration,
-                        $data->dimension_id
+                        $data->duration
                         
                     )
                 );
