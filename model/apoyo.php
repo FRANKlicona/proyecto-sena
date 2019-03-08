@@ -112,7 +112,8 @@ class apoyo
         try {
             $sql = "INSERT INTO actividades 
                 VALUES (null,?, ?, ?, ?, ?, ?)";
-            
+            // print_r($data);
+            // die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
