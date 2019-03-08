@@ -51,6 +51,12 @@
                                         <?php echo $r->date; ?>
                                     </td>
                                     <td class="text-center">
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="?c=login">Iniciar Sesion</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                    <a class="btn btn-sm btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                         <a class="btn btn-sm btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                         <button class="btn btn-sm btn-danger btn-round" data-toggle="modal" data-target="#myModal1">
                                             <i class="now-ui-icons ui-1_simple-remove"></i>
