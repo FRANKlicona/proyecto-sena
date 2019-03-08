@@ -9,6 +9,7 @@ class apoyo
     public $program;
     public $date;
     public $duration;
+    public $dimension_id;
 
     public function __CONSTRUCT()
     {
@@ -110,7 +111,7 @@ class apoyo
     {
         try {
             $sql = "INSERT INTO actividades (name,token,program,date,duration,dimension_id) 
-                VALUES (?, ?, ?, ?, ?, ?)";
+                VALUES ( ? ,? ,? ,? ,? ,? )";
             
             $this->pdo->prepare($sql)
                 ->execute(
