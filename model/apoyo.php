@@ -25,7 +25,7 @@ class apoyo
         try {
             $result = array();
             
-            $stm = $this->pdo->prepare( "SELECT actividades.id,actividades.name,token,program,date,duration,dimensiones.id as dim_id,dimensiones.name as dim_name FROM actividades INNER JOIN dimensiones on dimension_id=dimensiones.id");
+            $stm = $this->pdo->prepare( "SELECT actividades.id,actividades.name,token,program,date,duration,dimensiones.id as dim_id,dimensiones.name as dim_name FROM actividades INNER JOIN dimensiones on dimension_id=dimensiones.id where dimension_id = 1");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -83,7 +83,7 @@ class apoyo
                         program     = ?,
                         date        = ?,
                         duration    = ?,
-                        dimension_id= ?
+                        dimension_id= $data->dimension_id
 						
                     WHERE id = ?";
 
@@ -95,9 +95,9 @@ class apoyo
                         $data->program,
                         $data->date,
                         $data->duration,
-                        $data->dimension_id,
-                        $data->id
                         
+                        $data->id
+                         
                         
                     )
                     );
@@ -110,10 +110,16 @@ class apoyo
     public function Registrar(apoyo $data)
     {
         try {
+<<<<<<< HEAD
             $sql = "INSERT INTO actividades 
                 VALUES (null,?, ?, ?, ?, ?, ?)";
             // print_r($data);
             // die;
+=======
+            $sql = "INSERT INTO actividades (name,token,program,date,duration,dimension_id) 
+                VALUES ( ? ,? ,? ,? ,? ,$data->dimension_id)";
+            
+>>>>>>> refs/remotes/origin/master
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
@@ -121,8 +127,8 @@ class apoyo
                         $data->token,
                         $data->program,
                         $data->date,
-                        $data->duration,
-                        $data->dimension_id
+                        $data->duration
+                        
                     )
                 );
         } catch (Exception $e) {

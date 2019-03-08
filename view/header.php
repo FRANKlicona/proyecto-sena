@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="Bienestar-icon" sizes="76x76" href="assets/img/logo-bienestar.png">
+    <link rel="icon" type="image/png" href="assets/img/logo-bienestar.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         <?php $_REQUEST['c'] = !isset($_REQUEST['c']) ? 'home' : $_REQUEST['c']; ?>
@@ -30,7 +30,7 @@
     -->
             <div class="logo">
                 <a href="?c=home" class="simple-text logo-mini">
-                    BA
+                    <img src="assets/img/logo-bienestar.png" >
                 </a>
                 <a href="?c=home" class="simple-text logo-normal">
                     Bienestar Al aprendiz
@@ -132,7 +132,7 @@
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="?c=login">Iniciar Sesion</a>
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
@@ -149,4 +149,6 @@
                     </div>
                 </div>
             </nav>
-            <!-- End Navbar --> 
+            <!-- End Navbar -->
+            <?= ($_REQUEST['c']=='login')? "<div class='page-header clear-filter' filter-color='orange'><div class='page-header-image' style='background-image:url(assets/img/login.jpg)'></div>": '';?>
+   
