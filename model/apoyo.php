@@ -110,16 +110,9 @@ class apoyo
     public function Registrar(apoyo $data)
     {
         try {
-<<<<<<< HEAD
-            $sql = "INSERT INTO actividades 
-                VALUES (null,?, ?, ?, ?, ?, ?)";
-            // print_r($data);
-            // die;
-=======
             $sql = "INSERT INTO actividades (name,token,program,date,duration,dimension_id) 
                 VALUES ( ? ,? ,? ,? ,? ,$data->dimension_id)";
             
->>>>>>> refs/remotes/origin/master
             $this->pdo->prepare($sql)
                 ->execute(
                     array(

@@ -133,7 +133,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="?c=login">Iniciar Sesion</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="?c=login&a=Salir">Cerrar Sesion</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
                             </li>
@@ -150,5 +150,3 @@
                 </div>
             </nav>
             <!-- End Navbar -->
-            <?= ($_REQUEST['c']=='login')? "<div class='page-header clear-filter' filter-color='orange'><div class='page-header-image' style='background-image:url(assets/img/login.jpg)'></div>": '';?>
-   
