@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2019 a las 06:07:23
+-- Tiempo de generación: 09-03-2019 a las 05:32:17
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -36,31 +36,16 @@ CREATE TABLE `actividades` (
   `token` varchar(8) NOT NULL,
   `program` varchar(120) NOT NULL,
   `date` date NOT NULL,
-  `duration` time NOT NULL,
+  `duration` time(2) NOT NULL,
   `dimension_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `apoyo`
+-- Volcado de datos para la tabla `actividades`
 --
 
-CREATE TABLE `apoyo` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `token` varchar(8) DEFAULT NULL,
-  `program` varchar(120) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `duration` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `apoyo`
---
-
-INSERT INTO `apoyo` (`id`, `name`, `token`, `program`, `date`, `duration`) VALUES
-(1, 'Reclutamiento', '1503847', 'ADSI(Analisis y Desarrollo de Sistemas de informacion)', '2019-03-06', 1);
+INSERT INTO `actividades` (`id`, `name`, `token`, `program`, `date`, `duration`, `dimension_id`) VALUES
+(30, '', '', '', '0000-00-00', '00:00:00.00', 1);
 
 -- --------------------------------------------------------
 
@@ -83,7 +68,8 @@ INSERT INTO `dimensiones` (`id`, `name`) VALUES
 (3, 'Desporte Y Recracion'),
 (4, 'Liderazgo'),
 (5, 'Psicologia'),
-(6, 'Salud');
+(6, 'Salud'),
+(7, 'nombre');
 
 -- --------------------------------------------------------
 
@@ -158,18 +144,45 @@ CREATE TABLE `registros` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`) VALUES
+(1, 'Administrador'),
+(2, 'Lider');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(60) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
   `tell` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `id_dimension` int(11) NOT NULL,
+  `dimension_id` int(11) NOT NULL,
   `rol_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `last_name`, `tell`, `email`, `password`, `dimension_id`, `rol_id`) VALUES
+(2, 'Frank', 'Licona', '3196663494', 'f.a.licona@hotmail.com', '97062755', 6, 1);
 
 --
 -- Índices para tablas volcadas
@@ -181,12 +194,6 @@ CREATE TABLE `users` (
 ALTER TABLE `actividades`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_dimensiones` (`dimension_id`);
-
---
--- Indices de la tabla `apoyo`
---
-ALTER TABLE `apoyo`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `dimensiones`
@@ -231,11 +238,17 @@ ALTER TABLE `registros`
   ADD KEY `token_id` (`token_id`);
 
 --
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_dimension` (`id_dimension`),
+  ADD KEY `id_dimension` (`dimension_id`),
   ADD KEY `rol_id` (`rol_id`);
 
 --
@@ -243,16 +256,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT de la tabla `apoyo`
+-- AUTO_INCREMENT de la tabla `actividades`
 --
-ALTER TABLE `apoyo`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+ALTER TABLE `actividades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `dimensiones`
 --
 ALTER TABLE `dimensiones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `encuentas`
@@ -285,20 +298,20 @@ ALTER TABLE `registros`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `actividades`
---
-ALTER TABLE `actividades`
-  ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`dimension_id`) REFERENCES `dimensiones` (`id`);
 
 --
 -- Filtros para la tabla `encuentas`
@@ -317,14 +330,15 @@ ALTER TABLE `fichas`
 -- Filtros para la tabla `registros`
 --
 ALTER TABLE `registros`
-  ADD CONSTRAINT `registros_ibfk_1` FOREIGN KEY (`activity_id`) REFERENCES `actividades` (`id`),
-  ADD CONSTRAINT `registros_ibfk_2` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`);
+  ADD CONSTRAINT `registros_ibfk_2` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`),
+  ADD CONSTRAINT `registros_ibfk_3` FOREIGN KEY (`activity_id`) REFERENCES `actividades` (`id`);
 
 --
 -- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_dimension`) REFERENCES `dimensiones` (`id`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`dimension_id`) REFERENCES `dimensiones` (`id`),
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
