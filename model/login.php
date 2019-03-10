@@ -33,38 +33,37 @@ class login
                 return $stm->fetchAll(PDO::FETCH_OBJ);
 
             }else{
-                print_r($_SESSION);
-                echo ' algo salio mal';
-                die;
+                
             }
             
             
         } catch (Exception $e) {
-            echo 'algo salio mal';
-            die;
             die($e->getMessage());
         }
-    }    
-
+    }
     public function Registrar(login $data)
     {
         try {
-            print_r($data);
-            $sql = "INSERT INTO users (name,last_name,tell,email,password,dimension_id,rol_id) 
+            $stm = $this->pdo->prepare("SELECT * FROM users where email = ? ");
+            $stm->execute(array($data->email));
+            if ($stm->rowCount() > 0) {
+                header('location:?c=login&a=Ingreso');
+                die;
+            }
+            else{
+                $sql = "INSERT INTO users (name,last_name,tell,email,password,dimension_id,rol_id) 
                 VALUES ( ? ,? ,? ,? ,? ,$data->dimension_id,$data->rol_id)";
-            print_r($sql);
-            // die;
-            $this->pdo->prepare($sql)
-                ->execute(
-                    array(
-                        $data->name,
-                        $data->last_name,
-                        $data->tell,
-                        $data->email,
-                        $data->password
-
-                    )
+                $this->pdo->prepare($sql)
+                    ->execute(
+                        array(
+                            $data->name,
+                            $data->last_name,
+                            $data->tell,
+                            $data->email,
+                            $data->password
+                        )
                 );
+            }
         } catch (Exception $e) {
             die($e->getMessage());
         }
