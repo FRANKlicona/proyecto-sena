@@ -50,20 +50,14 @@
                                     <td class="text-right">
                                         <?php echo $r->date; ?>
                                     </td>
-                                    <td class="text-center">
-                                        <button class="btn btn-primary btn-sm dropdown">
-                                            <a class="dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="now-ui-icons ui-2_settings-90"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <td class="text-center">                                           
                                                 <a class="dropdown-item" href="?c=registro&activity_id=<?= $r->id; ?>">Agregar Registro</a>
                                                 <div class="btn-group">
                                                     <a class="btn btn-sm btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                                     <a class="btn btn-sm btn-danger btn-round" data-toggle="modal" data-target="#myModal1">
                                                         <i class="now-ui-icons ui-1_simple-remove"></i>
-                                                    </a></div>
-                                            </div>
-                                        </button>
+                                                    </a>
+                                                </div>                                     
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
