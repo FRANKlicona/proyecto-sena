@@ -77,7 +77,7 @@ class registro
     {
         try {
             $stm = $this->pdo
-                ->prepare("DELETE FROM actividades WHERE id = ?");
+                ->prepare("DELETE FROM registros WHERE id = ?");
 
             $stm->execute(array($id));
         } catch (Exception $e) {
@@ -89,24 +89,20 @@ class registro
     {
         try {
             $sql = "UPDATE actividades SET                         
-                        name        = ?,
-                        token       = ?,
-                        program     = ?,
-                        date        = ?,
-                        duration    = ?,
-                        dimension_id= $data->dimension_id
+                        students        = ?,
+                        men       = ?,
+                        women     = ?,
+                        dimension_id= $data->dimension_id,
+                        token_id= $data->token_id
 						
                     WHERE id = ?";
 
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->name,
-                        $data->token,
-                        $data->program,
-                        $data->date,
-                        $data->duration,
-
+                        $data->students,
+                        $data->men,
+                        $data->women,
                         $data->id
 
 
@@ -120,17 +116,15 @@ class registro
     public function Registrar(registro $data)
     {
         try {
-            $sql = "INSERT INTO actividades (name,token,program,date,duration,dimension_id) 
-                VALUES ( ? ,? ,? ,? ,? ,$data->dimension_id)";
+            $sql = "INSERT INTO actividades (students,men,women,dimension_id,token_id) 
+                VALUES ( ? ,? ,? , $data->activity_id , $data->token_id)";
 
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->name,
-                        $data->token,
-                        $data->program,
-                        $data->date,
-                        $data->duration
+                        $data->students,
+                        $data->men,
+                        $data->women
 
                     )
                 );

@@ -31,6 +31,7 @@
                                     <div class="form-group">
                                         <label>Mujeres</label>
                                         <input type="date" name="women" class="form-control" placeholder="Fecha" data-datepicker-color="simple" value="<?= $registro->women; ?>">
+                                        <input type="hidden" name="dimension_id" value="1">
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +40,7 @@
                         <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Ficha</label>
-                                    <select name="tok_id" class="form-control">
+                                    <select name="token_id" class="form-control">
                                         <?php foreach ($this->model->ListarFicha() as $d) : ?>
                                         <option <?= isset($_REQUEST['id']) ?( ($d->id == $registro->token_id) ? 'Selected' : ''): ""; ?> value="
                                             <?= $d->id; ?>">
