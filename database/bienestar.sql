@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-03-2019 a las 05:32:17
+-- Tiempo de generación: 11-03-2019 a las 02:20:39
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cliente`
 --
-CREATE DATABASE IF NOT EXISTS `cliente` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `cliente`;
+CREATE DATABASE IF NOT EXISTS `bienestar` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bienestar`;
 
 -- --------------------------------------------------------
 
@@ -182,7 +182,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `tell`, `email`, `password`, `dimension_id`, `rol_id`) VALUES
-(2, 'Frank', 'Licona', '3196663494', 'f.a.licona@hotmail.com', '97062755', 6, 1);
+(2, 'Frank', 'Licona', '3196663494', 'f.a.licona@hotmail.com', '97062755', 6, 1),
+(7, '', '', '', 'eli@eli.com', '', 1, 1),
+(8, '', '', '', 'f.a.licon.falm@gmail.com', '', 1, 1),
+(9, '', '', '', '', '', 1, 1),
+(10, '', '', '', 'f.a.licona.falm@gmail.com', '', 1, 1),
+(11, '', '', '', 'v@2', '', 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -259,7 +264,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `dimensiones`
@@ -307,7 +312,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas

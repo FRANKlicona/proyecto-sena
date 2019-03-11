@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Actividades de
-                        <?= strtoupper($_REQUEST['c']); ?><a class="btn btn-sm btn-primary btn-round pull-right" href="?c=apoyo&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                        <?= strtoupper($_REQUEST['c']); ?><a class="btn btn-primary btn-round pull-right" href="?c=apoyo&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -14,19 +14,16 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>
-                                    Nombre
+                                    Cantidad de asistes
                                 </th>
                                 <th>
-                                    Ficha
+                                    Mujeres/Hombre
                                 </th>
                                 <th>
-                                    Programa
-                                </th>
-                                <th>
-                                    Dimension
+                                    Actividad
                                 </th>
                                 <th class="text-right">
-                                    Fecha
+                                    Ficha
                                 </th>
                                 <th class="text-center">
                                     Acciones
@@ -36,33 +33,21 @@
                                 <?php foreach ($this->model->Listar() as $r) : ?>
                                 <tr>
                                     <td>
-                                        <?php echo $r->name; ?>
+                                        <?php echo $r->students; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->token; ?>
+                                        <?php echo $r->wowem.' / '.$r->men; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->program; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $r->dim_name; ?>
+                                        <?php echo $r->activity_id; ?>
                                     </td>
                                     <td class="text-right">
-                                        <?php echo $r->date; ?>
+                                        <?php echo $r->token_id; ?>
                                     </td>
                                     <td class="text-center">
-                                        <button class="btn btn-primary btn-sm dropdown">
-                                            <a class="dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="now-ui-icons ui-2_settings-90"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                                <a class="dropdown-item" href="?c=registro&activity_id=<?= $r->id; ?>">Agregar Registro</a>
-                                                <div class="btn-group">
-                                                    <a class="btn btn-sm btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
-                                                    <a class="btn btn-sm btn-danger btn-round" data-toggle="modal" data-target="#myModal1">
-                                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                                    </a></div>
-                                            </div>
+                                        <a class="btn btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                        <button class="btn btn-danger btn-round" data-toggle="modal" data-target="#myModal1">
+                                            <i class="now-ui-icons ui-1_simple-remove"></i>
                                         </button>
                                     </td>
                                 </tr>

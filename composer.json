@@ -1,0 +1,13 @@
+{
+    "name": "franklicona/proyecto-sena",
+    "description": "Plataforma para contro y registro de actividades",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frank Licona",
+            "email": "f.a.licona@hotmail.com"
+        }
+    ],
+    "require": {}
+}
