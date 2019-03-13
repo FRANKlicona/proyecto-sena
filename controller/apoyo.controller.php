@@ -48,7 +48,7 @@ class apoyoController
             ? $this->model->Actualizar($apoyo)
             : $this->model->Registrar($apoyo);
 
-        header( 'Location: index.php?c=apoyo');
+        header("Location: index.php?c=apoyo&notify='ok'");
     }
 
     public function Eliminar()

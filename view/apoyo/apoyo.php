@@ -9,7 +9,17 @@
                         <?= strtoupper($_REQUEST['c']); ?><a class="btn btn-sm btn-primary btn-round pull-right" href="?c=apoyo&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
                 </div>
+
                 <div class="card-body">
+                    <!-- <?php if(isset($_REQUEST['notify']) && $_REQUEST['notify']!= ''): ?>
+                    <div class="alert alert-danger col-md-5">
+                        <button type="button" aria-hidden="true" class="close">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </button>
+                        <span>
+                            <b> Danger - </b> This is a regular notification made with ".alert-danger"</span>
+                    </div>
+                    <<?php endif ;?> -->
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">

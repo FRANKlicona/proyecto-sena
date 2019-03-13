@@ -47,7 +47,7 @@
                                     <label for="exampleInputEmail1">Dimension</label>
                                     <select name="dimension_id" class="form-control">
                                         <?php foreach ($this->model->ListarDimension() as $d) : ?>
-                                        <option <?= isset($_REQUEST['id']) ?( ($d->id == $apoyo->dimension_id) ? 'Selected' : ''): ""; ?> value="
+                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $apoyo->dimension_id) ? 'Selected' : '') : ""; ?> value="
                                             <?= $d->id; ?>">
                                             <?= $d->name; ?>
                                         </option>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="text-right form-group">
                             <a type="button" href="?c=apoyo" class="btn btn-link btn-primary btn-round" ">Volver</a>
-                            <button class=" btn btn-primary btn-round">Guardar</button>
+                            <button class=" btn btn-primary btn-round" >Guardar</button>
                         </div>
                     </form>
                 </div>
