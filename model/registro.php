@@ -4,12 +4,11 @@ class registro
     private $pdo;
 
     public $id;
-    public $name;
-    public $token;
-    public $program;
-    public $date;
-    public $duration;
+    public $students;
+    public $men;
+    public $women;
     public $dimension_id;
+    public $token_id;
 
     public function __CONSTRUCT()
     {
@@ -25,7 +24,7 @@ class registro
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT actividades.id,actividades.name,token,program,date,duration,dimensiones.id as dim_id,dimensiones.name as dim_name FROM actividades INNER JOIN dimensiones on dimension_id=dimensiones.id where dimension_id = 1");
+            $stm = $this->pdo->prepare("SELECT registros.id,students,men,women,actividades.id as dim_id,actividades.name as dim_name,fichas.id as tok_id, fichas.name as tok_name FROM registros INNER JOIN actividades on activity_id=actividades.id INNER JOIN fichas ON token_id = fichas.id where dimension_id = 1");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -33,12 +32,12 @@ class registro
             die($e->getMessage());
         }
     }
-    public function ListarDimension()
+    public function ListarActividad()
     {
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
+            $stm = $this->pdo->prepare("SELECT * FROM actividades");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -51,7 +50,7 @@ class registro
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT * FROM fihas");
+            $stm = $this->pdo->prepare("SELECT * FROM fichas");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -64,7 +63,7 @@ class registro
     {
         try {
             $stm = $this->pdo
-                ->prepare("SELECT * FROM actividades WHERE id = ?");
+                ->prepare("SELECT * FROM registros WHERE id = ?");
 
 
             $stm->execute(array($id));
@@ -78,7 +77,7 @@ class registro
     {
         try {
             $stm = $this->pdo
-                ->prepare("DELETE FROM actividades WHERE id = ?");
+                ->prepare("DELETE FROM registros WHERE id = ?");
 
             $stm->execute(array($id));
         } catch (Exception $e) {
@@ -90,24 +89,20 @@ class registro
     {
         try {
             $sql = "UPDATE actividades SET                         
-                        name        = ?,
-                        token       = ?,
-                        program     = ?,
-                        date        = ?,
-                        duration    = ?,
-                        dimension_id= $data->dimension_id
+                        students        = ?,
+                        men       = ?,
+                        women     = ?,
+                        dimension_id= $data->dimension_id,
+                        token_id= $data->token_id
 						
                     WHERE id = ?";
 
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->name,
-                        $data->token,
-                        $data->program,
-                        $data->date,
-                        $data->duration,
-
+                        $data->students,
+                        $data->men,
+                        $data->women,
                         $data->id
 
 
@@ -121,17 +116,15 @@ class registro
     public function Registrar(registro $data)
     {
         try {
-            $sql = "INSERT INTO actividades (name,token,program,date,duration,dimension_id) 
-                VALUES ( ? ,? ,? ,? ,? ,$data->dimension_id)";
+            $sql = "INSERT INTO actividades (students,men,women,dimension_id,token_id) 
+                VALUES ( ? ,? ,? , $data->activity_id , $data->token_id)";
 
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->name,
-                        $data->token,
-                        $data->program,
-                        $data->date,
-                        $data->duration
+                        $data->students,
+                        $data->men,
+                        $data->women
 
                     )
                 );

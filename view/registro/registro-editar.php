@@ -6,51 +6,54 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="title">
-                        <?= isset($_REQUEST['id']) ? "Editando : " . $apoyo->name : "Creando Actividad"; ?>
+                        <?= isset($_REQUEST['id']) ? "Editando Registro : #" . $registro->id : "Creando Actividad"; ?>
                     </h5>
 
                 </div>
                 <div class="card-body">
-                    <form class="form-group" action="?c=apoyo&a=Guardar" method="post">
-                        <input type="hidden" name="id" value="<?= $apoyo->id; ?>">
+                    <form class="form-group" action="?c=registro&a=Guardar" method="post">
+                        <input type="hidden" name="id" value="<?= $registro->id; ?>">
                         <div class="row">
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
-                                    <label>Nombre</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Company" value="<?= $apoyo->name; ?>">
+                                    <label>Estudiantes</label>
+                                    <input type="text" name="students" class="form-control" placeholder="Company" value="<?= $registro->students; ?>">
                                 </div>
                             </div>
                             <div class="col-md-3 px-1">
                                 <div class="form-group">
-                                    <label>Ficha</label>
-                                    <input type="text" name="token" class="form-control" placeholder="Username" value="<?= $apoyo->token; ?>">
+                                    <label>Hombres</label>
+                                    <input type="text" name="men" class="form-control" placeholder="Username" value="<?= $registro->men; ?>">
                                 </div>
                             </div>
                             <div class="col-md-3 pr-1">
                                 <div class="datepicker-container">
                                     <div class="form-group">
-                                        <label>Fecha</label>
-                                        <input type="date" name="date" class="form-control" placeholder="Fecha" data-datepicker-color="simple" value="<?= $apoyo->date; ?>">
+                                        <label>Mujeres</label>
+                                        <input type="date" name="women" class="form-control" placeholder="Fecha" data-datepicker-color="simple" value="<?= $registro->women; ?>">
+                                        <input type="hidden" name="dimension_id" value="1">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-10 pr-1">
+                        <div class="col-md-4 pr-1">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Programa</label>
-                                    <input type="text" name="program" class="form-control" placeholder="Email" value="<?= $apoyo->program; ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-2 pl-1">
-                                <div class="form-group">
-                                    <label>Duracion</label>
-                                    <input type="number" name="duration" class="form-control" placeholder="Last Name" value="<?= $apoyo->duration; ?>">
+                                    <label for="exampleInputEmail1">Ficha</label>
+                                    <select name="token_id" class="form-control">
+                                        <?php foreach ($this->model->ListarFicha() as $d) : ?>
+                                        <option <?= isset($_REQUEST['id']) ?( ($d->id == $registro->token_id) ? 'Selected' : ''): ""; ?> value="
+                                            <?= $d->id; ?>">
+                                            <?= $d->name; ?>
+                                        </option>
+                                        <?php endforeach; ?>
+
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="text-right form-group">
-                            <a type="button" href="?c=apoyo" class="btn btn-link btn-primary btn-round" ">Volver</a>
+                            <a type="button" href="?c=registro" class="btn btn-link btn-primary btn-round" ">Volver</a>
                             <button class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>

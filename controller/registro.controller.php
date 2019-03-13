@@ -1,7 +1,7 @@
 <?php
 require_once 'model/registro.php';
 
-class apoyoController
+class registroController
 {
 
     private $model;
@@ -37,13 +37,12 @@ class apoyoController
 
         $registro = new registro();
 
-        $registro->id      = $_REQUEST['id'];
-        $registro->name    = $_REQUEST['name'];
-        $registro->token   = $_REQUEST['token'];
-        $registro->program = $_REQUEST['program'];
-        $registro->date    = $_REQUEST['date'];
-        $registro->duration    = $_REQUEST['duration'];
+        $registro->id           = $_REQUEST['id'];
+        $registro->students     = $_REQUEST['students'];
+        $registro->men          = $_REQUEST['men'];
+        $registro->women        = $_REQUEST['women'];
         $registro->dimension_id = $_REQUEST['dimension_id'];
+        $registro->token_id     = $_REQUEST['token_id'];
         $registro->id > 0
             ? $this->model->Actualizar($registro)
             : $this->model->Registrar($registro);
