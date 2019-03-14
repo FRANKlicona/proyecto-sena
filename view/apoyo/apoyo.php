@@ -11,15 +11,15 @@
                 </div>
 
                 <div class="card-body">
-                    <!-- <?php if(isset($_REQUEST['notify']) && $_REQUEST['notify']!= ''): ?>
+                    <?php if(isset($_REQUEST['notify']) && $_REQUEST['notify']== 'ok'): ?>
                     <div class="alert alert-danger col-md-5">
                         <button type="button" aria-hidden="true" class="close">
                             <i class="now-ui-icons ui-1_simple-remove"></i>
                         </button>
                         <span>
-                            <b> Danger - </b> This is a regular notification made with ".alert-danger"</span>
+                            <b> Exito </b> El registro fue agregado satisfactoriamente"</span>
                     </div>
-                    <<?php endif ;?> -->
+                    <<?php endif ;?>
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
