@@ -36,13 +36,13 @@
                                         <?php echo $r->students; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->wowem.' / '.$r->men; ?>
+                                        <?php echo $r->women.' / '.$r->men; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->activity_id; ?>
+                                        <?php echo $r->act_name; ?>
                                     </td>
                                     <td class="text-right">
-                                        <?php echo $r->token_id; ?>
+                                        <?php echo $r->tok_name; ?>
                                     </td>
                                     <td class="text-center">
                                         <a class="btn btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>

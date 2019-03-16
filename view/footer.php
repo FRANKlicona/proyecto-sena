@@ -53,6 +53,13 @@
 <!-- <script src="assets/js/jquery.select-bootstrap.js"></script> -->
 <!-- <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script> -->
 <script>
+    function passValue($value) {
+        document.getElementById('activity_id').value = $value;
+        document.getElementById('_id').value = $value;
+
+    }
+</script>
+<script>
     $(document).ready(function() {
         demo.initDashboardPageCharts();
         // Javascript method's body can be found in assets/js/demos.js

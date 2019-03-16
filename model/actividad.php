@@ -20,12 +20,23 @@ class actividad
         }
     }
 
-    public function Listar()
+    public function Listar($dim)
     {
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT actividades.id,actividades.name,token,program,date,duration,dimensiones.id as dim_id,dimensiones.name as dim_name FROM actividades INNER JOIN dimensiones on dimension_id=dimensiones.id where dimension_id = 1");
+            $stm = $this->pdo->prepare("SELECT 
+                actividades.id,
+                actividades.name,
+                token,
+                program,
+                date,
+                duration,
+                dimensiones.id as dim_id,
+                dimensiones.name as dim_name 
+                FROM actividades 
+                INNER JOIN dimensiones on dimension_id=dimensiones.id 
+                WHERE dimension_id = ".$dim);
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -39,6 +50,19 @@ class actividad
             $result = array();
 
             $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function ListarFicha()
+    {
+        try {
+            $result = array();
+
+            $stm = $this->pdo->prepare("SELECT * FROM fichas");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);

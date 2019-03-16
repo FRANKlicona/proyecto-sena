@@ -1,7 +1,7 @@
 <?php
 require_once 'model/actividad.php';
 
-class apoyoController
+class actividadController
 {
 
     private $model;
@@ -48,12 +48,12 @@ class apoyoController
             ? $this->model->Actualizar($actividad)
             : $this->model->Registrar($actividad);
 
-        header('Location: index.php?c=actividad');
+        header("Location: index.php?c=actividad&v=".$_REQUEST['v']);
     }
 
     public function Eliminar()
     {
         $this->model->Eliminar($_REQUEST['id']);
-        header('Location: index.php?c=actividad');
+        header('Location: index.php?c=actividad&v='.$_REQUEST['v']);
     }
 }

@@ -29,8 +29,8 @@ class registro
                     students,
                     men,
                     women,
-                    actividades.id as dim_id,
-                    actividades.name as dim_name,
+                    actividades.id as act_id,
+                    actividades.name as act_name,
                     fichas.id as tok_id,
                     fichas.name as tok_name 
                 FROM registros 
@@ -103,8 +103,8 @@ class registro
                         students        = ?,
                         men       = ?,
                         women     = ?,
-                        activity_id= '$data->activity_id',
-                        token_id= '$data->token_id'
+                        activity_id= $data->activity_id,
+                        token_id= $data->token_id
 						
                     WHERE id = ?";
 
@@ -127,12 +127,12 @@ class registro
     public function Registrar(registro $data)
     {
         try {
-            // print_r($data);
-            // die;
             $sql = "INSERT INTO registros (students,men,women,activity_id,token_id) 
-                VALUES ( ? ,? ,? , ' $data->activity_id', ' $data->token_id')";
-            print_r($sql);
-            die;
+                VALUES ( ? ,? ,? ,$data->activity_id,$data->token_id)";
+            // print_r($data);
+            // print_r($_REQUEST);
+            // print_r($sql);
+            // die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(

@@ -31,7 +31,7 @@
                                     <div class="form-group">
                                         <label>Mujeres</label>
                                         <input type="text" name="women" class="form-control" placeholder="Fecha" data-datepicker-color="simple" value="<?= $registro->women; ?>">
-                                        <input type="hidden" name="activity_id" value="<?= isset($_REQUEST['activity_id']) ? $_REQUEST['activity_id']: '';?>">
+                                        <input type="hidden" name="activity_id" value="">
                                     </div>
                                 </div>
                             </div>
