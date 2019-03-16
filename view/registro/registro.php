@@ -5,8 +5,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Actividades de
-                        <?= strtoupper($_REQUEST['c']); ?><a class="btn btn-primary btn-sm btn-round pull-right" href="?c=registro&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                    <h4 class="card-title">
+                        <?= strtoupper($_REQUEST['c']); ?> de Actividades<a class="btn btn-primary btn-sm btn-round pull-right" href="?c=registro&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -14,7 +14,7 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>
-                                    Cantidad de asistes
+                                    Cantidad de asistentes
                                 </th>
                                 <th>
                                     Mujeres/Hombre

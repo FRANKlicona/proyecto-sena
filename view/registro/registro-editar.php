@@ -16,7 +16,7 @@
                         <div class="row">
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
-                                    <label>Estudiantes</label>
+                                    <label>Aprendices</label>
                                     <input type="text" name="students" class="form-control" placeholder="Company" value="<?= $registro->students; ?>">
                                 </div>
                             </div>
@@ -30,8 +30,8 @@
                                 <div class="datepicker-container">
                                     <div class="form-group">
                                         <label>Mujeres</label>
-                                        <input type="date" name="women" class="form-control" placeholder="Fecha" data-datepicker-color="simple" value="<?= $registro->women; ?>">
-                                        <input type="hidden" name="dimension_id" value="1">
+                                        <input type="text" name="women" class="form-control" placeholder="Fecha" data-datepicker-color="simple" value="<?= $registro->women; ?>">
+                                        <input type="hidden" name="activity_id" value="<?= isset($_REQUEST['activity_id']) ? $_REQUEST['activity_id']: '';?>">
                                     </div>
                                 </div>
                             </div>
@@ -42,8 +42,7 @@
                                     <label for="exampleInputEmail1">Ficha</label>
                                     <select name="token_id" class="form-control">
                                         <?php foreach ($this->model->ListarFicha() as $d) : ?>
-                                        <option <?= isset($_REQUEST['id']) ?( ($d->id == $registro->token_id) ? 'Selected' : ''): ""; ?> value="
-                                            <?= $d->id; ?>">
+                                        <option <?= isset($_REQUEST['id']) ?( ($d->id == $registro->token_id) ? 'Selected' : ''): ""; ?> value="<?=$d->id;?>">
                                             <?= $d->name; ?>
                                         </option>
                                         <?php endforeach; ?>

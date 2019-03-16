@@ -7,7 +7,7 @@ class registro
     public $students;
     public $men;
     public $women;
-    public $dimension_id;
+    public $activity_id;
     public $token_id;
 
     public function __CONSTRUCT()
@@ -24,7 +24,18 @@ class registro
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT registros.id,students,men,women,actividades.id as dim_id,actividades.name as dim_name,fichas.id as tok_id, fichas.name as tok_name FROM registros INNER JOIN actividades on activity_id=actividades.id INNER JOIN fichas ON token_id = fichas.id where dimension_id = 1");
+            $stm = $this->pdo->prepare("SELECT 
+                    registros.id,
+                    students,
+                    men,
+                    women,
+                    actividades.id as dim_id,
+                    actividades.name as dim_name,
+                    fichas.id as tok_id,
+                    fichas.name as tok_name 
+                FROM registros 
+                INNER JOIN actividades on activity_id=actividades.id 
+                INNER JOIN fichas ON token_id = fichas.id ");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -88,12 +99,12 @@ class registro
     public function Actualizar($data)
     {
         try {
-            $sql = "UPDATE actividades SET                         
+            $sql = "UPDATE resgistros SET                         
                         students        = ?,
                         men       = ?,
                         women     = ?,
-                        dimension_id= $data->dimension_id,
-                        token_id= $data->token_id
+                        activity_id= '$data->activity_id',
+                        token_id= '$data->token_id'
 						
                     WHERE id = ?";
 
@@ -116,9 +127,12 @@ class registro
     public function Registrar(registro $data)
     {
         try {
-            $sql = "INSERT INTO actividades (students,men,women,dimension_id,token_id) 
-                VALUES ( ? ,? ,? , $data->activity_id , $data->token_id)";
-
+            // print_r($data);
+            // die;
+            $sql = "INSERT INTO registros (students,men,women,activity_id,token_id) 
+                VALUES ( ? ,? ,? , ' $data->activity_id', ' $data->token_id')";
+            print_r($sql);
+            die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(

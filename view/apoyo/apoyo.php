@@ -61,7 +61,7 @@
                                         <?php echo $r->date; ?>
                                     </td>
                                     <td class="text-center">                                           
-                                                <a class="dropdown-item" href="?c=registro&activity_id=<?= $r->id; ?>">Agregar Registro</a>
+                                                <a class="dropdown-item" href="?c=registro&a=Crud&activity_id=<?= $r->id; ?>">Agregar Registro</a>
                                                 <div class="btn-group">
                                                     <a class="btn btn-sm btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                                     <a class="btn btn-sm btn-danger btn-round" data-toggle="modal" data-target="#myModal1">

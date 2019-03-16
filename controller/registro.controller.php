@@ -33,15 +33,13 @@ class registroController
 
     public function Guardar()
     {
-
-
         $registro = new registro();
 
         $registro->id           = $_REQUEST['id'];
         $registro->students     = $_REQUEST['students'];
         $registro->men          = $_REQUEST['men'];
         $registro->women        = $_REQUEST['women'];
-        $registro->dimension_id = $_REQUEST['dimension_id'];
+        $registro->activity_id = $_REQUEST['activity_id'];
         $registro->token_id     = $_REQUEST['token_id'];
         $registro->id > 0
             ? $this->model->Actualizar($registro)
