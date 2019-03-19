@@ -45,13 +45,13 @@
             <div class="sidebar-wrapper" id="sidebar-wrapper">
                 <ul class="nav">
                     <li class="">
-                        <a data-toggle="collapse" href="#pagesExamples" aria-expanded="<?= $_REQUEST['c'] == 'actividad' ? "true" : "false"; ?>" class="collapsed">
+                        <a data-toggle="collapse" href="#pagesExamplesA" aria-expanded="<?= $_REQUEST['c'] == 'actividad' ? "true" : "false"; ?>" class="collapsed">
                             <i class="now-ui-icons design_image"></i>
                             <p>
                                 Actividades<b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse <?= $_REQUEST['c'] == 'actividad' ? "show" : ""; ?>" id="pagesExamples" style="">
+                        <div class="collapse <?= $_REQUEST['c'] == 'actividad' ? "show" : ""; ?>" id="pagesExamplesA" style="">
                             <ul class="nav">
                                 <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'apoyo') ? "class='active'" : ""; ?>>
                                     <a href="?c=actividad&v=apoyo">

@@ -24,18 +24,21 @@ class registro
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT 
+            $stm = $this->pdo->prepare( "SELECT 
                     registros.id,
                     students,
                     men,
                     women,
-                    actividades.id as act_id,
-                    actividades.name as act_name,
-                    fichas.id as tok_id,
-                    fichas.name as tok_name 
+                    actividades.id      as act_id,
+                    actividades.name    as act_name,
+                    programas.id        as pro_id,
+                    programas.name      as pro_name,
+                    fichas.id           as tok_id,
+                    fichas.name         as tok_name 
                 FROM registros 
-                INNER JOIN actividades on activity_id=actividades.id 
-                INNER JOIN fichas ON token_id = fichas.id ");
+                INNER JOIN actividades  on activity_id  = actividades.id 
+                INNER JOIN programas    on program_id   = programas.id 
+                INNER JOIN fichas       ON token_id     = fichas.id ");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -57,6 +60,19 @@ class registro
         }
     }
     public function ListarFicha()
+    {
+        try {
+            $result = array();
+
+            $stm = $this->pdo->prepare("SELECT * FROM fichas");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function ListarPrograma()
     {
         try {
             $result = array();
@@ -100,11 +116,14 @@ class registro
     {
         try {
             $sql = "UPDATE resgistros SET                         
-                        students        = ?,
-                        men       = ?,
-                        women     = ?,
-                        activity_id= $data->activity_id,
-                        token_id= $data->token_id
+                        students    = ?,
+                        men         = ?,
+                        women       = ?,
+                        date        = ?,
+                        duration    = ?,
+                        activity_id = $data->activity_id,
+                        activity_id = $data->program_id,
+                        token_id    = $data->token_id
 						
                     WHERE id = ?";
 
@@ -114,6 +133,8 @@ class registro
                         $data->students,
                         $data->men,
                         $data->women,
+                        $data->date,
+                        $data->duration,
                         $data->id
 
 
@@ -127,8 +148,8 @@ class registro
     public function Registrar(registro $data)
     {
         try {
-            $sql = "INSERT INTO registros (students,men,women,activity_id,token_id) 
-                VALUES ( ? ,? ,? ,$data->activity_id,$data->token_id)";
+            $sql = "INSERT INTO registros (students,men,women,activity_id,program_id,token_id) 
+                VALUES ( ? ,? ,? ,?,?,$data->activity_id,$data->program_id,$data->token_id)";
             // print_r($data);
             // print_r($_REQUEST);
             // print_r($sql);
@@ -138,7 +159,9 @@ class registro
                     array(
                         $data->students,
                         $data->men,
-                        $data->women
+                        $data->women,
+                        $data->date,
+                        $data->duration
 
                     )
                 );

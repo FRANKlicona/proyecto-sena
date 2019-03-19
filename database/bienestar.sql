@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-03-2019 a las 02:20:39
+-- Tiempo de generación: 19-03-2019 a las 12:52:41
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `cliente`
+-- Base de datos: `bienestar`
 --
 CREATE DATABASE IF NOT EXISTS `bienestar` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `bienestar`;
@@ -33,10 +33,6 @@ USE `bienestar`;
 CREATE TABLE `actividades` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `token` varchar(8) NOT NULL,
-  `program` varchar(120) NOT NULL,
-  `date` date NOT NULL,
-  `duration` time(2) NOT NULL,
   `dimension_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -44,8 +40,19 @@ CREATE TABLE `actividades` (
 -- Volcado de datos para la tabla `actividades`
 --
 
-INSERT INTO `actividades` (`id`, `name`, `token`, `program`, `date`, `duration`, `dimension_id`) VALUES
-(30, '', '', '', '0000-00-00', '00:00:00.00', 1);
+INSERT INTO `actividades` (`id`, `name`, `dimension_id`) VALUES
+(1, 'CARACTERIZACION DE AMBIENTE', 1),
+(2, 'CLASIFICACION SOCIO DEMOGRAFICA', 1),
+(3, 'COMBOCATORIA A GRUPOS CULTURALES', 2),
+(4, 'TEATRO', 2),
+(5, 'ZONAL DE RECREACION', 3),
+(6, 'PARTICIPANTES A TORNEO', 3),
+(7, 'ELECCION DE VOCEROS', 4),
+(8, 'ELECCION DE REPRESENTANTES', 4),
+(9, 'ACOMPAÑAMIENTO PSICOLOGICO', 5),
+(10, 'CHARLA PARA ENTREVISTAS Y HOJASA DE VIDA', 5),
+(11, 'CHARLA DE PREVENCION DE EMBARAZO PREMATURO', 6),
+(24, 'CHARLA DE PREVENCION DE ENFERMEDADES ', 6);
 
 -- --------------------------------------------------------
 
@@ -68,8 +75,7 @@ INSERT INTO `dimensiones` (`id`, `name`) VALUES
 (3, 'Desporte Y Recracion'),
 (4, 'Liderazgo'),
 (5, 'Psicologia'),
-(6, 'Salud'),
-(7, 'nombre');
+(6, 'Salud');
 
 -- --------------------------------------------------------
 
@@ -90,18 +96,44 @@ CREATE TABLE `encuentas` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `estados`
+--
+
+CREATE TABLE `estados` (
+  `id` int(11) NOT NULL,
+  `name` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estados`
+--
+
+INSERT INTO `estados` (`id`, `name`) VALUES
+(1, 'activo'),
+(2, 'inactivo');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `fichas`
 --
 
 CREATE TABLE `fichas` (
   `id` int(11) NOT NULL,
   `name` varchar(7) NOT NULL,
-  `estudent` int(3) NOT NULL,
+  `student` int(3) NOT NULL,
   `date_start` date NOT NULL,
   `date_finish` date NOT NULL,
   `journey_id` int(11) NOT NULL,
   `program_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fichas`
+--
+
+INSERT INTO `fichas` (`id`, `name`, `student`, `date_start`, `date_finish`, `journey_id`, `program_id`) VALUES
+(1, '1503847', 25, '2017-09-25', '2019-09-25', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -111,8 +143,17 @@ CREATE TABLE `fichas` (
 
 CREATE TABLE `jornadas` (
   `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL
+  `name` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `jornadas`
+--
+
+INSERT INTO `jornadas` (`id`, `name`) VALUES
+(1, 'MAÑANA'),
+(2, 'MIXTA'),
+(3, 'NOCHE');
 
 -- --------------------------------------------------------
 
@@ -126,6 +167,16 @@ CREATE TABLE `programas` (
   `status_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `programas`
+--
+
+INSERT INTO `programas` (`id`, `name`, `status_id`) VALUES
+(3, 'ANALISIS Y DESARROLLO DE SISTEMAS DE INFORMACION', 1),
+(4, 'CONTADURIA Y FINANZAS', 2),
+(5, 'MULTIMEDIA', 1),
+(6, 'MANTENIMIENTO DE EQUIPOS DE COMPUTO', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -134,10 +185,13 @@ CREATE TABLE `programas` (
 
 CREATE TABLE `registros` (
   `id` int(11) NOT NULL,
-  `estudents` tinyint(3) NOT NULL,
+  `students` tinyint(3) NOT NULL,
   `men` tinyint(3) DEFAULT NULL,
   `women` tinyint(3) DEFAULT NULL,
+  `date` date NOT NULL,
+  `duration` time NOT NULL,
   `activity_id` int(11) NOT NULL,
+  `program_id` int(11) NOT NULL,
   `token_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -158,7 +212,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'Administrador'),
-(2, 'Lider');
+(2, 'Lider'),
+(3, 'Funcionario');
 
 -- --------------------------------------------------------
 
@@ -182,12 +237,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `tell`, `email`, `password`, `dimension_id`, `rol_id`) VALUES
-(2, 'Frank', 'Licona', '3196663494', 'f.a.licona@hotmail.com', '97062755', 6, 1),
-(7, '', '', '', 'eli@eli.com', '', 1, 1),
-(8, '', '', '', 'f.a.licon.falm@gmail.com', '', 1, 1),
-(9, '', '', '', '', '', 1, 1),
-(10, '', '', '', 'f.a.licona.falm@gmail.com', '', 1, 1),
-(11, '', '', '', 'v@2', '', 1, 1);
+(2, 'Frank', 'Licona', '3196663494', 'f.a.licona@hotmail.com', '97062755', 6, 1);
 
 --
 -- Índices para tablas volcadas
@@ -214,10 +264,17 @@ ALTER TABLE `encuentas`
   ADD KEY `register_id` (`register_id`);
 
 --
+-- Indices de la tabla `estados`
+--
+ALTER TABLE `estados`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `fichas`
 --
 ALTER TABLE `fichas`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
   ADD KEY `program_id` (`program_id`),
   ADD KEY `journey_id` (`journey_id`);
 
@@ -240,7 +297,8 @@ ALTER TABLE `programas`
 ALTER TABLE `registros`
   ADD PRIMARY KEY (`id`),
   ADD KEY `activity_id` (`activity_id`),
-  ADD KEY `token_id` (`token_id`);
+  ADD KEY `token_id` (`token_id`),
+  ADD KEY `program_id` (`program_id`);
 
 --
 -- Indices de la tabla `roles`
@@ -264,7 +322,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `dimensiones`
@@ -279,22 +337,28 @@ ALTER TABLE `encuentas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `estados`
+--
+ALTER TABLE `estados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `fichas`
 --
 ALTER TABLE `fichas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `jornadas`
 --
 ALTER TABLE `jornadas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `programas`
 --
 ALTER TABLE `programas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `registros`
@@ -306,7 +370,7 @@ ALTER TABLE `registros`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -317,6 +381,12 @@ ALTER TABLE `users`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `actividades`
+--
+ALTER TABLE `actividades`
+  ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`dimension_id`) REFERENCES `dimensiones` (`id`);
 
 --
 -- Filtros para la tabla `encuentas`
@@ -332,11 +402,18 @@ ALTER TABLE `fichas`
   ADD CONSTRAINT `fichas_ibfk_2` FOREIGN KEY (`journey_id`) REFERENCES `jornadas` (`id`);
 
 --
+-- Filtros para la tabla `programas`
+--
+ALTER TABLE `programas`
+  ADD CONSTRAINT `programas_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `estados` (`id`);
+
+--
 -- Filtros para la tabla `registros`
 --
 ALTER TABLE `registros`
   ADD CONSTRAINT `registros_ibfk_2` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`),
-  ADD CONSTRAINT `registros_ibfk_3` FOREIGN KEY (`activity_id`) REFERENCES `actividades` (`id`);
+  ADD CONSTRAINT `registros_ibfk_3` FOREIGN KEY (`activity_id`) REFERENCES `actividades` (`id`),
+  ADD CONSTRAINT `registros_ibfk_4` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`);
 
 --
 -- Filtros para la tabla `users`

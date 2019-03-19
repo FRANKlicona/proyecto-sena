@@ -22,6 +22,9 @@
                                 <th>
                                     Actividad
                                 </th>
+                                <th>
+                                    Programa
+                                </th>
                                 <th class="text-right">
                                     Ficha
                                 </th>
@@ -36,10 +39,13 @@
                                         <?php echo $r->students; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->women.' / '.$r->men; ?>
+                                        <?php echo $r->women . ' / ' . $r->men; ?>
                                     </td>
                                     <td>
                                         <?php echo $r->act_name; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->pro_name; ?>
                                     </td>
                                     <td class="text-right">
                                         <?php echo $r->tok_name; ?>

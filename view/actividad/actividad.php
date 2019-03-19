@@ -1,4 +1,3 @@
-
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
@@ -18,17 +17,9 @@
                                     Nombre
                                 </th>
                                 <th>
-                                    Ficha
-                                </th>
-                                <th>
-                                    Programa
-                                </th>
-                                <th>
                                     Dimension
                                 </th>
-                                <th class="text-right">
-                                    Fecha
-                                </th>
+                                
                                 <th class="text-center">
                                     Acciones
                                 </th>
@@ -40,25 +31,17 @@
                                         <?php echo $r->name; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->token; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $r->program; ?>
-                                    </td>
-                                    <td>
                                         <?php echo $r->dim_name; ?>
                                     </td>
-                                    <td class="text-right">
-                                        <?php echo $r->date; ?>
-                                    </td>
+                                    
                                     <td class="text-center">
                                         <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
-                                            <a type=button" class="btn btn-sm btn-warning btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>&v=<?= $_REQUEST['v']; ?>">
-                                                <i class="now-ui-icons files_paper"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-sm btn-info btn-round " onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal2">
-                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                            <button type="button" class="btn btn-sm btn-warning btn-round " onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal2">
+                                                <i class="now-ui-icons files_paper "></i>
                                             </button>
+                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>&v=<?= $_REQUEST['v']; ?>">
+                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                            </a>
                                             <button type="button" class="btn btn-sm btn-danger btn-round" onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal1">
                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                                             </button>
@@ -88,10 +71,10 @@
                 <p>¿Seguro desea eliminar este registro?</p>
             </div>
             <div class="modal-footer">
-                <form action=?c=actividad&a=Eliminar&id=<?php echo $r->id; ?>&v=<?= $_REQUEST['v']; ?>" method="post">
-                <input type="hidden" id="_id" name="id">
+                <form action=?c=actividad&a=Eliminar&v=<?= $_REQUEST['v']; ?>" method="post">
+                    <input type="hidden" id="_id" name="id">
+                    <button type="submit" class="btn btn-link btn-neutral">SI</a>
                 </form>
-                <button type="button" class="btn btn-link btn-neutral" >SI</a>
                 <button type="button" class="btn btn-link btn-neutral" data-dismiss="modal">NO</button>
             </div>
         </div>
@@ -132,19 +115,7 @@
                                             <input type="hidden" id="activity_id" name="activity_id" value="">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 pr-1">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Ficha</label>
-                                        <select name="token_id" class="form-control">
-                                            <?php foreach ($this->model->ListarFicha() as $d) : ?>
-                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                                <?= $d->name; ?>
-                                            </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
+                                </div>                                
                             </div>
                             <div class="text-center form-group">
                                 <button class=" btn btn-primary btn-round">Guardar</button>

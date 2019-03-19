@@ -28,10 +28,6 @@ class actividad
             $stm = $this->pdo->prepare("SELECT 
                 actividades.id,
                 actividades.name,
-                token,
-                program,
-                date,
-                duration,
                 dimensiones.id as dim_id,
                 dimensiones.name as dim_name 
                 FROM actividades 
@@ -48,7 +44,6 @@ class actividad
     {
         try {
             $result = array();
-
             $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
             $stm->execute();
 
@@ -57,20 +52,7 @@ class actividad
             die($e->getMessage());
         }
     }
-    public function ListarFicha()
-    {
-        try {
-            $result = array();
-
-            $stm = $this->pdo->prepare("SELECT * FROM fichas");
-            $stm->execute();
-
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
+    
     public function Obtener($id)
     {
         try {
