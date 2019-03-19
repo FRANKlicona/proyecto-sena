@@ -39,7 +39,10 @@ class registroController
         $registro->students     = $_REQUEST['students'];
         $registro->men          = $_REQUEST['men'];
         $registro->women        = $_REQUEST['women'];
-        $registro->activity_id = $_REQUEST['activity_id'];
+        $registro->date         = $_REQUEST['date'];
+        $registro->duration     = $_REQUEST['duration'];
+        $registro->program_id   = $_REQUEST['program_id'];
+        $registro->activity_id  = $_REQUEST['activity_id'];
         $registro->token_id     = $_REQUEST['token_id'];
         $registro->id > 0
             ? $this->model->Actualizar($registro)
