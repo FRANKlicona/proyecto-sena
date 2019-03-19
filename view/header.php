@@ -148,6 +148,12 @@
                             <p>desercion</p>
                         </a>
                     </li>
+                    <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'encuesta') ? "active active-pro" : "active-pro"; ?>>
+                        <a href="?c=encuesta&v=encuesta">
+                            <i class="now-ui-icons files_paper "></i>
+                            <p>encuestas</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
