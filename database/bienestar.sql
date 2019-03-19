@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-03-2019 a las 12:52:41
+-- Tiempo de generación: 20-03-2019 a las 00:24:17
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -27,32 +27,27 @@ USE `bienestar`;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `actividades`
+-- Estructura de tabla para la tabla `acciones`
 --
 
-CREATE TABLE `actividades` (
+CREATE TABLE `acciones` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `dimension_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `actividades`
+-- Estructura de tabla para la tabla `actividades`
 --
 
-INSERT INTO `actividades` (`id`, `name`, `dimension_id`) VALUES
-(1, 'CARACTERIZACION DE AMBIENTE', 1),
-(2, 'CLASIFICACION SOCIO DEMOGRAFICA', 1),
-(3, 'COMBOCATORIA A GRUPOS CULTURALES', 2),
-(4, 'TEATRO', 2),
-(5, 'ZONAL DE RECREACION', 3),
-(6, 'PARTICIPANTES A TORNEO', 3),
-(7, 'ELECCION DE VOCEROS', 4),
-(8, 'ELECCION DE REPRESENTANTES', 4),
-(9, 'ACOMPAÑAMIENTO PSICOLOGICO', 5),
-(10, 'CHARLA PARA ENTREVISTAS Y HOJASA DE VIDA', 5),
-(11, 'CHARLA DE PREVENCION DE EMBARAZO PREMATURO', 6),
-(24, 'CHARLA DE PREVENCION DE ENFERMEDADES ', 6);
+CREATE TABLE `actividades` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `action_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -87,10 +82,22 @@ CREATE TABLE `encuentas` (
   `id` int(11) NOT NULL,
   `region` varchar(10) NOT NULL,
   `munipality` varchar(40) NOT NULL,
-  `edficication` varchar(100) NOT NULL,
-  `age` int(11) NOT NULL,
+  `edificication` varchar(100) NOT NULL,
+  `age` char(2) NOT NULL,
+  `training_modality` enum('presencial','virtual','a distancia') NOT NULL,
   `gender_id` char(1) NOT NULL,
-  `register_id` int(11) NOT NULL
+  `register_id` int(11) NOT NULL,
+  `program_id` int(11) NOT NULL,
+  `question_1` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
+  `question_2` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
+  `question_3` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
+  `question_4` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
+  `question_5` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
+  `question_6` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
+  `question_7` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
+  `question_8` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
+  `question_9` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
+  `question_10` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,6 +122,26 @@ INSERT INTO `estados` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `estudiantes`
+--
+
+CREATE TABLE `estudiantes` (
+  `id` int(11) NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `last_name` varchar(60) NOT NULL,
+  `gender` enum('Masculino','Femenino','No Especificado') NOT NULL,
+  `age` char(2) NOT NULL,
+  `status` enum('asiste','no asiste','excusa') NOT NULL,
+  `cell` varchar(10) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `identification` varchar(15) NOT NULL,
+  `HR` enum('O+','O-','A+','A-','B+','B-','AB+','AB-') NOT NULL,
+  `token_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `fichas`
 --
 
@@ -124,6 +151,7 @@ CREATE TABLE `fichas` (
   `student` int(3) NOT NULL,
   `date_start` date NOT NULL,
   `date_finish` date NOT NULL,
+  `pass_code` varchar(3) NOT NULL,
   `journey_id` int(11) NOT NULL,
   `program_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -132,8 +160,8 @@ CREATE TABLE `fichas` (
 -- Volcado de datos para la tabla `fichas`
 --
 
-INSERT INTO `fichas` (`id`, `name`, `student`, `date_start`, `date_finish`, `journey_id`, `program_id`) VALUES
-(1, '1503847', 25, '2017-09-25', '2019-09-25', 1, 1);
+INSERT INTO `fichas` (`id`, `name`, `student`, `date_start`, `date_finish`, `pass_code`, `journey_id`, `program_id`) VALUES
+(1, '1503847', 25, '2017-09-25', '2019-09-25', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -154,6 +182,21 @@ INSERT INTO `jornadas` (`id`, `name`) VALUES
 (1, 'MAÑANA'),
 (2, 'MIXTA'),
 (3, 'NOCHE');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `peticiones`
+--
+
+CREATE TABLE `peticiones` (
+  `id` int(11) NOT NULL,
+  `dete_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `requester` enum('Vocero','Instructor') NOT NULL,
+  `action_id` int(11) NOT NULL,
+  `token_id` int(11) NOT NULL,
+  `pass_code_id` char(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -188,7 +231,6 @@ CREATE TABLE `registros` (
   `students` tinyint(3) NOT NULL,
   `men` tinyint(3) DEFAULT NULL,
   `women` tinyint(3) DEFAULT NULL,
-  `date` date NOT NULL,
   `duration` time NOT NULL,
   `activity_id` int(11) NOT NULL,
   `program_id` int(11) NOT NULL,
@@ -244,11 +286,18 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `tell`, `email`, `password`, `di
 --
 
 --
+-- Indices de la tabla `acciones`
+--
+ALTER TABLE `acciones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_dimensiones` (`dimension_id`);
+
+--
 -- Indices de la tabla `actividades`
 --
 ALTER TABLE `actividades`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_dimensiones` (`dimension_id`);
+  ADD KEY `action_id` (`action_id`);
 
 --
 -- Indices de la tabla `dimensiones`
@@ -261,7 +310,8 @@ ALTER TABLE `dimensiones`
 --
 ALTER TABLE `encuentas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `register_id` (`register_id`);
+  ADD KEY `register_id` (`register_id`),
+  ADD KEY `program_id` (`program_id`);
 
 --
 -- Indices de la tabla `estados`
@@ -270,11 +320,19 @@ ALTER TABLE `estados`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `estudiantes`
+--
+ALTER TABLE `estudiantes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `token_id` (`token_id`);
+
+--
 -- Indices de la tabla `fichas`
 --
 ALTER TABLE `fichas`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`),
+  ADD UNIQUE KEY `pass_code` (`pass_code`),
   ADD KEY `program_id` (`program_id`),
   ADD KEY `journey_id` (`journey_id`);
 
@@ -283,6 +341,15 @@ ALTER TABLE `fichas`
 --
 ALTER TABLE `jornadas`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `peticiones`
+--
+ALTER TABLE `peticiones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `activity_id` (`action_id`),
+  ADD KEY `pass_code_id` (`pass_code_id`),
+  ADD KEY `token_id` (`token_id`);
 
 --
 -- Indices de la tabla `programas`
@@ -319,10 +386,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `acciones`
+--
+ALTER TABLE `acciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `dimensiones`
@@ -343,6 +416,12 @@ ALTER TABLE `estados`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `estudiantes`
+--
+ALTER TABLE `estudiantes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `fichas`
 --
 ALTER TABLE `fichas`
@@ -353,6 +432,12 @@ ALTER TABLE `fichas`
 --
 ALTER TABLE `jornadas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `peticiones`
+--
+ALTER TABLE `peticiones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `programas`
@@ -383,16 +468,29 @@ ALTER TABLE `users`
 --
 
 --
+-- Filtros para la tabla `acciones`
+--
+ALTER TABLE `acciones`
+  ADD CONSTRAINT `acciones_ibfk_1` FOREIGN KEY (`dimension_id`) REFERENCES `dimensiones` (`id`);
+
+--
 -- Filtros para la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`dimension_id`) REFERENCES `dimensiones` (`id`);
+  ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`action_id`) REFERENCES `acciones` (`id`);
 
 --
 -- Filtros para la tabla `encuentas`
 --
 ALTER TABLE `encuentas`
-  ADD CONSTRAINT `encuentas_ibfk_1` FOREIGN KEY (`register_id`) REFERENCES `registros` (`id`);
+  ADD CONSTRAINT `encuentas_ibfk_1` FOREIGN KEY (`register_id`) REFERENCES `registros` (`id`),
+  ADD CONSTRAINT `encuentas_ibfk_2` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`);
+
+--
+-- Filtros para la tabla `estudiantes`
+--
+ALTER TABLE `estudiantes`
+  ADD CONSTRAINT `estudiantes_ibfk_1` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`);
 
 --
 -- Filtros para la tabla `fichas`
@@ -400,6 +498,14 @@ ALTER TABLE `encuentas`
 ALTER TABLE `fichas`
   ADD CONSTRAINT `fichas_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`),
   ADD CONSTRAINT `fichas_ibfk_2` FOREIGN KEY (`journey_id`) REFERENCES `jornadas` (`id`);
+
+--
+-- Filtros para la tabla `peticiones`
+--
+ALTER TABLE `peticiones`
+  ADD CONSTRAINT `peticiones_ibfk_2` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`),
+  ADD CONSTRAINT `peticiones_ibfk_3` FOREIGN KEY (`pass_code_id`) REFERENCES `fichas` (`pass_code`),
+  ADD CONSTRAINT `peticiones_ibfk_4` FOREIGN KEY (`action_id`) REFERENCES `acciones` (`id`);
 
 --
 -- Filtros para la tabla `programas`
@@ -412,8 +518,8 @@ ALTER TABLE `programas`
 --
 ALTER TABLE `registros`
   ADD CONSTRAINT `registros_ibfk_2` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`),
-  ADD CONSTRAINT `registros_ibfk_3` FOREIGN KEY (`activity_id`) REFERENCES `actividades` (`id`),
-  ADD CONSTRAINT `registros_ibfk_4` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`);
+  ADD CONSTRAINT `registros_ibfk_4` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`),
+  ADD CONSTRAINT `registros_ibfk_5` FOREIGN KEY (`activity_id`) REFERENCES `actividades` (`id`);
 
 --
 -- Filtros para la tabla `users`

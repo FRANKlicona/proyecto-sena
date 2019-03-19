@@ -25,8 +25,7 @@ class login
     public function Verificar($email,$password)
     {
         try {
-            $stm = $this->pdo->prepare("SELECT * FROM users where email = ? and password = ?");          
-                echo ' '.$email.' '.$password;
+            $stm = $this->pdo->prepare("SELECT * FROM users where email = ? and password = ?");
             $stm->execute(array($email,$password));
             if ($stm->rowCount() > 0) {
                 $_SESSION['admin'] = true;

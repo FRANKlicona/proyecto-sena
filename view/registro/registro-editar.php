@@ -43,7 +43,7 @@
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
                                     <label for="">duration</label>
-                                    <input class="form-control" type="time" name="duraton" id="">
+                                    <input class="form-control" type="time" name="duration" id="">
                                 </div>
                             </div>
                         </div>

@@ -158,13 +158,12 @@ class registro
         try {
             $sql = "INSERT INTO registros (students,men,women,date,duration,activity_id,program_id,token_id) 
                 VALUES ( ? ,? ,? ,?,?,$data->activity_id,$data->program_id,$data->token_id)";
-            echo "<pre>";
-print_r($_REQUEST);
-
-            print_r($data);
-            print_r($sql);
-            echo "</pre>";
-die;
+            // echo "<pre>";
+            // print_r($_REQUEST);
+            // print_r($data);
+            // print_r($sql);
+            // echo "</pre>";
+            // die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
