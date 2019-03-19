@@ -7,7 +7,10 @@ class registro
     public $students;
     public $men;
     public $women;
+    public $date;
+    public $duration;
     public $activity_id;
+    public $program_id;
     public $token_id;
 
     public function __CONSTRUCT()
@@ -29,6 +32,8 @@ class registro
                     students,
                     men,
                     women,
+                    date,
+                    duration,
                     actividades.id      as act_id,
                     actividades.name    as act_name,
                     programas.id        as pro_id,
@@ -77,7 +82,7 @@ class registro
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT * FROM fichas");
+            $stm = $this->pdo->prepare("SELECT * FROM programas");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -114,7 +119,7 @@ class registro
 
     public function Actualizar($data)
     {
-        try {
+        try {            
             $sql = "UPDATE resgistros SET                         
                         students    = ?,
                         men         = ?,
@@ -126,7 +131,10 @@ class registro
                         token_id    = $data->token_id
 						
                     WHERE id = ?";
-
+            // print_r($sql);
+            // print_r($_REQUEST);
+            // print_r($data);
+            // die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
@@ -148,12 +156,15 @@ class registro
     public function Registrar(registro $data)
     {
         try {
-            $sql = "INSERT INTO registros (students,men,women,activity_id,program_id,token_id) 
+            $sql = "INSERT INTO registros (students,men,women,date,duration,activity_id,program_id,token_id) 
                 VALUES ( ? ,? ,? ,?,?,$data->activity_id,$data->program_id,$data->token_id)";
-            // print_r($data);
-            // print_r($_REQUEST);
-            // print_r($sql);
-            // die;
+            echo "<pre>";
+print_r($_REQUEST);
+
+            print_r($data);
+            print_r($sql);
+            echo "</pre>";
+die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
