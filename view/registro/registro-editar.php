@@ -36,12 +36,6 @@
                         <div class="row">
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
-                                    <label for="">Fecha</label>
-                                    <input class="form-control" type="date" name="date" id="">
-                                </div>
-                            </div>
-                            <div class="col-md-6 pr-1">
-                                <div class="form-group">
                                     <label for="">duration</label>
                                     <input class="form-control" type="time" name="duration" id="">
                                 </div>

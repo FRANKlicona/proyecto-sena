@@ -39,7 +39,6 @@ class registroController
         $registro->students     = $_REQUEST['students'];
         $registro->men          = $_REQUEST['men'];
         $registro->women        = $_REQUEST['women'];
-        $registro->date         = $_REQUEST['date'];
         $registro->duration     = $_REQUEST['duration'];
         $registro->program_id   = $_REQUEST['program_id'];
         $registro->activity_id  = $_REQUEST['activity_id'];

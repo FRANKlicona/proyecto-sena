@@ -44,6 +44,12 @@
             </div>
             <div class="sidebar-wrapper" id="sidebar-wrapper">
                 <ul class="nav">
+                    <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'accion') ? "active active-pro" : "active-pro"; ?>>
+                        <a href="?c=accion&v=acciones">
+                            <i class="now-ui-icons files_paper "></i>
+                            <p>acciones</p>
+                        </a>
+                    </li>
                     <li class="">
                         <a data-toggle="collapse" href="#pagesExamplesA" aria-expanded="<?= $_REQUEST['c'] == 'actividad' ? "true" : "false"; ?>" class="collapsed">
                             <i class="now-ui-icons design_image"></i>
