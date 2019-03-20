@@ -17,9 +17,9 @@
                                     Nombre
                                 </th>
                                 <th>
-                                    Actividad
+                                    Dimension
                                 </th>
-                                
+
                                 <th class="text-center">
                                     Acciones
                                 </th>
@@ -31,9 +31,9 @@
                                         <?php echo $r->name; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->exe_name; ?>
+                                        <?php echo $r->dim_name; ?>
                                     </td>
-                                    
+
                                     <td class="text-center">
                                         <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
                                             <button type="button" class="btn btn-sm btn-warning btn-round " onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal2">
@@ -115,7 +115,7 @@
                                             <input type="hidden" id="activity_id" name="activity_id" value="">
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                             <div class="text-center form-group">
                                 <button class=" btn btn-primary btn-round">Guardar</button>

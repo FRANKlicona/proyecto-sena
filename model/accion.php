@@ -1,11 +1,11 @@
 <?php
-class actividad
+class accion
 {
     private $pdo;
 
     public $id;
-    public $date;
-    public $action_id;
+    public $name;
+    public $dimension_id;
 
     public function __CONSTRUCT()
     {
@@ -22,12 +22,12 @@ class actividad
             $result = array();
 
             $stm = $this->pdo->prepare("SELECT 
-                actividades.id,
-                date,
-                acciones.id as exe_id,
-                acciones.name as exe_name 
-                FROM actividades 
-                INNER JOIN acciones on action_id=acciones.id" );
+                acciones.id,
+                acciones.name,
+                dimensiones.id as dim_id,
+                dimensiones.name as dim_name 
+                FROM acciones 
+                INNER JOIN dimensiones on dimension_id=dimensiones.id");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -35,11 +35,11 @@ class actividad
             die($e->getMessage());
         }
     }
-    public function ListarAcciones()
+    public function ListarDimension()
     {
         try {
             $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM acciones");
+            $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -47,12 +47,12 @@ class actividad
             die($e->getMessage());
         }
     }
-    
+
     public function Obtener($id)
     {
         try {
             $stm = $this->pdo
-                ->prepare("SELECT * FROM actividades WHERE id = ?");
+                ->prepare("SELECT * FROM acciones WHERE id = ?");
 
 
             $stm->execute(array($id));
@@ -66,7 +66,7 @@ class actividad
     {
         try {
             $stm = $this->pdo
-                ->prepare("DELETE FROM actividades WHERE id = ?");
+                ->prepare("DELETE FROM acciones WHERE id = ?");
 
             $stm->execute(array($id));
         } catch (Exception $e) {
@@ -77,17 +77,16 @@ class actividad
     public function Actualizar($data)
     {
         try {
-            $sql = "UPDATE actividades SET  
-                        date        = ?,
-                        action_id   = $data->action_id
+            $sql = "UPDATE acciones SET                         
+                        name        = ?,
+                        dimension_id= $data->dimension_id
 						
                     WHERE id = ?";
 
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->date,
-
+                        $data->name,
                         $data->id
 
 
@@ -98,16 +97,16 @@ class actividad
         }
     }
 
-    public function Registrar(actividad $data)
+    public function Registrar(accion $data)
     {
         try {
-            $sql = "INSERT INTO actividades (date,action_id) 
-                VALUES ( ? ,? ,$data->action_id)";
+            $sql = "INSERT INTO acciones (name,dimension_id) 
+                VALUES ( ? ,$data->dimension_id)";
 
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->date
+                        $data->name
                     )
                 );
         } catch (Exception $e) {
@@ -115,4 +114,3 @@ class actividad
         }
     }
 }
-

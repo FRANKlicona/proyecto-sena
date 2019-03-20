@@ -13,18 +13,6 @@
                     <form class="form-group" action="?c=actividad&v=<?= $_REQUEST['v']; ?>&a=Guardar" method="post">
                         <input type="hidden" name="id" value="<?= $actividad->id; ?>">
                         <div class="row">
-                            <div class="col-md-6 pr-1">
-                                <div class="form-group">
-                                    <label>Nombre</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Company" value="<?= $actividad->name; ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-3 px-1">
-                                <div class="form-group">
-                                    <label>Ficha</label>
-                                    <input type="text" name="token" class="form-control" placeholder="Username" value="<?= $actividad->token; ?>">
-                                </div>
-                            </div>
                             <div class="col-md-3 pr-1">
                                 <div class="datepicker-container">
                                     <div class="form-group">
@@ -47,12 +35,6 @@
                                         <?php endforeach; ?>
 
                                     </select>
-                                </div>
-                            </div>
-                            <div class="col-md-2 pl-1">
-                                <div class="form-group">
-                                    <label>Duracion</label>
-                                    <input type="text" name="duration" class="form-control" placeholder="Last Name" value="<?= $actividad->duration; ?>">
                                 </div>
                             </div>
                         </div>

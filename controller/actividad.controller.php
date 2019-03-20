@@ -38,11 +38,7 @@ class actividadController
         $actividad = new actividad();
 
         $actividad->id      = $_REQUEST['id'];
-        $actividad->name    = $_REQUEST['name'];
-        $actividad->token   = $_REQUEST['token'];
-        $actividad->program = $_REQUEST['program'];
         $actividad->date    = $_REQUEST['date'];
-        $actividad->duration    = $_REQUEST['duration'];
         $actividad->dimension_id = $_REQUEST['dimension_id'];
         $actividad->id > 0
             ? $this->model->Actualizar($actividad)
