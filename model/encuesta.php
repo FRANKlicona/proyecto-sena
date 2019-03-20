@@ -37,7 +37,7 @@ class encuesta
             $result = array();
 
             $stm = $this->pdo->prepare("SELECT 
-                SELECT encuentas.id,
+                encuentas.id,
                 region,
                 munipality,
                 edificication,
@@ -66,11 +66,24 @@ class encuesta
             die($e->getMessage());
         }
     }
-    public function ListarEncuesta()
+    public function ListarProgram()
     {
         try {
             $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM encuestas");
+            $stm = $this->pdo->prepare("SELECT * FROM programas");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function ListarActivity()
+    {
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT * FROM actividades");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
