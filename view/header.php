@@ -44,12 +44,6 @@
             </div>
             <div class="sidebar-wrapper" id="sidebar-wrapper">
                 <ul class="nav">
-                    <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'accion') ? "active active-pro" : "active-pro"; ?>>
-                        <a href="?c=accion&v=acciones">
-                            <i class="now-ui-icons files_paper "></i>
-                            <p>acciones</p>
-                        </a>
-                    </li>
                     <li class="">
                         <a data-toggle="collapse" href="#pagesExamplesA" aria-expanded="<?= $_REQUEST['c'] == 'actividad' ? "true" : "false"; ?>" class="collapsed">
                             <i class="now-ui-icons design_image"></i>
@@ -57,107 +51,37 @@
                                 Actividades<b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse <?= $_REQUEST['c'] == 'actividad' ? "show" : ""; ?>" id="pagesExamplesA" style="">
+                        <div class="collapse" id="pagesExamplesA" style="">
                             <ul class="nav">
+                                <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'accion') ? "active active-pro" : "active-pro"; ?>>
+                                    <a href="?c=accion">
+                                        <i class="now-ui-icons files_paper "></i>
+                                        <p>acciones</p>
+                                    </a>
+                                </li>
                                 <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'apoyo') ? "class='active'" : ""; ?>>
-                                    <a href="?c=actividad&v=apoyo">
+                                    <a href="?c=actividad">
                                         <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Apoyo y sostenimiento</p>
+                                        <p><b>listado de actividades</b></p>
                                     </a>
                                 </li>
                                 <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'cultura') ? "class='active'" : ""; ?>>
-                                    <a href="?c=actividad&v=cultura">
+                                    <a href="?c=registro">
                                         <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Cultura</p>
+                                        <p>Registros de Actividad</p>
                                     </a>
                                 </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'deporte') ? "class='active'" : ""; ?>>
-                                    <a href="?c=actividad&v=deporte">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Deporte y Recreacion</p>
+                                <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'encuesta') ? "active active-pro" : "active-pro"; ?>>
+                                    <a href="?c=encuesta">
+                                        <i class="now-ui-icons files_paper "></i>
+                                        <p>encuestas</p>
                                     </a>
                                 </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'liderazgo') ? "class='active'" : ""; ?>>
-                                    <a href="?c=actividad&v=liderazgo">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Liderazgo</p>
-                                    </a>
-                                </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'psicologia') ? "class='active'" : ""; ?>>
-                                    <a href="?c=actividad&v=psicologia">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Psicologia</p>
-                                    </a>
-                                </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'salud') ? "class='active'" : ""; ?>>
-                                    <a href="?c=actividad&v=salud">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Salud</p>
-                                    </a>
-                                </li>
-
-
                             </ul>
-                    <li class="">
-                        <a data-toggle="collapse" href="#pagesExamples" aria-expanded="<?= $_REQUEST['c'] == 'registro' ? "true" : "false"; ?>" class="collapsed">
-                            <i class="now-ui-icons design_image"></i>
-                            <p>
-                                Registros<b class="caret"></b>
-                            </p>
-                        </a>
-                        <div class="collapse <?= $_REQUEST['c'] == 'registro' ? "show" : ""; ?>" id="pagesExamples" style="">
-                            <ul class="nav">
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'apoyo') ? "class='active'" : ""; ?>>
-                                    <a href="?c=registro&v=apoyo">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Apoyo y sostenimiento</p>
-                                    </a>
-                                </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'cultura') ? "class='active'" : ""; ?>>
-                                    <a href="?c=registro&v=cultura">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Cultura</p>
-                                    </a>
-                                </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'deporte') ? "class='active'" : ""; ?>>
-                                    <a href="?c=registro&v=deporte">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Deporte y Recreacion</p>
-                                    </a>
-                                </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'liderazgo') ? "class='active'" : ""; ?>>
-                                    <a href="?c=registro&v=liderazgo">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Liderazgo</p>
-                                    </a>
-                                </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'psicologia') ? "class='active'" : ""; ?>>
-                                    <a href="?c=registro&v=psicologia">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Psicologia</p>
-                                    </a>
-                                </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'salud') ? "class='active'" : ""; ?>>
-                                    <a href="?c=registro&v=salud">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                        <p>Salud</p>
-                                    </a>
-                                </li>
-
-
-                            </ul>
-                        </div>
-                    </li>
                     <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'desersion') ? "active active-pro" : "active-pro"; ?>>
-                        <a href="?c=desersion&v=desercion">
+                        <a href="?c=desersion">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                             <p>desercion</p>
-                        </a>
-                    </li>
-                    <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'encuesta') ? "active active-pro" : "active-pro"; ?>>
-                        <a href="?c=encuesta&v=encuesta">
-                            <i class="now-ui-icons files_paper "></i>
-                            <p>encuestas</p>
                         </a>
                     </li>
                 </ul>
@@ -176,7 +100,7 @@
                             </button>
                         </div>
                         <a class="navbar-brand" href="?c=home">Inicio</a><a class="navbar-brand" href="?c=<?= $_REQUEST['c']; ?>">
-                            <?= "  <b>></b>   " . strtoupper($_REQUEST['c']); ?></a>
+                            <?= "<b>></b>" . "  " . strtoupper($_REQUEST['c']); ?></a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar navbar-kebab"></span>

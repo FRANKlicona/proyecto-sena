@@ -16,7 +16,7 @@ class accion
         }
     }
 
-    public function Listar($dim)
+    public function Listar()
     {
         try {
             $result = array();

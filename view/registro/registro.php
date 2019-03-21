@@ -42,7 +42,7 @@
                                         <?php echo $r->women . ' / ' . $r->men; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->act_name; ?>
+                                        <?php echo $r->acc_name; ?>
                                     </td>
                                     <td>
                                         <?php echo $r->pro_name; ?>

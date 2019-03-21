@@ -5,6 +5,7 @@ class actividad
 
     public $id;
     public $date;
+    public $token_id;
     public $action_id;
 
     public function __CONSTRUCT()
@@ -16,18 +17,21 @@ class actividad
         }
     }
 
-    public function Listar($dim)
+    public function Listar()
     {
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT 
+            $stm = $this->pdo->prepare( "SELECT 
                 actividades.id,
                 date,
-                acciones.id as exe_id,
-                acciones.name as exe_name 
+                fichas.id       as tok_id,
+                fichas.name     as tok_name,
+                acciones.id     as exe_id,
+                acciones.name   as exe_name 
                 FROM actividades 
-                INNER JOIN acciones on action_id=acciones.id" );
+                INNER JOIN fichas   on token_id = fichas.id
+                INNER JOIN acciones on action_id= acciones.id" );
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -35,11 +39,23 @@ class actividad
             die($e->getMessage());
         }
     }
-    public function ListarAcciones()
+    public function ListarAccion()
     {
         try {
             $result = array();
             $stm = $this->pdo->prepare("SELECT * FROM acciones");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function ListarFicha()
+    {
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT * FROM fichas");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -79,6 +95,7 @@ class actividad
         try {
             $sql = "UPDATE actividades SET  
                         date        = ?,
+                        token_id    = $data->token_id
                         action_id   = $data->action_id
 						
                     WHERE id = ?";
@@ -101,9 +118,11 @@ class actividad
     public function Registrar(actividad $data)
     {
         try {
-            $sql = "INSERT INTO actividades (date,action_id) 
-                VALUES ( ? ,? ,$data->action_id)";
-
+            $sql = "INSERT INTO actividades (date,token_id,action_id) 
+                VALUES ( ? ,$data->token_id,$data->action_id)";
+            // print_r($_REQUEST);
+            // echo $sql."llega aqui";
+            // die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(

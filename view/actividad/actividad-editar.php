@@ -1,8 +1,8 @@
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content ">
-    <div class="row offset-md-1 ">
-        <div class="col-md-11 ">
+    <div class="row offset-md-4 ">
+        <div class="col-md-5 ">
             <div class="card">
                 <div class="card-header">
                     <h5 class="title">
@@ -15,17 +15,19 @@
                         <div class="row">
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
-                                    <label>Nombre</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Company" value="<?= $actividad->name; ?>">
+                                    <label for="exampleInputEmail1">Ficha</label>
+                                    <select name="token_id" class="form-control">
+                                        <?php foreach ($this->model->ListarFicha() as $d) : ?>
+                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="
+                                            <?= $d->id; ?>">
+                                            <?= $d->name; ?>
+                                        </option>
+                                        <?php endforeach; ?>
+
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-3 px-1">
-                                <div class="form-group">
-                                    <label>Ficha</label>
-                                    <input type="text" name="token" class="form-control" placeholder="Username" value="<?= $actividad->token; ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-3 pr-1">
+                            <div class="col-md-6 pr-1">
                                 <div class="datepicker-container">
                                     <div class="form-group">
                                         <label>Fecha</label>
@@ -35,24 +37,18 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 pr-1">
+                            <div class="col-md-11 pr-1">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Dimension</label>
-                                    <select name="dimension_id" class="form-control">
-                                        <?php foreach ($this->model->ListarDimension() as $d) : ?>
-                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->dimension_id) ? 'Selected' : '') : ""; ?> value="
+                                    <label for="exampleInputEmail1">Accion</label>
+                                    <select name="action_id" class="form-control">
+                                        <?php foreach ($this->model->ListarAccion() as $d) : ?>
+                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->action_id) ? 'Selected' : '') : ""; ?> value="
                                             <?= $d->id; ?>">
                                             <?= $d->name; ?>
                                         </option>
                                         <?php endforeach; ?>
 
                                     </select>
-                                </div>
-                            </div>
-                            <div class="col-md-2 pl-1">
-                                <div class="form-group">
-                                    <label>Duracion</label>
-                                    <input type="text" name="duration" class="form-control" placeholder="Last Name" value="<?= $actividad->duration; ?>">
                                 </div>
                             </div>
                         </div>

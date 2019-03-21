@@ -49,7 +49,7 @@
                                         <option value=""></option>
                                         <?php foreach ($this->model->ListarActividad() as $d) : ?>
                                         <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->act_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                            <?= $d->name; ?>
+                                            <?= $d->exe_name; ?>
                                         </option>
                                         <?php endforeach; ?>
                                     </select>
