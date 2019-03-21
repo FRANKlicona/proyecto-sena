@@ -34,8 +34,6 @@
 <script src="assets/js/core/bootstrap.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <script src="assets/js/loader.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chart JS -->
 <script src="assets/js/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->
@@ -47,11 +45,10 @@
 <!--  Notifications Plugin    -->
 <script src="assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="assets/js/now-ui-dashboard.min.js?v=1.3.0" type="text/javascript"></script>
 <script src="assets/js/now-ui-kit.js?v=1.2.0" type="text/javascript"></script>
 <!-- <script src="assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script> -->
 <!-- <script src="assets/js/jquery.select-bootstrap.js"></script> -->
-<!-- <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script> -->
+<script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
 <script>
     function passValue($value) {
         document.getElementById('activity_id').value = $value;
