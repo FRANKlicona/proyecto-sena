@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2019 a las 02:06:09
+-- Tiempo de generación: 21-03-2019 a las 13:57:55
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -36,12 +37,15 @@ CREATE TABLE `acciones` (
   `dimension_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `acciones`
 --
 
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -55,12 +59,15 @@ CREATE TABLE `actividades` (
   `action_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `actividades`
 --
 
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -87,12 +94,15 @@ CREATE TABLE `dimensiones` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `dimensiones`
 --
 
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -158,12 +168,15 @@ CREATE TABLE `fichas` (
   `program_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `fichas`
 --
 
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -172,11 +185,11 @@ CREATE TABLE `fichas` (
 
 CREATE TABLE `peticiones` (
   `id` int(11) NOT NULL,
-  `dete_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `requester` enum('Vocero','Instructor') NOT NULL,
+  `pass_code` char(3) NOT NULL,
   `action_id` int(11) NOT NULL,
-  `token_id` int(11) NOT NULL,
-  `pass_code_id` char(3) NOT NULL
+  `token_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -191,12 +204,15 @@ CREATE TABLE `programas` (
   `status` enum('Activo','Inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `programas`
 --
 
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -214,10 +230,13 @@ CREATE TABLE `registros` (
   `token_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `registros`
 --
 
+=======
+>>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -255,15 +274,6 @@ CREATE TABLE `roles` (
   `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `roles`
---
-
-INSERT INTO `roles` (`id`, `name`) VALUES
-(1, 'Administrador'),
-(2, 'Lider'),
-(3, 'Funcionario');
-
 -- --------------------------------------------------------
 
 --
@@ -282,12 +292,15 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+<<<<<<< HEAD
 -- Volcado de datos para la tabla `users`
 --
 
 
 
 --
+=======
+>>>>>>> refs/remotes/origin/master
 -- Índices para tablas volcadas
 --
 
@@ -349,8 +362,9 @@ ALTER TABLE `fichas`
 --
 ALTER TABLE `peticiones`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `pass_code_id_2` (`pass_code`),
   ADD KEY `activity_id` (`action_id`),
-  ADD KEY `pass_code_id` (`pass_code_id`),
+  ADD KEY `pass_code_id` (`pass_code`),
   ADD KEY `token_id` (`token_id`);
 
 --
@@ -398,13 +412,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `acciones`
 --
 ALTER TABLE `acciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `beneficiados`
@@ -416,7 +430,7 @@ ALTER TABLE `beneficiados`
 -- AUTO_INCREMENT de la tabla `dimensiones`
 --
 ALTER TABLE `dimensiones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `encuentas`
@@ -434,7 +448,7 @@ ALTER TABLE `estudiantes`
 -- AUTO_INCREMENT de la tabla `fichas`
 --
 ALTER TABLE `fichas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `peticiones`
@@ -446,25 +460,25 @@ ALTER TABLE `peticiones`
 -- AUTO_INCREMENT de la tabla `programas`
 --
 ALTER TABLE `programas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `registros`
 --
 ALTER TABLE `registros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -537,6 +551,7 @@ ALTER TABLE `remisiones`
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`dimension_id`) REFERENCES `dimensiones` (`id`),
   ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`);
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
