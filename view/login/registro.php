@@ -128,7 +128,11 @@
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <label for="dimension_id">Dimension</label>
-                                        <input type="text" name="dimension_id" class="form-control" placeholder="#" value="1">
+                                        <select class="form-control" name="dimension_id" id="">
+                                            <?php foreach ($this->model->ListarDimensiones() as $d) : ?>
+                                                <option value="<?php echo $d->id ?>"><?php echo $d->name; ?></option>
+                                            <?php endforeach?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-5">

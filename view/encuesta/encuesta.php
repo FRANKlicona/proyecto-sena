@@ -14,10 +14,28 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>
-                                    Nombre
+                                    Regional
                                 </th>
                                 <th>
-                                    Dimension
+                                    Municipio
+                                </th>
+                                <th>
+                                    Centro De Formacion
+                                </th>
+                                <th>
+                                    Edad
+                                </th>
+                                <th>
+                                    Modalidad De Formacion
+                                </th>
+                                <th>
+                                    Genero
+                                </th>
+                                <th>
+                                    Actividad
+                                </th>
+                                <th>
+                                    Programa De Formacion
                                 </th>
                                 
                                 <th class="text-center">
@@ -28,13 +46,30 @@
                                 <?php foreach ($this->model->Listar() as $r) : ?>
                                 <tr>
                                     <td>
-                                        <?php echo $r->name; ?>
+                                        <?php echo $r->region; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->dim_name; ?>
+                                        <?php echo $r->munipality; ?>
                                     </td>
-                                    
-                                    <td class="text-center">
+                                    <td>
+                                        <?php echo $r->edificication; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->age; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->training_modality; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->gender_id; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->activity; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->program; ?>
+                                    </td>                                    
+                                    <!--<td class="text-center">
                                         <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
                                             <button type="button" class="btn btn-sm btn-warning btn-round " onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal2">
                                                 <i class="now-ui-icons files_paper "></i>
@@ -46,7 +81,7 @@
                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                                             </button>
                                         </div>
-                                    </td>
+                                    </td>-->
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>

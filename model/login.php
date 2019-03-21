@@ -40,6 +40,20 @@ class login
             die($e->getMessage());
         }
     }
+
+    public function ListarDimensiones()
+    {
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function Registrar(login $data)
     {
         try {

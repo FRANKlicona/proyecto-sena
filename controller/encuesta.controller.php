@@ -37,7 +37,7 @@ class encuestaController
 
         $encuesta = new encuesta();
 
-        $encuesta->id      = $_REQUEST['id'];
+        //$encuesta->id      = $_REQUEST['id'];
         $encuesta->region    = $_REQUEST['region'];
         $encuesta->munipality   = $_REQUEST['munipality'];
         $encuesta->edificication   = $_REQUEST['edificication'];
@@ -57,9 +57,11 @@ class encuestaController
         $encuesta->question_9 = $_REQUEST['question_9'];
         $encuesta->question_10 = $_REQUEST['question_10'];
         
-        $encuesta->id > 0 ? $this->model->Actualizar($encuesta): $this->model->Registrar($encuesta);
+        $this->model->Registrar($encuesta);
 
-        header("Location: index.php?c=encuestad&v=".$_REQUEST['v']);
+        //$encuesta->id = 0 ? $this->model->Actualizar($encuesta): $this->model->Registrar($encuesta);
+
+        header("Location: index.php?c=encuesta&v=".$_REQUEST['v']);
     }
 
     /*public function Eliminar//()

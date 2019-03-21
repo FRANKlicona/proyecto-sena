@@ -37,14 +37,14 @@ class encuesta
             $result = array();
 
             $stm = $this->pdo->prepare("SELECT 
-                encuentas.id,
                 region,
                 munipality,
                 edificication,
-                programas.name as program_name,
+                programas.name as program,
+                age,
                 gender_id,
                 training_modality,
-                registros.activity_id as activity,
+                acciones.name as activity,
                 question_1,
                 question_2,
                 question_3,
@@ -55,9 +55,11 @@ class encuesta
                 question_8,
                 question_9,
                 question_10
-                FROM encuentas
-                INNER JOIN programas ON programas.id = encuentas.program_id 
-                INNER JOIN registros ON registros.id = encuentas.register_id  
+                FROM encuestas
+                INNER JOIN programas ON encuestas.program_id =  programas.id
+                INNER JOIN registros ON register_id = registros.id  
+                INNER JOIN actividades ON registros.activity_id = actividades.id
+                INNER JOIN acciones ON actividades.action_id = acciones.id  
                 ");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -83,7 +85,13 @@ class encuesta
     {
         try {
             $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM actividades");
+            $stm = $this->pdo->prepare("SELECT 
+                                        actividades.id,
+                                        acciones.name 
+                                        FROM actividades 
+                                        INNER JOIN acciones
+                                        WHERE action_id = acciones.id
+                                      ");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -95,7 +103,8 @@ class encuesta
     public function Registrar(encuesta $data)
     {
         try {
-            $sql = "INSERT INTO encuestas  (region,
+            $sql = "INSERT INTO encuestas  (
+                                            region,
                                             munipality,
                                             edificication,
                                             program_id,
@@ -113,7 +122,8 @@ class encuesta
                                             question_8,
                                             question_9,
                                             question_10) 
-                    VALUES ( ? ,? ,? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
+                    VALUES ( ? ,? ,? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?, ? )";
+                    
 
             $this->pdo->prepare($sql)
                 ->execute(
