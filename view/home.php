@@ -101,13 +101,13 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td class="text-left"></td>
+                                    <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong> un <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                                            <i class="now-ui-icons ui-2_settings-90"></i>
+                                        <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Aplazar">
+                                            <i class="now-ui-icons location_bookmark"></i>
                                         </button>
-                                        <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                                        <button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Aceptar">
+                                            <i class="now-ui-icons ui-1_check"></i>
                                         </button>
                                     </td>
                                 </tr>
