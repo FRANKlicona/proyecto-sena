@@ -37,15 +37,6 @@ CREATE TABLE `acciones` (
   `dimension_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
---
--- Volcado de datos para la tabla `acciones`
---
-
-
-
-=======
->>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -59,15 +50,6 @@ CREATE TABLE `actividades` (
   `action_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
---
--- Volcado de datos para la tabla `actividades`
---
-
-
-
-=======
->>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -94,15 +76,6 @@ CREATE TABLE `dimensiones` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
---
--- Volcado de datos para la tabla `dimensiones`
---
-
-
-
-=======
->>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -168,15 +141,6 @@ CREATE TABLE `fichas` (
   `program_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
---
--- Volcado de datos para la tabla `fichas`
---
-
-
-
-=======
->>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -204,15 +168,6 @@ CREATE TABLE `programas` (
   `status` enum('Activo','Inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
---
--- Volcado de datos para la tabla `programas`
---
-
-
-
-=======
->>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -230,13 +185,10 @@ CREATE TABLE `registros` (
   `token_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `registros`
 --
 
-=======
->>>>>>> refs/remotes/origin/master
 -- --------------------------------------------------------
 
 --
@@ -292,15 +244,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
-<<<<<<< HEAD
--- Volcado de datos para la tabla `users`
---
-
-
-
---
-=======
->>>>>>> refs/remotes/origin/master
 -- Índices para tablas volcadas
 --
 
