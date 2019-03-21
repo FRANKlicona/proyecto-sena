@@ -30,7 +30,7 @@ class home
                     peticiones.id,
                     date_create,
                     requester,
-                    peticiones.pass_code,
+                    peticiones.pass_code_id,
                     fichas.id               as tok_id,
                     fichas.name             as tok_name,
                     acciones.name           as acc_name
@@ -117,7 +117,6 @@ class home
                         students    = ?,
                         men         = ?,
                         women       = ?,
-                        date        = ?,
                         duration    = ?,
                         activity_id = $data->activity_id,
                         activity_id = $data->program_id,
