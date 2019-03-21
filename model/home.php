@@ -30,7 +30,7 @@ class home
                     peticiones.id,
                     date_create,
                     requester,
-                    peticiones.pass_code_id,
+                    peticiones.pass_code,
                     fichas.id               as tok_id,
                     fichas.name             as tok_name,
                     acciones.name           as acc_name

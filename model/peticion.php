@@ -32,7 +32,7 @@ class Peticion
                 acciones.name   as exe_name 
                 fichas.id       as tok_id,
                 fichas.name     as tok_name,
-                pass_code_id,
+                pass_code,
                 FROM peticiones 
                 INNER JOIN fichas   on token_id = fichas.id
                 INNER JOIN acciones on action_id= acciones.id" );

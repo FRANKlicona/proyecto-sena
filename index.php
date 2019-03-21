@@ -3,9 +3,6 @@
 session_start();
 //Se requiere la base de datos
 require_once 'model/database.php';
-
-//Se predefine el controlador como login
-$controller='login';
 //Se pregunta si existe una variable de sesion para agregarlo a la variable sesion
 $session= isset($_SESSION['admin'])?$_SESSION['admin']:'';
 
