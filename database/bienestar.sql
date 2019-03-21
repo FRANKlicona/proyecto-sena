@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2019 a las 00:24:17
+-- Tiempo de generación: 21-03-2019 a las 02:06:09
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -36,6 +36,14 @@ CREATE TABLE `acciones` (
   `dimension_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `acciones`
+--
+
+INSERT INTO `acciones` (`id`, `name`, `dimension_id`) VALUES
+(2, 'Reclutamiento', 2),
+(3, 'Eleccion de vocero', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -44,9 +52,32 @@ CREATE TABLE `acciones` (
 
 CREATE TABLE `actividades` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
   `date` date NOT NULL,
+  `token_id` int(11) NOT NULL,
   `action_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `actividades`
+--
+
+INSERT INTO `actividades` (`id`, `date`, `token_id`, `action_id`) VALUES
+(1, '2019-03-13', 1, 2),
+(2, '2019-03-21', 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `beneficiados`
+--
+
+CREATE TABLE `beneficiados` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `form_request` varchar(255) NOT NULL,
+  `files_pdf` varchar(255) NOT NULL,
+  `type` enum('apoyo socioeconomico','bono alimenticio','','') NOT NULL,
+  `student_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -103,25 +134,6 @@ CREATE TABLE `encuentas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estados`
---
-
-CREATE TABLE `estados` (
-  `id` int(11) NOT NULL,
-  `name` varchar(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `estados`
---
-
-INSERT INTO `estados` (`id`, `name`) VALUES
-(1, 'activo'),
-(2, 'inactivo');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `estudiantes`
 --
 
@@ -131,7 +143,7 @@ CREATE TABLE `estudiantes` (
   `last_name` varchar(60) NOT NULL,
   `gender` enum('Masculino','Femenino','No Especificado') NOT NULL,
   `age` char(2) NOT NULL,
-  `status` enum('asiste','no asiste','excusa') NOT NULL,
+  `status` enum('En Formacion','Returado','Matricula Cancelada') NOT NULL,
   `cell` varchar(10) NOT NULL,
   `email` varchar(150) NOT NULL,
   `identification` varchar(15) NOT NULL,
@@ -166,26 +178,6 @@ INSERT INTO `fichas` (`id`, `name`, `student`, `date_start`, `date_finish`, `pas
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `jornadas`
---
-
-CREATE TABLE `jornadas` (
-  `id` int(11) NOT NULL,
-  `name` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `jornadas`
---
-
-INSERT INTO `jornadas` (`id`, `name`) VALUES
-(1, 'MAÑANA'),
-(2, 'MIXTA'),
-(3, 'NOCHE');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `peticiones`
 --
 
@@ -207,18 +199,18 @@ CREATE TABLE `peticiones` (
 CREATE TABLE `programas` (
   `id` int(11) NOT NULL,
   `name` varchar(120) NOT NULL,
-  `status_id` int(11) NOT NULL
+  `status` enum('Activo','Inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `programas`
 --
 
-INSERT INTO `programas` (`id`, `name`, `status_id`) VALUES
-(3, 'ANALISIS Y DESARROLLO DE SISTEMAS DE INFORMACION', 1),
-(4, 'CONTADURIA Y FINANZAS', 2),
-(5, 'MULTIMEDIA', 1),
-(6, 'MANTENIMIENTO DE EQUIPOS DE COMPUTO', 1);
+INSERT INTO `programas` (`id`, `name`, `status`) VALUES
+(3, 'ANALISIS Y DESARROLLO DE SISTEMAS DE INFORMACION', 'Activo'),
+(4, 'CONTADURIA Y FINANZAS', 'Inactivo'),
+(5, 'MULTIMEDIA', 'Activo'),
+(6, 'MANTENIMIENTO DE EQUIPOS DE COMPUTO', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -235,6 +227,40 @@ CREATE TABLE `registros` (
   `activity_id` int(11) NOT NULL,
   `program_id` int(11) NOT NULL,
   `token_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `registros`
+--
+
+INSERT INTO `registros` (`id`, `students`, `men`, `women`, `duration`, `activity_id`, `program_id`, `token_id`) VALUES
+(1, 26, 19, 7, '02:00:00', 1, 3, 1),
+(2, 18, 14, 4, '02:00:00', 2, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `remisiones`
+--
+
+CREATE TABLE `remisiones` (
+  `id` int(11) NOT NULL,
+  `referal_type` enum('trabajo_social','psicologia','','') NOT NULL,
+  `date_create` date NOT NULL,
+  `n_orden` int(11) NOT NULL,
+  `reason_referal` text NOT NULL,
+  `instructor_name` varchar(120) NOT NULL,
+  `instructor firm` longblob NOT NULL,
+  `situation_found` text NOT NULL,
+  `promises` text NOT NULL,
+  `psico_firm_before` longblob NOT NULL,
+  `student_firm` longblob NOT NULL,
+  `date_eval` date NOT NULL,
+  `eval_track` enum('si','no','','') NOT NULL,
+  `date_promises` date NOT NULL,
+  `psico_firm_after` longblob NOT NULL,
+  `stutent_id` int(11) NOT NULL,
+  `program_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -297,7 +323,15 @@ ALTER TABLE `acciones`
 --
 ALTER TABLE `actividades`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `action_id` (`action_id`);
+  ADD KEY `action_id` (`action_id`),
+  ADD KEY `token_id` (`token_id`);
+
+--
+-- Indices de la tabla `beneficiados`
+--
+ALTER TABLE `beneficiados`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`student_id`);
 
 --
 -- Indices de la tabla `dimensiones`
@@ -312,12 +346,6 @@ ALTER TABLE `encuentas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `register_id` (`register_id`),
   ADD KEY `program_id` (`program_id`);
-
---
--- Indices de la tabla `estados`
---
-ALTER TABLE `estados`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `estudiantes`
@@ -337,12 +365,6 @@ ALTER TABLE `fichas`
   ADD KEY `journey_id` (`journey_id`);
 
 --
--- Indices de la tabla `jornadas`
---
-ALTER TABLE `jornadas`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `peticiones`
 --
 ALTER TABLE `peticiones`
@@ -355,8 +377,7 @@ ALTER TABLE `peticiones`
 -- Indices de la tabla `programas`
 --
 ALTER TABLE `programas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `status_id` (`status_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `registros`
@@ -365,6 +386,14 @@ ALTER TABLE `registros`
   ADD PRIMARY KEY (`id`),
   ADD KEY `activity_id` (`activity_id`),
   ADD KEY `token_id` (`token_id`),
+  ADD KEY `program_id` (`program_id`);
+
+--
+-- Indices de la tabla `remisiones`
+--
+ALTER TABLE `remisiones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `stutent_id` (`stutent_id`),
   ADD KEY `program_id` (`program_id`);
 
 --
@@ -389,31 +418,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `acciones`
 --
 ALTER TABLE `acciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `beneficiados`
+--
+ALTER TABLE `beneficiados`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `dimensiones`
 --
 ALTER TABLE `dimensiones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `encuentas`
 --
 ALTER TABLE `encuentas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `estados`
---
-ALTER TABLE `estados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiantes`
@@ -426,12 +455,6 @@ ALTER TABLE `estudiantes`
 --
 ALTER TABLE `fichas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `jornadas`
---
-ALTER TABLE `jornadas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `peticiones`
@@ -449,7 +472,7 @@ ALTER TABLE `programas`
 -- AUTO_INCREMENT de la tabla `registros`
 --
 ALTER TABLE `registros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -461,7 +484,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -477,7 +500,14 @@ ALTER TABLE `acciones`
 -- Filtros para la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`action_id`) REFERENCES `acciones` (`id`);
+  ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`action_id`) REFERENCES `acciones` (`id`),
+  ADD CONSTRAINT `actividades_ibfk_2` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`);
+
+--
+-- Filtros para la tabla `beneficiados`
+--
+ALTER TABLE `beneficiados`
+  ADD CONSTRAINT `beneficiados_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `estudiantes` (`id`);
 
 --
 -- Filtros para la tabla `encuentas`
@@ -504,14 +534,7 @@ ALTER TABLE `fichas`
 --
 ALTER TABLE `peticiones`
   ADD CONSTRAINT `peticiones_ibfk_2` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`),
-  ADD CONSTRAINT `peticiones_ibfk_3` FOREIGN KEY (`pass_code_id`) REFERENCES `fichas` (`pass_code`),
   ADD CONSTRAINT `peticiones_ibfk_4` FOREIGN KEY (`action_id`) REFERENCES `acciones` (`id`);
-
---
--- Filtros para la tabla `programas`
---
-ALTER TABLE `programas`
-  ADD CONSTRAINT `programas_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `estados` (`id`);
 
 --
 -- Filtros para la tabla `registros`
@@ -520,6 +543,13 @@ ALTER TABLE `registros`
   ADD CONSTRAINT `registros_ibfk_2` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`),
   ADD CONSTRAINT `registros_ibfk_4` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`),
   ADD CONSTRAINT `registros_ibfk_5` FOREIGN KEY (`activity_id`) REFERENCES `actividades` (`id`);
+
+--
+-- Filtros para la tabla `remisiones`
+--
+ALTER TABLE `remisiones`
+  ADD CONSTRAINT `remisiones_ibfk_1` FOREIGN KEY (`stutent_id`) REFERENCES `estudiantes` (`id`),
+  ADD CONSTRAINT `remisiones_ibfk_2` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`);
 
 --
 -- Filtros para la tabla `users`
