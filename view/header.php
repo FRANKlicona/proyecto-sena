@@ -78,10 +78,10 @@
                                     </a>
                                 </li>
                             </ul>
-                    <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'desersion') ? "active active-pro" : "active-pro"; ?>>
-                        <a href="?c=desersion">
+                    <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'remision') ? "active active-pro" : "active-pro"; ?>>
+                        <a href="?c=remision">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                            <p>desercion</p>
+                            <p>Remision</p>
                         </a>
                     </li>
                 </ul>
