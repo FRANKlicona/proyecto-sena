@@ -30,8 +30,13 @@ if($session){
             call_user_func(array($controller, $accion) );
     }
 } else{
-    $controller = 'login';
-    $accion = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'Index';
+    $controller = 'home';
+    if (isset($_REQUEST['a'])&&($_REQUEST['a']!='Index')) {
+        $accion = ($_REQUEST['a']);
+    }else{
+        $accion = 'Landing';
+    }
+    
 
     // Instanciamos el controlador
     require_once "controller/$controller.controller.php";

@@ -130,27 +130,28 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="now-ui-icons location_world"></i>
-                                    <p>
-                                        <span class="d-lg-none d-md-block">Some Actions</span>
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="?c=login">Iniciar Sesion</a>
-                                    <a class="dropdown-item" href="?c=login&a=Salir">Cerrar Sesion</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#pablo">
-                                    <i class="now-ui-icons users_single-02"></i>
+                                    <i class="now-ui-icons location_world "></i>
                                     <p>
                                         <span class="d-lg-none d-md-block">Account</span>
                                     </p>
                                 </a>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="now-ui-icons users_single-02"></i>
+                                    <p>
+                                        <span class="d-lg-none d-md-block">Perfil</span>
+                                    </p>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="?c=home&a=Login">Iniciar Sesion</a>
+                                    <a class="dropdown-item" href="?c=home&a=Salir">Cerrar Sesion</a>
+                                    <a class="dropdown-item" href="?c=home&a=Landing">Mi perfil</a>
+                                </div>
+                            </li>
+                            
                         </ul>
                     </div>
                 </div>

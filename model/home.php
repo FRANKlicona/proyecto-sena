@@ -21,6 +21,62 @@ class home
         }
     }
 
+    public function Verificar($email,$password)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM users where email = ? and password = ?");
+            $stm->execute(array($email,$password));
+            if ($stm->rowCount() > 0) {
+                $_SESSION['admin'] = true;
+                return $stm->fetchAll(PDO::FETCH_OBJ);
+            }else{ 
+                $_SESSION['admin'] = false;
+            }
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function ListarDimensiones()
+    {
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function Registrar(home $data)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM users where email = ? ");
+            $stm->execute(array($data->email));
+            if ($stm->rowCount() > 0) {
+                header('location:?c=home&a=Ingreso');
+                die;
+            } else{
+                $sql = "INSERT INTO users (name,last_name,tell,email,password,dimension_id,rol_id) 
+                VALUES ( ? ,? ,? ,? ,? ,$data->dimension_id,$data->rol_id)";
+                $this->pdo->prepare($sql)
+                    ->execute(
+                        array(
+                            $data->name,
+                            $data->last_name,
+                            $data->tell,
+                            $data->email,
+                            $data->password
+                        )
+                    );
+            }
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function ListarPeticion()
     {
         try {
@@ -84,89 +140,5 @@ class home
         }
     }
 
-    public function Obtener($id)
-    {
-        try {
-            $stm = $this->pdo
-                ->prepare("SELECT * FROM registros WHERE id = ?");
-
-
-            $stm->execute(array($id));
-            return $stm->fetch(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function Eliminar($id)
-    {
-        try {
-            $stm = $this->pdo
-                ->prepare("DELETE FROM registros WHERE id = ?");
-
-            $stm->execute(array($id));
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function Actualizar($data)
-    {
-        try {
-            $sql = "UPDATE resgistros SET                         
-                        students    = ?,
-                        men         = ?,
-                        women       = ?,
-                        duration    = ?,
-                        activity_id = $data->activity_id,
-                        activity_id = $data->program_id,
-                        token_id    = $data->token_id
-						
-                    WHERE id = ?";
-            // print_r($sql);
-            // print_r($_REQUEST);
-            // print_r($data);
-            // die;
-            $this->pdo->prepare($sql)
-                ->execute(
-                    array(
-                        $data->students,
-                        $data->men,
-                        $data->women,
-                        $data->duration,
-                        $data->id
-
-
-                    )
-                );
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function Registrar(registro $data)
-    {
-        try {
-            $sql = "INSERT INTO registros (students,men,women,date,duration,activity_id,program_id,token_id) 
-                VALUES ( ? ,? ,? ,?,?,$data->activity_id,$data->program_id,$data->token_id)";
-            // echo "<pre>";
-            // print_r($_REQUEST);
-            // print_r($data);
-            // print_r($sql);
-            // echo "</pre>";
-            // die;
-            $this->pdo->prepare($sql)
-                ->execute(
-                    array(
-                        $data->students,
-                        $data->men,
-                        $data->women,
-                        $data->duration
-
-                    )
-                );
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
+    
 }
