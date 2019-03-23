@@ -29,11 +29,51 @@
         </div>
     </div>
 </footer>
+
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <script src="assets/js/loader.js"></script>
+<!-- Push.JS -->
+<script src="node-modules/noty/lib/noty.js" type="text/javascript"></script>
+<?php 
+if (isset($_SESSION['admin'])) {
+    if ($_SESSION['admin']) {
+        echo "<script>
+    let log = document.getElementById('log');
+
+    new Noty({
+        type: 'success',
+        layout: 'bottomRight',
+        theme: 'metroui',
+        text: 'Ha iniciado sesion satisfactoriamente',
+        timeout: '4000',
+        progressBar: true,
+        closeWith: ['click'],
+        killer: true        
+    }).show();
+</script>";
+    } else {
+        echo "<script>
+    let log = document.getElementById('log');
+
+    new Noty({
+        type: 'error',
+        layout: 'topCenter',
+        theme: 'metroui',
+        text: 'Susuario o contraseña no son correctos',
+        timeout: '4000',
+        progressBar: true,
+        closeWith: ['click'],
+        killer: true        
+    }).show();
+</script>";
+    }
+} ?>
+<script>
+window.reoald();
+</script>
 <!-- Chart JS -->
 <script src="assets/js/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->
@@ -62,6 +102,7 @@
         // Javascript method's body can be found in assets/js/demos.js
     });
 </script>
+<script src="node"></script>
 <script>
     $('.date-picker').each(function() {
         $(this).datepicker({

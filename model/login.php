@@ -32,7 +32,7 @@ class login
                 return $stm->fetchAll(PDO::FETCH_OBJ);
 
             }else{
-                
+                $_SESSION['admin'] = false;
             }
             
             

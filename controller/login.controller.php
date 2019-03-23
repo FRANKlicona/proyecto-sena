@@ -51,8 +51,8 @@ class loginController
 
     public function Salir()
     {
+        unset($_SESSION['admin']);
         session_destroy();
-        $_SESSION['admin']=false;
         require_once 'view/login/login.php';
         require_once 'view/footer.php';
     }

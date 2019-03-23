@@ -20,10 +20,13 @@
     <link href="assets/css/now-ui-kit.css?v=1.2.0" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
-    <!-- <link href="assets/css/material-dashboard.css?v=1.3.0" rel="stylesheet" /> -->
+    <link href="node-modules/noty/lib/noty.css" rel="stylesheet">
+    <link href="node-modules/noty/lib//themes/metroui.css" rel="stylesheet">
+    <link rel="stylesheet" href="node-modules/noty/lib/themes/metroui.css">
+
 </head>
 
-<body class="">
+<body class="" id="log">
     <div class="preloader-wrapper">
         <div class="preloader">
             <img src="assets/img/logo-login.png" alt="">
@@ -38,7 +41,7 @@
                 <a href="?c=home" class="simple-text logo-mini">
                     <img src="assets/img/logo-bienestar.png">
                 </a>
-                <a href="?c=home&v=''" class="simple-text logo-normal">
+                <a href="?c=home" class="simple-text logo-normal">
                     Bienestar Al aprendiz
                 </a>
             </div>
