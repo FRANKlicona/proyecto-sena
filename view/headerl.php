@@ -22,7 +22,6 @@
     <link href="assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
     <link href="node-modules/noty/lib/noty.css" rel="stylesheet">
     <link href="node-modules/noty/lib//themes/metroui.css" rel="stylesheet">
-    <!-- <link href="assets/css/material-dashboard.css?v=1.3.0" rel="stylesheet" /> -->
 </head>
 
 <body class="login-page sidebar-collapse">
