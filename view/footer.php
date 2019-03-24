@@ -29,13 +29,18 @@
         </div>
     </div>
 </footer>
-
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <script src="assets/js/loader.js"></script>
-<!-- Push.JS -->
+<!-- Noty.JS -->
 <script src="node-modules/noty/lib/noty.js" type="text/javascript"></script>
 <?php 
 if (isset($_SESSION['admin'])) {
@@ -71,9 +76,6 @@ if (isset($_SESSION['admin'])) {
 </script>";
     }
 } ?>
-<script>
-window.reoald();
-</script>
 <!-- Chart JS -->
 <script src="assets/js/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->
@@ -100,26 +102,6 @@ window.reoald();
     $(document).ready(function() {
         demo.initDashboardPageCharts();
         // Javascript method's body can be found in assets/js/demos.js
-    });
-</script>
-<script src="node"></script>
-<script>
-    $('.date-picker').each(function() {
-        $(this).datepicker({
-            templates: {
-                leftArrow: '<i class="now-ui-icons arrows-1_minimal-left"></i>',
-                rightArrow: '<i class="now-ui-icons arrows-1_minimal-right"></i>'
-            }
-        }).on('show', function() {
-            $('.datepicker').addClass('open');
-
-            datepicker_color = $(this).data('datepicker-color');
-            if (datepicker_color.length != 0) {
-                $('.datepicker').addClass('datepicker-' + datepicker_color + '');
-            }
-        }).on('hide', function() {
-            $('.datepicker').removeClass('open');
-        });
     });
 </script>
 </body>

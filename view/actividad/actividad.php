@@ -1,3 +1,7 @@
+<?php 
+$c = $this->model->Cantidad();
+$cant = $c[0]->cant;
+?>
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
@@ -6,12 +10,13 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Actividades de
-                        <?= strtoupper($_REQUEST['c']); ?><a class="btn btn-sm btn-primary btn-round pull-right" href="?c=actividad&a=Crud&v=<?= isset($_REQUEST['v']) ? $_REQUEST['v'] : ""; ?>"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                        <?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=actividad&a=Crud&v=<?= isset($_REQUEST['v']) ? $_REQUEST['v'] : ""; ?>"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
+                    <h6>Elementos econtrados :<?= ' ' . $cant; ?></h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="myTable" class="table">
                             <thead class=" text-primary">
                                 <th>
                                     Actividad
@@ -27,7 +32,26 @@
                                 </th>
                             </thead>
                             <tbody>
-                                <?php foreach ($this->model->Listar() as $r) : ?>
+                                <?php 
+                                if ($cant > 0) {
+                                    $page = false;
+
+                                    //examino la pagina a mostrar y el inicio del registro a mostrar
+                                    if (isset($_GET["page"])) {
+                                        $page = $_GET["page"];
+                                    }
+
+                                    if (!$page) {
+                                        $init = 0;
+                                        $page = 1;
+                                    } else {
+                                        $init = ($page - 1) * 8;
+                                    }
+                                    //calculo el total de paginas
+                                    $total_pages = ceil($cant / 8);
+
+                                    foreach ($this->model->Listar(8, $init) as $r) :
+                                        ?>
                                 <tr>
                                     <td>
                                         <?php echo $r->exe_name; ?>
@@ -55,15 +79,43 @@
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
+                                <nav>
+                                    <ul class="pagination pagination-primary">
+                                        <?php
+                                        if ($total_pages > 1) {
+                                            if ($page != 1) {
+                                                ?>
+                                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                                                <?php
+                                            }
+                                            for ($i = 1; $i <= $total_pages; $i++) {
+                                                if ($page == $i) {
+                                                    ?>
+                                                    <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
+                                                    <?php
+                                                    if ($page != $total_pages) {
+                                                        ?>
+                                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                                                    <?php
+                                                    }
+                                                }
+                                            }
+                                        }
+                            }
+                    ?>
+                                    </ul>
+                                </nav>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-
 <div class="modal fade modal-mini modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -76,7 +128,7 @@
                 <p>¿Seguro desea eliminar este registro?</p>
             </div>
             <div class="modal-footer">
-                <form action=?c=actividad&a=Eliminar&v=<?= $_REQUEST['v']; ?>" method="post">
+                <form action="?c=actividad&a=Eliminar" method="post">
                     <input type="hidden" id="_id" name="id">
                     <button type="submit" class="btn btn-link btn-neutral">SI</a>
                 </form>
@@ -130,5 +182,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</div> 
+    </div> 

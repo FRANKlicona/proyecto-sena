@@ -1,7 +1,7 @@
 <?php
 require_once 'model/actividad.php';
 
-class actividadController
+class ActividadController
 {
 
     private $model;

@@ -1,5 +1,5 @@
 <?php
-class actividad
+class Actividad
 {
     private $pdo;
 
@@ -17,7 +17,7 @@ class actividad
         }
     }
 
-    public function Listar()
+    public function Listar($i,$c)
     {
         try {
             $result = array();
@@ -28,10 +28,13 @@ class actividad
                 fichas.id       as tok_id,
                 fichas.name     as tok_name,
                 acciones.id     as exe_id,
-                acciones.name   as exe_name 
+                acciones.name   as exe_name
                 FROM actividades 
                 INNER JOIN fichas   on token_id = fichas.id
-                INNER JOIN acciones on action_id= acciones.id" );
+                INNER JOIN acciones on action_id= acciones.id
+                ORDER BY date DESC LIMIT ".$c . ', ' . $i );
+                // print_r($stm);
+                // die;
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -39,6 +42,20 @@ class actividad
             die($e->getMessage());
         }
     }
+    public function Cantidad()
+    {
+        try {
+            $result = array();
+
+            $stm = $this->pdo->prepare("SELECT COUNT(*) as cant FROM actividades");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+            die;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function ListarAccion()
     {
         try {
