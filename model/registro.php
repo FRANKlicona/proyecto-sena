@@ -1,5 +1,5 @@
 <?php
-class registro
+class Registro
 {
     private $pdo;
 

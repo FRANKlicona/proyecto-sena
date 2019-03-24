@@ -1,14 +1,14 @@
 <?php
 require_once 'model/accion.php';
 
-class accionController
+class AccionController
 {
 
     private $model;
 
     public function __CONSTRUCT()
     {
-        $this->model = new accion();
+        $this->model = new Accion();
     }
 
     public function Index()
@@ -20,7 +20,7 @@ class accionController
 
     public function Crud()
     {
-        $accion = new accion();
+        $accion = new Accion();
 
         if (isset($_REQUEST['id'])) {
             $accion = $this->model->Obtener($_REQUEST['id']);
@@ -35,7 +35,7 @@ class accionController
     {
 
 
-        $accion = new accion();
+        $accion = new Accion();
 
         $accion->id      = $_REQUEST['id'];
         $accion->name    = $_REQUEST['name'];

@@ -1,14 +1,14 @@
 <?php
 require_once 'model/registro.php';
 
-class registroController
+class RegistroController
 {
 
     private $model;
 
     public function __CONSTRUCT()
     {
-        $this->model = new registro();
+        $this->model = new Registro();
     }
 
     public function Index()
@@ -20,7 +20,7 @@ class registroController
 
     public function Crud()
     {
-        $registro = new registro();
+        $registro = new Registro();
 
         if (isset($_REQUEST['id'])) {
             $registro = $this->model->Obtener($_REQUEST['id']);
@@ -33,7 +33,7 @@ class registroController
 
     public function Guardar()
     {
-        $registro = new registro();
+        $registro = new Registro();
 
         $registro->id           = $_REQUEST['id'];
         $registro->students     = $_REQUEST['students'];

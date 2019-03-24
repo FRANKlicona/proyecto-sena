@@ -1,5 +1,5 @@
 <?php
-class accion
+class Accion
 {
     private $pdo;
 

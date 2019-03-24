@@ -1,14 +1,14 @@
 <?php
 require_once 'model/encuesta.php';
 
-class encuestaController
+class EncuestaController
 {
 
     private $model;
 
     public function __CONSTRUCT()
     {
-        $this->model = new encuesta();
+        $this->model = new Encuesta();
     }
 
     public function Index()
@@ -20,7 +20,7 @@ class encuestaController
 
    public function Crud()
     {
-        $encuesta = new encuesta();
+        $encuesta = new Encuesta();
 
         if (isset($_REQUEST['id'])) {
             $encuesta = $this->model->Obtener($_REQUEST['id']);
@@ -35,7 +35,7 @@ class encuestaController
     {
 
 
-        $encuesta = new encuesta();
+        $encuesta = new Encuesta();
 
         //$encuesta->id      = $_REQUEST['id'];
         $encuesta->region    = $_REQUEST['region'];

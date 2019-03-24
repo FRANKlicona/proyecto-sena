@@ -1,5 +1,5 @@
 <?php
-class encuesta
+class Encuesta
 {
     private $pdo;
 

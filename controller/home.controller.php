@@ -4,7 +4,7 @@ class HomeController
 {
     public function __CONSTRUCT()
     {
-        $this->model = new home();
+        $this->model = new Home();
     }
     
     private $model;
@@ -45,7 +45,7 @@ class HomeController
 
     public function Validacion()
     {
-        $home = new home();
+        $home = new Home();
         print_r($_REQUEST);
         if (isset($_REQUEST['email'])&& isset($_REQUEST['password'])) {
             $home = $this->model->Verificar($_REQUEST['email'],$_REQUEST['password']);
@@ -54,7 +54,7 @@ class HomeController
     }
     public function Registro()
     {
-        $home = new home();
+        $home = new Home();
 
         $home->id          = $_REQUEST['id'];
         $home->name        = $_REQUEST['name'];

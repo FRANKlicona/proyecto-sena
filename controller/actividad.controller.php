@@ -8,7 +8,7 @@ class ActividadController
 
     public function __CONSTRUCT()
     {
-        $this->model = new actividad();
+        $this->model = new Actividad();
     }
 
     public function Index()
@@ -20,7 +20,7 @@ class ActividadController
 
     public function Crud()
     {
-        $actividad = new actividad();
+        $actividad = new Actividad();
 
         if (isset($_REQUEST['id'])) {
             $actividad = $this->model->Obtener($_REQUEST['id']);
@@ -35,7 +35,7 @@ class ActividadController
     {
 
 
-        $actividad = new actividad();
+        $actividad = new Actividad();
 
         $actividad->id          = $_REQUEST['id'];
         $actividad->date        = $_REQUEST['date'];
