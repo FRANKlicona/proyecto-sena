@@ -13,7 +13,6 @@
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
-    <script src="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- CSS Files -->
@@ -23,7 +22,6 @@
     <link href="assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
     <link href="node-modules/noty/lib/noty.css" rel="stylesheet">
     <link href="node-modules/noty/lib//themes/metroui.css" rel="stylesheet">
-    <link rel="stylesheet" href="node-modules/noty/lib/themes/metroui.css">
 
 </head>
 
@@ -36,8 +34,7 @@
     <div class="wrapper ">
         <div class="sidebar" data-color="orange">
             <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow" -->
             <div class="logo">
                 <a href="?c=home" class="simple-text logo-mini">
                     <img src="assets/img/logo-bienestar.png">
@@ -158,31 +155,3 @@
                 </div>
             </nav>
             <!-- End Navbar -->
-            <?php
-            if (isset($_REQUEST['v'])) {
-                switch ($_REQUEST['v']) {
-                    case 'apoyo':
-                        $dim = 1;
-                        break;
-                    case 'cultura':
-                        $dim = 2;
-                        break;
-                    case 'deporte':
-                        $dim = 3;
-                        break;
-                    case 'liderazgo':
-                        $dim = 4;
-                        break;
-                    case 'psicologia':
-                        $dim = 5;
-                        break;
-                    case 'salud':
-                        $dim = 6;
-                        break;
-
-                    default:
-                        $dim = 0;
-                        break;
-                }
-            }
-            ?> 

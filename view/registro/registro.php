@@ -51,10 +51,14 @@
                                         <?php echo $r->tok_name; ?>
                                     </td>
                                     <td class="text-center">
-                                        <a class="btn btn-warning btn-round" href="?c=apoyo&a=Crud&id=<?php echo $r->id; ?>"><i class="now-ui-icons ui-2_settings-90"></i></a>
-                                        <button class="btn btn-danger btn-round" data-toggle="modal" data-target="#myModal1">
-                                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                                        </button>
+                                        <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
+                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=registro&a=Crud&id=<?php echo $r->id; ?>">
+                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-sm btn-danger btn-round" onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal1">
+                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -80,7 +84,10 @@
                 <p>¿Seguro desea eliminar este registro?</p>
             </div>
             <div class="modal-footer">
-                <a type="button" class="btn btn-link btn-neutral" href="?c=apoyo&a=Eliminar&id=<?php echo $r->id; ?>">SI</a>
+                <form action="?c=actividad&a=Eliminar" method="post">
+                    <input type="hidden" id="_id" name="id">
+                    <button type="submit" class="btn btn-link btn-neutral">SI</a>
+                </form>
                 <button type="button" class="btn btn-link btn-neutral" data-dismiss="modal">NO</button>
             </div>
         </div>

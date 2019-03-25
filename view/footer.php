@@ -3,8 +3,8 @@
         <nav>
             <ul>
                 <li>
-                    <a href="https://www.creative-tim.com">
-                        Creative Tim
+                    <a href="https://www.google.com/maps/place/Sena+Ternera/@10.3738577,-75.462697,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x8ef6269fd181cc07:0xa6016d8aaf8bf5bc!2sSena+Ternera!8m2!3d10.3738577!4d-75.4605083!3m4!1s0x8ef6269fd181cc07:0xa6016d8aaf8bf5bc!8m2!3d10.3738577!4d-75.4605083">
+                        Centro  Comercio y Servicios - SENA Ternera Km. 1 Vía Turbaco CTG
                     </a>
                 </li>
                 <li>
@@ -13,7 +13,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://blog.creative-tim.com">
+                    <a href="http://cysbolivar.blogspot.com/">
                         Blog
                     </a>
                 </li>

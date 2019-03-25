@@ -182,4 +182,5 @@ $cant = $c[0]->cant;
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
+</div>

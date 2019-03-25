@@ -1,19 +1,19 @@
 <div class="wrapper">
     <div class="page-header page-header-small">
-        <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/bg6.jpg');">
+        <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/IMG_20180305_113033_HDR.jpg');">
         </div>
         <div class="content-center">
             <div class="container">
-                <h1 class="title">This is our great company.</h1>
+                <h1 class="title">SENA Centro de Comercio y Servicio</h1>
                 <div class="text-center">
                     <a href="#pablo" class="btn btn-primary btn-icon btn-round">
-                        <i class="fab fa-facebook-square"></i>
+                        <i class="fab fa-facebook-f"></i>
                     </a>
                     <a href="#pablo" class="btn btn-primary btn-icon btn-round">
                         <i class="fab fa-twitter"></i>
                     </a>
                     <a href="#pablo" class="btn btn-primary btn-icon btn-round">
-                        <i class="fab fa-google-plus"></i>
+                        <i class="fab fa-instagram"></i>
                     </a>
                 </div>
             </div>
@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
-                    <h2 class="title">Who we are?</h2>
+                    <h2 class="title">Bienestar al Aprendiz</h2>
                     <h5 class="description">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice extent in the Pacific and a late drop in ice extent in the Barents Sea.</h5>
                 </div>
             </div>
@@ -31,7 +31,7 @@
             <div class="section-story-overview">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="image-container image-left" style="background-image: url('assets/img/login.jpg')">
+                        <div class="image-container image-left" style="background-image: url('assets/img/login2.jpg')">
                             <!-- First image on the left side -->
                             <p class="blockquote blockquote-primary">"Over the span of the satellite record, Arctic sea ice has been declining significantly, while sea ice in the Antarctichas increased very slightly"
                                 <br>
@@ -40,11 +40,11 @@
                             </p>
                         </div>
                         <!-- Second image on the left side of the article -->
-                        <div class="image-container" style="background-image: url('assets/img/bg3.jpg')"></div>
+                        <div class="image-container" style="background-image: url('assets/img/IMG_20180731_175705 (2).jpg')"></div>
                     </div>
                     <div class="col-md-5">
                         <!-- First image on the right side, above the article -->
-                        <div class="image-container image-right" style="background-image: url('assets/img/bg1.jpg')"></div>
+                        <div class="image-container image-right" style="background-image: url('assets/img/IMG_20171120_094738_HDR.jpg')"></div>
                         <h3>So what does the new record for the lowest level of winter ice actually mean</h3>
                         <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens with climate change. Even if the Arctic continues to be one of the fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
                         </p>

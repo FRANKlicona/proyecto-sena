@@ -46,7 +46,6 @@ class HomeController
     public function Validacion()
     {
         $home = new Home();
-        print_r($_REQUEST);
         if (isset($_REQUEST['email'])&& isset($_REQUEST['password'])) {
             $home = $this->model->Verificar($_REQUEST['email'],$_REQUEST['password']);
         }

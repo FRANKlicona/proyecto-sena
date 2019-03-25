@@ -1,8 +1,8 @@
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content ">
-    <div class="row offset-md-4 ">
-        <div class="col-md-5 ">
+    <div class="row offset-md-3 ">
+        <div class="col-md-8 ">
             <div class="card">
                 <div class="card-header">
                     <h5 class="title">
@@ -60,5 +60,6 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div> 
