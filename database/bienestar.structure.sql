@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2019 a las 06:51:08
+-- Tiempo de generación: 25-03-2019 a las 07:51:19
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bienestar`
 --
-CREATE DATABASE IF NOT EXISTS `bienestar` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `bienestar`;
 
 -- --------------------------------------------------------
 
@@ -61,7 +59,7 @@ CREATE TABLE `beneficiados` (
   `date` date NOT NULL,
   `form_request` varchar(255) NOT NULL,
   `files_pdf` varchar(255) NOT NULL,
-  `type` enum('apoyo socioeconomico','bono alimenticio','','') NOT NULL,
+  `type` enum('apoyo socioeconomico','bono alimenticio') NOT NULL,
   `student_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
