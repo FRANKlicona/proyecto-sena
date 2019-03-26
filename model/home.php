@@ -5,13 +5,13 @@ class Home
     private $pdo;
 
     public $id;
-    public $students;
-    public $men;
-    public $women;
-    public $duration;
-    public $activity_id;
-    public $program_id;
+    public $date_create;
+    public $requester;
+    public $pass_code;
+    public $action_id;
     public $token_id;
+
+
 
     public function __CONSTRUCT()
     {
@@ -73,6 +73,26 @@ class Home
                         )
                     );
             }
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function RegistrarPeticion(home $data)
+    {
+        try {
+       
+                $sql = "INSERT INTO peticiones (date_create,requester,pass_code,action_id,token_id) 
+                VALUES ( ? ,? ,? ,$data->action_id,$data->token_id)";
+                $this->pdo->prepare($sql)
+                    ->execute(
+                        array(
+                            $data->date_create,
+                            $data->requester,
+                            $data->pass_code
+                         
+                        )
+                    );
+            
         } catch (Exception $e) {
             die($e->getMessage());
         }

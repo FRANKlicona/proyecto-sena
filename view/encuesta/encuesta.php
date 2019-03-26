@@ -94,7 +94,7 @@
                 <p>¿Seguro desea eliminar este registro?</p>
             </div>
             <div class="modal-footer">
-                <form action=?c=actividad&a=Eliminar&v=<?= $_REQUEST['v']; ?>" method="post">
+                <form action="?c=actividad&a=Eliminar" method="post">
                     <input type="hidden" id="_id" name="id">
                     <button type="submit" class="btn btn-link btn-neutral">SI</a>
                 </form>
