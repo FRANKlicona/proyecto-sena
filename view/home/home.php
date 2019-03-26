@@ -24,10 +24,10 @@
                                     </td>
                                     <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong> un <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Aplazar">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                             <i class="now-ui-icons location_bookmark"></i>
                                         </button>
-                                        <button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Aceptar">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral">
                                             <i class="now-ui-icons ui-1_check"></i>
                                         </button>
                                     </td>

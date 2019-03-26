@@ -78,6 +78,12 @@
                                         <p>encuestas</p>
                                     </a>
                                 </li>
+                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'cultura') ? "class='active'" : ""; ?>>
+                                    <a href="?c=remision">
+                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                        <p>Remisiones</p>
+                                    </a>
+                                </li>
                             </ul>
                     <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'desersion') ? "active active-pro" : "active-pro"; ?>>
                         <a href="?c=desersion">
