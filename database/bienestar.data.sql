@@ -24,30 +24,7 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `bienestar` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `bienestar`;
 
---
--- Volcado de datos para la tabla `acciones`
---
 
-INSERT INTO `acciones` (`id`, `name`, `dimension_id`) VALUES
-(2, 'Reclutamiento', 2),
-(3, 'Eleccion de vocero', 4),
-(4, 'Clasificacion Socio-Demgrafica', 5),
-(5, 'Caracterizacon de Ambientes', 4);
-
---
--- Volcado de datos para la tabla `actividades`
---
-
-INSERT INTO `actividades` (`id`, `date`, `checkit`, `token_id`, `action_id`) VALUES
-(1, '2019-03-13', 'SI', 1, 2),
-(2, '2019-03-21', 'SI', 1, 3),
-(4, '0000-00-00', 'SI', 1, 2),
-(11, '2019-03-29', 'SI', 1, 4),
-(12, '2019-02-27', 'SI', 1, 2),
-(13, '2019-02-20', 'SI', 1, 4),
-(14, '0000-00-00', 'SI', 1, 4),
-(15, '0000-00-00', 'SI', 1, 2),
-(16, '0000-00-00', 'SI', 1, 2);
 
 --
 -- Volcado de datos para la tabla `dimensiones`
@@ -61,19 +38,17 @@ INSERT INTO `dimensiones` (`id`, `name`) VALUES
 (5, 'Psicologia'),
 (6, 'Salud');
 
---
--- Volcado de datos para la tabla `fichas`
---
-
-INSERT INTO `fichas` (`id`, `name`, `student`, `date_start`, `date_finish`, `journey`, `pass_code`, `program_id`) VALUES
-(1, '1503847', 26, '2017-09-25', '2019-09-25', 'MAÑANA', 'E43', 3);
 
 --
--- Volcado de datos para la tabla `peticiones`
+-- Volcado de datos para la tabla `acciones`
 --
 
-INSERT INTO `peticiones` (`id`, `date_create`, `requester`, `pass_code`, `action_id`, `token_id`) VALUES
-(1, '2019-03-20 20:27:59', 'Vocero', 'E43', 3, 1);
+INSERT INTO `acciones` (`id`, `name`, `dimension_id`) VALUES
+(2, 'Reclutamiento', 2),
+(3, 'Eleccion de vocero', 4),
+(4, 'Clasificacion Socio-Demgrafica', 5),
+(5, 'Caracterizacon de Ambientes', 4);
+
 
 --
 -- Volcado de datos para la tabla `programas`
@@ -84,6 +59,36 @@ INSERT INTO `programas` (`id`, `name`, `status`) VALUES
 (4, 'CONTADURIA Y FINANZAS', 'Inactivo'),
 (5, 'MULTIMEDIA', 'Activo'),
 (6, 'MANTENIMIENTO DE EQUIPOS DE COMPUTO', 'Activo');
+--
+-- Volcado de datos para la tabla `fichas`
+--
+
+INSERT INTO `fichas` (`id`, `name`, `student`, `date_start`, `date_finish`, `journey`, `pass_code`, `program_id`) VALUES
+(1, '1503847', 26, '2017-09-25', '2019-09-25', 'MAÑANA', 'E43', 3);
+
+
+--
+-- Volcado de datos para la tabla `actividades`
+--
+INSERT INTO `actividades` (`id`, `date`, `checkit`, `token_id`, `action_id`) VALUES
+(1, '2019-03-13', 'SI', 1, 2),
+(2, '2019-03-21', 'SI', 1, 3),
+(4, '0000-00-00', 'SI', 1, 2),
+(11, '2019-03-29', 'SI', 1, 4),
+(12, '2019-02-27', 'SI', 1, 2),
+(13, '2019-02-20', 'SI', 1, 4),
+(14, '0000-00-00', 'SI', 1, 4),
+(15, '0000-00-00', 'SI', 1, 2),
+(16, '0000-00-00', 'SI', 1, 2);
+
+--
+-- Volcado de datos para la tabla `peticiones`
+--
+
+INSERT INTO `peticiones` (`id`, `date_create`, `requester`, `pass_code`, `action_id`, `token_id`) VALUES
+(1, '2019-03-20 20:27:59', 'Vocero', 'E43', 3, 1);
+
+
 
 --
 -- Volcado de datos para la tabla `registros`
