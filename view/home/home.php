@@ -14,15 +14,7 @@
                             <tbody>
                                 <?php foreach ($this->model->ListarPeticion() as $r) : ?>
                                 <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" checked>
-                                                <span class="form-check-sign"></span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong> un <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
+                                    <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong>, el <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
                                     <td class="td-actions text-right">
                                         <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                             <i class="now-ui-icons location_bookmark"></i>

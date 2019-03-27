@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="col-md-4 ml-auto mr-auto">
                     <div class="card card-login card-plain">
-                        <form class="form" method="post" action="?c=login&a=Validacion">
+                        <form class="form" method="post" action="?c=login&a=ValidacionUser">
                             <div class="card-header text-center">
                                 <div class="logo-container">
                                     <img src="assets/img/logo-login.png" alt="">

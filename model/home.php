@@ -23,7 +23,7 @@ class Home
         }
     }
 
-    public function Verificar($email,$password)
+    public function VerificarUser($email,$password)
     {
         try {
             $stm = $this->pdo->prepare("SELECT * FROM users where email = ? and password = ?");
@@ -92,19 +92,17 @@ class Home
     }
     public function RegistrarPeticion(home $data)
     {
-        try {
-       
-                $sql = "INSERT INTO peticiones (requester,pass_code,action_id,token_id) 
-                VALUES ( ? ,?,$data->action_id,$data->token_id)";
-                // print_r($data);
-                // die;
-                $this->pdo->prepare($sql)
-                    ->execute(
-                        array(
-                            $data->requester,
-                            $data->pass_code                         
-                        )
-                    );
+        try {       
+            $sql = "INSERT INTO peticiones (requester,action_id,token_id) 
+            VALUES ( ? ,$data->action_id,$data->token_id)";
+            // print_r($data);
+            // die;
+            $this->pdo->prepare($sql)
+                ->execute(
+                    array(
+                        $data->requester,                     
+                    )
+                );
             
         } catch (Exception $e) {
             die($e->getMessage());
@@ -120,7 +118,6 @@ class Home
                     peticiones.id,
                     date_create,
                     requester,
-                    peticiones.pass_code as code,
                     fichas.id               as tok_id,
                     fichas.name             as tok_name,
                     acciones.name           as acc_name

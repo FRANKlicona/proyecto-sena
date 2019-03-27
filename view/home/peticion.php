@@ -10,7 +10,6 @@
                         <h2>de la ficha : <strong><?php $id = $_REQUEST['ficha']; $row =$this->model->ObtenerFicha($id); echo $row[0]->name; ?></strong></h2>
                     </div>
                     <form action="?c=home&a=Guardar" method="post">
-                    <input name="pass_code" type="hidden" value="<?=$_REQUEST['pass'] ?>">
                     <input name="token_id" type="hidden" value="<?=$_REQUEST['ficha'] ?>">
                     <input name="requester" type="hidden" value="<?=$_REQUEST['requester'] ?>">
                         <div class="card-body">

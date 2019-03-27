@@ -41,7 +41,7 @@
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <script src="assets/js/loader.js"></script>
 <!-- Noty.JS -->
-<script src="node-modules/noty/lib/noty.js" type="text/javascript"></script>
+<script src="node_modules/noty/lib/noty.js" type="text/javascript"></script>
 <?php 
 if (isset($_SESSION['admin'])) {
     if ($_SESSION['admin']) {

@@ -33,6 +33,19 @@ class HomeController
         require_once 'view/home/registro.php';
         require_once 'view/footer.php';
     }
+    public function Salir()
+    {
+        unset($_SESSION['admin']);
+        session_destroy();
+        require_once 'view/headerl.php';
+        require_once 'view/home/login.php';
+        require_once 'view/footer.php';
+    }
+    public function Peticion(){   
+        require_once 'view/headerl.php';
+        require_once 'view/home/peticion.php';
+        require_once 'view/footer.php';     
+    }
 
     public function Recuperar()
     {
@@ -52,30 +65,24 @@ class HomeController
             require_once 'view/footer.php';
         }
     }
-    public function Salir()
-    {
-        unset($_SESSION['admin']);
-        session_destroy();
-        require_once 'view/headerl.php';
-        require_once 'view/home/login.php';
-        require_once 'view/footer.php';
-    }
 
-    public function Peticion(){
-        require_once 'view/headerl.php';
-        require_once 'view/home/peticion.php';
-        require_once 'view/footer.php';
-
-        
-    }
-
-    public function Validacion()
+    public function ValidacionUser()
     {
         $home = new Home();
         if (isset($_REQUEST['email'])&& isset($_REQUEST['password'])) {
-            $home = $this->model->Verificar($_REQUEST['email'],$_REQUEST['password']);
+            $home = $this->model->VerificarUser($_REQUEST['email'],$_REQUEST['password']);
         }
         header('location:?c=home&a=Index');
+    }
+    public function ValidacionPeticion()
+    {
+        $home = new Home();
+        if (isset($_REQUEST['pass_code'])&& isset($_REQUEST['token_id'])) {
+            $home = $this->model->VerificarPeticion($_REQUEST['pass_code'],$_REQUEST['token_id']);
+            $requester = $_REQUEST['requester'];
+            $token_id = $_REQUEST['token_id'];
+        }
+        header("location:?c=home&a=Peticion&requester=$requester&ficha=$token_id");
     }
     public function Registro()
     {
@@ -95,19 +102,6 @@ class HomeController
 
         header('Location: index.php?c=home');
     }
-    public function ValidacionPeticion()
-    {
-        $home = new Home();
-        if (isset($_REQUEST['pass_code'])&& isset($_REQUEST['token_id'])) {
-            $home = $this->model->VerificarPeticion($_REQUEST['pass_code'],$_REQUEST['token_id']);
-            $requester = $_REQUEST['requester'];
-            $pass_code = $_REQUEST['pass_code'];
-            $token_id = $_REQUEST['token_id'];
-          
-        }
-  
-        header("location:?c=home&a=Peticion&requester=$requester&pass=$pass_code&ficha=$token_id");
-    }
     public function Guardar()
     {
 
@@ -117,7 +111,6 @@ class HomeController
         $actividad->action_id   = $_REQUEST['action_id'];
         $actividad->requester   = $_REQUEST['requester'];
         $actividad->token_id    = $_REQUEST['token_id'];
-        $actividad->pass_code   = $_REQUEST['pass_code'];
         $this->model->RegistrarPeticion($actividad);
 
         header("Location: index.php?c=home");
