@@ -109,13 +109,13 @@
             <div class="row">
             
                 <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
-                <form action="?c=home&a=RegistrarPeticion" method="post">
+                <form action="?c=home&a=ValidacionPeticion" method="post">
                     <div class="input-group input-lg">
                         <div class="input-group input-lg" >                                 
                             <select name="requester" class="form-control" style="height:45px"> 
                                 <option disabled="" selected value="">Quien la requiere?</option>
-                                <option value="1">Vocero</option>
-                                <option value="2">Instructor</option>
+                                <option value="Vocero">Vocero</option>
+                                <option value="Instructor">Instructor</option>
                             </select> 
                         </div>                  
                     </div>
@@ -124,9 +124,8 @@
                         <select name="token_id" class="form-control" style="height:45px">
                             <option disabled="" selected value="">Ficha</option>
                                 <?php foreach ($this->model->ListarFicha() as $d) : ?>
-                            <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="
-                                    <?= $d->id; ?>">
-                                    <?= $d->name; ?>
+                            <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?> ">
+                            <?= $d->name; ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -135,7 +134,7 @@
                     
                     <div class="input-group input-lg">
                         
-                        <input type="text" class="form-control" placeholder="Codigo">
+                        <input type="text" name="pass_code" class="form-control" placeholder="Codigo">
                     </div>
                     <button type="summit" class="btn btn-primary btn-round btn-block btn-lg" >Pedir</button>
                     
