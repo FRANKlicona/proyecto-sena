@@ -83,6 +83,9 @@ class Home
         try {
             $stm = $this->pdo->prepare("SELECT * FROM fichas where pass_code = ? and id = ? ");
             $stm->execute(array($pass_code,$token_id));
+            if ($stm->rowCount() == 0) {
+                header("location:?c=home&a=Landing ");die;
+            }
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -91,15 +94,15 @@ class Home
     {
         try {
        
-                $sql = "INSERT INTO peticiones (date_create,requester,pass_code,action_id,token_id) 
-                VALUES ( ? ,? ,? ,$data->action_id,$data->token_id)";
+                $sql = "INSERT INTO peticiones (requester,pass_code,action_id,token_id) 
+                VALUES ( ? ,?,$data->action_id,$data->token_id)";
+                // print_r($data);
+                // die;
                 $this->pdo->prepare($sql)
                     ->execute(
                         array(
-                            $data->date_create,
                             $data->requester,
-                            $data->pass_code
-                         
+                            $data->pass_code                         
                         )
                     );
             
@@ -144,6 +147,18 @@ class Home
             die($e->getMessage());
         }
     }
+    public function ListarAccion()
+    {
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT * FROM acciones");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     public function ListarFicha()
     {
         try {
@@ -157,6 +172,22 @@ class Home
             die($e->getMessage());
         }
     }
+
+    public function ObtenerFicha($id)
+    {
+        try {
+            $result = array();
+
+            $stm = $this->pdo->prepare("SELECT * FROM fichas WHERE id = '$id'");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
     public function ListarPrograma()
     {
         try {

@@ -99,32 +99,28 @@ class HomeController
     {
         $home = new Home();
         if (isset($_REQUEST['pass_code'])&& isset($_REQUEST['token_id'])) {
-            $home = $this->model->VerificarPeticion($_REQUEST['pass_code'],$_REQUEST['token_id']);            
-            $data['requester'] = $_REQUEST['requester'];
-            $data['pass_code'] = $_REQUEST['pass_code'];
-            $data['token_id'] = $_REQUEST['token_id'];
-            // print_r($data);
-            // //  die;
-            
+            $home = $this->model->VerificarPeticion($_REQUEST['pass_code'],$_REQUEST['token_id']);
+            $requester = $_REQUEST['requester'];
+            $pass_code = $_REQUEST['pass_code'];
+            $token_id = $_REQUEST['token_id'];
+          
         }
-        // return($data);
-        header('location:?c=home&a=Peticion&data='.$data);
+  
+        header("location:?c=home&a=Peticion&requester=$requester&pass=$pass_code&ficha=$token_id");
     }
     public function Guardar()
     {
 
-
-        $Peticion = new Peticion();
-
-        $actividad->id          = $_REQUEST['id'];
-        $actividad->date        = $_REQUEST['date'];
-        $actividad->token_id    = $_REQUEST['token_id'];
+        // print_r($_REQUEST);
+        // die;
+        $actividad = new Home();
         $actividad->action_id   = $_REQUEST['action_id'];
-        $actividad->id > 0
-            ? $this->model->Actualizar($actividad)
-            : $this->model->Registrar($actividad);
+        $actividad->requester   = $_REQUEST['requester'];
+        $actividad->token_id    = $_REQUEST['token_id'];
+        $actividad->pass_code   = $_REQUEST['pass_code'];
+        $this->model->RegistrarPeticion($actividad);
 
-        header("Location: index.php?c=home&v=".$_REQUEST['v']);
+        header("Location: index.php?c=home");
     }
 
     
@@ -132,3 +128,4 @@ class HomeController
 
 }
 
+?>
