@@ -21,13 +21,17 @@ class ComposerStaticInit824aeb25bfe626669d75567eff672976
         ),
         'L' => 
         array (
-            'League\\OAuth2\\Client\\' => 21,
+            'Lcobucci\\JWT\\' => 13,
         ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+        ),
+        'E' => 
+        array (
+            'Emarref\\Jwt\\' => 12,
         ),
     );
 
@@ -40,9 +44,9 @@ class ComposerStaticInit824aeb25bfe626669d75567eff672976
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
-        'League\\OAuth2\\Client\\' => 
+        'Lcobucci\\JWT\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/oauth2-client/src',
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -55,6 +59,10 @@ class ComposerStaticInit824aeb25bfe626669d75567eff672976
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Emarref\\Jwt\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/emarref/jwt/src',
         ),
     );
 
