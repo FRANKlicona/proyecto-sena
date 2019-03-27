@@ -223,5 +223,6 @@
                 </div>
             </div>
         </div>
+        <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="es_ES" data-type="vertical" data-theme="light" data-vanity="franklicona"><a class="LI-simple-link" href='https://co.linkedin.com/in/franklicona?trk=profile-badge'>Frank Licona</a></div>
     </div>
 </div> 
