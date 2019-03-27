@@ -34,6 +34,24 @@ class HomeController
         require_once 'view/footer.php';
     }
 
+    public function Recuperar()
+    {
+        if(isset($_REQUEST['email'])){
+
+            $home = new Home();
+            $email=$_REQUEST['email'];
+            $home = $this->model->Recuperarclave($email);
+
+            require_once 'view/headerl.php';
+            require_once 'view/home/enviado.php';
+            require_once 'view/footer.php';
+
+        } else{
+            require_once 'view/headerl.php';
+            require_once 'view/home/recuperar.php';
+            require_once 'view/footer.php';
+        }
+    }
     public function Salir()
     {
         unset($_SESSION['admin']);

@@ -10,7 +10,7 @@ $cant = $c[0]->cant;
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Actividades de
-                        <?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=actividad&a=Crud&v=<?= isset($_REQUEST['v']) ? $_REQUEST['v'] : ""; ?>"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                        <?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=remision&a=Crud&v=<?= isset($_REQUEST['v']) ? $_REQUEST['v'] : ""; ?>"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
                     <h6>Elementos econtrados :<?= ' ' . $cant; ?></h6>
                 </div>
@@ -46,22 +46,22 @@ $cant = $c[0]->cant;
                                         $page = 1;
                                         //$c = 12;
                                     } else {
-                                        $init = ($page - 1) * 13;
+                                        $init = ($page - 1) * 12;
                                     }
                                     //calculo el total de paginas
-                                    $total_pages = ceil($cant / 13);
+                                    $total_pages = ceil($cant / 12);
 
-                                    foreach ($this->model->Listar(13, $init) as $r) :
+                                    foreach ($this->model->Listar(12, $init) as $r) :
                                         ?>
                                 <tr>
                                     <td>
-                                        <?php echo $r->exe_name; ?>
+                                        <?php echo $r->referal_type; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->tok_name; ?>
+                                        <?php echo $r->stutent;?>
                                     </td>
                                     <td>
-                                        <?php echo $r->date; ?>
+                                        <?php echo $r->program; ?>
                                     </td>
 
                                     <td class="text-center">
@@ -69,7 +69,7 @@ $cant = $c[0]->cant;
                                             <button type="button" class="btn btn-sm btn-warning btn-round " onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal2">
                                                 <i class="now-ui-icons files_paper "></i>
                                             </button>
-                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>&v=<?= $_REQUEST['v']; ?>">
+                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=remision&a=Crud&id=<?php echo $r->id; ?>&v=<?= $_REQUEST['v']; ?>">
                                                 <i class="now-ui-icons ui-2_settings-90"></i>
                                             </a>
                                             <button type="button" class="btn btn-sm btn-danger btn-round" onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal1">
@@ -86,7 +86,7 @@ $cant = $c[0]->cant;
                                         if ($total_pages > 1) {
                                             if ($page != 1) {
                                                 ?>
-                                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                                                <li class="page-item"><a class="page-link" href="index.php?c=remision&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
                                                 <?php
                                             }
                                             for ($i = 1; $i <= $total_pages; $i++) {
@@ -96,11 +96,11 @@ $cant = $c[0]->cant;
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
+                                                    <li class="page-item"><a class="page-link" href="index.php?c=remision&page=<?= $i; ?>"><?= $i; ?></a></li>
                                                     <?php
                                                     if ($page != $total_pages) {
                                                         ?>
-                                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                                                    <li class="page-item"><a class="page-link" href="index.php?c=remision&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
                                                     <?php
                                                     }
                                                 }
@@ -129,7 +129,7 @@ $cant = $c[0]->cant;
                 <p>¿Seguro desea eliminar este registro?</p>
             </div>
             <div class="modal-footer">
-                <form action="?c=actividad&a=Eliminar" method="post">
+                <form action="?c=remision&a=Eliminar" method="post">
                     <input type="hidden" id="_id" name="id">
                     <button type="submit" class="btn btn-link btn-neutral">SI</a>
                 </form>

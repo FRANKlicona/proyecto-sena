@@ -1,4 +1,6 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 class Home
 {
     private $pdo;
@@ -165,6 +167,74 @@ class Home
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function RecuperarClave($e){
+        //Reseteo variables.
+        $error = null;
+        //Comprobamos que no este vacio nuestro input.
+        if (empty($e)) {
+            header('Location:?c=Home&a=Login');
+            die;
+        } else {
+            //Importante, añadir la conexion donde se va utilizar.
+            require_once('database.php');
+        }
+        //Sentencia
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM users where email = ? ");
+            $stm->execute(array($e));
+            if ($stm->rowCount() > 0) {
+                $row = $stm->fetchAll(PDO::FETCH_OBJ);
+
+                //Compones nuestro correo electronico
+
+                //Incluimos libreria PHPmailer (deberas descargarlo).
+
+                // Load Composer's autoloader
+
+                require 'vendor/autoload.php';
+                require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+
+                $mail = new PHPMailer(true);
+
+                try {
+                    //Nuevo correo electronico.
+                    $mail = new PHPMailer;
+                    //Caracteres.
+                    $mail->CharSet = 'UTF-8';
+
+                    //De dirección correo electrónico y el nombre
+                    $mail->From = "f.a.licona.falm@gmail.com";
+                    $mail->FromName = "Frank Licona";
+
+                    //Dirección de envio y nombre.
+                    $mail->addAddress($row->email, $row->name . ' ' . $row->last_name);
+                    //Dirección a la que responderá destinatario.
+                    $mail->addReplyTo("f.a.licona.falm@gmail.com", "Frank Licona");
+
+                    //BCC ->  incluir copia oculta de email enviado.
+                    $mail->addBCC("f.a.licona.falm@gmail.com");
+
+                    //Enviar codigo HTML o texto plano.
+                    $mail->isHTML(true);
+
+                    //Titulo email.
+                    $mail->Subject = "Sistema de recuperacion de contraseña";
+                    //Cuerpo email con HTML.
+                    $mail->Body = "Tu contraseña actualizada es:" . $row->password; //Podrias personalizar mediante HTML y CSS :)
+                    $mail->send();
+                    echo 'Message has been sent';
+                } catch (Exception $e) {
+                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
+            } else { //0 registros.
+                $error = 'El email ingresado no existe en nuestros registros.';
+            }
+        } catch (Exception $e) {
+            echo $error;
             die($e->getMessage());
         }
     }

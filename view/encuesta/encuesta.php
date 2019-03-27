@@ -69,19 +69,7 @@
                                     <td>
                                         <?php echo $r->program; ?>
                                     </td>                                    
-                                    <!--<td class="text-center">
-                                        <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-sm btn-warning btn-round " onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal2">
-                                                <i class="now-ui-icons files_paper "></i>
-                                            </button>
-                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>&v=<?= $_REQUEST['v']; ?>">
-                                                <i class="now-ui-icons ui-2_settings-90"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-sm btn-danger btn-round" onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal1">
-                                                <i class="now-ui-icons ui-1_simple-remove"></i>
-                                            </button>
-                                        </div>
-                                    </td>-->
+                                    
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>

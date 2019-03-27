@@ -11,6 +11,7 @@
     ],
     "require": {
         "phpmailer/phpmailer": "^6.0",
-        "league/oauth2-client": "^2.4"
+        "league/oauth2-client": "^2.4",
+        "mailjet/mailjet-apiv3-php": "^1.4"
     }
 }

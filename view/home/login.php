@@ -33,12 +33,12 @@
                                 <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Acceder</button>
                                 <div class=" pull-left">
                                     <h6>
-                                        <a href="?c=login&a=Ingreso" class="link">Registrarse</a>
+                                        <a href="?c=Home&a=Ingreso" class="link">Registrarse</a>
                                     </h6>
                                 </div>
                                 <div class="pull-right">
                                     <h6>
-                                        <a href="#pablo" class="link">Nesecita ayuda?</a>
+                                        <a href="?c=Home&a=Recuperar" class="link">Olvidaste la contraseña?</a>
                                     </h6>
                                 </div>
                         </form>

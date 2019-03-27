@@ -24,10 +24,10 @@
                                     </td>
                                     <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong> un <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Aplazar">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                             <i class="now-ui-icons location_bookmark"></i>
                                         </button>
-                                        <button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Aceptar">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral">
                                             <i class="now-ui-icons ui-1_check"></i>
                                         </button>
                                     </td>
@@ -223,5 +223,6 @@
                 </div>
             </div>
         </div>
+        <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="es_ES" data-type="vertical" data-theme="light" data-vanity="franklicona"><a class="LI-simple-link" href='https://co.linkedin.com/in/franklicona?trk=profile-badge'>Frank Licona</a></div>
     </div>
 </div> 

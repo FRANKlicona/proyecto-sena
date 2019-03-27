@@ -4,7 +4,7 @@
             <ul>
                 <li>
                     <a href="https://www.google.com/maps/place/Sena+Ternera/@10.3738577,-75.462697,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x8ef6269fd181cc07:0xa6016d8aaf8bf5bc!2sSena+Ternera!8m2!3d10.3738577!4d-75.4605083!3m4!1s0x8ef6269fd181cc07:0xa6016d8aaf8bf5bc!8m2!3d10.3738577!4d-75.4605083">
-                        Centro  Comercio y Servicios - SENA Ternera Km. 1 Vía Turbaco CTG
+                        Centro Comercio y Servicios - SENA Ternera Km. 1 Vía Turbaco CTG
                     </a>
                 </li>
                 <li>
@@ -91,6 +91,7 @@ if (isset($_SESSION['admin'])) {
 <!-- <script src="assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script> -->
 <!-- <script src="assets/js/jquery.select-bootstrap.js"></script> -->
 <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 <script>
     function passValue($value) {
         document.getElementById('activity_id').value = $value;
