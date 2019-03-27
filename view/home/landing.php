@@ -114,8 +114,8 @@
                         <div class="input-group input-lg" >                                 
                             <select name="requester" class="form-control" style="height:45px"> 
                                 <option disabled="" selected value="">Quien la requiere?</option>
-                                <option value="1">Vocero</option>
-                                <option value="2">Instructor</option>
+                                <option value="Vocero">Vocero</option>
+                                <option value="Instructor">Instructor</option>
                             </select> 
                         </div>                  
                     </div>
@@ -124,9 +124,8 @@
                         <select name="token_id" class="form-control" style="height:45px">
                             <option disabled="" selected value="">Ficha</option>
                                 <?php foreach ($this->model->ListarFicha() as $d) : ?>
-                            <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="
-                                    <?= $d->id; ?>">
-                                    <?= $d->name; ?>
+                            <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?> ">
+                            <?= $d->name; ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
