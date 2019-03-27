@@ -89,7 +89,7 @@
                         </div>
                         <div>
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
                         <div class="col-md-3 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_1" value="1" checked>
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
                         <div class="col-md-3 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_2" value="1" checked>
@@ -133,8 +133,8 @@
                             </div>
                         </div>                                            
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
-                        <div class="col-md-3 pl-1">
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
+                        <div class="col-md-12 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_3" value="1" checked>
                                 <label class="form-check-label" for="q1">
@@ -154,7 +154,7 @@
                                 </label>
                             </div>
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
                         <div class="col-md-3 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_4" value="1" checked>
@@ -176,7 +176,7 @@
                             </div>
                         </div>
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
                         <div class="col-md-3 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_5" value="1" checked>
@@ -198,7 +198,7 @@
                             </div>
                         </div>
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
                         <div class="col-md-3 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_6" value="1" checked>
@@ -220,7 +220,7 @@
                             </div>
                         </div>
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
                         <div class="col-md-3 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_7" value="1" checked>
@@ -242,7 +242,7 @@
                             </div>
                         </div>
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
                         <div class="col-md-3 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_8" value="1" checked>
@@ -264,7 +264,7 @@
                             </div>
                         </div>
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
                         <div class="col-md-3 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_9" value="1" checked>
@@ -286,7 +286,7 @@
                             </div>
                         </div>
                         <hr>
-                        La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar
+                        <p>La actividad me permitio a mi conocreme a mi mismo: mis fortalezas y mis aspectos por mejorar</p>
                         <div class="col-md-3 pl-1">
                             <div class="form-check">
                                 <input class="form-check-input" id="q1" type="radio" name="question_10" value="1" checked>

@@ -104,32 +104,43 @@
     </div>
     <div class="section section-contact-us text-center">
         <div class="container">
-            <h2 class="title">Want to work with us?</h2>
+            <h2 class="title" id="formularioPet">Peticion</h2>
             <p class="description">Your project is very important to us.</p>
             <div class="row">
+            
                 <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
+                <form action="?c=home&a=RegistrarPeticion" method="post">
                     <div class="input-group input-lg">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="now-ui-icons users_circle-08"></i>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="First Name...">
+                        <div class="input-group input-lg" >                                 
+                            <select name="requester" class="form-control" style="height:45px"> 
+                                <option disabled="" selected value="">Quien la requiere?</option>
+                                <option value="1">Vocero</option>
+                                <option value="2">Instructor</option>
+                            </select> 
+                        </div>                  
                     </div>
                     <div class="input-group input-lg">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="now-ui-icons ui-1_email-85"></i>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Email...">
+                        
+                        <select name="token_id" class="form-control" style="height:45px">
+                            <option disabled="" selected value="">Ficha</option>
+                                <?php foreach ($this->model->ListarFicha() as $d) : ?>
+                            <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="
+                                    <?= $d->id; ?>">
+                                    <?= $d->name; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+
                     </div>
-                    <div class="textarea-container">
-                        <textarea class="form-control" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
+                    
+                    <div class="input-group input-lg">
+                        
+                        <input type="text" class="form-control" placeholder="Codigo">
                     </div>
-                    <div class="send-button">
-                        <a href="#pablo" class="btn btn-primary btn-round btn-block btn-lg">Send Message</a>
-                    </div>
+                    <button type="summit" class="btn btn-primary btn-round btn-block btn-lg" >Pedir</button>
+                    
+                    
+                    </form>
                 </div>
             </div>
         </div>
