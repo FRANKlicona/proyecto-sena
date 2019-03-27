@@ -181,28 +181,35 @@ class Home
                 $row = $stm->fetchAll(PDO::FETCH_OBJ);
 
                 //Compones nuestro correo electronico
-
                 //Incluimos libreria PHPmailer (deberas descargarlo).
 
                 // Load Composer's autoloader
 
-                require 'vendor/autoload.php';
-                require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+                require_once('vendor/phpmailer/phpmailer/src/PHPMailer.php');
+                require_once( 'vendor/phpmailer/phpmailer/src/Exception.php');
+                require_once( 'vendor/phpmailer/phpmailer/src/SMTP.php');
 
                 $mail = new PHPMailer(true);
 
-                try {
+                try{
                     //Nuevo correo electronico.
                     $mail = new PHPMailer;
+                    $mail->SMTPDebug = 0;                                       // Enable verbose debug output
+                    $mail->isSMTP();                                            // Set mailer to use SMTP
+                    $mail->Host       = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
+                    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                    $mail->Username   = 'f.a.licona.falm@gmail.com';            // SMTP username
+                    $mail->Password   = 'gG97062755';                           // SMTP password
+                    $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                    $mail->Port       = 587;
                     //Caracteres.
                     $mail->CharSet = 'UTF-8';
 
                     //De dirección correo electrónico y el nombre
-                    $mail->From = "f.a.licona.falm@gmail.com";
-                    $mail->FromName = "Frank Licona";
+                    $mail->setFrom("f.a.licona.falm@gmail.com",'Frank Licona');
 
                     //Dirección de envio y nombre.
-                    $mail->addAddress($row->email, $row->name . ' ' . $row->last_name);
+                    $mail->addAddress($row[0]->email, $row[0]->name . ' ' . $row[0]->last_name);
                     //Dirección a la que responderá destinatario.
                     $mail->addReplyTo("f.a.licona.falm@gmail.com", "Frank Licona");
 
@@ -213,9 +220,11 @@ class Home
                     $mail->isHTML(true);
 
                     //Titulo email.
-                    $mail->Subject = "Sistema de recuperacion de contraseña";
+                    $mail->Subject = "Sistema de recuperacion de contraseña ";
+
+                    
                     //Cuerpo email con HTML.
-                    $mail->Body = "Tu contraseña actualizada es:" . $row->password; //Podrias personalizar mediante HTML y CSS :)
+                    $mail->Body = $row[0]->name." ".$row[0]->last_name."tu contraseña actualizada sera reestablesidaa haciendo click <a href ='http://localhost/OneDrive%20-%20Servicio%20Nacional%20de%20Aprendizaje/proyecto-sena/?c=Home&a=Recuperar&=token'>aqui</a>";
                     $mail->send();
                     echo 'Message has been sent';
                 } catch (Exception $e) {
