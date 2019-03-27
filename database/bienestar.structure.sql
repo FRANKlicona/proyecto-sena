@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2019 a las 07:51:19
+-- Tiempo de generación: 27-03-2019 a las 23:51:58
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -149,7 +149,6 @@ CREATE TABLE `peticiones` (
   `id` int(11) NOT NULL,
   `date_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `requester` enum('Vocero','Instructor') NOT NULL,
-  `pass_code` char(3) NOT NULL,
   `action_id` int(11) NOT NULL,
   `token_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -297,9 +296,7 @@ ALTER TABLE `fichas`
 --
 ALTER TABLE `peticiones`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `pass_code_id_2` (`pass_code`),
   ADD KEY `activity_id` (`action_id`),
-  ADD KEY `pass_code_id` (`pass_code`),
   ADD KEY `token_id` (`token_id`);
 
 --
