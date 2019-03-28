@@ -10,7 +10,7 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-group" action="?c=accion; ?>&a=Guardar" method="post">
+                    <form class="form-group" action="?c=accion&a=Guardar" method="post">
                         <input type="hidden" name="id" value="<?= $accion->id; ?>">
                         <div class="row">
                             <div class="col-md-3 pr-1">

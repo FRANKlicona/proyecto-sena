@@ -67,7 +67,6 @@ class Accion
         try {
             $stm = $this->pdo
                 ->prepare("DELETE FROM acciones WHERE id = ?");
-
             $stm->execute(array($id));
         } catch (Exception $e) {
             die($e->getMessage());

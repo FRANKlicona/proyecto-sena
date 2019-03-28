@@ -151,7 +151,9 @@
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="?c=home&a=Login">Iniciar Sesion</a>
+                                    <?php if(!isset($_SESSION)): ?>
+                                        <a class="dropdown-item" href="?c=home&a=Login">Iniciar Sesion</a>
+                                    <?php endif; ?>    
                                     <a class="dropdown-item" href="?c=home&a=Salir">Cerrar Sesion</a>
                                     <a class="dropdown-item" href="?c=home&a=Landing">Mi perfil</a>
                                 </div>
