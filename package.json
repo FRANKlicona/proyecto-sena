@@ -21,6 +21,7 @@
   "homepage": "https://github.com/FRANKlicona/proyecto-sena#readme",
   "dependencies": {
     "chart.js": "^2.8.0",
+    "fullcalendar": "^3.10.0",
     "noty": "^3.2.0-beta",
     "sweetalert": "^2.1.2"
   }
