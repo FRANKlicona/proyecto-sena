@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="title">
-                        <?= isset($_REQUEST['id']) ? "Editando : " . $actividad->exe_name : "Creando Actividad"; ?>
+                        <?= isset($_REQUEST['id']) ? "Editando : " . $actividad->exe_name : "Creando Actividad";?>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -53,7 +53,11 @@
                             </div>
                         </div>
                         <div class="text-right form-group">
+<<<<<<< HEAD
                             <a type="button" href="?c=actividad" class="btn btn-link btn-primary btn-round" >Volver</a>
+=======
+                            <a type="button" href="?c=actividad" class="btn btn-link btn-primary btn-round" ">Volver</a>
+>>>>>>> refs/remotes/origin/master
                             <button class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>

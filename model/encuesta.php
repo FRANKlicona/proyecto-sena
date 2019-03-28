@@ -81,6 +81,25 @@ class Encuesta
         }
     }
 
+    public function ListarRegistro()
+    {
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT 
+                registros.id as id,
+                acciones.name as name 
+                FROM registros
+                INNER JOIN actividades ON registros.activity_id = actividades.id
+                INNER JOIN acciones ON actividades.action_id = acciones.id
+                ");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function ListarActivity()
     {
         try {

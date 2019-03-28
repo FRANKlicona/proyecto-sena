@@ -64,46 +64,46 @@
 <!-- Noty.JS -->
 <script src="node_modules/noty/lib/noty.js" type="text/javascript"></script>
 <script src="node_modules/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
-<!-- <script>
+<!--<script>
     swal({
         title: "Inicio de sesion Exitoso",
         icon: "success",
     });
-</script> -->
+</script>-->
 <?php 
-if (isset($_SESSION['auth'])) {
-    if ($_SESSION['auth']) {
-        echo "<script>
-    let log = document.getElementById('log');
+// if (isset($_SESSION['auth'])) {
+//     if ($_SESSION['auth']) {
+//         echo "<script>
+//     let log = document.getElementById('log');
 
-    new Noty({
-        type: 'success',
-        layout: 'bottomRight',
-        theme: 'metroui',
-        text: '" . $_SESSION['name'] . "Ha iniciado sesion satisfactoriamente',
-        timeout: '4000',
-        progressBar: true,
-        closeWith: ['click'],
-        killer: true        
-    }).show();
-</script>";
-    } else {
-        echo "<script>
-    let log = document.getElementById('log');
+//     new Noty({
+//         type: 'success',
+//         layout: 'bottomRight',
+//         theme: 'metroui',
+//         text: '".$_SESSION//['name']."Ha iniciado sesion satisfactoriamente',
+//         timeout: '4000',
+//         progressBar: true,
+//         closeWith: ['click'],
+//         killer: true        
+//     }).show();
+// </script>";
+//     } else {
+//         echo "<script>
+//     let log = document.getElementById('log');
 
-    new Noty({
-        type: 'error',
-        layout: 'topCenter',
-        theme: 'metroui',
-        text: 'Susuario o contraseña no son correctos',
-        timeout: '4000',
-        progressBar: true,
-        closeWith: ['click'],
-        killer: true        
-    }).show();
-</script>";
-    }
-} ?>
+//     new Noty({
+//         type: 'error',
+//         layout: 'topCenter',
+//         theme: 'metroui',
+//         text: 'Susuario o contraseña no son correctos',
+//         timeout: '4000',
+//         progressBar: true,
+//         closeWith: ['click'//],
+//         killer: true        
+//     }).show();
+// </script>";
+//     }
+// } ?>
 </body>
 
 </html> 

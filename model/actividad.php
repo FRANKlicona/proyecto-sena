@@ -87,14 +87,11 @@ class Actividad
     {
         try {
             $stm = $this->pdo
-                ->prepare("SELECT 
-                actividades.id,
-                date,
-                token_id,
-                acciones.name as exe_name,
-                action_id
-                FROM actividades 
-                INNER JOIN acciones ON action_id = acciones.id WHERE actividades.id = ?");
+                ->prepare("SELECT *,acciones.name as exe_name 
+                           FROM actividades
+                           INNER JOIN acciones on action_id = acciones.id
+                           WHERE actividades.id = ?"
+                         );
 
 
             $stm->execute(array($id));
