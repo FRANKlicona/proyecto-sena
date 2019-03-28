@@ -23,7 +23,7 @@ class Actividad
             $result = array();
 
             $stm = $this->pdo->prepare( "SELECT 
-                actividades.id,
+                actividades.id,                
                 date,
                 fichas.id       as tok_id,
                 fichas.name     as tok_name,
@@ -32,7 +32,9 @@ class Actividad
                 FROM actividades 
                 INNER JOIN fichas   on token_id = fichas.id
                 INNER JOIN acciones on action_id= acciones.id
-                ORDER BY date DESC LIMIT ".$c . ', ' . $i );
+                WHERE checkit = 'NO'
+                ORDER BY acciones.name DESC 
+                LIMIT ".$c . ', ' . $i );
                 // print_r($stm);
                 // die;
             $stm->execute();
@@ -85,7 +87,14 @@ class Actividad
     {
         try {
             $stm = $this->pdo
-                ->prepare("SELECT * FROM actividades WHERE id = ?");
+                ->prepare("SELECT 
+                actividades.id,
+                date,
+                token_id,
+                acciones.name as exe_name,
+                action_id
+                FROM actividades 
+                INNER JOIN acciones ON action_id = acciones.id WHERE actividades.id = ?");
 
 
             $stm->execute(array($id));

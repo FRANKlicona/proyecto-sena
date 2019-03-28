@@ -38,11 +38,11 @@
 <script src="node_modules\fullcalendar\dist\locale\es.js"></script>
 <script src="node_modules\fullcalendar\dist\fullcalendar.min.js"></script>
 <script src="node_modules\moment\src\moment.js"></script>
-<script>
+<!-- <script>
     $(document).ready(function(){
         $('#Calendar').fullCalendar();
     });
-</script>
+</script> -->
 
 <script src="assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
@@ -57,7 +57,6 @@
 <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 <script>
     function passValue($value) {
-        document.getElementById('activity_id').value = $value;
         document.getElementById('_id').value = $value;
 
     }
@@ -65,12 +64,12 @@
 <!-- Noty.JS -->
 <script src="node_modules/noty/lib/noty.js" type="text/javascript"></script>
 <script src="node_modules/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
-<script>
+<!-- <script>
     swal({
         title: "Inicio de sesion Exitoso",
         icon: "success",
     });
-</script>
+</script> -->
 <?php 
 if (isset($_SESSION['auth'])) {
     if ($_SESSION['auth']) {

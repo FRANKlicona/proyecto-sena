@@ -56,43 +56,43 @@
                         </a>
                         <div class="collapse" id="pagesExamplesA" style="">
                             <ul class="nav">
-                                <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'accion') ? "active active-pro" : "active-pro"; ?>>
+                                <li >
                                     <a href="?c=accion">
                                         <i class="now-ui-icons files_paper "></i>
                                         <p>acciones</p>
                                     </a>
                                 </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'apoyo') ? "class='active'" : ""; ?>>
+                                <li >
                                     <a href="?c=actividad">
                                         <i class="now-ui-icons arrows-1_minimal-right"></i>
                                         <p><b>listado de actividades</b></p>
                                     </a>
                                 </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'cultura') ? "class='active'" : ""; ?>>
+                                <li >
                                     <a href="?c=registro">
                                         <i class="now-ui-icons arrows-1_minimal-right"></i>
                                         <p>Registros de Actividad</p>
                                     </a>
                                 </li>
-                                <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'encuesta') ? "active active-pro" : "active-pro"; ?>>
+                                <li >
                                     <a href="?c=encuesta">
                                         <i class="now-ui-icons files_paper "></i>
                                         <p>encuestas</p>
                                     </a>
                                 </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'cultura') ? "class='active'" : ""; ?>>
+                                <li >
                                     <a href="?c=remision">
                                         <i class="now-ui-icons arrows-1_minimal-right"></i>
                                         <p>Remisiones</p>
                                     </a>
                                 </li>
                             </ul>
-                    <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'desersion') ? "active active-pro" : "active-pro"; ?>>
+                    <!-- <li >
                         <a href="?c=desersion">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                             <p>desercion</p>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

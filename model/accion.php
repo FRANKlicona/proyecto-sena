@@ -22,7 +22,7 @@ class Accion
             $result = array();
 
             $stm = $this->pdo->prepare("SELECT 
-                acciones.id,
+                acciones.id as id,
                 acciones.name,
                 dimensiones.id as dim_id,
                 dimensiones.name as dim_name 
