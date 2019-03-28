@@ -61,12 +61,12 @@ class EncuestaController
 
         //$encuesta->id = 0 ? $this->model->Actualizar($encuesta): $this->model->Registrar($encuesta);
 
-        header("Location: index.php?c=encuesta&v=".$_REQUEST['v']);
+        header("Location: index.php?c=encuesta");
     }
 
     /*public function Eliminar//()
     //{
         $this->model->Eliminar($_REQUEST['id']);
-        header('Location: index.php?c=actividad&v='.$_REQUEST['v']);
+        header('Location: index.php?c=actividad');
     }*/
 }

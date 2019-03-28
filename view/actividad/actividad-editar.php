@@ -10,7 +10,7 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-group" action="?c=actividad&v=<?= $_REQUEST['v']; ?>&a=Guardar" method="post">
+                    <form class="form-group" action="?c=actividad; ?>&a=Guardar" method="post">
                         <input type="hidden" name="id" value="<?= $actividad->id; ?>">
                         <div class="row">
                             <div class="col-md-6 pr-1">
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="text-right form-group">
-                            <a type="button" href="?c=actividad&v=<?= $_REQUEST['v']; ?>" class="btn btn-link btn-primary btn-round" ">Volver</a>
+                            <a type="button" href="?c=actividad; ?>" class="btn btn-link btn-primary btn-round" ">Volver</a>
                             <button class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>

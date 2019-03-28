@@ -61,9 +61,15 @@
 <!-- Noty.JS -->
 <script src="node_modules/noty/lib/noty.js" type="text/javascript"></script>
 <script src="node_modules/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
+<script>
+    swal({
+        title: "Inicio de sesion Exitoso",
+        icon: "success",
+    });
+</script>
 <?php 
-if (isset($_SESSION['admin'])) {
-    if ($_SESSION['admin']) {
+if (isset($_SESSION['auth'])) {
+    if ($_SESSION['auth']) {
         echo "<script>
     let log = document.getElementById('log');
 
@@ -71,7 +77,7 @@ if (isset($_SESSION['admin'])) {
         type: 'success',
         layout: 'bottomRight',
         theme: 'metroui',
-        text: 'Ha iniciado sesion satisfactoriamente',
+        text: '".$_SESSION['name']."Ha iniciado sesion satisfactoriamente',
         timeout: '4000',
         progressBar: true,
         closeWith: ['click'],

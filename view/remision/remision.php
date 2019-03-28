@@ -10,7 +10,7 @@ $cant = $c[0]->cant;
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Actividades de
-                        <?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=remision&a=Crud&v=<?= isset($_REQUEST['v']) ? $_REQUEST['v'] : ""; ?>"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                        <?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=remision&a=Crud<?= isset($_REQUEST['v']) ? $_REQUEST['v'] : ""; ?>"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
                     <h6>Elementos econtrados :<?= ' ' . $cant; ?></h6>
                 </div>
@@ -69,7 +69,7 @@ $cant = $c[0]->cant;
                                             <button type="button" class="btn btn-sm btn-warning btn-round " onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal2">
                                                 <i class="now-ui-icons files_paper "></i>
                                             </button>
-                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=remision&a=Crud&id=<?php echo $r->id; ?>&v=<?= $_REQUEST['v']; ?>">
+                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=remision&a=Crud&id=<?php echo $r->id; ?>; ?>">
                                                 <i class="now-ui-icons ui-2_settings-90"></i>
                                             </a>
                                             <button type="button" class="btn btn-sm btn-danger btn-round" onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal1">

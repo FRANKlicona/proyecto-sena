@@ -4,7 +4,7 @@ session_start();
 //Se requiere la base de datos
 require_once 'model/database.php';
 //Se pregunta si existe una variable de sesion para agregarlo a la variable sesion
-$session= isset($_SESSION['admin'])?$_SESSION['admin']:'';
+$session= isset($_SESSION['auth'])?$_SESSION['auth']:'';
 
 if($session){
 

@@ -12,8 +12,6 @@ class Home
     public $action_id;
     public $token_id;
 
-
-
     public function __CONSTRUCT()
     {
         try {
@@ -28,31 +26,42 @@ class Home
         try {
             $stm = $this->pdo->prepare("SELECT * FROM users where email = ? and password = ?");
             $stm->execute(array($email,$password));
+            
+
             if ($stm->rowCount() > 0) {
-                $_SESSION['admin'] = true;
-                return $stm->fetchAll(PDO::FETCH_OBJ);
+
+                $u = $stm->fetchAll(PDO::FETCH_OBJ);
+
+                $_SESSION['auth'] = true;
+
+                $_SESSION['name']           = $u[0]->name;
+                $_SESSION['last_name']      = $u[0]->last_name;
+                $_SESSION['tell']           = $u[0]->tell;
+                $_SESSION['email']          = $u[0]->email;
+                $_SESSION['dimension_id']   = $u[0]->dimension_id;
+                $_SESSION['rol_id']         = $u[0]->rol_id;
             }else{ 
-                $_SESSION['admin'] = false;
+                $_SESSION['auth'] = false;
             }
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
-
-    public function ListarDimensiones()
+    public function VerificarPeticion($pass_code,$token_id)
     {
         try {
-            $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
-            $stm->execute();
+            $stm = $this->pdo->prepare("SELECT * FROM fichas where pass_code = ? and id = ? ");
+            $stm->execute(array($pass_code,$token_id));
+            if ($stm->rowCount() == 0) {
+                header("location:?c=home&a=Landing ");die;
 
-            return $stm->fetchAll(PDO::FETCH_OBJ);
+                            }
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
 
-    public function Registrar(home $data)
+    public function RegistrarUser(home $data)
     {
         try {
             $stm = $this->pdo->prepare("SELECT * FROM users where email = ? ");
@@ -78,18 +87,7 @@ class Home
             die($e->getMessage());
         }
     }
-    public function VerificarPeticion($pass_code,$token_id)
-    {
-        try {
-            $stm = $this->pdo->prepare("SELECT * FROM fichas where pass_code = ? and id = ? ");
-            $stm->execute(array($pass_code,$token_id));
-            if ($stm->rowCount() == 0) {
-                header("location:?c=home&a=Landing ");die;
-            }
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
+    
     public function RegistrarPeticion(home $data)
     {
         try {       
@@ -104,6 +102,19 @@ class Home
                     )
                 );
             
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function ListarDimensiones()
+    {
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -170,6 +181,20 @@ class Home
         }
     }
 
+    public function ListarPrograma()
+    {
+        try {
+            $result = array();
+
+            $stm = $this->pdo->prepare("SELECT * FROM programas");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function ObtenerFicha($id)
     {
         try {
@@ -185,19 +210,6 @@ class Home
     }
 
 
-    public function ListarPrograma()
-    {
-        try {
-            $result = array();
-
-            $stm = $this->pdo->prepare("SELECT * FROM programas");
-            $stm->execute();
-
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
 
     public function RecuperarClave($e){
         //Reseteo variables.
