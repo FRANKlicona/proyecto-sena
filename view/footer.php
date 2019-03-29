@@ -90,7 +90,7 @@ if (isset($_COOKIE['auth'])) {
         <script>
             swal({
                 title: ' Inicio de sesion Exit oso',
-                icon : 'succ ess',
+                icon : 'success',
             });
         </script>";
     }
