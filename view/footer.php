@@ -35,9 +35,6 @@
 <script src="assets/js/core/bootstrap.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <script src="assets/js/loader.js"></script>
-<script src="node_modules\fullcalendar\dist\locale\es.js"></script>
-<script src="node_modules\fullcalendar\dist\fullcalendar.min.js"></script>
-<script src="node_modules\moment\src\moment.js"></script>
 <!-- <script>
     $(document).ready(function(){
         $('#Calendar').fullCalendar();
@@ -60,6 +57,21 @@
         document.getElementById('_id').value = $value;
 
     }
+</script>
+<script src='assets/fullcalendar-4.0.1\packages\core\main.js'></script>
+<script src='assets/fullcalendar-4.0.1\packages\daygrid\main.js'></script>
+<script src="assets\fullcalendar-4.0.1\packages\core\locales\es.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: ['dayGrid']
+        });
+
+        calendar.render();
+    });
 </script>
 <!-- Noty.JS -->
 <script src="node_modules/noty/lib/noty.js" type="text/javascript"></script>
@@ -103,7 +115,7 @@
 //     }).show();
 // </script>";
 //     }
-// } ?>
+?>
 </body>
 
 </html> 

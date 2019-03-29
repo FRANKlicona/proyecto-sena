@@ -15,6 +15,12 @@ class HomeController
         require_once 'view/home/home.php';
         require_once 'view/footer.php';
     }
+    public function Calendario()
+    {
+        require_once 'view/header.php';
+        require_once 'view/home/calendario.php';
+        require_once 'view/footer.php';
+    }
     public function Landing()
     {
         require_once 'view/headerl.php';
