@@ -65,6 +65,9 @@ $total_pages = ceil($cant / 13);
                                             <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>">
                                                 <i class="now-ui-icons ui-2_settings-90"></i>
                                             </a>
+                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>">
+                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -75,29 +78,31 @@ $total_pages = ceil($cant / 13);
                                     <?php
                                     if ($total_pages > 1) {
                                         if ($page != 1) {
-                                        ?>
-                                        <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
-                                        <?php
-                                        }
-                                        for ($i = 1; $i <= $total_pages; $i++) {
-                                            if ($page == $i) {
-                                                ?>
-                                            <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
-                                            <?php
-
-                                        } else {
                                             ?>
-                                            <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
-                                            <?php
-                                            if ($page != $total_pages) {
-                                                ?>
-                                            <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
-                                            <?php
-                                            }
-                                        }
-                                        }
-                                    }
+                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                                    <?php
+
+                                }
+                                for ($i = 1; $i <= $total_pages; $i++) {
+                                    if ($page == $i) {
+                                        ?>
+                                    <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
+                                    <?php
+
+                                } else {
                                     ?>
+                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
+                                    <?php
+                                    if ($page != $total_pages) {
+                                        ?>
+                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                                    <?php
+
+                                }
+                            }
+                        }
+                    }
+                    ?>
                                 </ul>
                             </nav>
                         </table>

@@ -18,8 +18,7 @@
                                     <label for="exampleInputEmail1">Ficha</label>
                                     <select name="token_id" class="form-control">
                                         <?php foreach ($this->model->ListarFicha() as $d) : ?>
-                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="
-                                            <?= $d->id; ?>">
+                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
                                             <?= $d->name; ?>
                                         </option>
                                         <?php endforeach; ?>
