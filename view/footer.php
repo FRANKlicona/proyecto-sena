@@ -7,16 +7,7 @@
                         Centro Comercio y Servicios - SENA Ternera Km. 1 Vía Turbaco CTG
                     </a>
                 </li>
-                <li>
-                    <a href="http://presentation.creative-tim.com">
-                        About Us
-                    </a>
-                </li>
-                <li>
-                    <a href="http://cysbolivar.blogspot.com/">
-                        Blog
-                    </a>
-                </li>
+
             </ul>
         </nav>
         <div class="copyright" id="copyright">
@@ -25,7 +16,7 @@
                 document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
             </script>, Designed by
             <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            <a href="https://www.creative-tim.com" target="_blank">ADSI Team</a>.
         </div>
     </div>
 </footer>
@@ -50,6 +41,10 @@
 <!-- Fullcalendar.js -->
 <script src='assets/fullcalendar-4.0.1\packages\core\main.js'></script>
 <script src='assets/fullcalendar-4.0.1\packages\daygrid\main.js'></script>
+<script src='assets\fullcalendar-4.0.1\packages\list\main.js'></script>
+<script src='assets\fullcalendar-4.0.1\packages\timegrid\main.js'></script>
+<script src='assets\fullcalendar-4.0.1\packages\interaction\main.js'></script>
+<script src='assets\fullcalendar-4.0.1\packages\bootstrap\main.js'></script>
 <script>
     function passValue($value) {
         document.getElementById('_id').value = $value;
@@ -62,8 +57,57 @@
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: ['dayGrid', ]
+            plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
+            themeSystem: 'bootstrap',
+            // timeZone:'UTC',
+            events: [
+                <?php foreach ($this->model->ListarActividad() as $r) : ?> {
+                    id: <?= $r->id; ?>,
+                    start: '<?= $r->date; ?>',
+                    token: '<?= $r->token_id; ?>',
+                    action: '<?= $r->exe_id; ?>',
+                    title: '<?= $r->exe_name; ?>',
+                },
+                <?php endforeach; ?>
+            ],
+            dateClick: function(info) {
+                document.getElementById('id').value = '';
+                document.getElementById('date').value = '';
+                document.getElementById('token_id').value = '';
+                document.getElementById('action_id').value = '';
+                document.getElementById('name').textContent = 'Creando Actividad';
+                $('#myModal3').modal();
+            },
+            eventClick: function(info) {
+                document.getElementById('id').value = info.event.id;
+                document.getElementById('date').value = info.event.start;
+                document.getElementById('token_id').value = info.event.id;
+                document.getElementById('action_id').value = info.event.id;
+                document.getElementById('name').textContent = info.event.title;
+                $('#myModal3').modal();
+            },
+            contentHeight: 500,
+            buttonText: {
+                today: 'Hoy',
+                month: 'M',
+                week: 'S',
+                day: 'D',
+            },
+            // titleFormat: {
+            //     year: 'numeric',
+            //     month: 'short',
+            //     day: 'numeric'
+            // },
+            header: {
+                left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                center: 'title',
+                right: 'prev,today,next'
+            },
+            // plugins: ['timeGrid'],
+            // plugins: ['list'],
+            // defaultView: 'listWeek',
         });
+        // calendar.changeView('timeGridWeek')
         calendar.setOption('locale', 'es');
         calendar.render();
     });
@@ -97,5 +141,5 @@ if (isset($_COOKIE['auth'])) {
 }
 ?>
 </body>
- 
-</html>
+
+</html> 
