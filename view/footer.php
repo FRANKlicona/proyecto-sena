@@ -59,32 +59,24 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
             themeSystem: 'bootstrap',
-            // timeZone:'UTC',
+            timeZone: 'NYC',
             events: [
                 <?php foreach ($this->model->ListarActividad() as $r) : ?> {
-                    id: <?= $r->id; ?>,
+                    id: '<?= $r->id; ?>',
                     start: '<?= $r->date; ?>',
-                    token: '<?= $r->token_id; ?>',
-                    action: '<?= $r->exe_id; ?>',
+                    url: '?c=Actividad&a=Crud&id='+<?= $r->id; ?>,
                     title: '<?= $r->exe_name; ?>',
                 },
                 <?php endforeach; ?>
             ],
             dateClick: function(info) {
-                document.getElementById('id').value = '';
-                document.getElementById('date').value = '';
-                document.getElementById('token_id').value = '';
-                document.getElementById('action_id').value = '';
+                document.getElementById('date').value = info.dateStr;
                 document.getElementById('name').textContent = 'Creando Actividad';
                 $('#myModal3').modal();
             },
             eventClick: function(info) {
-                document.getElementById('id').value = info.event.id;
-                document.getElementById('date').value = info.event.start;
-                document.getElementById('token_id').value = info.event.id;
-                document.getElementById('action_id').value = info.event.id;
-                document.getElementById('name').textContent = info.event.title;
-                $('#myModal3').modal();
+                info.jsEvent.preventDefault();
+                $('#myModal4').modal();
             },
             contentHeight: 500,
             buttonText: {
