@@ -46,9 +46,10 @@
 <script src='assets\fullcalendar-4.0.1\packages\interaction\main.js'></script>
 <script src='assets\fullcalendar-4.0.1\packages\bootstrap\main.js'></script>
 <script>
-    function passValue2($token,$action) {
+    function passValue2($token,$action,$id) {
         document.getElementById('action_id').value = $action;
         document.getElementById('token_id').value = $token;
+        document.getElementById('ide').value = $id;
     }
     function passValue($value) {
         document.getElementById('_id').value = $value;

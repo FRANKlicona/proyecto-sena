@@ -128,7 +128,8 @@ class HomeController
 
         $actividad = new Home();
         
-
+    
+        $actividad->ide   = $_REQUEST['ide'];
         $actividad->action_id   = $_REQUEST['action_id'];
         $actividad->token_id    = $_REQUEST['token_id'];
         $actividad->date        = $_REQUEST['date'];  

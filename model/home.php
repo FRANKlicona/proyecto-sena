@@ -120,6 +120,12 @@ class Home
                         $data->date
                     )
                 );
+            $sql = "DELETE peticiones where id = $data->ide";
+            $this->pdo->prepare($sql)
+                ->execute(
+                    array(
+                    )
+                );
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -144,7 +150,7 @@ class Home
             $result = array();
 
             $stm = $this->pdo->prepare( "SELECT 
-                    peticiones.id,
+                    peticiones.id as ide,
                     date_create,
                     requester,
                     fichas.id               as tok_id,

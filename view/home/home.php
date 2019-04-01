@@ -239,6 +239,7 @@
                                 <div class="col-md-6 px-1">
                                     <div class="text-center form-group">
                                         <label>Fecha</label>
+                                        <input type="hidden" id="ide" name="ide">
                                         <input type="hidden" id="token_id" name="token_id" >
                                         <input type="hidden" id="action_id"name="action_id">
                                         <input type="date" required name="date" class="form-control"  value="">
