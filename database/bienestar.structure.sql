@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2019 a las 23:51:58
+-- Tiempo de generación: 01-04-2019 a las 14:05:08
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bienestar`
 --
+
 -- --------------------------------------------------------
 
 --
@@ -42,7 +43,7 @@ CREATE TABLE `acciones` (
 CREATE TABLE `actividades` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `checkit` enum('SI','NO') NOT NULL,
+  `checkit` enum('SI','NO') NOT NULL DEFAULT 'NO',
   `token_id` int(11) NOT NULL,
   `action_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
