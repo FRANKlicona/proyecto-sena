@@ -62,7 +62,8 @@ class Registro
                 date,
                 acciones.name   as exe_name 
                 FROM actividades 
-                INNER JOIN acciones on action_id= acciones.id");
+                INNER JOIN acciones on action_id= acciones.id
+                WHERE checkit = 'NO'");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -163,12 +164,6 @@ class Registro
         try {
             $sql = "INSERT INTO registros (students,men,women,duration,activity_id,program_id,token_id) 
                 VALUES ( ? ,? ,?,?,$data->activity_id,$data->program_id,$data->token_id)";
-            // echo "<pre>";
-            // print_r($_REQUEST);
-            // print_r($data);
-            // print_r($sql);
-            // echo "</pre>";
-            // die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
@@ -176,7 +171,13 @@ class Registro
                         $data->men,
                         $data->women,
                         $data->duration
-
+                    )
+                );
+            $sql = "UPDATE actividades SET checkit = 'SI' WHERE id = ?";
+            $this->pdo->prepare($sql)
+                ->execute(
+                    array(
+                        $data->activity_id
                     )
                 );
         } catch (Exception $e) {

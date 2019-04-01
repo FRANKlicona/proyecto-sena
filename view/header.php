@@ -27,6 +27,7 @@
     <link href='assets\fullcalendar-4.0.1\packages\list\main.css' rel='stylesheet' />
     <link href='assets\fullcalendar-4.0.1\packages\timegrid\main.css' rel='stylesheet' />
     <link href='assets\fullcalendar-4.0.1\packages\bootstrap\main.css' rel='stylesheet' />
+    <link href='node_modules\chart.js\dist\Chart.css' rel='stylesheet' />
 
 </head>
 

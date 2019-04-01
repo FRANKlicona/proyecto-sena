@@ -1,5 +1,5 @@
 <div class="panel-header panel-header-sm">
-    
+
 </div>
 <div class="content">
     <div class="row">
@@ -16,17 +16,17 @@
                                 <?php foreach ($this->model->ListarPeticion() as $r) : ?>
                                 <tr>
                                     <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong>, el <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
-                                
-                                    
+
+
                                     <td class="td-actions text-right">
                                         <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                             <i class="now-ui-icons location_bookmark"></i>
                                         </button>
-                                        <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?=$r->tok_id?>,<?=$r->acc_id?>)" data-toggle="modal" data-target="#myModal2" >
+                                        <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>)" data-toggle="modal" data-target="#myModal2">
                                             <i class="now-ui-icons ui-1_check"></i>
                                         </button>
-                                        
-                                    
+
+
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -162,8 +162,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="lineChartExample"></canvas>
+                    <div class="chart-container">
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -191,7 +191,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <!-- <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="es_ES" data-type="vertical" data-theme="light" data-vanity="franklicona"><a class="LI-simple-link" href='https://co.linkedin.com/in/franklicona?trk=profile-badge'>Frank Licona</a></div> -->
+                    <div class="chart-container">
+                        <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="es_ES" data-type="horizontal" data-theme="light" data-vanity="franklicona"><a class="LI-simple-link" href='https://co.linkedin.com/in/franklicona?trk=profile-badge'>Frank Licona</a></div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
@@ -219,7 +221,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -233,19 +235,19 @@
                 <div class="card">
                     <div class="card-body">
                         <form class="form-group" action="?c=home&a=AprovarActividad" method="post">
-                            
+
                             <div class="tex-center">
-                                
+
                                 <div class="col-md-6 px-1">
                                     <div class="text-center form-group">
                                         <label>Fecha</label>
                                         <input type="hidden" id="ide" name="ide">
-                                        <input type="hidden" id="token_id" name="token_id" >
-                                        <input type="hidden" id="action_id"name="action_id">
-                                        <input type="date" required name="date" class="form-control"  value="">
+                                        <input type="hidden" id="token_id" name="token_id">
+                                        <input type="hidden" id="action_id" name="action_id">
+                                        <input type="date" required name="date" class="form-control" value="">
                                     </div>
                                 </div>
-                               
+
                             </div>
                             <div class="text-center form-group">
                                 <button class=" btn btn-primary btn-round">Guardar</button>

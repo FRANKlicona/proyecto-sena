@@ -109,23 +109,22 @@ class Home
     public function AceptarPeticion(home $data)
     {
         try { 
+            
             $sql = "INSERT INTO actividades (date,token_id,action_id) 
-                VALUES ( ? ,$data->token_id,$data->action_id)";
-            // print_r($_REQUEST);
-            // echo $sql."llega aqui";
+                VALUES ($data->date,$data->token_id,$data->action_id)";
+            // echo $sql;
+            // die;            
+            $this->pdo->prepare($sql)
+                ->execute(
+                    array(
+                        
+                    )
+                );
             // die;
-            $this->pdo->prepare($sql)
-                ->execute(
-                    array(
-                        $data->date
-                    )
-                );
-            $sql = "DELETE peticiones where id = $data->ide";
-            $this->pdo->prepare($sql)
-                ->execute(
-                    array(
-                    )
-                );
+            // print_r($data);
+            $stm = $this->pdo
+                ->prepare("DELETE FROM peticiones WHERE id = ?");
+            $stm->execute(array($data->ide));
         } catch (Exception $e) {
             die($e->getMessage());
         }

@@ -118,10 +118,11 @@ class Actividad
         try {
             $sql = "UPDATE actividades SET  
                         date        = ?,
-                        token_id    = $data->token_id
-                        action_id   = $data->action_id
-						
+                        token_id    = $data->token_id,
+                        action_id   = $data->action_id						
                     WHERE id = ?";
+//                     print_r($data);
+// die($sql);
 
             $this->pdo->prepare($sql)
                 ->execute(
