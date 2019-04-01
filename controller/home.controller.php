@@ -15,6 +15,12 @@ class HomeController
         require_once 'view/home/home.php';
         require_once 'view/footer.php';
     }
+    public function Calendario()
+    {
+        require_once 'view/header.php';
+        require_once 'view/home/calendario.php';
+        require_once 'view/footer.php';
+    }
     public function Landing()
     {
         require_once 'view/headerl.php';
@@ -35,10 +41,10 @@ class HomeController
     }
     public function Salir()
     {
-        unset($_SESSION['admin']);
+        unset($_SESSION);
         session_destroy();
         require_once 'view/headerl.php';
-        require_once 'view/home/login.php';
+        require_once 'view/home/landing.php';
         require_once 'view/footer.php';
     }
     public function Peticion(){   

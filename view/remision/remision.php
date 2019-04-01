@@ -19,14 +19,33 @@ $cant = $c[0]->cant;
                         <table id="myTable" class="table">
                             <thead class=" text-primary">
                                 <th>
-                                    Actividad
+                                    # Orden
                                 </th>
                                 <th>
-                                    Ficha
+                                    referal_type
                                 </th>
                                 <th>
-                                    Fecha
+                                    Fecha De Creacion
                                 </th>
+                                <th>
+                                    Aprendiz
+                                </th>
+                                <th>
+                                    Programa De Formacion
+                                </th>
+                                <th>
+                                    Compromisos
+                                </th>
+                                <th>
+                                    Fecha Cumplir Compromisos
+                                </th>
+                                <th>
+                                    Instructor
+                                </th>
+                                <th>
+                                    Fecha De Evaluacion
+                                </th>
+                                
                                 <th class="text-center">
                                     Acciones
                                 </th>
@@ -55,7 +74,13 @@ $cant = $c[0]->cant;
                                         ?>
                                 <tr>
                                     <td>
+                                        <?php echo $r->n_orden; ?>
+                                    </td>
+                                    <td>
                                         <?php echo $r->referal_type; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->date_create; ?>
                                     </td>
                                     <td>
                                         <?php echo $r->stutent;?>
@@ -63,13 +88,22 @@ $cant = $c[0]->cant;
                                     <td>
                                         <?php echo $r->program; ?>
                                     </td>
+                                    <td>
+                                        <?php echo $r->promises; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->date_promises; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->instructor_name; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $r->date_eval.' '.$r->id; ?>
+                                    </td>
 
                                     <td class="text-center">
                                         <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-sm btn-warning btn-round " onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal2">
-                                                <i class="now-ui-icons files_paper "></i>
-                                            </button>
-                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=remision&a=Crud&id=<?php echo $r->id; ?>; ?>">
+                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=remision&a=Crud&id=<?php echo $r->id; ?>">
                                                 <i class="now-ui-icons ui-2_settings-90"></i>
                                             </a>
                                             <button type="button" class="btn btn-sm btn-danger btn-round" onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal1">

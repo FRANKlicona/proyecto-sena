@@ -1,15 +1,5 @@
-<div class="panel-header panel-header-lg">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div id="Calendar"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="panel-header panel-header-sm">
+    
 </div>
 <div class="content">
     <div class="row">

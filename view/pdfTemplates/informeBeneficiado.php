@@ -18,7 +18,7 @@
         se presentraran de manera pertinente los diferente datos requeridos y/o necesarios para satisfacer las necesidades del usuario final </p>
 
     <h5>firma</h5>
-    <hr>
+    <hr style="heigth: 400px">
 </body>
 
 </html> 
