@@ -65,9 +65,6 @@ $total_pages = ceil($cant / 13);
                                             <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>">
                                                 <i class="now-ui-icons ui-2_settings-90"></i>
                                             </a>
-                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>">
-                                                <i class="now-ui-icons ui-2_settings-90"></i>
-                                            </a>
                                         </div>
                                     </td>
                                 </tr>

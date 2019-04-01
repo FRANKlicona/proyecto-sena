@@ -64,7 +64,6 @@
                 <?php foreach ($this->model->ListarActividad() as $r) : ?> {
                     id: '<?= $r->id; ?>',
                     start: '<?= $r->date; ?>',
-                    url: '?c=Actividad&a=Crud&id='+<?= $r->id; ?>,
                     title: '<?= $r->exe_name; ?>',
                 },
                 <?php endforeach; ?>
@@ -76,6 +75,9 @@
             },
             eventClick: function(info) {
                 info.jsEvent.preventDefault();
+                document.getElementById('name').textContent = info.event.title;
+                document.getElementById('id1').value = info.event.id;
+                document.getElementById('id2').value = info.event.id;
                 $('#myModal4').modal();
             },
             contentHeight: 500,

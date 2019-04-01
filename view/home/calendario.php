@@ -11,21 +11,29 @@
         </div>
     </div>
 </div>
-<div class="modal fade modal-mini modal-primary" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+<div class="modal fade modal-mini modal-neutral" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header justify-content-center">
                 <div class="modal-profile">
                     <i class="now-ui-icons travel_info"></i>
                 </div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                </button>
             </div>
             <div class="modal-body">
-                <p>¿Seguro desea eliminar este registro?</p>
+                <p id="name"></p>
             </div>
             <div class="modal-footer">
-                <a href="?c=Actividad&a=Crud&id=" class="btn btn-link btn-neutral">Editar</a>
-                <a href="?c=Actividad&a=Crud&id=" class="btn btn-link btn-neutral">Editar</a>
-                <button type="button" class="btn btn-link btn-neutral" data-dismiss="modal">NO</button>
+                <form action="?c=Actividad&a=Crud" method="post">
+                    <input type="hidden" id="id1" name="id">
+                    <button class="btn btn-link btn-primary" type="submit">Editar</button>
+                </form>
+                <form action="?c=Actividad&a=Eliminar" method="post">
+                    <input type="hidden" id="id2" name="id">
+                    <button class="btn btn-link btn-primary" type="submit">Eliminar</button>
+                </form>
             </div>
         </div>
     </div>
@@ -37,7 +45,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     <i class="now-ui-icons ui-1_simple-remove"></i>
                 </button>
-                <h4 id="name" class="title title-up">Crear Actividad</h4>
+                <h4 id="name" class="title title-up"></h4>
             </div>
             <div class="modal-body">
                 <div class="card">
@@ -53,14 +61,29 @@
                                 </div>
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
-                                        <label>Ficha</label>
-                                        <input type="text" name="token_id" id="token_id" class="form-control" placeholder="Username" value="">
+                                        <label for="exampleInputEmail1">Ficha</label>
+                                        <select name="token_id" class="form-control">
+                                            <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
+                                            <?php foreach ($this->model->ListarFicha() as $d) : ?>
+                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
+                                                <?= $d->name; ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4 px-1">
                                     <div class="form-group">
-                                        <label>Actividad</label>
-                                        <input type="text" name="action_id" id="action_id" class="form-control" placeholder="Fecha" data-datepicker-color="simple" value="">
+                                        <label for="exampleInputEmail1">Accion</label>
+                                        <select name="action_id" class="form-control">
+                                            <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
+                                            <?php foreach ($this->model->ListarAccion() as $d) : ?>
+                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->action_id) ? 'Selected' : '') : ""; ?> value="
+                                            <?= $d->id; ?>">
+                                                <?= $d->name; ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

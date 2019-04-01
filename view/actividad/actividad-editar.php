@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="title">
-                        <?= isset($_REQUEST['id']) ? "Editando : " . $actividad->exe_name : "Creando Actividad";?>
+                        <?= isset($_REQUEST['id']) ? "Editando : " . $actividad->exe_name : "Creando Actividad"; ?>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -17,6 +17,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Ficha</label>
                                     <select name="token_id" class="form-control">
+                                        <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha </option>
                                         <?php foreach ($this->model->ListarFicha() as $d) : ?>
                                         <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
                                             <?= $d->name; ?>
@@ -40,6 +41,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Accion</label>
                                     <select name="action_id" class="form-control">
+                                        <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la accion</option>
                                         <?php foreach ($this->model->ListarAccion() as $d) : ?>
                                         <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->action_id) ? 'Selected' : '') : ""; ?> value="
                                             <?= $d->id; ?>">
@@ -52,17 +54,13 @@
                             </div>
                         </div>
                         <div class="text-right form-group">
-<<<<<<< HEAD
-                            <a type="button" href="?c=actividad" class="btn btn-link btn-primary btn-round" >Volver</a>
-=======
                             <a type="button" href="?c=actividad" class="btn btn-link btn-primary btn-round" ">Volver</a>
->>>>>>> refs/remotes/origin/master
                             <button class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div> 
