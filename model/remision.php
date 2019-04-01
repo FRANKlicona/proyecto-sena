@@ -18,7 +18,7 @@ class Remision
     public $eval_track;
     public $date_promises;
     public $psico_firm_after;
-    public $student_id;
+    public $identification_id;
     public $program_id;
 
     public function __CONSTRUCT()
@@ -54,7 +54,7 @@ class Remision
                 estudiantes.name as stutent,
                 programas.name as program
                 FROM remisiones 
-                INNER JOIN estudiantes ON estudiantes.id = remisiones.stutent_id
+                INNER JOIN estudiantes ON estudiantes.identification = remisiones.identification_id
                 INNER JOIN programas ON programas.id = remisiones.program_id
                 ORDER BY date_create DESC LIMIT ".$c . ', ' . $i );
                 // print_r($stm);
@@ -109,7 +109,7 @@ class Remision
     public function Obtener($id)
     {
         try {
-            $stm = $this->pdo->prepare("SELECT * FROM remisiones WHERE id = ?");
+            $stm = $this->pdo->prepare("SELECT *,estudiantes.name as stutent FROM remisiones INNER JOIN estudiantes ON estudiantes.identification = remisiones.identification_id WHERE remisiones.id = ?");
             $stm->execute(array($id));
 
             return $stm->fetch(PDO::FETCH_OBJ);
@@ -133,20 +133,40 @@ class Remision
     {
         try {
             $sql = "UPDATE remisiones SET  
-                        date        = ?,
-                        token_id    = $data->token_id
-                        action_id   = $data->action_id
+                          referal_type       = ?,
+                          date_create        = ?,
+                          n_orden            = ?,
+                          reason_referal     = ?,
+                          instructor_name    = ?,
+                          situation_found    = ?,
+                          promises           = ?,
+                          date_eval          = ?,
+                          eval_track         = ?,
+                          date_promises      = ?,
+                          identification_id  = ?,
+                          program_id         = ?
 						
                     WHERE id = ?";
-
+            // print_r($sql);
+            // print_r($_REQUEST);
+            // print_r($data);
+            // die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->date,
-
+                        $data->referal_type,
+                        $data->date_create,
+                        $data->n_orden,
+                        $data->reason_referal,
+                        $data->instructor_name,
+                        $data->situation_found,
+                        $data->promises,
+                        $data->date_eval,
+                        $data->eval_track,
+                        $data->date_promises,
+                        $data->identification_id,
+                        $data->program_id,
                         $data->id
-
-
                     )
                 );
         } catch (Exception $e) {
@@ -157,15 +177,48 @@ class Remision
     public function Registrar(remision $data)
     {
         try {
-            $sql = "INSERT INTO remisiones (date,token_id,action_id) 
-                VALUES ( ? ,$data->token_id,$data->action_id)";
+
+            $sql = "INSERT INTO remisiones (
+                    referal_type,
+                    date_create,
+                    n_orden,
+                    reason_referal,
+                    instructor_name,
+                    instructor_firm,
+                    situation_found,
+                    promises,
+                    psico_firm_before,
+                    student_firm,
+                    date_eval,
+                    eval_track,
+                    date_promises,
+                    psico_firm_after,
+                    identification_id,
+                    program_id
+                    ) 
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             // print_r($_REQUEST);
-            // echo $sql."llega aqui";
-            // die;
+            // die($sql."llega aqui");
+            
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->date
+                        $data->referal_type,
+                        $data->date_create,
+                        $data->n_orden,
+                        $data->reason_referal,
+                        $data->instructor_name,
+                        $data->instructor_firm,
+                        $data->situation_found,
+                        $data->promises,
+                        $data->psico_firm_before,
+                        $data->student_firm,
+                        $data->date_eval,
+                        $data->eval_track,
+                        $data->date_promises,
+                        $data->psico_firm_after,
+                        $data->identification_id,
+                        $data->program_id
                     )
                 );
         } catch (Exception $e) {

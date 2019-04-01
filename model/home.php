@@ -106,6 +106,30 @@ class Home
             die($e->getMessage());
         }
     }
+    public function AceptarPeticion(home $data)
+    {
+        try { 
+            $sql = "INSERT INTO actividades (date,token_id,action_id) 
+                VALUES ( ? ,$data->token_id,$data->action_id)";
+            // print_r($_REQUEST);
+            // echo $sql."llega aqui";
+            // die;
+            $this->pdo->prepare($sql)
+                ->execute(
+                    array(
+                        $data->date
+                    )
+                );
+            $sql = "DELETE peticiones where id = $data->ide";
+            $this->pdo->prepare($sql)
+                ->execute(
+                    array(
+                    )
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 
     public function ListarDimensiones()
     {
@@ -126,12 +150,13 @@ class Home
             $result = array();
 
             $stm = $this->pdo->prepare( "SELECT 
-                    peticiones.id,
+                    peticiones.id as ide,
                     date_create,
                     requester,
                     fichas.id               as tok_id,
                     fichas.name             as tok_name,
-                    acciones.name           as acc_name
+                    acciones.name           as acc_name,
+                    acciones.id             as acc_id
                 FROM peticiones 
                     INNER JOIN fichas       ON token_id     = fichas.id  
                     INNER JOIN acciones     ON action_id    = acciones.id ");

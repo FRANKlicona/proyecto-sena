@@ -52,7 +52,7 @@ class remisionController
         $remision->eval_track           = $_REQUEST['eval_track'];
         $remision->date_promises        = $_REQUEST['date_promises'];
         $remision->psico_firm_after     = $_REQUEST['psico_firm_after'];
-        $remision->student_id           = $_REQUEST['student_id'];
+        $remision->identification_id    = $_REQUEST['identification_id'];
         $remision->program_id           = $_REQUEST['program_id'];
 
         $remision->id > 0

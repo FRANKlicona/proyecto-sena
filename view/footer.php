@@ -46,13 +46,71 @@
 <script src='assets\fullcalendar-4.0.1\packages\interaction\main.js'></script>
 <script src='assets\fullcalendar-4.0.1\packages\bootstrap\main.js'></script>
 <script>
+    function passValue2($token,$action,$id) {
+        document.getElementById('action_id').value = $action;
+        document.getElementById('token_id').value = $token;
+        document.getElementById('ide').value = $id;
+    }
     function passValue($value) {
         document.getElementById('_id').value = $value;
-
     }
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+<<<<<<< HEAD
+
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
+            themeSystem: 'bootstrap',
+            timeZone: 'NYC',
+            events: [
+                <?php foreach ($this->model->ListarActividad() as $r) : ?> {
+                    id: '<?= $r->id; ?>',
+                    start: '<?= $r->date; ?>',
+                    url: '?c=Actividad&a=Crud&id='+<?= $r->id; ?>,
+                    title: '<?= $r->exe_name; ?>',
+                },
+                <?php endforeach; ?>
+            ],
+            dateClick: function(info) {
+                document.getElementById('date').value = info.dateStr;
+                document.getElementById('name').textContent = 'Creando Actividad';
+                $('#myModal3').modal();
+            },
+            eventClick: function(info) {
+                info.jsEvent.preventDefault();
+                $('#myModal4').modal();
+            },
+            contentHeight: 500,
+            buttonText: {
+                today: 'Hoy',
+                month: 'M',
+                week: 'S',
+                day: 'D',
+            },
+            // titleFormat: {
+            //     year: 'numeric',
+            //     month: 'short',
+            //     day: 'numeric'
+            // },
+            header: {
+                left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                center: 'title',
+                right: 'prev,today,next'
+            },
+            // plugins: ['timeGrid'],
+            // plugins: ['list'],
+            // defaultView: 'listWeek',
+        });
+        // calendar.changeView('timeGridWeek')
+        calendar.setOption('locale', 'es');
+        calendar.render();
+    });
+</script>
+
+=======
 
         var calendarEl = document.getElementById('calendar');
 
@@ -107,6 +165,7 @@
     });
 </script>
 
+>>>>>>> refs/remotes/origin/master
 <?php 
 if (isset($_COOKIE['auth'])) {
     if ($_COOKIE['auth']) {

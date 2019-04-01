@@ -16,13 +16,17 @@
                                 <?php foreach ($this->model->ListarPeticion() as $r) : ?>
                                 <tr>
                                     <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong>, el <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
+                                
+                                    
                                     <td class="td-actions text-right">
                                         <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                             <i class="now-ui-icons location_bookmark"></i>
                                         </button>
-                                        <button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral">
+                                        <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?=$r->tok_id?>,<?=$r->acc_id?>)" data-toggle="modal" data-target="#myModal2" >
                                             <i class="now-ui-icons ui-1_check"></i>
                                         </button>
+                                        
+                                    
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -210,6 +214,43 @@
                 <div class="card-footer">
                     <div class="stats">
                         <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                </button>
+                <h4 class="title title-up">Agregando Actividad</h4>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-group" action="?c=home&a=AprovarActividad" method="post">
+                            
+                            <div class="tex-center">
+                                
+                                <div class="col-md-6 px-1">
+                                    <div class="text-center form-group">
+                                        <label>Fecha</label>
+                                        <input type="hidden" id="ide" name="ide">
+                                        <input type="hidden" id="token_id" name="token_id" >
+                                        <input type="hidden" id="action_id"name="action_id">
+                                        <input type="date" required name="date" class="form-control"  value="">
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="text-center form-group">
+                                <button class=" btn btn-primary btn-round">Guardar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
