@@ -76,6 +76,15 @@ class Home
             die($e->getMessage());
         }
     }
+    public function VerificarPeticion($pass_code,$token_id)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM fichas where pass_code = ? and id = ? ");
+            $stm->execute(array($pass_code,$token_id));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     public function RegistrarPeticion(home $data)
     {
         try {

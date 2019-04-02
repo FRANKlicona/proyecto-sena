@@ -43,13 +43,12 @@ class HomeController
         require_once 'view/footer.php';
     }
 
-    public function Peticion()
-    {
+    public function Peticion(){
         require_once 'view/headerl.php';
         require_once 'view/home/peticion.php';
         require_once 'view/footer.php';
 
-
+        
     }
 
     public function Validacion()
@@ -72,6 +71,7 @@ class HomeController
         $home->password    = $_REQUEST['password'];
         $home->dimension_id= $_REQUEST['dimension_id'];
         $home->rol_id      = $_REQUEST['rol_id'];
+        $home->requester   = $_REQUEST['requester'];
 
         $this->model->Registrar($home);
 
@@ -81,9 +81,16 @@ class HomeController
     {
         $home = new Home();
         if (isset($_REQUEST['pass_code'])&& isset($_REQUEST['token_id'])) {
-            $home = $this->model->Verificar($_REQUEST['pass_code'],$_REQUEST['token_id']);
+            $home = $this->model->VerificarPeticion($_REQUEST['pass_code'],$_REQUEST['token_id']);            
+            $data['requester'] = $_REQUEST['requester'];
+            $data['pass_code'] = $_REQUEST['pass_code'];
+            $data['token_id'] = $_REQUEST['token_id'];
+            // print_r($data);
+            // //  die;
+            
         }
-        header('location:?c=home&a=Peticion');
+        // return($data);
+        header('location:?c=home&a=Peticion&data='.$data);
     }
     public function Guardar()
     {

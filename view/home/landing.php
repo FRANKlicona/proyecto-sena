@@ -109,7 +109,7 @@
             <div class="row">
             
                 <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
-                <form action="?c=home&a=RegistrarPeticion" method="post">
+                <form action="?c=home&a=ValidacionPeticion" method="post">
                     <div class="input-group input-lg">
                         <div class="input-group input-lg" >                                 
                             <select name="requester" class="form-control" style="height:45px"> 
@@ -135,7 +135,7 @@
                     
                     <div class="input-group input-lg">
                         
-                        <input type="text" class="form-control" placeholder="Codigo">
+                        <input type="text" name="pass_code" class="form-control" placeholder="Codigo">
                     </div>
                     <button type="summit" class="btn btn-primary btn-round btn-block btn-lg" >Pedir</button>
                     
