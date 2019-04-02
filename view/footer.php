@@ -48,7 +48,7 @@
 <script src='assets\fullcalendar-4.0.1\packages\interaction\main.js'></script>
 <script src='assets\fullcalendar-4.0.1\packages\bootstrap\main.js'></script>
 <script>
-    function passValue2($id,$token, $action) {
+    function passValue2($id, $token, $action) {
         document.getElementById('ide').value = $id;
         document.getElementById('token_id').value = $token;
         document.getElementById('action_id').value = $action;
@@ -174,6 +174,75 @@ if (isset($_COOKIE['auth'])) {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    var cty = document.getElementById('myPieChart');
+    var myPieChart = new Chart(cty, {
+        type: 'pie',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow'],
+            datasets: [{
+                label: '# of Votes',
+                data: [40, 35, 25],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+    var ctz = document.getElementById('myLineChart');
+    var myLineChart = new Chart(ctz, {
+        type: 'line',
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Septiembre','Octubre','Noviembre','Diciembre'],
+            datasets: [{
+                label: 'Aprendices Totales',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                data: [650, 840, 790, 950, 310, 620, 590,590,750,440,720,845],
+                fill: false,
+            }, {
+                label: 'Aprendices Impactados ',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                fill: false,
+                data: [580, 450, 620, 550, 270, 480, 550, 260,678,400,650,785],
+            }]
+        },
+        options: {
+            responsive: true,
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Mes'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Cantidas'
                     }
                 }]
             }

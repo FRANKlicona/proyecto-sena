@@ -3,7 +3,36 @@
 </div>
 <div class="content">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-9">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Indice de </h5>
+                    <h4 class="card-title">Desercion</h4>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                            <i class="now-ui-icons loader_gear"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="myLineChart"></canvas>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
             <div class="card  card-tasks">
                 <div class="card-header ">
                     <h5 class="card-category">Peticion de</h5>
@@ -16,8 +45,8 @@
                                 <?php foreach ($this->model->ListarPeticion() as $r) : ?>
                                 <tr>
                                     <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong>, el <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
-
-
+    
+    
                                     <td class="td-actions text-right">
                                         <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                             <i class="now-ui-icons location_bookmark"></i>
@@ -25,8 +54,8 @@
                                         <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>)" data-toggle="modal" data-target="#myModal2">
                                             <i class="now-ui-icons ui-1_check"></i>
                                         </button>
-
-
+    
+    
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -42,6 +71,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -142,38 +173,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card card-chart">
-                <div class="card-header">
-                    <h5 class="card-category">Indice de </h5>
-                    <h4 class="card-title">Desercion</h4>
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                            <i class="now-ui-icons loader_gear"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
+        <div class="col-md-6">
             <div class="card card-chart">
                 <div class="card-header">
                     <h5 class="card-category">2018 Sales</h5>
@@ -192,7 +192,8 @@
                 </div>
                 <div class="card-body">
                     <div class="chart-container">
-                        <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="es_ES" data-type="horizontal" data-theme="light" data-vanity="franklicona"><a class="LI-simple-link" href='https://co.linkedin.com/in/franklicona?trk=profile-badge'>Frank Licona</a></div>
+                        <canvas id="myPieChart"></canvas>
+                        <!-- <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="es_ES" data-type="horizontal" data-theme="light" data-vanity="franklicona"><a class="LI-simple-link" href='https://co.linkedin.com/in/franklicona?trk=profile-badge'>Frank Licona</a></div> -->
                     </div>
                 </div>
                 <div class="card-footer">
@@ -202,15 +203,18 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6">
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
             <div class="card card-chart">
                 <div class="card-header">
                     <h5 class="card-category">Email Statistics</h5>
                     <h4 class="card-title">24 Hours Performance</h4>
                 </div>
                 <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="barChartSimpleGradientsNumbers"></canvas>
+                    <div class="chart-container">
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
                 <div class="card-footer">

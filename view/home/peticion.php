@@ -3,11 +3,11 @@
         <div class="page-header-image" style="background-image:url(assets/img/login3.jpg)"></div>
         <div class="content">
             <div class="container">
+                    <h1 class="title">Usted como <?=isset($_REQUEST['requester'])? $_REQUEST['requester'] : ''; ?> 
+                    de la ficha <strong><?php $id = $_REQUEST['ficha']; $row =$this->model->ObtenerFicha($id); echo $row[0]->name; ?></strong> necesita </h1>
                 <div class="card card-login card-plain">
                     <div class="card-header">
 
-                        <h3 class="title">¿Qué requiere el <?=isset($_REQUEST['requester'])? $_REQUEST['requester'] : ''; ?>?  </h3>
-                        <h2>de la ficha : <strong><?php $id = $_REQUEST['ficha']; $row =$this->model->ObtenerFicha($id); echo $row[0]->name; ?></strong></h2>
                     </div>
                     <form action="?c=home&a=Guardar" method="post">
                     <input name="token_id" type="hidden" value="<?=$_REQUEST['ficha'] ?>">
