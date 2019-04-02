@@ -56,7 +56,7 @@ class Remision
                 FROM remisiones 
                 INNER JOIN estudiantes ON estudiantes.identification = remisiones.identification_id
                 INNER JOIN programas ON programas.id = remisiones.program_id
-                ORDER BY date_create DESC LIMIT ".$c . ', ' . $i );
+                WHERE eval_track = 'no' ORDER BY date_create DESC LIMIT ".$c . ', ' . $i);
                 // print_r($stm);
                 // die;
             $stm->execute();
@@ -109,7 +109,28 @@ class Remision
     public function Obtener($id)
     {
         try {
-            $stm = $this->pdo->prepare("SELECT *,estudiantes.name as stutent FROM remisiones INNER JOIN estudiantes ON estudiantes.identification = remisiones.identification_id WHERE remisiones.id = ?");
+            $stm = $this->pdo->prepare("SELECT
+            remisiones.id as id,
+            referal_type,
+            date_create,
+            n_orden,
+            reason_referal,
+            instructor_name,
+            instructor_firm,
+            situation_found,
+            promises,
+            psico_firm_before,
+            student_firm,
+            date_eval,
+            eval_track,
+            date_promises,
+            psico_firm_after,
+            identification_id,
+            program_id,
+            estudiantes.name as stutent 
+            FROM remisiones 
+            INNER JOIN estudiantes ON estudiantes.identification = remisiones.identification_id 
+            WHERE remisiones.id = ?");
             $stm->execute(array($id));
 
             return $stm->fetch(PDO::FETCH_OBJ);

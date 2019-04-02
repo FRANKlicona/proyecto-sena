@@ -18,35 +18,38 @@ $cant = $c[0]->cant;
                     <div class="table-responsive">
                         <table id="myTable" class="table">
                             <thead class=" text-primary">
-                                <th>
+                                <th style="font-size:15px">
                                     # Orden
                                 </th>
-                                <th>
-                                    referal_type
+                                <th style="font-size:15px">
+                                    Referencia
                                 </th>
-                                <th>
+                                <th style="font-size:15px">
                                     Fecha De Creacion
                                 </th>
-                                <th>
+                                <th style="font-size:15px">
                                     Aprendiz
                                 </th>
-                                <th>
+                                <th style="font-size:15px">
                                     Programa De Formacion
                                 </th>
-                                <th>
+                                <th style="font-size:15px">
                                     Compromisos
                                 </th>
-                                <th>
-                                    Fecha Cumplir Compromisos
+                                <th style="font-size:15px">
+                                    Fecha para Cumplir Compromisos
                                 </th>
-                                <th>
+                                <th style="font-size:15px">
+                                    ¿compromiso Cumplido?
+                                </th>
+                                <th style="font-size:15px">
                                     Instructor
                                 </th>
-                                <th>
+                                <th style="font-size:15px">
                                     Fecha De Evaluacion
                                 </th>
                                 
-                                <th class="text-center">
+                                <th style="font-size:15px" class="text-center">
                                     Acciones
                                 </th>
                             </thead>
@@ -95,10 +98,13 @@ $cant = $c[0]->cant;
                                         <?php echo $r->date_promises; ?>
                                     </td>
                                     <td>
+                                        <?php echo $r->eval_track; ?>
+                                    </td>
+                                    <td>
                                         <?php echo $r->instructor_name; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->date_eval.' '.$r->id; ?>
+                                        <?php echo $r->date_eval ?>
                                     </td>
 
                                     <td class="text-center">
