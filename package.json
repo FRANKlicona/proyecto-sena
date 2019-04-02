@@ -1,0 +1,28 @@
+{
+  "name": "proyecto-sena",
+  "version": "1.0.0",
+  "description": "Plataforma de Control y Registro de Actividades de Bienestar al Aprendiz",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FRANKlicona/proyecto-sena.git"
+  },
+  "keywords": [
+    "SENA"
+  ],
+  "author": "Frank Licona",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FRANKlicona/proyecto-sena/issues"
+  },
+  "homepage": "https://github.com/FRANKlicona/proyecto-sena#readme",
+  "dependencies": {
+    "chart.js": "^2.8.0",
+    "fullcalendar": "^3.10.0",
+    "noty": "^3.2.0-beta",
+    "sweetalert": "^2.1.2"
+  }
+}

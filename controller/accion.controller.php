@@ -48,12 +48,12 @@ class AccionController
             ? $this->model->Actualizar($accion)
             : $this->model->Registrar($accion);
 
-        header("Location: index.php?c=accion&v=" . $_REQUEST['v']);
+        header("Location: index.php?c=accion");
     }
 
     public function Eliminar()
     {
         $this->model->Eliminar($_REQUEST['id']);
-        header('Location: index.php?c=accion&v=' . $_REQUEST['v']);
+        header('Location: index.php?c=accion');
     }
 }

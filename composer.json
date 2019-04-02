@@ -1,6 +1,6 @@
 {
     "name": "franklicona/proyecto-sena",
-    "description": "Plataforma para contro y registro de actividades",
+    "description": "Plataforma para control y registro de actividades",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -11,6 +11,10 @@
     ],
     "require": {
         "phpmailer/phpmailer": "^6.0",
-        "league/oauth2-client": "^2.4"
+        "mailjet/mailjet-apiv3-php": "^1.4",
+        "emarref/jwt": "^1.0",
+        "lcobucci/jwt": "^3.2",
+        "spipu/html2pdf": "^5.2",
+        "mpdf/mpdf": "^8.0"
     }
 }

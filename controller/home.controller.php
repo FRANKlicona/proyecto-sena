@@ -15,6 +15,12 @@ class HomeController
         require_once 'view/home/home.php';
         require_once 'view/footer.php';
     }
+    public function Calendario()
+    {
+        require_once 'view/header.php';
+        require_once 'view/home/calendario.php';
+        require_once 'view/footer.php';
+    }
     public function Landing()
     {
         require_once 'view/headerl.php';
@@ -33,33 +39,62 @@ class HomeController
         require_once 'view/home/registro.php';
         require_once 'view/footer.php';
     }
-
     public function Salir()
     {
-        unset($_SESSION['admin']);
+        unset($_SESSION);
         session_destroy();
         require_once 'view/headerl.php';
-        require_once 'view/home/login.php';
+        require_once 'view/home/landing.php';
         require_once 'view/footer.php';
     }
-
-    public function Peticion(){
+    public function Peticion(){   
         require_once 'view/headerl.php';
         require_once 'view/home/peticion.php';
-        require_once 'view/footer.php';
-
-        
+        require_once 'view/footer.php';     
     }
 
-    public function Validacion()
+    public function Recuperar()
+    {
+        if(isset($_REQUEST['email'])){
+
+            $home = new Home();
+            $email=$_REQUEST['email'];
+            $home = $this->model->Recuperarclave($email);
+
+            require_once 'view/headerl.php';
+            require_once 'view/home/enviado.php';
+            require_once 'view/footer.php';
+
+        } else{
+            require_once 'view/headerl.php';
+            require_once 'view/home/recuperar.php';
+            require_once 'view/footer.php';
+        }
+    }
+
+    public function ValidacionUser()
     {
         $home = new Home();
+
         if (isset($_REQUEST['email'])&& isset($_REQUEST['password'])) {
-            $home = $this->model->Verificar($_REQUEST['email'],$_REQUEST['password']);
+            $home = $this->model->VerificarUser($_REQUEST['email'],$_REQUEST['password']);
         }
+        
         header('location:?c=home&a=Index');
     }
-    public function Registro()
+    public function ValidacionPeticion()
+    {
+        $home = new Home();
+
+        if (isset($_REQUEST['pass_code'])&& isset($_REQUEST['token_id'])) {
+            $home = $this->model->VerificarPeticion($_REQUEST['pass_code'],$_REQUEST['token_id']);
+            $requester = $_REQUEST['requester'];
+            $token_id = $_REQUEST['token_id'];
+        }
+
+        header("location:?c=home&a=Peticion&requester=$requester&ficha=$token_id");
+    }
+    public function RegistroUser()
     {
         $home = new Home();
 
@@ -73,44 +108,37 @@ class HomeController
         $home->rol_id      = $_REQUEST['rol_id'];
         $home->requester   = $_REQUEST['requester'];
 
-        $this->model->Registrar($home);
+        $this->model->RegistrarUser($home);
 
         header('Location: index.php?c=home');
     }
-    public function ValidacionPeticion()
-    {
-        $home = new Home();
-        if (isset($_REQUEST['pass_code'])&& isset($_REQUEST['token_id'])) {
-            $home = $this->model->VerificarPeticion($_REQUEST['pass_code'],$_REQUEST['token_id']);            
-            $data['requester'] = $_REQUEST['requester'];
-            $data['pass_code'] = $_REQUEST['pass_code'];
-            $data['token_id'] = $_REQUEST['token_id'];
-            // print_r($data);
-            // //  die;
-            
-        }
-        // return($data);
-        header('location:?c=home&a=Peticion&data='.$data);
-    }
     public function Guardar()
     {
+        $actividad = new Home();
 
+        $actividad->action_id   = $_REQUEST['action_id'];
+        $actividad->requester   = $_REQUEST['requester'];
+        $actividad->token_id    = $_REQUEST['token_id'];
 
-        $Peticion = new Peticion();
+        $this->model->RegistrarPeticion($actividad);
 
-        $actividad->id          = $_REQUEST['id'];
-        $actividad->date        = $_REQUEST['date'];
+        header("Location: index.php?c=home");
+    }
+    public function AprovarActividad(){
+
+        $actividad = new Home();
+        
+        $actividad->ide   = $_REQUEST['ide'];
         $actividad->token_id    = $_REQUEST['token_id'];
         $actividad->action_id   = $_REQUEST['action_id'];
-        $actividad->id > 0
-            ? $this->model->Actualizar($actividad)
-            : $this->model->Registrar($actividad);
-
-        header("Location: index.php?c=home&v=".$_REQUEST['v']);
+        $actividad->date        = $_REQUEST['date'];  
+        // print_r($actividad);
+        // die;
+        //  print_r($_REQUEST);die;
+        $this->model->AceptarPeticion($actividad);
+        header("Location: index.php?c=home");
     }
-
-    
-    
-
 }
 
+
+?>

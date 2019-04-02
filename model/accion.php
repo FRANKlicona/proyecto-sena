@@ -22,7 +22,7 @@ class Accion
             $result = array();
 
             $stm = $this->pdo->prepare("SELECT 
-                acciones.id,
+                acciones.id as id,
                 acciones.name,
                 dimensiones.id as dim_id,
                 dimensiones.name as dim_name 
@@ -67,7 +67,6 @@ class Accion
         try {
             $stm = $this->pdo
                 ->prepare("DELETE FROM acciones WHERE id = ?");
-
             $stm->execute(array($id));
         } catch (Exception $e) {
             die($e->getMessage());

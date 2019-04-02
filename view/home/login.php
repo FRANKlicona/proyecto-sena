@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="col-md-4 ml-auto mr-auto">
                     <div class="card card-login card-plain">
-                        <form class="form" method="post" action="?c=login&a=Validacion">
+                        <form class="form" method="post" action="?c=login&a=ValidacionUser">
                             <div class="card-header text-center">
                                 <div class="logo-container">
                                     <img src="assets/img/logo-login.png" alt="">
@@ -33,12 +33,12 @@
                                 <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Acceder</button>
                                 <div class=" pull-left">
                                     <h6>
-                                        <a href="?c=login&a=Ingreso" class="link">Registrarse</a>
+                                        <a href="?c=Home&a=Ingreso" class="link">Registrarse</a>
                                     </h6>
                                 </div>
                                 <div class="pull-right">
                                     <h6>
-                                        <a href="#pablo" class="link">Nesecita ayuda?</a>
+                                        <a href="?c=Home&a=Recuperar" class="link">Olvidaste la contraseña?</a>
                                     </h6>
                                 </div>
                         </form>

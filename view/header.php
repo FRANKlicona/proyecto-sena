@@ -20,12 +20,18 @@
     <link href="assets/css/now-ui-kit.css?v=1.2.0" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
-    <link href="node-modules/noty/lib/noty.css" rel="stylesheet">
-    <link href="node-modules/noty/lib//themes/metroui.css" rel="stylesheet">
+    <link href="node_modules/noty/lib/noty.css" rel="stylesheet">
+    <link href="node_modules/noty/lib//themes/metroui.css" rel="stylesheet">
+    <link href='assets/fullcalendar-4.0.1\packages\core\main.css' rel='stylesheet' />
+    <link href='assets/fullcalendar-4.0.1\packages\daygrid\main.css' rel='stylesheet' />
+    <link href='assets\fullcalendar-4.0.1\packages\list\main.css' rel='stylesheet' />
+    <link href='assets\fullcalendar-4.0.1\packages\timegrid\main.css' rel='stylesheet' />
+    <link href='assets\fullcalendar-4.0.1\packages\bootstrap\main.css' rel='stylesheet' />
+    <link href='node_modules\chart.js\dist\Chart.css' rel='stylesheet' />
 
 </head>
 
-<body class="" id="log">
+<body class="" id=" log">
     <div class="preloader-wrapper">
         <div class="preloader">
             <img src="assets/img/logo-login.png" alt="">
@@ -54,37 +60,74 @@
                         </a>
                         <div class="collapse" id="pagesExamplesA" style="">
                             <ul class="nav">
-                                <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'accion') ? "active active-pro" : "active-pro"; ?>>
+                                <li>
                                     <a href="?c=accion">
                                         <i class="now-ui-icons files_paper "></i>
                                         <p>acciones</p>
                                     </a>
                                 </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'apoyo') ? "class='active'" : ""; ?>>
+                                <li>
                                     <a href="?c=actividad">
                                         <i class="now-ui-icons arrows-1_minimal-right"></i>
                                         <p><b>listado de actividades</b></p>
                                     </a>
                                 </li>
-                                <li <?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'cultura') ? "class='active'" : ""; ?>>
+                                <li>
                                     <a href="?c=registro">
                                         <i class="now-ui-icons arrows-1_minimal-right"></i>
                                         <p>Registros de Actividad</p>
                                     </a>
                                 </li>
-                                <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'encuesta') ? "active active-pro" : "active-pro"; ?>>
+                                <li>
                                     <a href="?c=encuesta">
                                         <i class="now-ui-icons files_paper "></i>
                                         <p>encuestas</p>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="?c=remision">
+                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                        <p>Remisiones</p>
+                                    </a>
+                                </li>
                             </ul>
-                    <li class=<?= (isset($_REQUEST['v']) && $_REQUEST['v'] == 'desersion') ? "active active-pro" : "active-pro"; ?>>
+                    <li>
+                    <a data-toggle="collapse" href="#pagesExamplesB"  class="collapsed">
+                            <i class="now-ui-icons design_image"></i>
+                            <p>
+                                Gestion de ambientes<b class="caret"></b>
+                            </p>
+                        </a>
+                            <div class="collapse" id="pagesExamplesB">
+                                <ul class="nav">
+                                    <li>
+                                        <a href="?c=estudiante">
+                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                        <p>Lista de estudiantes</p>
+                                    </a>
+                                    </li>
+                                
+                                
+                                
+                                </ul>
+                            </div>
+                        <a href="?c=pdf">
+                            <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                            <p>Informes</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?c=home&a=Calendario">
+                            <i class="now-ui-icons ui-1_calendar-60"></i>
+                            <p>Calendario</p>
+                        </a>
+                    </li>
+                    <!-- <li >
                         <a href="?c=desersion">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                             <p>desercion</p>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -144,7 +187,9 @@
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <?php if (!isset($_SESSION)) : ?>
                                     <a class="dropdown-item" href="?c=home&a=Login">Iniciar Sesion</a>
+                                    <?php endif; ?>
                                     <a class="dropdown-item" href="?c=home&a=Salir">Cerrar Sesion</a>
                                     <a class="dropdown-item" href="?c=home&a=Landing">Mi perfil</a>
                                 </div>
@@ -154,4 +199,4 @@
                     </div>
                 </div>
             </nav>
-            <!-- End Navbar -->
+            <!-- End Navbar --> 

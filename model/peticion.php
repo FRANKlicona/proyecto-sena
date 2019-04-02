@@ -95,11 +95,5 @@ class Peticion
             die($e->getMessage());
         }
     }
-
-
 }
-
-
-
-
 ?>

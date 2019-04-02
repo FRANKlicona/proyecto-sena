@@ -13,18 +13,23 @@
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
-
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- CSS Files -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
     <link href="assets/css/now-ui-kit.css?v=1.2.0" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
-    <link href="node-modules/noty/lib/noty.css" rel="stylesheet">
-    <link href="node-modules/noty/lib//themes/metroui.css" rel="stylesheet">
+    <link href="node_modules/noty/lib/noty.css" rel="stylesheet">
+    <link href="node_modules/noty/lib//themes/metroui.css" rel="stylesheet">
 </head>
 
-<body class="login-page sidebar-collapse">
+<body id="log" class="login-page sidebar-collapse">
+    <div class="preloader-wrapper">
+        <div class="preloader">
+            <img src="assets/img/logo-login.png" alt="">
+        </div>
+    </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
         <div class="container">
@@ -57,6 +62,12 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="assets/img/blurred-image-1.jpg">
                 <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://presentation.creative-tim.com">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://cysbolivar.blogspot.com/">Blog</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="?c=home&a=Login">Iniciar Sesion</a>
                     </li>

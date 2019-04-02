@@ -1,6 +1,20 @@
 <?php 
 $c = $this->model->Cantidad();
 $cant = $c[0]->cant;
+if ($cant > 0) {
+    $page = false;
+    //examino la pagina a mostrar y el inicio del registro a mostrar
+    $page =  isset($_REQUEST["page"]) ? $_REQUEST["page"] : false;
+    if (!$page) {
+        $init = 0;
+        $page = 1;
+        //$c = 12;
+    } else {
+        $init = ($page - 1) * 13;
+    }
+}
+//calculo el total de paginas
+$total_pages = ceil($cant / 13);
 ?>
 <div class="panel-header panel-header-sm">
 </div>
@@ -10,9 +24,9 @@ $cant = $c[0]->cant;
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Actividades de
-                        <?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=actividad&a=Crud&v=<?= isset($_REQUEST['v']) ? $_REQUEST['v'] : ""; ?>"><i class="now-ui-icons ui-1_simple-add"></i></a>
+                        <?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=actividad&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
-                    <h6>Elementos econtrados :<?= ' ' . $cant; ?></h6>
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -33,25 +47,8 @@ $cant = $c[0]->cant;
                             </thead>
                             <tbody>
                                 <?php 
-                                if ($cant > 0) {
-                                    $page = false;
-
-                                    //examino la pagina a mostrar y el inicio del registro a mostrar
-                                    if (isset($_GET["page"])) {
-                                        $page = $_GET["page"];
-                                    }
-
-                                    if (!$page) {
-                                        $init = 0;
-                                        $page = 1;
-                                    } else {
-                                        $init = ($page - 1) * 8;
-                                    }
-                                    //calculo el total de paginas
-                                    $total_pages = ceil($cant / 8);
-
-                                    foreach ($this->model->Listar(8, $init) as $r) :
-                                        ?>
+                                foreach ($this->model->Listar(13, $init) as $r) :
+                                    ?>
                                 <tr>
                                     <td>
                                         <?php echo $r->exe_name; ?>
@@ -65,52 +62,51 @@ $cant = $c[0]->cant;
 
                                     <td class="text-center">
                                         <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-sm btn-warning btn-round " onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal2">
-                                                <i class="now-ui-icons files_paper "></i>
-                                            </button>
-                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>&v=<?= $_REQUEST['v']; ?>">
+                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>">
                                                 <i class="now-ui-icons ui-2_settings-90"></i>
                                             </a>
-                                            <button type="button" class="btn btn-sm btn-danger btn-round" onclick="passValue(<?= $r->id ?>)" data-toggle="modal" data-target="#myModal1">
-                                                <i class="now-ui-icons ui-1_simple-remove"></i>
-                                            </button>
                                         </div>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
-                                <nav>
-                                    <ul class="pagination pagination-primary">
-                                        <?php
-                                        if ($total_pages > 1) {
-                                            if ($page != 1) {
-                                                ?>
-                                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
-                                                <?php
-                                            }
-                                            for ($i = 1; $i <= $total_pages; $i++) {
-                                                if ($page == $i) {
-                                                    ?>
-                                                    <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
-                                                    <?php
-                                                    if ($page != $total_pages) {
-                                                        ?>
-                                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
-                                                    <?php
-                                                    }
-                                                }
-                                            }
-                                        }
+                            <nav>
+                                <ul class="pagination pagination-primary">
+                                    <?php
+                                    if ($total_pages > 1) {
+                                        if ($page != 1) {
+                                            ?>
+                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                                    <?php
+
+                                }
+                                for ($i = 1; $i <= $total_pages; $i++) {
+                                    if ($page == $i) {
+                                        ?>
+                                    <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
+                                    <?php
+
+                                } else {
+                                    ?>
+                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
+                                    <?php
+                                    if ($page != $total_pages) {
+                                        ?>
+                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                                    <?php
+
+                                }
                             }
+                        }
+                    }
                     ?>
-                                    </ul>
-                                </nav>
+                                </ul>
+                            </nav>
                         </table>
                     </div>
+                </div>
+                <div class="card-footer">
+                    <h6>Elementos econtrados :<?= ' ' . $cant; ?></h6>
                 </div>
             </div>
         </div>
@@ -183,4 +179,4 @@ $cant = $c[0]->cant;
             </div>
         </div>
     </div>
-</div>
+</div> 

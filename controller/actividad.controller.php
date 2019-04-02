@@ -45,12 +45,12 @@ class ActividadController
             ? $this->model->Actualizar($actividad)
             : $this->model->Registrar($actividad);
 
-        header("Location: index.php?c=actividad&v=".$_REQUEST['v']);
+        header("Location: index.php?c=actividad");
     }
 
     public function Eliminar()
     {
         $this->model->Eliminar($_REQUEST['id']);
-        header('Location: index.php?c=actividad&v='.$_REQUEST['v']);
+        header('Location: index.php?c=actividad');
     }
 }

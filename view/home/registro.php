@@ -7,7 +7,7 @@
                     <div class="card-header">
                         <h3 class="title">Resgistre sus datos</h3>
                     </div>
-                    <form action="?c=login&a=Registro" method="post">
+                    <form action="?c=login&a=RegistroUser" method="post">
                         <div class="card-body">
                             <hr>
                             <div class="row">
