@@ -20,7 +20,7 @@
                                         <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha </option>
                                         <?php foreach ($this->model->ListarFicha() as $d) : ?>
                                         <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                            <?= $d->name; ?>
+                                            <?= $d->name." - ".$d->pro_name ; ?>
                                         </option>
                                         <?php endforeach; ?>
 

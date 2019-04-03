@@ -54,8 +54,7 @@ class Home
             $stm->execute(array($pass_code,$token_id));
             if ($stm->rowCount() == 0) {
                 header("location:?c=home&a=Landing ");die;
-
-                            }
+            }
         } catch (Exception $e) {
             die($e->getMessage());
         }

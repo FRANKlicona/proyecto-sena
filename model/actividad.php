@@ -1,4 +1,3 @@
-
 <?php
 class Actividad
 {
@@ -18,7 +17,7 @@ class Actividad
         }
     }
 
-    public function Listar($i,$c,$o,$ch,$shr)
+    public function Listar($i, $c, $o, $ch, $shr)
     {
         try {
             $result = array();
@@ -30,12 +29,12 @@ class Actividad
                     $ch = '';
                     break;
                 default:
-                    $ch='';
+                    $ch = '';
                     break;
             }
-             
-            $o= ($o!='')? $o : 'date';
-            $stm = $this->pdo->prepare( "SELECT 
+
+            $o = ($o != '') ? $o : 'date_create';
+            $stm = $this->pdo->prepare("SELECT 
                 actividades.id,                
                 date,
                 fichas.id       as tok_id,
@@ -47,11 +46,11 @@ class Actividad
                 INNER JOIN fichas   on token_id = fichas.id
                 INNER JOIN acciones on action_id= acciones.id
                 INNER JOIN programas on program_id= programas.id
-                WHERE checkit = 'NO'".$shr."
-                ORDER BY ".$o." ".$ch." 
-                LIMIT ".$c . ', ' . $i );
-                // print_r($stm);
-                // die;
+                WHERE checkit = 'NO'" . $shr . "
+                ORDER BY " . $o . " " . $ch . " 
+                LIMIT " . $c . ', ' . $i);
+            // print_r($stm);
+            // die;
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -63,7 +62,7 @@ class Actividad
     {
         try {
             $result = array();
-            
+
             $stm = $this->pdo->prepare("SELECT 
                 COUNT(*) as cant
                 FROM actividades 
@@ -95,7 +94,8 @@ class Actividad
     {
         try {
             $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM fichas");
+            $stm = $this->pdo->prepare("SELECT fichas.id as id,fichas.name as name,programas.name AS pro_name FROM fichas
+            INNER JOIN programas ON program_id = programas.id");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -103,16 +103,17 @@ class Actividad
             die($e->getMessage());
         }
     }
-    
+
     public function Obtener($id)
     {
         try {
             $stm = $this->pdo
-                ->prepare("SELECT *,acciones.name as exe_name 
+                ->prepare(
+                    "SELECT *,acciones.name as exe_name 
                            FROM actividades
                            INNER JOIN acciones on action_id = acciones.id
                            WHERE actividades.id = ?"
-                         );
+                );
 
 
             $stm->execute(array($id));
@@ -142,8 +143,8 @@ class Actividad
                         token_id    = $data->token_id,
                         action_id   = $data->action_id						
                     WHERE id = ?";
-//                     print_r($data);
-// die($sql);
+            //                     print_r($data);
+            // die($sql);
 
             $this->pdo->prepare($sql)
                 ->execute(
@@ -163,7 +164,11 @@ class Actividad
     public function Registrar(actividad $data)
     {
         try {
-            $sql = "INSERT INTO actividades (date,token_id,action_id) 
+            $stm = $this->pdo->prepare("SELECT * FROM actividades where token_id = ? and checkit = 'NO'");
+            $stm->execute(array($data->token_id));
+            
+            if ($stm->rowCount() < 14) {
+                $sql = "INSERT INTO actividades (date,token_id,action_id) 
                 VALUES ( ? ,$data->token_id,$data->action_id)";
             // print_r($_REQUEST);
             // echo $sql."llega aqui";
@@ -174,6 +179,10 @@ class Actividad
                         $data->date
                     )
                 );
+            }else{
+                header('Location:?c=Actividad&a=Crud');
+                die;
+            }            
         } catch (Exception $e) {
             die($e->getMessage());
         }

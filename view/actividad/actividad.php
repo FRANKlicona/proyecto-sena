@@ -117,18 +117,19 @@ $total_pages = ceil($cant / 13);
                                     ?>
                                 <tr>
                                     <td>
-                                        <?php echo $r->exe_name; ?>
+                                        <?= $r->exe_name; ?>
                                     </td>
                                     <td>
-                                        <?php echo $r->tok_name; ?>
+                                        <a href="?c=ficha&a=Crud&id=<?= $r->tok_name; ?>&d=" class="btn btn-link " data-toggle="tooltip" data-placement="top" title="<?= $r->pro_name; ?>" data-container="body" data-animation="true"><?= $r->tok_name; ?></a>
+
                                     </td>
                                     <td>
-                                        <?php echo $r->date; ?>
+                                        <?= $r->date; ?>
                                     </td>
 
                                     <td class="text-center">
                                         <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
-                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?php echo $r->id; ?>">
+                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?=$r->id; ?>">
                                                 <i class="now-ui-icons ui-2_settings-90"></i>
                                             </a>
                                         </div>
