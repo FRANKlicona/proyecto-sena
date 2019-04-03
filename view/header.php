@@ -92,6 +92,25 @@
                                 </li>
                             </ul>
                     <li>
+                    <a data-toggle="collapse" href="#pagesExamplesB"  class="collapsed">
+                            <i class="now-ui-icons design_image"></i>
+                            <p>
+                                Gestion de ambientes<b class="caret"></b>
+                            </p>
+                        </a>
+                            <div class="collapse" id="pagesExamplesB">
+                                <ul class="nav">
+                                    <li>
+                                        <a href="?c=estudiante">
+                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                        <p>Lista de estudiantes</p>
+                                    </a>
+                                    </li>
+                                
+                                
+                                
+                                </ul>
+                            </div>
                         <a href="?c=pdf">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                             <p>Informes</p>

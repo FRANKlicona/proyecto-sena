@@ -111,7 +111,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Accion</label>
                                         <select name="eval_track"  class="form-control">
-                                            <option value="<?php if($remision->eval_track) ?>">
+                                            <option value="2">
                                                 <p>No</p> 
                                             </option>
                                             <option value="1">
