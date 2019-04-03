@@ -17,23 +17,37 @@ class Actividad
         }
     }
 
-    public function Listar($i,$c)
+    public function Listar($i,$c,$o,$ch,$shr)
     {
         try {
             $result = array();
-
+            switch ($ch) {
+                case '-1':
+                    $ch = 'DESC';
+                    break;
+                case '1':
+                    $ch = '';
+                    break;
+                default:
+                    $ch='';
+                    break;
+            }
+             
+            $o= ($o!='')? $o : 'date';
             $stm = $this->pdo->prepare( "SELECT 
                 actividades.id,                
                 date,
                 fichas.id       as tok_id,
                 fichas.name     as tok_name,
                 acciones.id     as exe_id,
-                acciones.name   as exe_name
+                acciones.name   as exe_name,
+                programas.name  as pro_name
                 FROM actividades 
                 INNER JOIN fichas   on token_id = fichas.id
                 INNER JOIN acciones on action_id= acciones.id
-                WHERE checkit = 'NO'
-                ORDER BY acciones.name DESC 
+                INNER JOIN programas on program_id= programas.id
+                WHERE checkit = 'NO'".$shr."
+                ORDER BY ".$o." ".$ch." 
                 LIMIT ".$c . ', ' . $i );
                 // print_r($stm);
                 // die;
@@ -44,12 +58,18 @@ class Actividad
             die($e->getMessage());
         }
     }
-    public function Cantidad()
+    public function Cantidad($shr)
     {
         try {
             $result = array();
-
-            $stm = $this->pdo->prepare("SELECT COUNT(*) as cant FROM actividades");
+            
+            $stm = $this->pdo->prepare("SELECT 
+                COUNT(*) as cant
+                FROM actividades 
+                INNER JOIN fichas   on token_id = fichas.id
+                WHERE checkit = 'NO' $shr");
+            // print_r($stm);
+            // die;
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;

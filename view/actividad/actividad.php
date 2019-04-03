@@ -1,5 +1,8 @@
 <?php 
-$c = $this->model->Cantidad();
+$order = isset($_REQUEST['order']) ? $_REQUEST['order'] : '';
+$change = isset($_REQUEST['change']) ? $_REQUEST['change'] : '1';
+$shr = isset($_REQUEST['shr']) ? ' and fichas.name = ' . $_REQUEST['shr'] : '';
+$c = $this->model->Cantidad($shr);
 $cant = $c[0]->cant;
 if ($cant > 0) {
     $page = false;
@@ -13,6 +16,7 @@ if ($cant > 0) {
         $init = ($page - 1) * 13;
     }
 }
+
 //calculo el total de paginas
 $total_pages = ceil($cant / 13);
 ?>
@@ -23,23 +27,85 @@ $total_pages = ceil($cant / 13);
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Actividades de
-                        <?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=actividad&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
-                    </h4>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <h4 class="card-title"> Actividades de
+                                <?= strtoupper($_REQUEST['c']); ?>
+                            </h4>
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-6">
+                            <ul class="pagination pagination-primary pull-right">
+                                <?php
+                                if ($total_pages > 1) {
+                                    if ($page != 1) {
+                                        ?>
+                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                                <?php
 
+                            }
+                            for ($i = 1; $i <= $total_pages; $i++) {
+                                if ($page == $i) {
+                                    ?>
+                                <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
+                                <?php
+
+                            } else {
+                                ?>
+                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
+                                <?php
+                                if ($page != $total_pages) {
+                                    ?>
+                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                                <?php
+
+                            }
+                        }
+                    }
+                }
+                ?>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-6 ">
+                            <h6 class="pull-right"><?= $cant . ' '; ?>resultados</h6>
+                        </div>
+                        <div class="col-md-3 col-sm-10 col-10">
+                            <form action="?c=Actividad" method="POST">
+                                <div class="input-group no-border">
+                                    <input type="text" value="" name="shr" class="form-control" placeholder="buscar...">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-1 col-sm-2 col-2">
+                            <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=actividad&a=Crud">
+                                <i class="now-ui-icons ui-1_simple-add"></i>
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="myTable" class="table">
                             <thead class=" text-primary">
                                 <th>
-                                    Actividad
+                                    <a href="?c=Actividad&order=exe_name&change=<?= $change * -1; ?>">
+                                        Actividad
+                                    </a>
                                 </th>
                                 <th>
-                                    Ficha
+                                    <a href="?c=Actividad&order=tok_name&change=<?= $change * -1; ?>">
+                                        Ficha
+                                    </a>
                                 </th>
                                 <th>
-                                    Fecha
+                                    <a href="?c=Actividad&order=date&change=<?= $change * -1; ?>">
+                                        Fecha
+                                    </a>
                                 </th>
                                 <th class="text-center">
                                     Acciones
@@ -47,7 +113,7 @@ $total_pages = ceil($cant / 13);
                             </thead>
                             <tbody>
                                 <?php 
-                                foreach ($this->model->Listar(13, $init) as $r) :
+                                foreach ($this->model->Listar(13, $init, $order, $change, $shr) as $r) :
                                     ?>
                                 <tr>
                                     <td>
@@ -70,43 +136,11 @@ $total_pages = ceil($cant / 13);
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
-                            <nav>
-                                <ul class="pagination pagination-primary">
-                                    <?php
-                                    if ($total_pages > 1) {
-                                        if ($page != 1) {
-                                            ?>
-                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
-                                    <?php
-
-                                }
-                                for ($i = 1; $i <= $total_pages; $i++) {
-                                    if ($page == $i) {
-                                        ?>
-                                    <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
-                                    <?php
-
-                                } else {
-                                    ?>
-                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
-                                    <?php
-                                    if ($page != $total_pages) {
-                                        ?>
-                                    <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
-                                    <?php
-
-                                }
-                            }
-                        }
-                    }
-                    ?>
-                                </ul>
-                            </nav>
                         </table>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <h6>Elementos econtrados :<?= ' ' . $cant; ?></h6>
+
                 </div>
             </div>
         </div>
@@ -179,4 +213,4 @@ $total_pages = ceil($cant / 13);
             </div>
         </div>
     </div>
-</div> 
+    </di v> 

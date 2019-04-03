@@ -58,6 +58,7 @@
         document.getElementById('_id').value = $value;
     }
 </script>
+php
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
@@ -146,16 +147,21 @@ if (isset($_COOKIE['auth'])) {
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Orange', 'Orange', 'Orange', 'Orange', 'Orange'],
             datasets: [{
                 label: '# of Votes',
-                data: [12, 50, 3, 5, 2, 3],
+                data: [35, 50, 30, 50, 26, 36, 59, 77, 94, 65, 55],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
                     'rgba(255, 159, 64, 0.2)'
                 ],
                 borderColor: [
@@ -164,6 +170,11 @@ if (isset($_COOKIE['auth'])) {
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 159, 64, 1)',
                     'rgba(255, 159, 64, 1)'
                 ],
                 borderWidth: 1
@@ -205,19 +216,19 @@ if (isset($_COOKIE['auth'])) {
     var myLineChart = new Chart(ctz, {
         type: 'line',
         data: {
-            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Septiembre','Octubre','Noviembre','Diciembre'],
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             datasets: [{
                 label: 'Aprendices Totales',
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
-                data: [650, 840, 790, 950, 310, 620, 590,590,750,440,720,845],
+                data: [650, 840, 790, 950, 310, 620, 590, 590, 750, 440, 720, 845],
                 fill: false,
             }, {
                 label: 'Aprendices Impactados ',
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 fill: false,
-                data: [580, 450, 620, 550, 270, 480, 550, 260,678,400,650,785],
+                data: [580, 450, 620, 550, 270, 480, 550, 260, 678, 400, 650, 785],
             }]
         },
         options: {

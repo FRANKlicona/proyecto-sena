@@ -3,7 +3,7 @@
 </div>
 <div class="content">
     <div class="row">
-        <div class="col-9">
+        <div class="col-md-9">
             <div class="card card-chart">
                 <div class="card-header">
                     <h5 class="card-category">Indice de </h5>
@@ -206,7 +206,7 @@
     </div>
     <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-9">
             <div class="card card-chart">
                 <div class="card-header">
                     <h5 class="card-category">Email Statistics</h5>
