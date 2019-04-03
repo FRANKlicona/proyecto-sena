@@ -58,7 +58,9 @@
         document.getElementById('_id').value = $value;
     }
 </script>
-php
+<?php 
+if(isset($_REQUEST['a'])):
+if($_REQUEST['a']== 'Calendario') :?>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
@@ -114,7 +116,8 @@ php
         calendar.render();
     });
 </script>
-
+<?php endif;
+endif?>
 <?php 
 if (isset($_COOKIE['auth'])) {
     if ($_COOKIE['auth']) {
