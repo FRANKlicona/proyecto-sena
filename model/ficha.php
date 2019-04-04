@@ -76,7 +76,7 @@ class Ficha
             $stm = $this->pdo
                 ->prepare("SELECT
                     fichas.id as fichasId,
-                    fichas.name as fichasName,
+                    fichas.name as fichaName,
                     student,
                     date_start,
                     date_finish,
@@ -118,16 +118,22 @@ class Ficha
                             date_start  = ?,
                             date_finish = ?,
                             journey     = ?,
-                            pass_code 	= ?,
                             program_id  = ?					
                     WHERE id = ?";
+
 //                     print_r($data);
 // die($sql);
 
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        
+                        $data->name,
+                        $data->student,
+                        $data->date_start,
+                        $data->date_finish,
+                        $data->journey,
+                        $data->program_id,
+                        $data->id
                     )
                 );
         } catch (Exception $e) {
@@ -138,7 +144,7 @@ class Ficha
     public function Registrar(ficha $data)
     {
         try {
-            $sql = "INSERT INTO fichas (date,token_id,action_id) 
+            $sql = "INSERT INTO fichas (name,student,date_start,date_finish,journey,pass_code,program_id) 
                 VALUES ( ? , ? , ? , ? , ? , ? , ?)";
             // print_r($_REQUEST);
             // echo $sql."llega aqui";
