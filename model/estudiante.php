@@ -34,6 +34,7 @@ class Estudiante
                 last_name,
                 gender,
                 age,
+                status,
                 cell,
                 email,
                 identification,
@@ -117,8 +118,8 @@ class Estudiante
                         cell           = ?,
                         identification = ?,
                         HR             = ?,
-                        token_id       = $data->token_id,
-                        action_id      = $data->action_id						
+                        token_id       = $data->token_id
+                        					
                     WHERE id = ?";
 //                     print_r($data);
 // die($sql);
@@ -126,8 +127,6 @@ class Estudiante
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->date,
-
                         $data->id
 
 
@@ -141,15 +140,25 @@ class Estudiante
     public function Registrar(estudiante $data)
     {
         try {
-            $sql = "INSERT INTO estudiantes (name,last_name,gender,age,cell,email,identification,HR,token_id) 
-                VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , $data->token_id)";
-            // print_r($_REQUEST);
-            // echo $sql."llega aqui";
+            $sql = "INSERT INTO estudiantes (name,last_name,gender,age,status,cell,email,identification,HR,token_id) 
+                VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , $data->token_id)";
+            //  print_r($data);die;
+            //  echo $sql."llega aqui";
             // die;
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
-                        $data->date
+                        $data->name,
+                        $data->last_name,
+                        $data->gender,
+                        $data->age,
+                        $data->status,
+                        $data->cell,
+                        $data->email,    
+                        $data->identification,
+                        $data->HR
+                        
+
                     )
                 );
         } catch (Exception $e) {

@@ -32,11 +32,11 @@
 </head>
 
 <body class="" id=" log">
-    <div class="preloader-wrapper">
+    <!-- <div class="preloader-wrapper">
         <div class="preloader">
             <img src="assets/img/logo-login.png" alt="">
         </div>
-    </div>
+    </div> -->
     <div class="wrapper ">
         <div class="sidebar" data-color="orange">
             <!--
