@@ -51,6 +51,10 @@ $total_pages = ceil($cant / 13);
                                     Numero de celular
                                 </th>
                                 <th>
+                                    Email
+                                </th>
+                                <th>
+
                                     Identificación
                                 </th>
                                 <th>
@@ -80,11 +84,16 @@ $total_pages = ceil($cant / 13);
                                         <?php echo $r->age; ?>
                                     </td>
                                     <td>
+                                        <?php echo $r->status?>
+                                    </td>
+                                    
+                                    <td>
                                         <?php echo $r->cell; ?>
                                     </td>
                                     <td>
                                         <?php echo $r->email; ?>
                                     </td>
+                                   
                                     <td>
                                         <?php echo $r->identification; ?>
                                     </td>
@@ -150,62 +159,3 @@ $total_pages = ceil($cant / 13);
     </div>
 </div>
 
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header justify-content-center">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    <i class="now-ui-icons ui-1_simple-remove"></i>
-                </button>
-                <h4 class="title title-up">Agregando Registro</h4>
-            </div>
-            <div class="modal-body">
-                <div class="card">
-                    <div class="card-body">
-                        <form class="form-group" action="?c=estudiante&a=Guardar" method="post">
-                            <input type="hidden" name="id" value="">
-                            <div class="row">
-                                <div class="col-md-3 pr-1">
-                                    <div class="form-group">
-                                        <label>Nombre</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Company" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-3 pr-1">
-                                    <div class="form-group">
-                                        <label>Apellidos</label>
-                                        <input type="text" name="last_name" class="form-control" placeholder="Company" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md3 px-1" >
-                                <select name="gender" id="">
-                                <option value="Masculino">Masculino</option>
-                                <option value="Femenino">Femenino</option>
-                                </select>
-                                </div>
-                                <div class="col-md-3 px-1">
-                                    <div class="form-group">
-                                        <label>Hombres</label>
-                                        <input type="text" name="men" class="form-control" placeholder="Username" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-3 pr-1">
-                                    <div class="datepicker-container">
-                                        <div class="form-group">
-                                            <label>Mujeres</label>
-                                            <input type="text" name="women" class="form-control" placeholder="Fecha" data-datepicker-color="simple" value="">
-                                            <input type="hidden" id="activity_id" name="activity_id" value="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center form-group">
-                                <button class=" btn btn-primary btn-round">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> 

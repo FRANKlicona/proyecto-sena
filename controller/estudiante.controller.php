@@ -36,6 +36,7 @@ class EstudianteController
 
 
         $estudiante = new Estudiante();
+        
 
         $estudiante->id                 = $_REQUEST['id'];
         $estudiante->name               = $_REQUEST['name'];
@@ -48,7 +49,7 @@ class EstudianteController
         $estudiante->identification     = $_REQUEST['identification'];
         $estudiante->HR                 = $_REQUEST['HR'];
         $estudiante->token_id           = $_REQUEST['token_id'];
-    
+        // print_r($estudiante);die;
         $estudiante->id > 0
             ? $this->model->Actualizar($estudiante)
             : $this->model->Registrar($estudiante);

@@ -32,11 +32,11 @@
 </head>
 
 <body class="" id=" log">
-    <div class="preloader-wrapper">
+    <!-- <div class="preloader-wrapper">
         <div class="preloader">
             <img src="assets/img/logo-login.png" alt="">
         </div>
-    </div>
+    </div> -->
     <div class="wrapper ">
         <div class="sidebar" data-color="orange">
             <!--
@@ -50,7 +50,7 @@
                 </a>
             </div>
             <div class="sidebar-wrapper" id="sidebar-wrapper">
-                <ul class="nav">
+                <ul  class="nav">
                     <li class="">
                         <a data-toggle="collapse" href="#pagesExamplesA" aria-expanded="<?= $_REQUEST['c'] == 'actividad' ? "true" : "false"; ?>" class="collapsed">
                             <i class="now-ui-icons design_image"></i>
@@ -110,6 +110,18 @@
                                     <a href="?c=estudiante">
                                         <i class="now-ui-icons arrows-1_minimal-right"></i>
                                         <p>Lista de estudiantes</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?c=ficha">
+                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                        <p>Lista de fichas</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?c=programa">
+                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                        <p>gestion de programas</p>
                                     </a>
                                 </li>
                             </ul>
