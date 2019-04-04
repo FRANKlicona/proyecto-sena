@@ -26,8 +26,8 @@ class Ficha
                 fichas.id as id,
                 fichas.name as fichaName,
                 student,
-                date_start,
-                date_finish,
+                date_start as date_start,
+                date_finish as date_finish,
                 journey,
                 pass_code,
                 programas.name as programaName

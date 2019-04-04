@@ -59,8 +59,8 @@
     }
 </script>
 <?php 
-if(isset($_REQUEST['a'])):
-if($_REQUEST['a']== 'Calendario') :?>
+if (isset($_REQUEST['a'])) :
+    if ($_REQUEST['a'] == 'Calendario') : ?>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
@@ -117,7 +117,7 @@ if($_REQUEST['a']== 'Calendario') :?>
     });
 </script>
 <?php endif;
-endif?>
+endif ?>
 <?php 
 if (isset($_COOKIE['auth'])) {
     if ($_COOKIE['auth']) {

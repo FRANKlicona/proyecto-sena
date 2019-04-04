@@ -120,7 +120,7 @@ $total_pages = ceil($cant / 13);
                                         <?= $r->exe_name; ?>
                                     </td>
                                     <td>
-                                        <a href="?c=ficha&a=Crud&id=<?= $r->tok_name; ?>&d=" class="btn btn-link " data-toggle="tooltip" data-placement="top" title="<?= $r->pro_name; ?>" data-container="body" data-animation="true"><?= $r->tok_name; ?></a>
+                                        <a href="?c=ficha&a=Crud&id=<?= $r->tok_id; ?>&d=" class="btn btn-link " data-toggle="tooltip" data-placement="top" title="<?= $r->pro_name; ?>" data-container="body" data-animation="true"><?= $r->tok_name; ?></a>
 
                                     </td>
                                     <td>
