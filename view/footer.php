@@ -33,7 +33,6 @@
 <script src="assets/js/now-ui-kit.js?v=1.2.0" type="text/javascript"></script>
 <script src="assets/js/now-ui-dashboard.min.js?v=1.3.0" type="text/javascript"></script>
 <!--  Notifications Plugin    -->
-<script src="assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Noty.JS -->
 <script src="node_modules/noty/lib/noty.js" type="text/javascript"></script>
 <!-- Sweetaler.JS -->
