@@ -157,7 +157,8 @@ class Home
                     acciones.id             as acc_id
                 FROM peticiones 
                     INNER JOIN fichas       ON token_id     = fichas.id  
-                    INNER JOIN acciones     ON action_id    = acciones.id ");
+                    INNER JOIN acciones     ON action_id    = acciones.id 
+                    limit 5");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -177,7 +178,8 @@ class Home
                 acciones.name   as exe_name,
                 acciones.id   as exe_id 
                 FROM actividades 
-                INNER JOIN acciones on action_id= acciones.id");
+                INNER JOIN acciones on action_id= acciones.id
+                WHERE checkit = 'NO'");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);

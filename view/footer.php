@@ -58,70 +58,69 @@
         document.getElementById('_id').value = $value;
     }
 </script>
-<?php 
+<?php
 if (isset($_REQUEST['a'])) :
     if ($_REQUEST['a'] == 'Calendario') : ?>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
 
-        var calendarEl = document.getElementById('calendar');
+                var calendarEl = document.getElementById('calendar');
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
-            themeSystem: 'bootstrap',
-            timeZone: 'NYC',
-            events: [
-                <?php foreach ($this->model->ListarActividad() as $r) : ?> {
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
+                    themeSystem: 'bootstrap',
+                    timeZone: 'NYC',
+                    events: [
+                        <?php foreach ($this->model->ListarActividad() as $r) : ?> {
                     id: '<?= $r->id; ?>',
-                    start: '<?= $r->date; ?>',
-                    title: '<?= $r->exe_name; ?>',
-                },
-                <?php endforeach; ?>
-            ],
-            dateClick: function(info) {
-                document.getElementById('date').value = info.dateStr;
-                document.getElementById('name').textContent = 'Creando Actividad';
-                $('#myModal3').modal();
-            },
-            eventClick: function(info) {
-                info.jsEvent.preventDefault();
-                document.getElementById('name').textContent = info.event.title;
-                document.getElementById('id1').value = info.event.id;
-                document.getElementById('id2').value = info.event.id;
-                $('#myModal4').modal();
-            },
-            contentHeight: 500,
-            buttonText: {
-                today: 'Hoy',
-                month: 'M',
-                week: 'S',
-                day: 'D',
-            },
-            // titleFormat: {
-            //     year: 'numeric',
-            //     month: 'short',
-            //     day: 'numeric'
-            // },
-            header: {
-                left: 'dayGridMonth,timeGridWeek,timeGridDay',
-                center: 'title',
-                right: 'prev,today,next'
-            },
-            // plugins: ['timeGrid'],
-            // plugins: ['list'],
-            // defaultView: 'listWeek',
-        });
-        // calendar.changeView('timeGridWeek')
-        calendar.setOption('locale', 'es');
-        calendar.render();
-    });
-</script>
-<?php endif;
-endif ?>
-<?php 
-if (isset($_COOKIE['auth'])) {
-    if ($_COOKIE['auth']) {
-        echo "
+                            start: '<?= $r->date; ?>',
+                            title: '<?= $r->exe_name; ?>',
+                            },
+                                    <?php endforeach; ?>
+                        ],
+                        dateClick: function(info) {
+                            document.getElementById('date').value = info.dateStr;
+                            $('#myModal3').modal();
+                        },
+                        eventClick: function(info) {
+                            info.jsEvent.preventDefault();
+                            document.getElementById('name').textContent = info.event.title;
+                            document.getElementById('id1').value = info.event.id;
+                            document.getElementById('id2').value = info.event.id;
+                            $('#myModal4').modal();
+                        },
+                        contentHeight: 500,
+                        buttonText: {
+                            today: 'Hoy',
+                            month: 'M',
+                            week: 'S',
+                            day: 'D',
+                        },
+                        // titleFormat: {
+                        //     year: 'numeric',
+                        //     month: 'short',
+                        //     day: 'numeric'
+                        // },
+                        header: {
+                            left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                            center: 'title',
+                            right: 'prev,today,next'
+                        },
+                        // plugins: ['timeGrid'],
+                        // plugins: ['list'],
+                        // defaultView: 'listWeek',
+                    });
+                    // calendar.changeView('timeGridWeek')
+                    calendar.setOption('locale', 'es');
+                    calendar.render();
+                });
+            </script>
+        <?php endif;
+                endif ?>
+<?php
+                if (isset($_COOKIE['auth'])) {
+                    if ($_COOKIE['auth']) {
+                        echo "
         <script>
         let log = document.getElementById('log');
         new Noty({
@@ -135,16 +134,16 @@ if (isset($_COOKIE['auth'])) {
             killer: true        
         }).show();
         </script>";
-        echo "
+                        echo "
         <script>
             swal({
                 title: ' Inicio de sesion Exit oso',
                 icon : 'success',
             });
         </script>";
-    }
-}
-?>
+                    }
+                }
+                ?>
 <script>
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
@@ -265,4 +264,4 @@ if (isset($_COOKIE['auth'])) {
 </script>
 </body>
 
-</html> 
+</html>

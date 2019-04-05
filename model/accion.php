@@ -99,6 +99,7 @@ class Accion
     public function Registrar(accion $data)
     {
         try {
+            
             $sql = "INSERT INTO acciones (name,dimension_id) 
                 VALUES ( ? ,$data->dimension_id)";
 

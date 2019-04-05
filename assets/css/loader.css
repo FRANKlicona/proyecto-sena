@@ -61,3 +61,17 @@ body.preloader-site {
     transform: translate(-50%, -50%);
     width: 120px;
 }
+input:valid {
+  background-color: #BBFFF0;
+}
+.check-ok {
+  color: lime;
+}
+ 
+input:invalid ~ .check-ok {
+  display: none;
+}
+ 
+input:valid ~ .check-ok {
+  display: inline;
+}

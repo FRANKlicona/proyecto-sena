@@ -1,5 +1,6 @@
 <?php
 require_once 'model/actividad.php';
+require_once 'model/validacion.php';
 
 class ActividadController
 {
@@ -9,6 +10,7 @@ class ActividadController
     public function __CONSTRUCT()
     {
         $this->model = new Actividad();
+        $this->valid = new Validacion();
     }
 
     public function Index()
@@ -41,6 +43,9 @@ class ActividadController
         $actividad->date        = $_REQUEST['date'];
         $actividad->token_id    = $_REQUEST['token_id'];
         $actividad->action_id   = $_REQUEST['action_id'];
+
+        $actividad->sumbit      = $_REQUEST['submit'];
+        $this->valid->Validar($actividad);
         $actividad->id > 0
             ? $this->model->Actualizar($actividad)
             : $this->model->Registrar($actividad);

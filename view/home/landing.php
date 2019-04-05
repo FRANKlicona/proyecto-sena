@@ -112,7 +112,7 @@
                 <form action="?c=home&a=ValidacionPeticion" method="post">
                     <div class="input-group input-lg">
                         <div class="input-group input-lg" >                                 
-                            <select name="requester" class="form-control" style="height:45px"> 
+                            <select name="requester" required class="form-control" style="height:45px"> 
                                 <option disabled="" selected value="">Quien la requiere?</option>
                                 <option value="Vocero">Vocero</option>
                                 <option value="Instructor">Instructor</option>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="input-group input-lg">
                         
-                        <select name="token_id" class="form-control" style="height:45px">
+                        <select name="token_id" required class="form-control" style="height:45px">
                             <option disabled="" selected value="">Ficha</option>
                                 <?php foreach ($this->model->ListarFicha() as $d) : ?>
                             <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?> ">
@@ -134,9 +134,9 @@
                     
                     <div class="input-group input-lg">
                         
-                        <input type="text" name="pass_code" class="form-control" placeholder="Codigo">
+                        <input type="text" name="pass_code" required class="form-control" minlength="3" maxlength="3"placeholder="Codigo">
                     </div>
-                    <button type="summit" class="btn btn-primary btn-round btn-block btn-lg" >Pedir</button>
+                    <button name="submit" type="submit" class="btn btn-primary btn-round btn-block btn-lg" >Pedir</button>
                     
                     
                     </form>

@@ -45,7 +45,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     <i class="now-ui-icons ui-1_simple-remove"></i>
                 </button>
-                <h4 id="name" class="title title-up"></h4>
+                <h4 id="name" class="title title-up">Creando Actividad</h4>
             </div>
             <div class="modal-body">
                 <div class="card">
@@ -56,14 +56,14 @@
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label>Fecha</label>
-                                        <input type="text" name="date" id="date" class="form-control" placeholder="Company" value="aquivalafecha">
+                                        <input type="" name="date" disable required id="date" class="form-control" placeholder="Company" value="aquivalafecha">
                                     </div>
                                 </div>
                                 <div class="col-md-4 pr-1">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Ficha</label>
-                                        <select name="token_id" class="form-control">
-                                            <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
+                                        <select name="token_id" required class="form-control">
+                                            <option  disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
                                             <?php foreach ($this->model->ListarFicha() as $d) : ?>
                                             <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
                                                 <?= $d->name; ?>
@@ -75,8 +75,8 @@
                                 <div class="col-md-4 px-1">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Accion</label>
-                                        <select name="action_id" class="form-control">
-                                            <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
+                                        <select name="action_id" required class="form-control">
+                                            <option  disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
                                             <?php foreach ($this->model->ListarAccion() as $d) : ?>
                                             <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->action_id) ? 'Selected' : '') : ""; ?> value="
                                             <?= $d->id; ?>">
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="text-center form-group">
-                                <button class=" btn btn-primary btn-round">Guardar</button>
+                                <button name="submit" tipe="submit" class=" btn btn-primary btn-round">Guardar</button>
                             </div>
                         </form>
                     </div>

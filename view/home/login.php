@@ -1,11 +1,11 @@
 
-    <div class="page-header clear-filter" filter-color="orange">
+    <div class="page-header clear-filter" filter-color="">
         <div class="page-header-image" style="background-image:url(assets/img/login3.jpg)"></div>
         <div class="content">
             <div class="container">
                 <div class="col-md-4 ml-auto mr-auto">
                     <div class="card card-login card-plain">
-                        <form class="form" method="post" action="?c=login&a=ValidacionUser">
+                        <form class="form" method="post" action="?c=Home&a=ValidacionUser">
                             <div class="card-header text-center">
                                 <div class="logo-container">
                                     <img src="assets/img/logo-login.png" alt="">

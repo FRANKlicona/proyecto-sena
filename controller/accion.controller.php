@@ -1,5 +1,6 @@
 <?php
 require_once 'model/accion.php';
+require_once 'model/validacion.php';
 
 class AccionController
 {
@@ -9,6 +10,7 @@ class AccionController
     public function __CONSTRUCT()
     {
         $this->model = new Accion();
+        $this->valid = new Validacion();
     }
 
     public function Index()
@@ -34,16 +36,13 @@ class AccionController
     public function Guardar()
     {
 
-
         $accion = new Accion();
 
-        $accion->id      = $_REQUEST['id'];
-        $accion->name    = $_REQUEST['name'];
-        $accion->token   = $_REQUEST['token'];
-        $accion->program = $_REQUEST['program'];
-        $accion->date    = $_REQUEST['date'];
-        $accion->duration    = $_REQUEST['duration'];
+        $accion->id           = $_REQUEST['id'];
+        $accion->name         = $_REQUEST['name'];
         $accion->dimension_id = $_REQUEST['dimension_id'];
+        $accion->sumbit       = $_REQUEST['submit'];
+        $this->valid->Validar($accion);
         $accion->id > 0
             ? $this->model->Actualizar($accion)
             : $this->model->Registrar($accion);

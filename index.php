@@ -1,6 +1,8 @@
 <?php
 //Se da inicio de secciones
 session_start();
+//Se establece la zona horaria
+date_default_timezone_set('America/Bogota');
 //Se requiere la base de datos
 require_once 'model/database.php';
 //Se pregunta si existe una variable de sesion para agregarlo a la variable sesion
