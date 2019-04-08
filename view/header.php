@@ -21,7 +21,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
     <link href="node_modules/noty/lib/noty.css" rel="stylesheet">
-    <link href="node_modules/noty/lib//themes/metroui.css" rel="stylesheet">
+    <link href="node_modules/noty/lib/themes/metroui.css" rel="stylesheet">
     <link href='assets/fullcalendar-4.0.1\packages\core\main.css' rel='stylesheet' />
     <link href='assets/fullcalendar-4.0.1\packages\daygrid\main.css' rel='stylesheet' />
     <link href='assets\fullcalendar-4.0.1\packages\list\main.css' rel='stylesheet' />
@@ -32,11 +32,11 @@
 </head>
 
 <body class="" id=" log">
-    <!-- <div class="preloader-wrapper">
+    <div class="preloader-wrapper">
         <div class="preloader">
             <img src="assets/img/logo-login.png" alt="">
         </div>
-    </div> -->
+    </div>
     <div class="wrapper ">
         <div class="sidebar" data-color="orange">
             <!--
@@ -50,7 +50,7 @@
                 </a>
             </div>
             <div class="sidebar-wrapper" id="sidebar-wrapper">
-                <ul  class="nav">
+                <ul class="nav">
                     <li class="">
                         <a data-toggle="collapse" href="#pagesExamplesA" aria-expanded="<?= $_REQUEST['c'] == 'actividad' ? "true" : "false"; ?>" class="collapsed">
                             <i class="now-ui-icons design_image"></i>
@@ -62,31 +62,37 @@
                             <ul class="nav">
                                 <li>
                                     <a href="?c=accion">
-                                        <i class="now-ui-icons files_paper "></i>
+                                        <i class="fas fa-circle"></i>
                                         <p>acciones</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="?c=actividad">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                        <i class="fas fa-circle"></i>
                                         <p><b>listado de actividades</b></p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="?c=registro">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                        <i class="fas fa-circle"></i>
                                         <p>Registros de Actividad</p>
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="?c=asistencia">
+                                        <i class="fas fa-circle"></i>
+                                        <p>Registros de Asistencia</p>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="?c=encuesta">
-                                        <i class="now-ui-icons files_paper "></i>
+                                        <i class="fas fa-circle"></i>
                                         <p>encuestas</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="?c=remision">
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                        <i class="fas fa-circle"></i>
                                         <p>Remisiones</p>
                                     </a>
                                 </li>
@@ -205,7 +211,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                     <?php if (!isset($_SESSION)) : ?>
-                                    <a class="dropdown-item" href="?c=home&a=Login">Iniciar Sesion</a>
+                                        <a class="dropdown-item" href="?c=home&a=Login">Iniciar Sesion</a>
                                     <?php endif; ?>
                                     <a class="dropdown-item" href="?c=home&a=Salir">Cerrar Sesion</a>
                                     <a class="dropdown-item" href="?c=home&a=Landing">Mi perfil</a>
@@ -216,4 +222,4 @@
                     </div>
                 </div>
             </nav>
-            <!-- End Navbar --> 
+            <!-- End Navbar -->

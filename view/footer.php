@@ -22,6 +22,7 @@
 </footer>
 <!-- Charts.js -->
 <script src="node_modules\chart.js\dist\Chart.js"></script>
+<script src="node_modules\chart.js\dist\analyser.js"></script>
 <!-- Main Core JS -->
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
@@ -71,78 +72,81 @@ if (isset($_REQUEST['a'])) :
                     timeZone: 'NYC',
                     events: [
                         <?php foreach ($this->model->ListarActividad() as $r) : ?> {
-                    id: '<?= $r->id; ?>',
-                            start: '<?= $r->date; ?>',
-                            title: '<?= $r->exe_name; ?>',
+                                id: '<?= $r->id; ?>',
+                                start: '<?= $r->date; ?>',
+                                title: '<?= $r->exe_name; ?>',
                             },
-                                    <?php endforeach; ?>
-                        ],
-                        dateClick: function(info) {
-                            document.getElementById('date').value = info.dateStr;
-                            $('#myModal3').modal();
-                        },
-                        eventClick: function(info) {
-                            info.jsEvent.preventDefault();
-                            document.getElementById('name').textContent = info.event.title;
-                            document.getElementById('id1').value = info.event.id;
-                            document.getElementById('id2').value = info.event.id;
-                            $('#myModal4').modal();
-                        },
-                        contentHeight: 500,
-                        buttonText: {
-                            today: 'Hoy',
-                            month: 'M',
-                            week: 'S',
-                            day: 'D',
-                        },
-                        // titleFormat: {
-                        //     year: 'numeric',
-                        //     month: 'short',
-                        //     day: 'numeric'
-                        // },
-                        header: {
-                            left: 'dayGridMonth,timeGridWeek,timeGridDay',
-                            center: 'title',
-                            right: 'prev,today,next'
-                        },
-                        // plugins: ['timeGrid'],
-                        // plugins: ['list'],
-                        // defaultView: 'listWeek',
-                    });
-                    // calendar.changeView('timeGridWeek')
-                    calendar.setOption('locale', 'es');
-                    calendar.render();
+                        <?php endforeach; ?>
+                    ],
+                    dateClick: function(info) {
+                        document.getElementById('date').value = info.dateStr;
+                        $('#myModal3').modal();
+                    },
+                    eventClick: function(info) {
+                        info.jsEvent.preventDefault();
+                        document.getElementById('name').textContent = info.event.title;
+                        document.getElementById('id1').value = info.event.id;
+                        document.getElementById('id2').value = info.event.id;
+                        $('#myModal4').modal();
+                    },
+                    contentHeight: 500,
+                    buttonText: {
+                        today: 'Hoy',
+                        month: 'M',
+                        week: 'S',
+                        day: 'D',
+                    },
+                    // titleFormat: {
+                    //     year: 'numeric',
+                    //     month: 'short',
+                    //     day: 'numeric'
+                    // },
+                    header: {
+                        left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                        center: 'title',
+                        right: 'prev,today,next'
+                    },
+                    // plugins: ['timeGrid'],
+                    // plugins: ['list'],
+                    // defaultView: 'listWeek',
                 });
-            </script>
-        <?php endif;
-                endif ?>
-<?php
-                if (isset($_COOKIE['auth'])) {
-                    if ($_COOKIE['auth']) {
-                        echo "
-        <script>
-        let log = document.getElementById('log');
-        new Noty({
-            type: 'success',
-            layout: 'bottomRight',
-            theme: 'metroui',
-            text: '" . $_COOKIE['name'] . "Ha iniciado sesion satisfactoriamente',
-            timeout: '4000',
-            progressBar: true,
-            closeWith: ['click'],
-            killer: true        
-        }).show();
-        </script>";
-                        echo "
-        <script>
-            swal({
-                title: ' Inicio de sesion Exit oso',
-                icon : 'success',
+                // calendar.changeView('timeGridWeek')
+                calendar.setOption('locale', 'es');
+                calendar.render();
             });
-        </script>";
-                    }
-                }
-                ?>
+        </script>
+    <?php endif;
+endif ?>
+<?php
+if (isset($_COOKIE['auth'])) {
+    if ($_COOKIE['auth']) {
+        echo "
+                <script>
+                let log = document.getElementById('log');
+                new Noty({
+                    type: 'success',
+                    layout: 'bottomRight',
+                    theme: 'metroui',
+                    text: '" . $_SESSION['name'] . ", Has iniciado sesion satisfactoriamente',
+                    timeout: '4000',
+                    progressBar: true,
+                    closeWith: ['click'],
+                    killer: true        
+                }).show();
+                </script>";
+    }
+}?>
+<?php
+if (isset($_COOKIE["icon"])) {
+    echo "
+                <script>
+                    swal({
+                        title: '" . $_COOKIE['text'] . "',
+                        icon : '" . $_COOKIE['icon'] . "',
+                    });
+                </script>";
+}
+?>
 <script>
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
@@ -223,12 +227,12 @@ if (isset($_REQUEST['a'])) :
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 data: [650, 840, 790, 950, 310, 620, 590, 590, 750, 440, 720, 845],
-                fill: false,
+                fill: 'end',
             }, {
                 label: 'Aprendices Impactados ',
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
-                fill: false,
+                fill: 'start',
                 data: [580, 450, 620, 550, 270, 480, 550, 260, 678, 400, 650, 785],
             }]
         },
@@ -261,6 +265,7 @@ if (isset($_REQUEST['a'])) :
         }
     });
 </script>
+
 </body>
 
 </html>

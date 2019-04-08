@@ -4,7 +4,7 @@
         </div>
         <div class="content-center">
             <div class="container">
-                <h1 class="title">SENA Centro de Comercio y Servicio</h1>
+                <h1 class="title">Bienestar al Aprendiz</h1>
                 <div class="text-center">
                     <a href="#pablo" class="btn btn-primary btn-icon btn-round">
                         <i class="fab fa-facebook-f"></i>
@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
-                    <h2 class="title">Bienestar al Aprendiz</h2>
+                    <h2 class="title">SENA Centro de Comercio y Servicio</h2>
                     <h5 class="description">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice extent in the Pacific and a late drop in ice extent in the Barents Sea.</h5>
                 </div>
             </div>
@@ -107,40 +107,40 @@
             <h2 class="title" id="formularioPet">Peticion</h2>
             <p class="description">Your project is very important to us.</p>
             <div class="row">
-            
-                <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
-                <form action="?c=home&a=ValidacionPeticion" method="post">
-                    <div class="input-group input-lg">
-                        <div class="input-group input-lg" >                                 
-                            <select name="requester" required class="form-control" style="height:45px"> 
-                                <option disabled="" selected value="">Quien la requiere?</option>
-                                <option value="Vocero">Vocero</option>
-                                <option value="Instructor">Instructor</option>
-                            </select> 
-                        </div>                  
-                    </div>
-                    <div class="input-group input-lg">
-                        
-                        <select name="token_id" required class="form-control" style="height:45px">
-                            <option disabled="" selected value="">Ficha</option>
-                                <?php foreach ($this->model->ListarFicha() as $d) : ?>
-                            <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?> ">
-                            <?= $d->name; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
 
-                    </div>
-                    
-                    <div class="input-group input-lg">
-                        
-                        <input type="text" name="pass_code" required class="form-control" minlength="3" maxlength="3"placeholder="Codigo">
-                    </div>
-                    <button name="submit" type="submit" class="btn btn-primary btn-round btn-block btn-lg" >Pedir</button>
-                    
-                    
+                <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
+                    <form action="?c=home&a=ValidacionPeticion" method="post">
+                        <div class="input-group input-lg">
+                            <div class="input-group input-lg">
+                                <select name="requester" required class="form-control" style="height:45px">
+                                    <option disabled="" selected value="">Quien la requiere?</option>
+                                    <option value="Vocero">Vocero</option>
+                                    <option value="Instructor">Instructor</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group input-lg">
+
+                            <select name="token_id" required class="form-control" style="height:45px">
+                                <option disabled="" selected value="">Ficha</option>
+                                <?php foreach ($this->model->ListarFicha() as $d) : ?>
+                                    <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?> ">
+                                        <?= $d->name; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+
+                        </div>
+
+                        <div class="input-group input-lg">
+
+                            <input type="text" name="pass_code" required class="form-control" minlength="3" maxlength="3" placeholder="Codigo">
+                        </div>
+                        <button name="submit" type="submit" class="btn btn-primary btn-round btn-block btn-lg">Pedir</button>
+
+
                     </form>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>

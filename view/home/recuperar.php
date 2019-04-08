@@ -17,11 +17,12 @@
                                         <i class="now-ui-icons users_circle-08"></i>
                                     </span>
                                 </div>
-                                <input type="text" name="email" class="form-control" placeholder="Email...">
+                                
+                                <input required type="text" name="email" class="form-control" placeholder="Email...">
                             </div>
                         </div>
                         <div class="card-footer text-center ">
-                            <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Enviar</button>
+                            <button name="submit" type="submit" class="btn btn-primary btn-round btn-lg btn-block">Enviar</button>
                             <div class=" pull-left">
                                 <h6>
                                     <a href="?c=login&a=Ingreso" class="link">Registrarse</a>

@@ -11,8 +11,25 @@ class Validacion {
                 trim($data->name);
                 if (!empty($data->name)) {
                     if (!is_numeric($data->name)) {
-                        if (strlen($data->name)>7) {
+                        if (strlen($data->name)>3) {
                         } else {
+                            echo $msg_error[] = 'Este campo debe tener al menos 7 caracteres';
+                            die;
+                        }
+                    } else {
+                        echo $msg_error[] = 'Este campo no debe contener numeros';
+                        die;
+                    }
+                } else {
+                    echo $msg_error[] = 'Este campo esta vacio';
+                    die;
+                }
+            }
+            if (isset($data->last_name)) {
+                trim($data->last_name);
+                if (!empty($data->last_name)) {
+                    if (!is_numeric($data->last_name)) {
+                        if (strlen($data->last_name) > 4) { } else {
                             echo $msg_error[] = 'Este campo debe tener al menos 7 caracteres';
                             die;
                         }
@@ -49,7 +66,7 @@ class Validacion {
             }
             if (isset($data->action_id)) {
                 if (!empty($data->action_id)) {
-                    if (is_numeric($data->action_id)) {
+                    if (!is_numeric($data->action_id)) {
                     } else {
                         $msg_error[] = 'Este campo no debe contener numeros';
                     }
@@ -71,12 +88,28 @@ class Validacion {
             }
             if (isset($data->cell)) {
                 if (!empty($data->cell)) {
-                    if (($data->cell)< time()) {
+                    if (is_numeric($data->cell)) {
+                        if (srtlen($data->cell)>10 && strlen($data->cell)<10) {
+                            
+                        } else {
+                            $msg_error[] = 'Este campo debe contener 10 digitos';
+                        }
                     } else {
-                        $msg_error[] = 'No se puede escoger fechas anteriores a '.time();
+                        $msg_error[] = 'Este campo debe contener numeros';
                     }
                 } else {
                     $msg_error[] = 'Este campo esta vacio';
+                }
+            }
+            if (isset($data->email)) {
+                if(!empty($data->email)){
+                    if (filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
+                        
+                    } else {
+                        $msg_error[] = 'Este campo no es un correo valido';
+                    }
+                }else {
+                    $msg_error[] ='Este campo esta vacio';
                 }
             }
     

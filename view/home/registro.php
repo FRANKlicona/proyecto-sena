@@ -70,7 +70,7 @@
         <div class="container">
             <!-- <div class="row"> -->
             <div class="card card-signup" data-background-color="orange">
-                <form class="form" action="?c=login&a=RegistroUser" method="post">
+                <form class="form" action="?c=login&a=ValidarCorreo" method="post">
                     <div class="card-header text-center">
                         <h3 class="card-title title-up">Ingresa </h3>
                         <div class="logo-container">
@@ -100,49 +100,12 @@
                         <div class="input-group no-border">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
-                                    <i class="now-ui-icons text_caps-small"></i>
-                                </span>
-                            </div>
-                            <input required type="tel" name="tell" class="form-control" number="true" placeholder="Telefono" value="">
-                        </div>
-                        <div class="input-group no-border">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
                                     <i class="now-ui-icons ui-1_email-85"></i>
                                 </span>
                             </div>
                             <input required type="email" name="email" class="form-control form-control-success" email="true" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="Email" value="">
                         </div>
-                        <div class="input-group no-border">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="now-ui-icons ui-1_email-85"></i>
-                                </span>
-                            </div>
-                            <select required class="form-control" name="dimension_id" id="">
-                                <option selected disable value="">Dimension</option>
-                                <?php foreach ($this->model->ListarDimensiones() as $d) : ?>
-                                                                                                                            <option value="<?php echo $d->id ?>"><?php echo $d->name; ?></option>
-                                                                                                                                                                                                                            <?php endforeach ?>
-                            </select>
-                        </div>
-                        <div class="input-group no-border">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="now-ui-icons ui-1_email-85"></i>
-                                </span>
-                            </div>
-                            <input required type="password" name="password-test" id="pass" class="form-control" minlength="8" placeholder="Contraseña" pattern="[A-Za-z0-9!?-]{8,12}" value="">
-                        </div>
-                        <div class="input-group no-border">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="now-ui-icons ui-1_email-85"></i>
-                                </span>
-                            </div>
-                            <input required type="password" name="password" id="passed" equalTo="#pass" class="form-control" minlength="8" placeholder="Confirme su contraseña"  pattern="[A-Za-z0-9!?-]{8,12}"value="">
-                            <input type="hidden" name="rol_id" value="1">
-                        </div>
+                        
                     </div>
                     <div class="card-footer text-center">
                         <button type="submit" class="btn btn-neutral btn-round btn-lg">Enviar</button>

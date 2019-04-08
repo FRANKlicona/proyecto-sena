@@ -12,7 +12,7 @@ if($session){
 
     $controller = 'home';
 
-    // Todo esta lógica hara el papel de un FrontController
+            //  Todo esta lógica hara el papel de un FrontController
     if(!isset($_REQUEST['c'])) {
             require_once "controller/$controller.controller.php";
             $controller = ucwords($controller) . 'Controller';
