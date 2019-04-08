@@ -244,7 +244,7 @@
                                 <input type="hidden" id="ide" name="ide">
                                 <input type="hidden" id="token_id" name="token_id">
                                 <input type="hidden" id="action_id" name="action_id">
-                                <input type="date" required name="date" class="form-control " value="">
+                                <input type="date" min="<?= date('Y-m-d'); ?>"  required name="date" class="form-control " value="">
                             </div>
                             <div class="text-center form-group">
                                 <button class=" btn btn-primary btn-round">Guardar</button>

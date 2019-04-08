@@ -31,7 +31,7 @@
                                 <div class="datepicker-container">
                                     <div class="form-group">
                                         <label>Fecha</label>
-                                        <input type="date" name="date" class="form-control" placeholder="Fecha" required value="<?= $actividad->date; ?>">
+                                        <input type="date" name="date" class="form-control" min="<?= date('Y-m-d'); ?>" placeholder="Fecha" required value="<?= $actividad->date; ?>">
                                     </div>
                                 </div>
                             </div>

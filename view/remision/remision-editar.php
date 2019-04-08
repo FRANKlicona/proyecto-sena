@@ -23,7 +23,7 @@
                                 <div class="datepicker-container">
                                     <div class="form-group">
                                         <label>Fecha</label>
-                                        <input type="date" value="<?= $remision->date_create ?>" name="date_create" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
+                                        <input type="date" min="<?= date('Y-m-d'); ?>"  value="<?= $remision->date_create ?>" name="date_create" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                 <div class="datepicker-container">
                                     <div class="form-group">
                                         <label>Fecha De Evaluacion</label>
-                                        <input type="date" name="date_eval" value="<?= $remision->date_eval ?>" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
+                                        <input type="date" min="<?= date('Y-m-d'); ?>"  name="date_eval" value="<?= $remision->date_eval ?>" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Fecha Establecida Para Cumplir Compromisos </label>
-                                    <input type="date" name="date_promises" value="<?= $remision->date_promises ?>" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
+                                    <input type="date" min="<?= date('Y-m-d'); ?>"  name="date_promises" value="<?= $remision->date_promises ?>" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
                                 </div>
                             </div>
                             <div class="col-md-6">

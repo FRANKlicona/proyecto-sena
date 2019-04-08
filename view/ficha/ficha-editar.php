@@ -31,7 +31,7 @@
                                     <div class="datepicker-container">
                                         <div class="form-group">
                                             <label>Fecha De Inicio Del Programa</label>
-                                            <input type="text" name="date_start" class="form-control" <?= isset($_REQUEST['d']) ? 'disabled' : ''; ?> placeholder="Fecha" value="<?= isset($_REQUEST['id']) ? $ficha->date_start : ''; ?>">
+                                            <input type="date" min="<?= date('Y-m-d'); ?>"  name="date_start" class="form-control" <?= isset($_REQUEST['d']) ? 'disabled' : ''; ?> placeholder="Fecha" value="<?= isset($_REQUEST['id']) ? $ficha->date_start : ''; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                     <div class="datepicker-container">
                                         <div class="form-group">
                                             <label>Fecha De Finalizacion Del Programa</label>
-                                            <input type="text" name="date_finish" class="form-control" <?= isset($_REQUEST['d']) ? 'disabled' : ''; ?> placeholder="Fecha" value="<?= isset($_REQUEST['id']) ? $ficha->date_finish : ''; ?>">
+                                            <input type="date" min="<?= date('Y-m-d'); ?>"  name="date_finish" class="form-control" <?= isset($_REQUEST['d']) ? 'disabled' : ''; ?> placeholder="Fecha" value="<?= isset($_REQUEST['id']) ? $ficha->date_finish : ''; ?>">
                                         </div>
                                     </div>
                                 </div>
