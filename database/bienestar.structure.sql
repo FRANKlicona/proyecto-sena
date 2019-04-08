@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-04-2019 a las 01:15:54
+-- Tiempo de generación: 08-04-2019 a las 07:08:36
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -43,10 +43,22 @@ CREATE TABLE `acciones` (
 CREATE TABLE `actividades` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `checkit` enum('SI','NO') NOT NULL DEFAULT 'NO',
-  `date_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `checkit` enum('SI','NO','VENCIDA') NOT NULL DEFAULT 'NO',
+  `date_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `token_id` int(11) NOT NULL,
   `action_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asistentes`
+--
+
+CREATE TABLE `asistentes` (
+  `id` int(11) NOT NULL,
+  `registry_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -121,6 +133,23 @@ CREATE TABLE `estudiantes` (
   `identification` varchar(15) NOT NULL,
   `HR` enum('O+','O-','A+','A-','B+','B-','AB+','AB-') NOT NULL,
   `token_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `evidencias`
+--
+
+CREATE TABLE `evidencias` (
+  `id` int(11) NOT NULL,
+  `name` int(11) NOT NULL,
+  `url` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `size` int(11) NOT NULL,
+  `date_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `registry_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -257,6 +286,14 @@ ALTER TABLE `actividades`
   ADD KEY `token_id` (`token_id`);
 
 --
+-- Indices de la tabla `asistentes`
+--
+ALTER TABLE `asistentes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `registry_id` (`registry_id`),
+  ADD KEY `student_id` (`student_id`);
+
+--
 -- Indices de la tabla `beneficiados`
 --
 ALTER TABLE `beneficiados`
@@ -283,6 +320,14 @@ ALTER TABLE `encuestas`
 ALTER TABLE `estudiantes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `token_id` (`token_id`);
+
+--
+-- Indices de la tabla `evidencias`
+--
+ALTER TABLE `evidencias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `registry_id` (`registry_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indices de la tabla `fichas`
@@ -354,6 +399,12 @@ ALTER TABLE `actividades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `asistentes`
+--
+ALTER TABLE `asistentes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `beneficiados`
 --
 ALTER TABLE `beneficiados`
@@ -375,6 +426,12 @@ ALTER TABLE `encuestas`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `evidencias`
+--
+ALTER TABLE `evidencias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -431,6 +488,13 @@ ALTER TABLE `actividades`
   ADD CONSTRAINT `actividades_ibfk_2` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`);
 
 --
+-- Filtros para la tabla `asistentes`
+--
+ALTER TABLE `asistentes`
+  ADD CONSTRAINT `asistentes_ibfk_1` FOREIGN KEY (`registry_id`) REFERENCES `registros` (`id`),
+  ADD CONSTRAINT `asistentes_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `estudiantes` (`id`);
+
+--
 -- Filtros para la tabla `beneficiados`
 --
 ALTER TABLE `beneficiados`
@@ -448,6 +512,13 @@ ALTER TABLE `encuestas`
 --
 ALTER TABLE `estudiantes`
   ADD CONSTRAINT `estudiantes_ibfk_1` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`);
+
+--
+-- Filtros para la tabla `evidencias`
+--
+ALTER TABLE `evidencias`
+  ADD CONSTRAINT `evidencias_ibfk_1` FOREIGN KEY (`registry_id`) REFERENCES `registros` (`id`),
+  ADD CONSTRAINT `evidencias_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Filtros para la tabla `fichas`
