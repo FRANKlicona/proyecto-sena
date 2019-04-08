@@ -71,7 +71,7 @@ $total_pages = ceil($cant / 13);
                         <div class="col-md-3 col-sm-10 col-10">
                             <form action="?c=Actividad" method="POST">
                                 <div class="input-group no-border">
-                                    <input type="text" value="" name="shr" class="form-control" placeholder="buscar...">
+                                    <input required type="text" value="" name="shr" class="form-control" minlength="7" maxlength="7" pattern="[0-9!?-]{7,7}" placeholder="buscar...">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <i class="now-ui-icons ui-1_zoom-bold"></i>

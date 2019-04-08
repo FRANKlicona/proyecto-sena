@@ -70,7 +70,6 @@ Docs & License: https://fullcalendar.io/
         TimeGridEventRenderer.prototype.attachSegs = function (segs, mirrorInfo) {
             var segsByCol = this.timeGrid.groupSegsByCol(segs);
             // order the segs within each column
-            // TODO: have groupSegsByCol do this?
             for (var col = 0; col < segsByCol.length; col++) {
                 segsByCol[col] = this.sortEventSegs(segsByCol[col]);
             }
@@ -263,7 +262,7 @@ Docs & License: https://fullcalendar.io/
                 // if the event is short that the title will be cut off,
                 // attach a className that condenses the title into the time area.
                 if (seg.eventRange.def.title && seg.bottom - seg.top < 30) {
-                    seg.el.classList.add('fc-short'); // TODO: "condensed" is a better name
+                    seg.el.classList.add('fc-short');
                 }
             }
         };
@@ -415,7 +414,6 @@ Docs & License: https://fullcalendar.io/
         TimeGridFillRenderer.prototype.attachSegs = function (type, segs) {
             var timeGrid = this.timeGrid;
             var containerEls;
-            // TODO: more efficient lookup
             if (type === 'bgEvent') {
                 containerEls = timeGrid.bgContainerEls;
             }
@@ -493,7 +491,6 @@ Docs & License: https://fullcalendar.io/
             if (snapsPerSlot === null) {
                 snapDuration = slotDuration;
                 snapsPerSlot = 1;
-                // TODO: say warning?
             }
             this.slotDuration = slotDuration;
             this.snapDuration = snapDuration;
@@ -1087,7 +1084,6 @@ Docs & License: https://fullcalendar.io/
             // make all axis cells line up
             this.axisWidth = core.matchCellWidths(core.findElements(this.el, '.fc-axis'));
             // hack to give the view some height prior to timeGrid's columns being rendered
-            // TODO: separate setting height from scroller VS timeGrid.
             if (!this.timeGrid.colEls) {
                 if (!isAuto) {
                     scrollerHeight = this.computeScrollerHeight(viewHeight);

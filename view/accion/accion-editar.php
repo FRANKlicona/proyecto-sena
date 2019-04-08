@@ -17,7 +17,7 @@
                                 <div class="datepicker-container">
                                     <div class="form-group">
                                         <label>Nombre</label>
-                                        <input type="text" name="name" class="form-control" required placeholder="Nombre de la actividad"  minLength="5"  value="<?= $accion->name; ?>">
+                                        <input type="text" name="name" class="form-control" required placeholder="Nombre de la actividad" minLength="5" value="<?= $accion->name; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -27,11 +27,11 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Dimension</label>
                                     <select name="dimension_id" required class="form-control">
-                                    <option <?= !isset($_REQUEST['id']) ?  'Selected' : ''; ?> disable value="">Por favor escoja una Dimension</option>
+                                        <option <?= !isset($_REQUEST['id']) ?  'Selected' : ''; ?> disable value="">Por favor escoja una Dimension</option>
                                         <?php foreach ($this->model->ListarDimension() as $d) : ?>
-                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $accion->dimension_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                            <?= $d->name; ?>
-                                        </option>
+                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $accion->dimension_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
+                                                <?= $d->name; ?>
+                                            </option>
                                         <?php endforeach; ?>
 
                                     </select>
@@ -39,12 +39,11 @@
                             </div>
                         </div>
                         <div class="text-right form-group">
-                            <a type="button" href="?c=accion" class="btn btn-link btn-primary btn-round" ">Volver</a>
-                            <button name="submit" class=" btn btn-primary btn-round">Guardar</button>
+                            <a href="#" class="btn btn-link btn-primary btn-round" onclick="history.back()">Volver</a> <button name="submit" class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 
-    </div> 
+    </div>

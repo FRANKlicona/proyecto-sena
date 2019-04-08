@@ -46,9 +46,9 @@
                                     <select name="activity_id" class="form-control">
                                         <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la Actividad</option>
                                         <?php foreach ($this->model->ListarActividad() as $d) : ?>
-                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->act_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                            <?= $d->exe_name; ?>
-                                        </option>
+                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->act_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
+                                                <?= $d->exe_name; ?>
+                                            </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -59,9 +59,9 @@
                                     <select name="token_id" class="form-control">
                                         <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
                                         <?php foreach ($this->model->ListarFicha() as $d) : ?>
-                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->tok_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                            <?= $d->name; ?>
-                                        </option>
+                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->tok_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
+                                                <?= $d->name; ?>
+                                            </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -74,21 +74,20 @@
                                     <select name="program_id" class="form-control">
                                         <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione el programa correspondiente</option>
                                         <?php foreach ($this->model->ListarPrograma() as $d) : ?>
-                                        <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->pro_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                            <?= $d->name; ?>
-                                        </option>
+                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->pro_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
+                                                <?= $d->name; ?>
+                                            </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="text-right form-group">
-                            <a type="button" href="?c=registro" class="btn btn-link btn-primary btn-round" ">Volver</a>
-                                <button class=" btn btn-primary btn-round">Guardar</button>
+                            <a href="#" class="btn btn-link btn-primary btn-round" onclick="history.back()">Volver</a> <button class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</div>

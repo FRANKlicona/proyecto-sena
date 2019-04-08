@@ -1027,7 +1027,6 @@ Docs & License: https://fullcalendar.io/
         };
     }
     // Number and Boolean are only types that defaults or not computed for
-    // TODO: write more comments
     function refineProps(rawProps, processors, defaults, leftoverProps) {
         if (defaults === void 0) { defaults = {}; }
         var refined = {};
@@ -2252,8 +2251,6 @@ Docs & License: https://fullcalendar.io/
             configurable: true
         });
         Object.defineProperty(EventApi.prototype, "classNames", {
-            // NOTE: user can't modify these because Object.freeze was called in event-def parsing
-            get: function () { return this._def.ui.classNames; },
             enumerable: true,
             configurable: true
         });
@@ -7127,7 +7124,6 @@ Docs & License: https://fullcalendar.io/
         // Event-Date Utilities
         // -----------------------------------------------------------------------------------------------------------------
         // Given an event's allDay status and start date, return what its fallback end date should be.
-        // TODO: rename to computeDefaultEventEnd
         Calendar.prototype.getDefaultEventEnd = function (allDay, marker) {
             var end = marker;
             if (allDay) {
@@ -7149,7 +7145,7 @@ Docs & License: https://fullcalendar.io/
                 if (!this.state.eventStore.defs[def.defId]) {
                     this.dispatch({
                         type: 'ADD_EVENTS',
-                        eventStore: eventTupleToStore({ def: def, instance: instance }) // TODO: better util for two args?
+                        eventStore: eventTupleToStore({ def: def, instance: instance })
                     });
                 }
                 return eventInput;

@@ -16,7 +16,7 @@
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
                                     <label>Nombre Del Programa</label>
-                                    <input type="text" name="name" value="<?= isset($_REQUEST['id'])?$programa->name:"" ?>" class="form-control">
+                                    <input type="text" name="name" value="<?= isset($_REQUEST['id']) ? $programa->name : "" ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -32,8 +32,7 @@
                             </div>
                         </div>
                         <div class="text-right form-group">
-                            <a type="button" href="?c=actividad" class="btn btn-link btn-primary btn-round" ">Volver</a>
-                            <button class=" btn btn-primary btn-round">Guardar</button>
+                            <a href="#" class="btn btn-link btn-primary btn-round" onclick="history.back()">Volver</a> <button class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>
                 </div>
@@ -41,4 +40,4 @@
         </div>
 
     </div>
-</div> 
+</div>

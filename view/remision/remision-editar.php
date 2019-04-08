@@ -16,7 +16,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Cedula</label>
-                                    <input type="text" value="<?= $remision->identification_id?>" class="form-control" name="identification_id">
+                                    <input type="text" value="<?= $remision->identification_id ?>" class="form-control" name="identification_id">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -33,14 +33,18 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Accion</label>
                                     <select name="referal_type" class="form-control">
-                                        <?php if(isset($_REQUEST['id'])): ?>
-                                            <option value="<?php if($remision->referal_type == 'Trabajo_Social' ){ echo 1;}else{ echo 2;} ?>"><?= $remision->referal_type ?></option>
+                                        <?php if (isset($_REQUEST['id'])) : ?>
+                                            <option value="<?php if ($remision->referal_type == 'Trabajo_Social') {
+                                                                echo 1;
+                                                            } else {
+                                                                echo 2;
+                                                            } ?>"><?= $remision->referal_type ?></option>
                                         <?php endif; ?>
                                         <option value="1">
-                                           <p>Trabajo Social</p> 
+                                            <p>Trabajo Social</p>
                                         </option>
                                         <option value="2">
-                                           <p>Psicologia</p>
+                                            <p>Psicologia</p>
                                         </option>
                                     </select>
                                 </div>
@@ -70,7 +74,7 @@
                                     <label>Firma Instructor</label>
                                     <input type="text" class="form-control" name="instructor_firm">
                                 </div>
-                            </div>    
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
@@ -96,62 +100,65 @@
                                     <label>Firma Estudiante</label>
                                     <input type="text" class="form-control" name="student_firm">
                                 </div>
-                            </div>    
+                            </div>
                         </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="datepicker-container">
-                                        <div class="form-group">
-                                            <label>Fecha De Evaluacion</label>
-                                            <input type="date" name="date_eval" value="<?= $remision->date_eval ?>" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div <?php if(!isset($_REQUEST['id'])){echo('hidden');} ?> class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="datepicker-container">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Accion</label>
-                                        <select name="eval_track"  class="form-control">
-                                            <option value="2">
-                                                <p>No</p> 
-                                            </option>
-                                            <option value="1">
-                                                <p>Si</p>
-                                            </option>
-                                        </select>
-                                    </div>
-                                    </div>    
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Fecha Establecida Para Cumplir Compromisos </label>
-                                        <input type="date" name="date_promises" value="<?= $remision->date_promises ?>" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Firma Psicologo/a</label>
-                                        <input type="text" class="form-control" name="psico_firm_after">
+                                        <label>Fecha De Evaluacion</label>
+                                        <input type="date" name="date_eval" value="<?= $remision->date_eval ?>" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
                                     </div>
                                 </div>
                             </div>
-                            <div <?php if(!isset($_REQUEST['id'])){echo('hidden');} ?> class="col-md-6">
+                            <div <?php if (!isset($_REQUEST['id'])) {
+                                        echo ('hidden');
+                                    } ?> class="col-md-6">
                                 <div class="form-group">
-                                    <label>Programa De Formacion</label>
-                                    <select name="program_id" class="form-control">
-                                        <?php foreach ($this->model->ListarPrograma() as $r):?>
-                                            <option value="<?php echo $r->id ?>"><?php echo $r->name ?></option>
-                                        <?php endforeach; ?>
+                                    <label for="exampleInputEmail1">Accion</label>
+                                    <select name="eval_track" class="form-control">
+                                        <option value="2">
+                                            <p>No</p>
+                                        </option>
+                                        <option value="1">
+                                            <p>Si</p>
+                                        </option>
                                     </select>
                                 </div>
-                            </div>    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Fecha Establecida Para Cumplir Compromisos </label>
+                                    <input type="date" name="date_promises" value="<?= $remision->date_promises ?>" class="form-control" placeholder="Fecha" data-datepicker-color="simple">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Firma Psicologo/a</label>
+                                    <input type="text" class="form-control" name="psico_firm_after">
+                                </div>
+                            </div>
+                        </div>
+                        <div <?php if (!isset($_REQUEST['id'])) {
+                                    echo ('hidden');
+                                } ?> class="col-md-6">
+                            <div class="form-group">
+                                <label>Programa De Formacion</label>
+                                <select name="program_id" class="form-control">
+                                    <?php foreach ($this->model->ListarPrograma() as $r) : ?>
+                                        <option value="<?php echo $r->id ?>"><?php echo $r->name ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
                         <div class="text-right form-group">
-                            <a type="button" href="?c=actividad" class="btn btn-link btn-primary btn-round" ">Volver</a>
-                            <button class=" btn btn-primary btn-round">Guardar</button>
+                            <a href="#" class="btn btn-link btn-primary btn-round" onclick="history.back()">Volver</a> <button class=" btn btn-primary btn-round">Guardar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</div>
