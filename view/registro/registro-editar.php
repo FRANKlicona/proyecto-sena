@@ -17,25 +17,25 @@
                             <div class="col-md-3 pr-1">
                                 <div class="form-group">
                                     <label>Aprendices</label>
-                                    <input type="text" name="students" class="form-control" placeholder="Company" value="<?= $registro->students; ?>">
+                                    <input id="t" required type="text" name="students" class="form-control" onblur="totales()" pattern="[0-9!?-]{1,4}" maxlength="4" max="2000" placeholder="Cantidad Total" value="<?= $registro->students; ?>">
                                 </div>
                             </div>
                             <div class="col-md-3 pr-1">
                                 <div class="form-group">
                                     <label>Hombres</label>
-                                    <input type="text" name="men" class="form-control" placeholder="Username" value="<?= $registro->men; ?>">
+                                    <input id="h" required type="text" name="men" class="form-control" onblur="totales()"  pattern="[0-9!?-]{1,3}" maxlength="3" placeholder="Cantidad de Hombre" value="<?= $registro->men; ?>">
                                 </div>
                             </div>
                             <div class="col-md-3 pr-1">
                                 <div class="form-group">
                                     <label>Mujeres</label>
-                                    <input type="text" name="women" class="form-control" placeholder="Fecha" data-datepicker-color="simple" value="<?= $registro->women; ?>">
+                                    <input id="m" required type="text" name="women" class="form-control" onblur="totales()"  pattern="[0-9!?-]{1,3}" maxlength="3" placeholder="Cantidad de Mujeres"  value="<?= $registro->women; ?>">
                                 </div>
                             </div>
                             <div class="col-md-3 px-100">
                                 <div class="form-group">
                                     <label for="">Duracion</label>
-                                    <input class="form-control" type="time" name="duration" id="">
+                                    <input required class="form-control" type="time" name="duration" id="">
                                 </div>
                             </div>
                         </div>
@@ -43,11 +43,11 @@
                             <div class="col-md-7 pr-1">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Actividad</label>
-                                    <select name="activity_id" class="form-control">
+                                    <select required name="activity_id" class="form-control">
                                         <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la Actividad</option>
                                         <?php foreach ($this->model->ListarActividad() as $d) : ?>
                                             <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->act_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                                <?= $d->exe_name; ?>
+                                                <?= $d->exe_name." - ".$d->tok_name; ?>
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
@@ -56,7 +56,7 @@
                             <div class="col-md-5 px-100">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Ficha</label>
-                                    <select name="token_id" class="form-control">
+                                    <select required name="token_id" class="form-control">
                                         <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
                                         <?php foreach ($this->model->ListarFicha() as $d) : ?>
                                             <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->tok_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
@@ -71,7 +71,7 @@
                             <div class="col-md-12 px-100">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Programa</label>
-                                    <select name="program_id" class="form-control">
+                                    <select required name="program_id" class="form-control">
                                         <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione el programa correspondiente</option>
                                         <?php foreach ($this->model->ListarPrograma() as $d) : ?>
                                             <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->pro_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">

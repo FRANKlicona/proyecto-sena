@@ -53,13 +53,13 @@
                         <form class="form-group" action="?c=Actividad&a=Guardar" method="post">
                             <input type="hidden" id="id" name="id" value="">
                             <div class="row">
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-6 ">
                                     <div class="form-group">
                                         <label>Fecha</label>
-                                        <input type="" name="date" disable required id="date" class="form-control" placeholder="Company" value="aquivalafecha">
+                                        <input type="date" min="<?= date('Y-m-d'); ?>" name="date" required id="date" class="form-control" placeholder="Company" value="aquivalafecha">
                                     </div>
                                 </div>
-                                <div class="col-md-4 pr-1">
+                                <div class="col-md-6 ">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Ficha</label>
                                         <select name="token_id" required class="form-control">
@@ -72,7 +72,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4 px-1">
+                                <div class="col-md-12 ">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Accion</label>
                                         <select name="action_id" required class="form-control">

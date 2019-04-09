@@ -1,5 +1,5 @@
 <footer class="footer">
-    <div class="container-fluid">
+    <div class="<?= isset($_SESSION['auth']) ? "container-fluid" : "container"; ?>">
         <nav>
             <ul>
                 <li>
@@ -57,6 +57,15 @@
     function passValue($value) {
         document.getElementById('_id').value = $value;
     }
+
+    function totales() {
+        var hombres = parseInt(document.getElementById('h').value);
+        var mujeres = parseInt(document.getElementById('m').value);
+        var total   = parseInt(document.getElementById('t').value);
+        if ((hombres + mujeres) > total){
+            document.getElementById('t').value = mujeres + hombres;
+        }
+    }
 </script>
 <?php
 if (isset($_REQUEST['a'])) :
@@ -83,7 +92,6 @@ if (isset($_REQUEST['a'])) :
                         $('#myModal3').modal();
                     },
                     eventClick: function(info) {
-                        info.jsEvent.preventDefault();
                         document.getElementById('name').textContent = info.event.title;
                         document.getElementById('id1').value = info.event.id;
                         document.getElementById('id2').value = info.event.id;
@@ -135,7 +143,7 @@ if (isset($_COOKIE['auth'])) {
                 }).show();
                 </script>";
     }
-}?>
+} ?>
 <?php
 if (isset($_COOKIE["icon"])) {
     echo "

@@ -60,10 +60,12 @@ class Registro
             $stm = $this->pdo->prepare( "SELECT 
                 actividades.id,
                 date,
-                acciones.name   as exe_name 
+                acciones.name   as exe_name, 
+                fichas.name     as tok_name
                 FROM actividades 
                 INNER JOIN acciones on action_id= acciones.id
-                WHERE checkit = 'NO'");
+                INNER JOIN fichas   on token_id = fichas.id
+                WHERE checkit = 'NO' ");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
