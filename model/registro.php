@@ -35,15 +35,9 @@ class Registro
                     actividades.id          as act_id,
                     actividades.date        as act_date,
                     actividades.action_id   as act_action_id,
-                    programas.id            as pro_id,
-                    programas.name          as pro_name,
-                    fichas.id               as tok_id,
-                    fichas.name             as tok_name,
                     acciones.name           as acc_name
                 FROM registros 
                 INNER JOIN actividades  on activity_id          = actividades.id 
-                INNER JOIN programas    on program_id           = programas.id 
-                INNER JOIN fichas       ON registros.token_id             = fichas.id  
                 INNER JOIN acciones     ON actividades.action_id= acciones.id ");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -66,32 +60,6 @@ class Registro
                 INNER JOIN acciones on action_id= acciones.id
                 INNER JOIN fichas   on token_id = fichas.id
                 WHERE checkit = 'NO' ");
-            $stm->execute();
-
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-    public function ListarFicha()
-    {
-        try {
-            $result = array();
-
-            $stm = $this->pdo->prepare("SELECT * FROM fichas");
-            $stm->execute();
-
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-    public function ListarPrograma()
-    {
-        try {
-            $result = array();
-
-            $stm = $this->pdo->prepare("SELECT * FROM programas");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -134,9 +102,7 @@ class Registro
                         men         = ?,
                         women       = ?,
                         duration    = ?,
-                        activity_id = $data->activity_id,
-                        activity_id = $data->program_id,
-                        token_id    = $data->token_id
+                        activity_id = $data->activity_id
 						
                     WHERE id = ?";
             // print_r($sql);
@@ -164,8 +130,8 @@ class Registro
     public function Registrar(registro $data)
     {
         try {
-            $sql = "INSERT INTO registros (students,men,women,duration,activity_id,program_id,token_id) 
-                VALUES ( ? ,? ,?,?,$data->activity_id,$data->program_id,$data->token_id)";
+            $sql = "INSERT INTO registros (students,men,women,duration,activity_id) 
+                VALUES ( ? ,? ,?,?,$data->activity_id)";
             $this->pdo->prepare($sql)
                 ->execute(
                     array(

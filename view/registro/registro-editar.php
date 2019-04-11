@@ -53,37 +53,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-5 px-100">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Ficha</label>
-                                    <select required name="token_id" class="form-control">
-                                        <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
-                                        <?php foreach ($this->model->ListarFicha() as $d) : ?>
-                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->tok_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                                <?= $d->name; ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
+                            
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 px-100">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Programa</label>
-                                    <select required name="program_id" class="form-control">
-                                        <option disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione el programa correspondiente</option>
-                                        <?php foreach ($this->model->ListarPrograma() as $d) : ?>
-                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $registro->pro_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
-                                                <?= $d->name; ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="text-right form-group">
-                            <a href="#" class="btn btn-link btn-primary btn-round" onclick="history.back()">Volver</a> <button class=" btn btn-primary btn-round">Guardar</button>
+                            <a href="#" class="btn btn-link btn-primary btn-round" onclick="history.back()">Volver</a> <button class=" btn btn-primary btn-round" onsubmit="totales()" >Guardar</button>
                         </div>
                     </form>
                 </div>

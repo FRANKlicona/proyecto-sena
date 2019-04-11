@@ -107,27 +107,21 @@
 						<div class="collapse" id="pagesExamplesB">
 							<ul class="nav">
 								<li>
+									<a href="?c=programa">
+										<i class="fas fa-circle"></i>
+										<p>Gestionar Programas</p>
+									</a>
+								</li>
+								<li>
 									<a href="?c=ficha">
 										<i class="fas fa-circle"></i>
-										<p>Gestionar Ficha</p>
+										<p>Gestionar Fichas</p>
 									</a>
 								</li>
 								<li>
 									<a href="?c=estudiante">
 										<i class="fas fa-circle"></i>
-										<p>Lista de estudiantes</p>
-									</a>
-								</li>
-								<li>
-									<a href="?c=ficha">
-										<i class="fas fa-circle"></i>
-										<p>Lista de fichas</p>
-									</a>
-								</li>
-								<li>
-									<a href="?c=programa">
-										<i class="fas fa-circle"></i>
-										<p>gestion de programas</p>
+										<p>Gestionar Estudiantes</p>
 									</a>
 								</li>
 							</ul>

@@ -61,20 +61,58 @@
     function totales() {
         var hombres = parseInt(document.getElementById('h').value);
         var mujeres = parseInt(document.getElementById('m').value);
-        var total   = parseInt(document.getElementById('t').value);
-        if ((hombres + mujeres) > total){
+        var total = parseInt(document.getElementById('t').value);
+        if ((hombres + mujeres) > total) {
             document.getElementById('t').value = mujeres + hombres;
         }
     }
 </script>
 <?php
+if ($_REQUEST['c'] == 'Home' && ($_REQUEST['a'] == '' || $_REQUEST['a']) == 'Landing') : ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
+                themeSystem: 'bootstrap',
+                timeZone: 'NYC',
+                events: [
+                    <?php foreach ($this->model->ListarActividad() as $r) : ?> {
+                            id: '<?= $r->id; ?>',
+                            start: '<?= $r->date; ?>',
+                            title: '<?= $r->exe_name; ?>',
+                        },
+                    <?php endforeach; ?>
+                ],
+                dateClick: function(info) {
+                    scrollToRequire()
+                },
+                eventClick: function(info) {
+                    scrollToRequire()
+                },
+                contentHeight: 500,
+                buttonText: {
+                    today: 'Hoy',
+                    month: 'M',
+                    week: 'S',
+                    day: 'D',
+                },
+                header: {
+                    left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                    center: 'title',
+                    right: 'prev,today,next'
+                },
+            });
+            calendar.setOption('locale', 'es');
+            calendar.render();
+        });
+    </script>
+<?php endif;
 if (isset($_REQUEST['a'])) :
     if ($_REQUEST['a'] == 'Calendario') : ?>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-
                 var calendarEl = document.getElementById('calendar');
-
                 var calendar = new FullCalendar.Calendar(calendarEl, {
                     plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
                     themeSystem: 'bootstrap',
@@ -104,11 +142,6 @@ if (isset($_REQUEST['a'])) :
                         week: 'S',
                         day: 'D',
                     },
-                    // titleFormat: {
-                    //     year: 'numeric',
-                    //     month: 'short',
-                    //     day: 'numeric'
-                    // },
                     header: {
                         left: 'dayGridMonth,timeGridWeek,timeGridDay',
                         center: 'title',
@@ -124,7 +157,8 @@ if (isset($_REQUEST['a'])) :
             });
         </script>
     <?php endif;
-endif ?>
+endif
+?>
 <?php
 if (isset($_COOKIE['auth'])) {
     if ($_COOKIE['auth']) {
@@ -273,7 +307,16 @@ if (isset($_COOKIE["icon"])) {
         }
     });
 </script>
+<script>
+    function scrollToRequire() {
 
+        if ($('#formularioPet').length != 0) {
+            $("html, body").animate({
+                scrollTop: $('#formularioPet').offset().top
+            }, 1000);
+        }
+    }
+</script>
 </body>
 
 </html>

@@ -181,6 +181,11 @@ class Home
 					 WHERE checkit = 'NO'");
 			$stm->execute();
 
+			$sql = "UPDATE actividades SET  
+                        checkit     = 'VENCIDA'						
+                    WHERE date <= now() and checkit = 'NO'";
+            $this->pdo->prepare($sql)->execute();
+
 			return $stm->fetchAll(PDO::FETCH_OBJ);
 		} catch (Exception $e) {
 			die($e->getMessage());

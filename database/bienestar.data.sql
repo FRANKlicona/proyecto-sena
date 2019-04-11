@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-04-2019 a las 07:09:30
+-- Tiempo de generación: 11-04-2019 a las 15:56:52
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -30,7 +30,11 @@ INSERT INTO `acciones` (`id`, `name`, `dimension_id`) VALUES
 (2, 'Reclutamiento', 2),
 (3, 'Eleccion de vocero', 4),
 (4, 'Clasificacion Socio-Demografica', 5),
-(5, 'Caracterizacon de Ambientes', 4);
+(5, 'Caracterizacon de Ambientes', 4),
+(6, 'Zonales de Liderasgo', 4),
+(7, 'Jornada de prevencion a enfermedades de trasminsio', 6),
+(8, 'Jornada de prevencion a embarazos prematuros', 6),
+(9, 'Misa pre semana santa', 2);
 
 --
 -- Volcado de datos para la tabla `actividades`
@@ -50,8 +54,8 @@ INSERT INTO `actividades` (`id`, `date`, `checkit`, `date_create`, `token_id`, `
 (22, '2019-03-05', 'VENCIDA', '2019-04-04 22:40:47', 1, 2),
 (23, '2019-03-07', 'VENCIDA', '2019-04-04 22:40:47', 1, 3),
 (27, '2019-03-07', 'VENCIDA', '2019-04-04 22:40:47', 1, 2),
-(29, '2019-04-11', 'NO', '2019-04-03 14:44:32', 1, 5),
-(30, '2019-04-07', 'NO', '2019-04-03 14:44:32', 1, 5),
+(29, '2019-04-11', 'SI', '2019-04-03 14:44:32', 1, 5),
+(30, '2019-04-07', 'VENCIDA', '2019-04-03 14:44:32', 1, 5),
 (31, '2019-04-17', 'NO', '2019-04-03 14:44:32', 1, 3),
 (33, '2019-04-02', 'VENCIDA', '2019-04-04 22:40:47', 1, 4),
 (39, '0000-00-00', 'VENCIDA', '2019-04-04 22:40:47', 1, 4),
@@ -60,18 +64,24 @@ INSERT INTO `actividades` (`id`, `date`, `checkit`, `date_create`, `token_id`, `
 (42, '0000-00-00', 'VENCIDA', '2019-04-04 22:40:47', 1, 4),
 (43, '0000-00-00', 'VENCIDA', '2019-04-04 22:40:47', 1, 3),
 (44, '2019-04-25', 'NO', '2019-04-03 14:44:32', 2, 4),
-(45, '2019-04-10', 'NO', '2019-04-03 14:45:10', 2, 5),
+(45, '2019-04-10', 'VENCIDA', '2019-04-03 14:45:10', 2, 5),
 (46, '2019-04-01', 'VENCIDA', '2019-04-04 22:40:47', 1, 3),
 (47, '2019-04-03', 'VENCIDA', '2019-04-04 22:40:47', 2, 2),
-(48, '2019-04-05', 'NO', '2019-04-04 21:13:19', 2, 2),
+(48, '2019-04-05', 'VENCIDA', '2019-04-04 21:13:19', 2, 2),
 (50, '2019-03-06', 'VENCIDA', '2019-04-04 22:40:47', 2, 2),
-(55, '0000-00-00', 'NO', '2019-04-05 14:46:32', 1, 3),
-(56, '0000-00-00', 'NO', '2019-04-05 14:48:26', 1, 3),
-(57, '0000-00-00', 'NO', '2019-04-05 14:54:29', 2, 2),
-(58, '0000-00-00', 'NO', '2019-04-05 14:59:33', 2, 4),
-(59, '0000-00-00', 'NO', '2019-04-06 18:23:31', 2, 5),
-(60, '0000-00-00', 'NO', '2019-04-06 18:58:27', 2, 2),
-(61, '0000-00-00', 'NO', '2019-04-07 16:40:37', 2, 4);
+(55, '0000-00-00', 'VENCIDA', '2019-04-05 14:46:32', 1, 3),
+(56, '0000-00-00', 'VENCIDA', '2019-04-05 14:48:26', 1, 3),
+(57, '0000-00-00', 'VENCIDA', '2019-04-05 14:54:29', 2, 2),
+(58, '0000-00-00', 'VENCIDA', '2019-04-05 14:59:33', 2, 4),
+(59, '0000-00-00', 'VENCIDA', '2019-04-06 18:23:31', 2, 5),
+(60, '0000-00-00', 'VENCIDA', '2019-04-06 18:58:27', 2, 2),
+(61, '0000-00-00', 'VENCIDA', '2019-04-07 16:40:37', 2, 4),
+(62, '0000-00-00', 'VENCIDA', '2019-04-08 12:13:22', 2, 4),
+(63, '2019-04-09', 'VENCIDA', '2019-04-08 20:03:59', 1, 3),
+(64, '2019-04-09', 'VENCIDA', '2019-04-08 20:04:27', 2, 3),
+(65, '0000-00-00', 'VENCIDA', '2019-04-08 20:05:05', 2, 3),
+(66, '2019-04-09', 'VENCIDA', '2019-04-09 12:20:36', 2, 7),
+(67, '2019-04-09', 'VENCIDA', '2019-04-09 12:21:21', 1, 4);
 
 --
 -- Volcado de datos para la tabla `dimensiones`
@@ -98,7 +108,6 @@ INSERT INTO `fichas` (`id`, `name`, `student`, `date_start`, `date_finish`, `jou
 --
 
 INSERT INTO `peticiones` (`id`, `date_create`, `requester`, `action_id`, `token_id`) VALUES
-(11, '2019-04-04 20:36:16', 'Vocero', 4, 2),
 (14, '2019-04-07 11:41:59', 'Vocero', 3, 2);
 
 --
@@ -115,10 +124,11 @@ INSERT INTO `programas` (`id`, `name`, `status`) VALUES
 -- Volcado de datos para la tabla `registros`
 --
 
-INSERT INTO `registros` (`id`, `students`, `men`, `women`, `duration`, `activity_id`, `program_id`, `token_id`) VALUES
-(7, 28, 19, 9, '02:00:00', 1, 3, 1),
-(8, 39, 20, 19, '02:00:00', 2, 3, 1),
-(9, 30, 13, 17, '02:00:00', 12, 3, 1);
+INSERT INTO `registros` (`id`, `students`, `men`, `women`, `duration`, `activity_id`) VALUES
+(7, 28, 19, 9, '02:00:00', 1),
+(8, 39, 20, 19, '02:00:00', 2),
+(9, 30, 13, 17, '02:00:00', 12),
+(10, 31, 12, 19, '02:00:00', 29);
 
 --
 -- Volcado de datos para la tabla `roles`

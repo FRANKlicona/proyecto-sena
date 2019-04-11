@@ -22,12 +22,6 @@
                                 <th>
                                     Actividad
                                 </th>
-                                <th>
-                                    Programa
-                                </th>
-                                <th class="text-right">
-                                    Ficha
-                                </th>
                                 <th class="text-center">
                                     Acciones
                                 </th>
@@ -43,12 +37,6 @@
                                     </td>
                                     <td>
                                         <?php echo $r->acc_name; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $r->pro_name; ?>
-                                    </td>
-                                    <td class="text-right">
-                                        <?php echo $r->tok_name; ?>
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">

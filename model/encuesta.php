@@ -8,7 +8,6 @@ class Encuesta
     public $edificication;
     public $program_id;
     public $age;
-    public $gender_id;
     public $training_modality;
     public $register_id;
     public $question_1;
@@ -40,7 +39,6 @@ class Encuesta
                 region,
                 munipality,
                 edificication,
-                programas.name as program,
                 age,
                 gender_id,
                 training_modality,
@@ -56,7 +54,6 @@ class Encuesta
                 question_9,
                 question_10
                 FROM encuestas
-                INNER JOIN programas ON encuestas.program_id =  programas.id
                 INNER JOIN registros ON register_id = registros.id  
                 INNER JOIN actividades ON registros.activity_id = actividades.id
                 INNER JOIN acciones ON actividades.action_id = acciones.id  
@@ -64,18 +61,6 @@ class Encuesta
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-    public function ListarProgram()
-    {
-        try {
-            $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM programas");
-            $stm->execute();
-
-            return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -126,7 +111,6 @@ class Encuesta
                                             region,
                                             munipality,
                                             edificication,
-                                            program_id,
                                             age,
                                             gender_id,
                                             training_modality,
@@ -141,7 +125,7 @@ class Encuesta
                                             question_8,
                                             question_9,
                                             question_10) 
-                    VALUES ( ? ,? ,? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?, ? )";
+                    VALUES ( ? ,? ,? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?, ? )";
                     
 
             $this->pdo->prepare($sql)
@@ -150,7 +134,6 @@ class Encuesta
                         $data->region,
                         $data->munipality,
                         $data->edificication,
-                        $data->program_id,
                         $data->age,
                         $data->gender_id,
                         $data->training_modality,

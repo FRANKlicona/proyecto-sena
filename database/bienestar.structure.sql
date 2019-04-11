@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-04-2019 a las 07:08:36
+-- Tiempo de generación: 11-04-2019 a las 15:56:04
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -102,7 +102,6 @@ CREATE TABLE `encuestas` (
   `training_modality` enum('presencial','virtual','a distancia') NOT NULL,
   `gender_id` char(1) NOT NULL,
   `register_id` int(11) NOT NULL,
-  `program_id` int(11) NOT NULL,
   `question_1` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
   `question_2` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
   `question_3` enum('en desacuerdo','ni en acuerdo ni en desacuerdo','de acuerdo') NOT NULL,
@@ -207,9 +206,7 @@ CREATE TABLE `registros` (
   `men` tinyint(3) DEFAULT NULL,
   `women` tinyint(3) DEFAULT NULL,
   `duration` time NOT NULL,
-  `activity_id` int(11) NOT NULL,
-  `program_id` int(11) NOT NULL,
-  `token_id` int(11) NOT NULL
+  `activity_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -234,8 +231,7 @@ CREATE TABLE `remisiones` (
   `eval_track` enum('si','no','','') NOT NULL,
   `date_promises` date NOT NULL,
   `psico_firm_after` longblob NOT NULL,
-  `stutent_id` int(11) NOT NULL,
-  `program_id` int(11) NOT NULL
+  `stutent_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -311,8 +307,7 @@ ALTER TABLE `dimensiones`
 --
 ALTER TABLE `encuestas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `register_id` (`register_id`),
-  ADD KEY `program_id` (`program_id`);
+  ADD KEY `register_id` (`register_id`);
 
 --
 -- Indices de la tabla `estudiantes`
@@ -356,17 +351,14 @@ ALTER TABLE `programas`
 --
 ALTER TABLE `registros`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `activity_id` (`activity_id`),
-  ADD KEY `token_id` (`token_id`),
-  ADD KEY `program_id` (`program_id`);
+  ADD KEY `activity_id` (`activity_id`);
 
 --
 -- Indices de la tabla `remisiones`
 --
 ALTER TABLE `remisiones`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `stutent_id` (`stutent_id`),
-  ADD KEY `program_id` (`program_id`);
+  ADD KEY `stutent_id` (`stutent_id`);
 
 --
 -- Indices de la tabla `roles`
@@ -504,8 +496,7 @@ ALTER TABLE `beneficiados`
 -- Filtros para la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  ADD CONSTRAINT `encuestas_ibfk_1` FOREIGN KEY (`register_id`) REFERENCES `registros` (`id`),
-  ADD CONSTRAINT `encuestas_ibfk_2` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`);
+  ADD CONSTRAINT `encuestas_ibfk_1` FOREIGN KEY (`register_id`) REFERENCES `registros` (`id`);
 
 --
 -- Filtros para la tabla `estudiantes`
@@ -537,16 +528,13 @@ ALTER TABLE `peticiones`
 -- Filtros para la tabla `registros`
 --
 ALTER TABLE `registros`
-  ADD CONSTRAINT `registros_ibfk_4` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`),
-  ADD CONSTRAINT `registros_ibfk_5` FOREIGN KEY (`activity_id`) REFERENCES `actividades` (`id`),
-  ADD CONSTRAINT `registros_ibfk_6` FOREIGN KEY (`token_id`) REFERENCES `fichas` (`id`);
+  ADD CONSTRAINT `registros_ibfk_5` FOREIGN KEY (`activity_id`) REFERENCES `actividades` (`id`);
 
 --
 -- Filtros para la tabla `remisiones`
 --
 ALTER TABLE `remisiones`
-  ADD CONSTRAINT `remisiones_ibfk_1` FOREIGN KEY (`stutent_id`) REFERENCES `estudiantes` (`id`),
-  ADD CONSTRAINT `remisiones_ibfk_2` FOREIGN KEY (`program_id`) REFERENCES `programas` (`id`);
+  ADD CONSTRAINT `remisiones_ibfk_1` FOREIGN KEY (`stutent_id`) REFERENCES `estudiantes` (`id`);
 
 --
 -- Filtros para la tabla `users`

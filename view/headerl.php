@@ -22,6 +22,12 @@
     <link href="assets/css/now-ui-kit.css?v=1.2.0" rel="stylesheet" />
     <link href="node_modules/noty/lib/noty.css" rel="stylesheet">
     <link href="node_modules/noty/lib//themes/metroui.css" rel="stylesheet">
+
+    <link href='assets/fullcalendar-4.0.1\packages\core\main.css' rel='stylesheet' />
+    <link href='assets/fullcalendar-4.0.1\packages\daygrid\main.css' rel='stylesheet' />
+    <link href='assets\fullcalendar-4.0.1\packages\list\main.css' rel='stylesheet' />
+    <link href='assets\fullcalendar-4.0.1\packages\timegrid\main.css' rel='stylesheet' />
+    <link href='assets\fullcalendar-4.0.1\packages\bootstrap\main.css' rel='stylesheet' />
 </head>
 
 <body id="log" class="login-page sidebar-collapse">
@@ -41,17 +47,13 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-header">Dropdown header</a>
-                    <a class="dropdown-item" href="<?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? '#formularioPet' : '?c=Home&a=Landing#formularioPet'; ?>">Peticion</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">One more separated link</a>
+                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Actividades Programadas</a>
+                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Calendario de Peticiones</a>
+                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Peticion</a>
                 </div>
             </div>
             <div class="navbar-translate">
-                <a class="navbar-brand" href="?c=home">
+                <a class="navbar-brand" href="?c=home&a=Landing">
                     Bienestar al aprendiz
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">

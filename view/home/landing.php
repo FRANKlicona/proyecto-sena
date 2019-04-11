@@ -23,8 +23,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 ml-auto mr-auto text-center">
-					<h2 class="title">SENA Centro de Comercio y Servicio</h2>
-					<h5 class="description">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice extent in the Pacific and a late drop in ice extent in the Barents Sea.</h5>
+					<h2 class="title">SENA Centro de Comercio y Servicio Regional Bolivar</h2>
+					<h5 class="description">En bienestar tenemos para ti un conjunto de actividades y procesos que te hara crecer como un aprendiz integral durante tu formacion, tambien nos preocupamos por que tu experia en SENA sea inmemorable para que asi como nosotros nos recuerdes con afecto.</h5>
 				</div>
 			</div>
 			<div class="separator separator-primary"></div>
@@ -33,10 +33,10 @@
 					<div class="col-md-6">
 						<div class="image-container image-left" style="background-image: url('assets/img/login2.jpg')">
 							<!-- First image on the left side -->
-							<p class="blockquote blockquote-primary">"Over the span of the satellite record, Arctic sea ice has been declining significantly, while sea ice in the Antarctichas increased very slightly"
+							<p class="blockquote blockquote-primary">"El bienestar debe ser apoyo fundamental en los programas de formación profesional integral ofrecidos por el Servicio Nacional de Aprendizaje."
 								<br>
 								<br>
-								<small>-NOAA</small>
+								<small>-SENA</small>
 							</p>
 						</div>
 						<!-- Second image on the left side of the article -->
@@ -45,20 +45,31 @@
 					<div class="col-md-5">
 						<!-- First image on the right side, above the article -->
 						<div class="image-container image-right" style="background-image: url('assets/img/IMG_20171120_094738_HDR.jpg')"></div>
-						<h3>So what does the new record for the lowest level of winter ice actually mean</h3>
-						<p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens with climate change. Even if the Arctic continues to be one of the fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
+						<h3>Para medir la efectividad que los 9 componentes estratégicos, se establecieron tres indicadores:</h3>
+						<p>
+							<h6>
+								Aumento Nivel del Logro Educativo de los Aprendices
+							</h6>
+							Establecer y aumentar la valoración al interior de la entidad de la excelencia académica. ​ ​
 						</p>
 						<p>
-							For a start, it does not automatically follow that a record amount of ice will melt this summer. More important for determining the size of the annual thaw is the state of the weather as the midnight sun approaches and temperatures rise. But over the more than 30 years of satellite records, scientists have observed a clear pattern of decline, decade-by-decade.
+							<h6>
+								Disminución de la Deserción de los programas de Formación
+							</h6>
+							Disminuir la presencia de factores que aumentan la probabilidad de los aprendices de desertar de los procesos de formación profesional por causas de rezago escolar, falta de los recursos mínimos para garantizar su proceso de formación o desmotivación.
 						</p>
-						<p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens with climate change. Even if the Arctic continues to be one of the fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
+						<p>
+							<h6>
+								Crecimiento Personal del Aprendiz
+							</h6>
+							Aumentar el conocimiento de sí mismo y de los demás miembros de la comunidad, reconocimiento de fortalezas y debilidades, el desarrollo de habilidades y la definición de metas para la vida, bajo los principios y valores que cada uno profesa. ​
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="section section-team text-center">
+	<!-- <div class="section section-team text-center">
 		<div class="container">
 			<h2 class="title">Here is our team</h2>
 			<div class="team">
@@ -101,11 +112,74 @@
 				</div>
 			</div>
 		</div>
+	</div> -->
+	<div class="section section-tabs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 ml-auto  mr-auto">
+					<h2 class="">Actividades Programadas</h2>
+					<!-- Tabs with Background on Card -->
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="tab" href="#home1" role="tab">Psicologia</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Salud</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Apoyo y Sostenimiento</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Cultura</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Deporte</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="tab" href="#messages1" role="tab">Messages</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="tab" href="#settings1" role="tab">Settings</a>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body">
+							<!-- Tab panes -->
+							<div class="tab-content text-center">
+								<div class="tab-pane active" id="home1" role="tabpanel">
+									<p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+								</div>
+								<div class="tab-pane" id="profile1" role="tabpanel">
+									<p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+								</div>
+								<div class="tab-pane" id="messages1" role="tabpanel">
+									<p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+								</div>
+								<div class="tab-pane" id="settings1" role="tabpanel">
+									<p>
+										"I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Tabs on plain Card -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="container">
+			<div class="tab-content gallery">
+				<div id="calendar"></div>
+			</div>
+		</div>
 	</div>
 	<div class="section section-contact-us text-center">
 		<div class="container">
-			<h2 class="title" id="formularioPet">Peticion</h2>
-			<p class="description">Your project is very important to us.</p>
+			<h2 class="title" id="formularioPet">Solicitar Actividad</h2>
 			<div class="row">
 
 				<div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">

@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <div class="section section-nucleo-icons">
     <div class="container">
         <div class="row">
@@ -10,11 +6,8 @@
                 <h5 class="description">
                     Hemos enviado un correo de verificacion, por favor dirigete a el y termina de registrarte. Si este no ha llegado por favor has click aqui
                 </h5>
-                <!-- <div class="nucleo-container">
-							<img src="assets/img/nucleo.svg" alt="">
-						</div> -->
-                <a href="https://outlook.live.com/owa/" class="btn btn-primary btn-round btn-icon btn-lg " target="_blank"><i class="fas fa-envelope"></i></a>
-                <a href="https://mail.google.com/mail/" class="btn btn-primary  btn-round btn-icon btn-lg" target="_blank"><i class="fab fa-google"></i></a>
+                <a href="https://outlook.live.com/owa/" class="btn btn-primary btn-round btn-icon btn-lg " data-toggle="tooltip" data-placement="top" title="Hotmail/OutLook" data-container="body" data-animation="true" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://mail.google.com/mail/" class="btn btn-primary  btn-round btn-icon btn-lg" data-toggle="tooltip" data-placement="top" title="Gmail" data-container="body" data-animation="true" target="_blank"><i class="fab fa-google"></i></a>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="icons-container">
