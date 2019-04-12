@@ -17,8 +17,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<!-- CSS Files -->
 	<link href="assets/css/loader.css" rel="stylesheet" />
-	<link href="assets/css/now-ui-kit.css?v=1.2.0" rel="stylesheet" />
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/css/now-ui-kit.css?v=1.2.0" rel="stylesheet" />
 	<link href="assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
 	<link href="node_modules/noty/lib/noty.css" rel="stylesheet">
 	<link href="node_modules/noty/lib/themes/metroui.css" rel="stylesheet">

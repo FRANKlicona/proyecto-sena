@@ -180,7 +180,7 @@ class HomeController
 		// die;
 		//  print_r($_REQUEST);die;
 		$this->model->AceptarPeticion($home);
-		header("Location: index.php?c=home");
+		header("Location: index.php?c=pdf");
 	}
 }
 

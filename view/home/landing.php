@@ -117,28 +117,28 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 ml-auto  mr-auto">
-					<h2 class="">Actividades Programadas</h2>
+					<h2 id="activities" class="">Actividades Programadas</h2>
 					<!-- Tabs with Background on Card -->
 					<div class="card">
 						<div class="card-header">
 							<ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#home1" role="tab">Psicologia</a>
+									<a class="nav-link" data-toggle="tab" href="#psico" role="tab">Psicologia</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Salud</a>
+									<a class="nav-link" data-toggle="tab" href="#health" role="tab">Salud</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Apoyo y Sostenimiento</a>
+									<a class="nav-link" data-toggle="tab" href="#suport" role="tab">Apoyo y Sostenimiento</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Cultura</a>
+									<a class="nav-link" data-toggle="tab" href="#culture" role="tab">Cultura</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Deporte</a>
+									<a class="nav-link" data-toggle="tab" href="#sport" role="tab">Deporte</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#messages1" role="tab">Messages</a>
+									<a class="nav-link" data-toggle="tab" href="#lider" role="tab">Liderazgo</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" data-toggle="tab" href="#settings1" role="tab">Settings</a>
@@ -148,19 +148,61 @@
 						<div class="card-body">
 							<!-- Tab panes -->
 							<div class="tab-content text-center">
-								<div class="tab-pane active" id="home1" role="tabpanel">
-									<p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+								<div class="tab-pane active" id="psico" role="tabpanel">
+									<ul>
+										<?php foreach ($this->model->ListarAccion(5) as $a) : ?>
+											<li>
+												<?= $a->name; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
 								</div>
-								<div class="tab-pane" id="profile1" role="tabpanel">
-									<p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+								<div class="tab-pane" id="health" role="tabpanel">
+									<ul>
+										<?php foreach ($this->model->ListarAccion(6) as $a) : ?>
+											<li>
+												<?= $a->name; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
 								</div>
-								<div class="tab-pane" id="messages1" role="tabpanel">
-									<p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+								<div class="tab-pane" id="suport" role="tabpanel">
+									<ul>
+										<?php foreach ($this->model->ListarAccion(1) as $a) : ?>
+											<li>
+												<?= $a->name; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+								<div class="tab-pane" id="culture" role="tabpanel">
+									<ul>
+										<?php foreach ($this->model->ListarAccion(2) as $a) : ?>
+											<li>
+												<?= $a->name; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+								<div class="tab-pane" id="sport" role="tabpanel">
+									<ul>
+										<?php foreach ($this->model->ListarAccion(3) as $a) : ?>
+											<li>
+												<?= $a->name; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+								<div class="tab-pane" id="lider" role="tabpanel">
+									<ul>
+										<?php foreach ($this->model->ListarAccion(4) as $a) : ?>
+											<li>
+												<?= $a->name; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
 								</div>
 								<div class="tab-pane" id="settings1" role="tabpanel">
-									<p>
-										"I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
-									</p>
 								</div>
 							</div>
 						</div>

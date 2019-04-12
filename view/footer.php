@@ -23,6 +23,7 @@
 <!-- Charts.js -->
 <script src="node_modules\chart.js\dist\Chart.js"></script>
 <script src="node_modules\chart.js\dist\analyser.js"></script>
+<script src="node_modules\chart.js\dist\utils.js"></script>
 <!-- Main Core JS -->
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
@@ -33,7 +34,6 @@
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/now-ui-kit.js?v=1.2.0" type="text/javascript"></script>
 <script src="assets/js/now-ui-dashboard.min.js?v=1.3.0" type="text/javascript"></script>
-<!--  Notifications Plugin    -->
 <!-- Noty.JS -->
 <script src="node_modules/noty/lib/noty.js" type="text/javascript"></script>
 <!-- Sweetaler.JS -->
@@ -308,6 +308,24 @@ if (isset($_COOKIE["icon"])) {
     });
 </script>
 <script>
+    function scrollToActivity() {
+
+        if ($('#activities').length != 0) {
+            $("html, body").animate({
+                scrollTop: $('#activities').offset().top
+            }, 1000);
+        }
+    }
+
+    function scrollToCalendar() {
+
+        if ($('#calendar').length != 0) {
+            $("html, body").animate({
+                scrollTop: $('#calendar').offset().top
+            }, 1000);
+        }
+    }
+
     function scrollToRequire() {
 
         if ($('#formularioPet').length != 0) {
@@ -316,6 +334,94 @@ if (isset($_COOKIE["icon"])) {
             }, 1000);
         }
     }
+</script>
+<script>
+    var utils = Samples.utils;
+
+    // CSP: disable automatic style injection
+    Chart.platform.disableCSSInjection = false;
+
+    utils.srand(110);
+
+    function generateData() {
+        var DATA_COUNT = 16;
+        var MIN_XY = -150;
+        var MAX_XY = 100;
+        var data = [];
+        var i;
+
+        for (i = 0; i < DATA_COUNT; ++i) {
+            data.push({
+                x: utils.rand(MIN_XY, MAX_XY),
+                y: utils.rand(MIN_XY, MAX_XY),
+                v: utils.rand(0, 1000)
+            });
+        }
+
+        return data;
+    }
+
+    window.addEventListener('load', function() {
+        new Chart('chart-0', {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    backgroundColor: utils.color(1),
+                    data: generateData()
+                }, {
+                    backgroundColor: utils.color(1),
+                    data: generateData()
+                }, {
+                    backgroundColor: utils.color(3),
+                    data: generateData()
+                }, {
+                    backgroundColor: utils.color(4),
+                    data: generateData()
+                }, {
+                    backgroundColor: utils.color(5),
+                    data: generateData()
+                }, {
+                    backgroundColor: utils.color(7),
+                    data: generateData()
+                }]
+            },
+            options: {
+                aspectRatio: 2.9,
+                legend: false,
+                tooltips: {
+                    enabled: false,
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            display: false
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            display: false
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                },
+                elements: {
+                    point: {
+                        radius: function(context) {
+                            var value = context.dataset.data[context.dataIndex];
+                            var size = context.chart.width;
+                            var base = Math.abs(value.v) / 1000;
+                            return (size / 24) * base;
+                        }
+                    }
+                }
+            }
+        });
+    });
 </script>
 </body>
 

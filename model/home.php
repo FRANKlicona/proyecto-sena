@@ -36,7 +36,6 @@ class Home
 				$_SESSION['tell']           = $u[0]->tell;
 				$_SESSION['email']          = $u[0]->email;
 				$_SESSION['dimension_id']   = $u[0]->dimension_id;
-				$_SESSION['rol_id']         = $u[0]->rol_id;
 			} else {
 				$_SESSION['auth'] = false;
 				setcookie('icon', 'error', time() + 2);
@@ -87,23 +86,6 @@ class Home
 		}
 	}
 
-	public function RegistrarPeticion(home $data)
-	{
-		try {
-			$sql = "INSERT INTO peticiones (requester,action_id,token_id) 
-				VALUES ( ? ,$data->action_id,$data->token_id)";
-			// print_r($data);
-			// die;
-			$this->pdo->prepare($sql)
-				->execute(
-					array(
-						$data->requester,
-					)
-				);
-		} catch (Exception $e) {
-			die($e->getMessage());
-		}
-	}
 	public function AceptarPeticion(home $data)
 	{
 		try {
@@ -127,6 +109,8 @@ class Home
 			die($e->getMessage());
 		}
 	}
+
+	
 
 	public function ListarDimensiones()
 	{
@@ -191,11 +175,16 @@ class Home
 			die($e->getMessage());
 		}
 	}
-	public function ListarAccion()
+	public function ListarAccion($opc)
 	{
 		try {
+			if ($opc != "") {
+				$opc = "WHERE dimension_id = $opc";
+			} else {
+				$opc = "";
+			}
 			$result = array();
-			$stm = $this->pdo->prepare("SELECT * FROM acciones");
+			$stm = $this->pdo->prepare("SELECT * FROM acciones $opc");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);

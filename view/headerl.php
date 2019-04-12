@@ -47,8 +47,8 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-header">Dropdown header</a>
-                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Actividades Programadas</a>
-                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Calendario de Peticiones</a>
+                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToActivity()"' : 'href="?c=Home&a=Landing#activities"'; ?>>Actividades Programadas</a>
+                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToCalendar()"' : 'href="?c=Home&a=Landing#calendar"'; ?>>Calendario de Peticiones</a>
                     <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Peticion</a>
                 </div>
             </div>

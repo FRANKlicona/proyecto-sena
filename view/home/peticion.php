@@ -34,7 +34,7 @@
                                                 <!-- <h1 class="title"> -->
                                                 <select required name="action_id" class="btn btn-round col-12 btn-link btn-neutral ">
                                                     <option selected disabled="" value=""><strong>Escoja...</strong></option>
-                                                    <?php foreach ($this->model->ListarAccion() as $d) : ?>
+                                                    <?php foreach ($this->model->ListarAccion("") as $d) : ?>
                                                                             <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->action_id) ? 'Selected' : '') : ""; ?> value="
                                                                             <?= $d->id; ?>">
                                                                             <strong><?= $d->name; ?></strong>
