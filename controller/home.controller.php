@@ -37,14 +37,21 @@ class HomeController
 	{
 		unset($_SESSION);
 		session_destroy();
-		require_once 'view/headerl.php';
-		require_once 'view/home/landing.php';
-		require_once 'view/footer.php';
+		header('Location:?c=Home&a=Landing');
 	}
 	public function Peticion(){   
-		require_once 'view/headerl.php';
-		require_once 'view/home/peticion.php';
-		require_once 'view/footer.php';     
+		if ($_COOKIE['validation']) {
+			require_once 'view/headerl.php';
+			require_once 'view/home/peticion.php';
+			require_once 'view/footer.php';  
+		}else{
+			setcookie('icon','error',time()+3);
+			setcookie('text','Esta peticion ha vencido, intentelo nuevamente',time()+3);
+			require_once 'view/headerl.php';
+			require_once 'view/home/peticion.php';
+			require_once 'view/footer.php';
+			header('Location:?#formularioPet');  
+		}
 	}
 	public function Nada()
 	{
@@ -122,9 +129,13 @@ class HomeController
 		if (isset($_REQUEST['email'])&& isset($_REQUEST['password'])) {
 			$home = $this->model->VerificarUser($_REQUEST['email'],$_REQUEST['password']);
 		}
+		if ($_SESSION['auth']){
+			header('Location:?c=Home&a=Index');
+		}else{
+			header('Location:?c=Home&a=Login&emailre='.$_REQUEST['email']);
+		}
 		
 		
-		header('location:?c=home&a=Index');
 	}
 	public function ValidacionPeticion()
 	{
@@ -134,9 +145,10 @@ class HomeController
 			$home = $this->model->VerificarPeticion($_REQUEST['pass_code'],$_REQUEST['token_id']);
 			$requester = $_REQUEST['requester'];
 			$token_id = $_REQUEST['token_id'];
+			$email = $_REQUEST['email'];
 		}
 
-		header("location:?c=home&a=Peticion&requester=$requester&ficha=$token_id");
+		header("location:?c=home&a=Peticion&requester=$requester&ficha=$token_id&email=$email");
 	}
 	public function RegistroUser()
 	{
@@ -163,6 +175,7 @@ class HomeController
 		$home->action_id   = $_REQUEST['action_id'];
 		$home->requester   = $_REQUEST['requester'];
 		$home->token_id    = $_REQUEST['token_id'];
+		$home->email    = $_REQUEST['email'];
 
 		$this->model->RegistrarPeticion($home);
 

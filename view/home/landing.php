@@ -247,14 +247,15 @@
 							</select>
 
 						</div>
-
-						<div class="input-group input-lg">
-
-							<input type="text" name="pass_code" required class="form-control" minlength="3" maxlength="3" placeholder="Codigo">
+						<div class="row">
+							<div class="input-group input-lg col-3">
+								<input type="text" name="pass_code" required class="form-control" minlength="3" maxlength="3" placeholder="Codigo">
+							</div>
+							<div class="input-group input-lg col-9">
+								<input type="email" name="email" required class="form-control" placeholder="Correo Electronico">
+							</div>
 						</div>
 						<button name="submit" type="submit" class="btn btn-primary btn-round btn-block btn-lg">Pedir</button>
-
-
 					</form>
 				</div>
 			</div>

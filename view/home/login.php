@@ -17,7 +17,7 @@
                                         <i class="now-ui-icons users_circle-08"></i>
                                     </span>
                                 </div>
-                                <input required type="email" name="email" class="form-control" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="Email...">
+                                <input required type="email" name="email" value="<?= isset($_REQUEST['emailre'])? $_REQUEST['emailre']: ""; ?>" class="form-control" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="Email...">
                             </div>
                             <div class="input-group no-border input-lg">
                                 <div class="input-group-prepend">

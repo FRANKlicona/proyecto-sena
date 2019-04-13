@@ -6,8 +6,6 @@ class Home
 {
 	private $pdo;
 
-
-
 	public function __CONSTRUCT()
 	{
 		try {
@@ -16,49 +14,6 @@ class Home
 			die($e->getMessage());
 		}
 	}
-
-	public function VerificarUser($email, $password)
-	{
-		try {
-			$stm = $this->pdo->prepare("SELECT * FROM users where email = ? and password = ?");
-			$stm->execute(array($email, $password));
-
-
-			if ($stm->rowCount() > 0) { 
-
-				$u = $stm->fetchAll(PDO::FETCH_OBJ);
-
-				$_SESSION['auth'] =  true;
-				setcookie('auth', true, time() + 2);
-
-				$_SESSION['name']           = $u[0]->name;
-				$_SESSION['last_name']      = $u[0]->last_name;
-				$_SESSION['tell']           = $u[0]->tell;
-				$_SESSION['email']          = $u[0]->email;
-				$_SESSION['dimension_id']   = $u[0]->dimension_id;
-			} else {
-				$_SESSION['auth'] = false;
-				setcookie('icon', 'error', time() + 2);
-				setcookie('text', 'Este correo no se encuentra registrado', time() + 2);
-			}
-		} catch (Exception $e) {
-			die($e->getMessage());
-		}
-	}
-	public function VerificarPeticion($pass_code, $token_id)
-	{
-		try {
-			$stm = $this->pdo->prepare("SELECT * FROM fichas where pass_code = ? and id = ? ");
-			$stm->execute(array($pass_code, $token_id));
-			if ($stm->rowCount() == 0) {
-				header("location:?c=home&a=Landing ");
-				die;
-			}
-		} catch (Exception $e) {
-			die($e->getMessage());
-		}
-	}
-
 	public function RegistrarUser(home $data)
 	{
 		try {
@@ -85,7 +40,25 @@ class Home
 			die($e->getMessage());
 		}
 	}
-
+	public function RegistrarPeticion(home $data)
+	{
+		try {
+			$sql = "INSERT INTO peticiones (requester,action_id,token_id) 
+				VALUES ( ? ,$data->action_id,$data->token_id)";
+			// print_r($data);
+			// die;
+			setcookie('icon', 'success', time() + 5);
+			setcookie('text', 'Su Solicitud ha sido creada exitosamente', time() + 5);
+			$this->pdo->prepare($sql)
+				->execute(
+					array(
+						$data->requester,
+					)
+				);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
 	public function AceptarPeticion(home $data)
 	{
 		try {
@@ -109,9 +82,6 @@ class Home
 			die($e->getMessage());
 		}
 	}
-
-	
-
 	public function ListarDimensiones()
 	{
 		try {
@@ -124,7 +94,6 @@ class Home
 			die($e->getMessage());
 		}
 	}
-
 	public function ListarPeticion()
 	{
 		try {
@@ -148,7 +117,7 @@ class Home
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}
-	}
+	}	
 	public function ListarActividad()
 	{
 		try {
@@ -205,7 +174,6 @@ class Home
 			die($e->getMessage());
 		}
 	}
-
 	public function ListarPrograma()
 	{
 		try {
@@ -219,7 +187,6 @@ class Home
 			die($e->getMessage());
 		}
 	}
-
 	public function ObtenerFicha($id)
 	{
 		try {
@@ -229,6 +196,50 @@ class Home
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
+	public function VerificarUser($email, $password)
+	{
+		try {
+			$stm = $this->pdo->prepare("SELECT *,dimensiones.name as dimension FROM users
+				INNER JOIN dimensiones ON dimension_id = dimensiones.id where email = ? and password = ?");
+			$stm->execute(array($email, $password));
+
+
+			if ($stm->rowCount() > 0) {
+
+				$u = $stm->fetchAll(PDO::FETCH_OBJ);
+
+				$_SESSION['auth'] =  true;
+				setcookie('auth', true, time() + 2);
+				$_SESSION['name']          = $u[0]->name;
+				$_SESSION['last_name']     = $u[0]->last_name;
+				$_SESSION['tell']          = $u[0]->tell;
+				$_SESSION['email']         = $u[0]->email;
+				$_SESSION['dimension_id']  = $u[0]->dimension_id;
+				$_SESSION['dimension']   	= $u[0]->dimension;
+			} else {
+				$_SESSION['auth'] = false;
+				setcookie('icon', 'error', time() + 2);
+				setcookie('text', 'Su correo o contraseña son incorrectos', time() + 2);
+			}
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
+	public function VerificarPeticion($pass_code, $token_id)
+	{
+		try {
+			$stm = $this->pdo->prepare("SELECT * FROM fichas where pass_code = ? and id = ? ");
+			$stm->execute(array($pass_code, $token_id));
+			if ($stm->rowCount() == 0) {
+				header("location:?c=home&a=Landing ");
+				die;
+			}else{
+				setcookie('validation',true,time()+30);
+			}
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}
@@ -303,9 +314,6 @@ class Home
 			die($e->getMessage());
 		}
 	}
-
-
-
 	public function RecuperarClave($e)
 	{
 		//Reseteo variables.
@@ -370,7 +378,7 @@ class Home
 					for ($i = 0; $i < $longitud; $i++) {
 						$data->token .= $alpha[rand(0, strlen($alpha) - 1)];
 					}
-					setcookie("token", $token, time() + 1800);
+					setcookie("token", $token, time() + 600);
 					//Cuerpo email con HTML.
 					$mail->Body = $row[0]->name . " " . $row[0]->last_name . ", tu contraseña actualizada sera reestablesidaa haciendo click <a href ='http://localhost/OneDrive%20-%20Servicio%20Nacional%20de%20Aprendizaje/proyecto-sena/?c=Home&a=Recuperar&r=" . $token . "&id=" . $row[0]->id . "'>aqui</a>";
 					$mail->send();

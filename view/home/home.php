@@ -6,7 +6,42 @@
    </div>
    <div class="content">
       <div class="row">
-
+         <div class="col-md-4">
+            <div class="card card-user">
+               <div class="image">
+                  <img src="assets/img/bg5.jpg" alt="...">
+               </div>
+               <div class="card-body">
+                  <div class="author">
+                     <a href="#">
+                        <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+                        <h5 class="title"><?= $_SESSION['name'] . " " . $_SESSION['last_name']; ?></h5>
+                     </a>
+                     <p class="description">
+                        <?= $_SESSION['email']; ?>
+                     </p>
+                  </div>
+                  <p class="description text-center">
+                     <?= $_SESSION['tell']; ?>
+                  </p>
+               </div>
+               <hr>
+               <div class="button-container">
+                  <div class="social-description">
+                     <h2>26</h2>
+                     <p>Actividades realizadas</p>
+                  </div>
+                  <div class="social-description">
+                     <h2>26</h2>
+                     <p>Peticiones aceptadas</p>
+                  </div>
+                  <div class="social-description">
+                     <h2>48</h2>
+                     <p>Actividades pendientes</p>
+                  </div>
+               </div>
+            </div>
+         </div>
          <div class="col-md-8">
             <div class="row justify-content-center">
                <div class="col-md-4 col-6">
@@ -142,50 +177,70 @@
                   </div>
                </div>
             </div>
-         </div>
-
-         <div class="col-md-4">
-            <div class="card card-user">
-               <div class="image">
-                  <img src="assets/img/bg5.jpg" alt="...">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="card card-chart">
+                     <div class="card-header">
+                        <h5 class="card-category">Global Sales</h5>
+                        <h4 class="card-title">Shipped Products</h4>
+                        <div class="dropdown">
+                           <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                              <i class="now-ui-icons loader_gear"></i>
+                           </button>
+                           <div class="dropdown-menu dropdown-menu-right">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                              <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-body">
+                        <div class="chart-area">
+                           <canvas id="lineChartExample"></canvas>
+                        </div>
+                     </div>
+                     <div class="card-footer">
+                        <div class="stats">
+                           <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                        </div>
+                     </div>
+                  </div>
                </div>
-               <div class="card-body">
-                  <div class="author">
-                     <a href="#">
-                        <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
-                        <h5 class="title"><?= $_SESSION['name'] . " " . $_SESSION['last_name']; ?></h5>
-                     </a>
-                     <p class="description">
-                        <?= $_SESSION['email']; ?>
-                     </p>
-                  </div>
-                  <p class="description text-center">
-                     <?= $_SESSION['tell']; ?>
-                  </p>
-               </div>
-               <hr>
-               <div class="button-container">
-                  <div class="social-description">
-                     <h2>26</h2>
-                     <p>Actividades realizadas</p>
-                  </div>
-                  <div class="social-description">
-                     <h2>26</h2>
-                     <p>Peticiones aceptadas</p>
-                  </div>
-                  <div class="social-description">
-                     <h2>48</h2>
-                     <p>Actividades pendientes</p>
+               <div class="col-md-6">
+                  <div class="card card-chart">
+                     <div class="card-header">
+                        <h5 class="card-category">2018 Sales</h5>
+                        <h4 class="card-title">All products</h4>
+                        <div class="dropdown">
+                           <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                              <i class="now-ui-icons loader_gear"></i>
+                           </button>
+                           <div class="dropdown-menu dropdown-menu-right">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                              <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-body">
+                        <div class="chart-area">
+                           <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
+                        </div>
+                     </div>
+                     <div class="card-footer">
+                        <div class="stats">
+                           <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
    </div>
-<?php
-endif;
-switch ($_SESSION['dimension_id']) {
-   case '2': ?>
+<?php else : ?>
    <div class="panel-header panel-header-sm">
    </div>
    <div class="content">
@@ -193,7 +248,7 @@ switch ($_SESSION['dimension_id']) {
          <div class="col-md-8">
             <div class="card">
                <div class="card-header">
-                  <h5 class="title">Cultura</h5>
+                  <h5 class="title"><?= $_SESSION['dimension']; ?></h5>
                </div>
             </div>
             <div class="row">
@@ -333,10 +388,4 @@ switch ($_SESSION['dimension_id']) {
          </div>
       </div>
    </div>
-   <?php break;
-
-
-default: ?>
-
-   <?php break;
-} ?>
+<?php endif; ?>
