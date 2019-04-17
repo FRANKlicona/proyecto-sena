@@ -141,7 +141,7 @@
 									<a class="nav-link" data-toggle="tab" href="#lider" role="tab">Liderazgo</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#settings1" role="tab">Settings</a>
+									<a class="nav-link" data-toggle="tab" href="#all" role="tab">Todas</a>
 								</li>
 							</ul>
 						</div>
@@ -202,12 +202,18 @@
 										<?php endforeach; ?>
 									</ul>
 								</div>
-								<div class="tab-pane" id="settings1" role="tabpanel">
+								<div class="tab-pane" id="all" role="tabpanel">
+									<ul>
+										<?php foreach ($this->model->ListarAccion("") as $a) : ?>
+											<li>
+												<?= $a->name; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- End Tabs on plain Card -->
 				</div>
 			</div>
 		</div>

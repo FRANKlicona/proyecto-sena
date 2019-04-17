@@ -75,15 +75,15 @@ class Ficha
         try {
             $stm = $this->pdo
                 ->prepare("SELECT
-                    fichas.id as fichasId,
-                    fichas.name as fichaName,
+                    fichas.id as tok_id,
+                    fichas.name as tok_name,
                     student,
                     date_start,
                     date_finish,
                     journey,
                     pass_code,
-                    programas.id as programasId,
-                    programas.name as programaName
+                    programas.id as pro_id,
+                    programas.name as pro_name
                     FROM fichas
                     INNER JOIN programas on program_id = programas.id
                     WHERE fichas.id = ?"

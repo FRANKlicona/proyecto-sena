@@ -20,6 +20,19 @@ class ActividadController
         require_once 'view/footer.php';
     }
 
+    public function Info()
+    {
+        $actividad = new Actividad();
+
+        if (isset($_REQUEST['id'])) {
+            $actividad = $this->model->Obtener($_REQUEST['id']);
+        }
+
+        require_once 'view/header.php';
+        require_once 'view/actividad/actividad-info.php';
+        require_once 'view/footer.php';
+    }
+
     public function Crud()
     {
         $actividad = new Actividad();

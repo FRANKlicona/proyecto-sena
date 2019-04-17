@@ -6,7 +6,7 @@
                 <div class="">
                     <div class="">
                     </div>
-                    <form action="?c=home&a=Guardar" method="post">
+                    <form action="?c=home&a=RegistrarPeticion" method="post">
                         <input name="token_id" type="hidden" value="<?= $_REQUEST['ficha'] ?>">
                         <input name="requester" type="hidden" value="<?= $_REQUEST['requester'] ?>">
                         <input name="email" type="hidden" value="<?= $_REQUEST['email'] ?>">

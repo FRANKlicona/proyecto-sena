@@ -168,7 +168,7 @@ class HomeController
 
 		header('Location: index.php?c=home');
 	}
-	public function Guardar()
+	public function RegistrarPeticion()
 	{
 		$home = new Home();
 
@@ -179,7 +179,7 @@ class HomeController
 
 		$this->model->RegistrarPeticion($home);
 
-		header("Location: index.php?c=home");
+		header("Location: index.php?c=home&a=Landing");
 	}
 	public function AprovarActividad(){
 

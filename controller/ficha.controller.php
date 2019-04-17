@@ -17,6 +17,18 @@ class FichaController
         require_once 'view/ficha/ficha.php';
         require_once 'view/footer.php';
     }
+    public function Info()
+    {
+        $ficha = new Ficha();
+
+        if (isset($_REQUEST['id'])) {
+            $ficha = $this->model->Obtener($_REQUEST['id']);
+        }
+
+        require_once 'view/header.php';
+        require_once 'view/ficha/ficha-info.php';
+        require_once 'view/footer.php';
+    }
 
     public function Crud()
     {

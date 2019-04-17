@@ -145,45 +145,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card  card-tasks">
-                    <div class="card-header ">
-                        <h5 class="card-category">Peticion de</h5>
-                        <h4 class="card-title">Actividades</h4>
-                    </div>
-                    <div class="card-body ">
-                        <div class="table-full-width table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <?php foreach ($this->model->ListarPeticion() as $r) : ?>
-                                        <tr>
-                                            <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong>, el <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
-
-
-                                            <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
-                                                    <i class="now-ui-icons location_bookmark"></i>
-                                                </button>
-                                                <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>)" data-toggle="modal" data-target="#myModal2">
-                                                    <i class="now-ui-icons ui-1_check"></i>
-                                                </button>
-
-
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-footer ">
-                        <hr>
-                        <div class="stats">
-                            <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="col-md-6">
