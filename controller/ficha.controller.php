@@ -9,6 +9,7 @@ class FichaController
     public function __CONSTRUCT()
     {
         $this->model = new Ficha();
+        $this->listado = new Lista();
     }
 
     public function Index()
@@ -41,6 +42,12 @@ class FichaController
         require_once 'view/header.php';
         require_once 'view/ficha/ficha-editar.php';
         require_once 'view/footer.php';
+    }
+
+    public function ListarPeticion($opc)
+    {
+        $peticion = new Lista();
+        $peticion = $this->listado->ListarPeticion($opc);
     }
 
     public function Guardar()

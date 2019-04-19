@@ -54,81 +54,278 @@
                <h4 class="card-title"> Registros</h4>
             </div>
             <div class="row">
-               <div class="col-md-6">
+               <div class="col-md-6 ">
                   <div class="card-header">
-                     <h5 class="card-title"> Peticiones</h5>
+                     <h6 class=""> Peticiones</h6>
+                     <ul class="nav nav-tabs justify-content-center" role="tablist">
+                        <li class="nav-item">
+                           <a class="nav-link active" data-toggle="tab" href="#pending" role="tab">
+                              <i class="now-ui-icons objects_umbrella-13"></i> Pendientes
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#denied" role="tab">
+                              <i class="now-ui-icons shopping_cart-simple"></i> Rechazadas
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#accepted" role="tab">
+                              <i class="now-ui-icons shopping_shop"></i> Aceptadas
+                           </a>
+                        </li>
+                     </ul>
                   </div>
                   <div class="card-body">
-                     <div class="table-full-width table-responsive">
-                        <table class="table">
-                           <tbody>
-                              <tr>
-                                 <td>
-                                    <div class="form-check">
-                                       <label class="form-check-label">
-                                          <input class="form-check-input" type="checkbox" checked>
-                                          <span class="form-check-sign"></span>
-                                       </label>
-                                    </div>
-                                 </td>
-                                 <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
-                                 <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                                       <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                                       <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
-               </div>            
-               <div class="col-md-6">
-                  <div class="card-header">
-                     <h5 class="card-title"> Actividades</h5>
-                  </div>
-                  <div class="card-body">
-                     <div class="table-responsive">
-                        <table class="table">
-                           <thead class=" text-primary">
-                              <th>
-                                 Name
-                              </th>
-                              <th>
-                                 Country
-                              </th>
-                              <th>
-                                 City
-                              </th>
-                              <th class="text-right">
-                                 Salary
-                              </th>
-                           </thead>
-                           <tbody>
-                              <tr>
-                                 <td>
-                                    Dakota Rice
-                                 </td>
-                                 <td>
-                                    Niger
-                                 </td>
-                                 <td>
-                                    Oud-Turnhout
-                                 </td>
-                                 <td class="text-right">
-                                    $36,738
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
+                     <!-- Tab panes -->
+                     <div class="tab-content text-center">
+                        <div class="tab-pane active" id="pending" role="tabpanel">
+                           <div class="table-full-width table-responsive">
+                              <table class="table">
+                                 <tbody>
+                                    <?php foreach ($this->listado->ListarPeticion('pending') as $peticion) : ?>
+                                       <tr>
+                                          <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $peticion->tok_id; ?>"><?= $peticion->tok_name; ?></a></strong>, el <strong><?= $peticion->requester . " "; ?></strong> solicito <strong><?= $peticion->acc_name . " "; ?></strong></td>
+                                          <td class="td-actions text-right">
+                                             <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral">
+                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                             </button>
+                                             <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $peticion->ide ?>,<?= $peticion->tok_id ?>,<?= $peticion->acc_id ?>)" data-toggle="modal" data-target="#myModal2">
+                                                <i class="now-ui-icons ui-1_check"></i>
+                                             </button>
+                                          </td>
+                                       </tr>
+                                    <?php endforeach; ?>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        <div class="tab-pane" id="denied" role="tabpanel">
+                           <div class="table-full-width table-responsive">
+                              <table class="table">
+                                 <tbody>
+                                    <?php foreach ($this->listado->ListarPeticion('denied') as $peticion) : ?>
+                                       <tr>
+                                          <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $peticion->tok_id; ?>"><?= $peticion->tok_name; ?></a></strong>, el <strong><?= $peticion->requester . " "; ?></strong> solicito <strong><?= $peticion->acc_name . " "; ?></strong></td>
+                                       </tr>
+                                    <?php endforeach; ?>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        <div class="tab-pane" id="accepted" role="tabpanel">
+                           <div class="table-full-width table-responsive">
+                              <table class="table">
+                                 <tbody>
+                                    <?php foreach ($this->listado->ListarPeticion('accepted') as $peticion) : ?>
+                                       <tr>
+                                          <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $peticion->tok_id; ?>"><?= $peticion->tok_name; ?></a></strong>, el <strong><?= $peticion->requester . " "; ?></strong> solicito <strong><?= $peticion->acc_name . " "; ?></strong></td>
+                                       </tr>
+                                    <?php endforeach; ?>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
                      </div>
                   </div>
                </div>
+               <div class="col-md-6 ">
+                  <div class="card-header">
+                     <h6 class=""> Actividades</h6>
+                     <ul class="nav nav-tabs justify-content-center" role="tablist">
+                        <li class="nav-item">
+                           <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
+                              <i class="now-ui-icons objects_umbrella-13"></i> Pendientes
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                              <i class="now-ui-icons shopping_cart-simple"></i> Vencidas
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                              <i class="now-ui-icons shopping_shop"></i> Realizadas
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="card-body">
+                     <!-- Tab panes -->
+                     <div class="tab-content text-center">
+                        <div class="tab-pane active" id="home" role="tabpanel">
+                           <table class="table">
+                              <thead class=" text-primary">
+                                 <th>
+                                    Name
+                                 </th>
+                                 <th>
+                                    Country
+                                 </th>
+                                 <th>
+                                    City
+                                 </th>
+                                 <th class="text-right">
+                                    Salary
+                                 </th>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       Aceptadas
+                                    </td>
+                                    <td>
+                                       Niger
+                                    </td>
+                                    <td>
+                                       Oud-Turnhout
+                                    </td>
+                                    <td class="text-right">
+                                       $36,738
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="tab-pane" id="profile" role="tabpanel">
+                           <table class="table">
+                              <thead class=" text-primary">
+                                 <th>
+                                    Name
+                                 </th>
+                                 <th>
+                                    Country
+                                 </th>
+                                 <th>
+                                    City
+                                 </th>
+                                 <th class="text-right">
+                                    Salary
+                                 </th>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       Pendientes
+                                    </td>
+                                    <td>
+                                       Niger
+                                    </td>
+                                    <td>
+                                       Oud-Turnhout
+                                    </td>
+                                    <td class="text-right">
+                                       $36,738
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="tab-pane" id="messages" role="tabpanel">
+                           <table class="table">
+                              <thead class=" text-primary">
+                                 <th>
+                                    Name
+                                 </th>
+                                 <th>
+                                    Country
+                                 </th>
+                                 <th>
+                                    City
+                                 </th>
+                                 <th class="text-right">
+                                    Salary
+                                 </th>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       Rechazadas
+                                    </td>
+                                    <td>
+                                       Niger
+                                    </td>
+                                    <td>
+                                       Oud-Turnhout
+                                    </td>
+                                    <td class="text-right">
+                                       $36,738
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="tab-pane" id="settings" role="tabpanel">
+                           <p>
+                              <table class="table">
+                                 <thead class=" text-primary">
+                                    <th>
+                                       Name
+                                    </th>
+                                    <th>
+                                       Country
+                                    </th>
+                                    <th>
+                                       City
+                                    </th>
+                                    <th class="text-right">
+                                       Salary
+                                    </th>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td>
+                                          Rechazadas
+                                       </td>
+                                       <td>
+                                          Niger
+                                       </td>
+                                       <td>
+                                          Oud-Turnhout
+                                       </td>
+                                       <td class="text-right">
+                                          $36,738
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
       </div>
    </div>
 </div>
+
+<div class="modal modal-mini fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header justify-content-center">
+            <button type="button" class="close " data-dismiss="modal" aria-hidden="true">
+               <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <h4 class="title title-up text-center">Escoja una fecha</h4>
+         </div>
+         <div class="modal-body">
+            <div class="card">
+               <div class="card-body">
+                  <form class="form-group" action="?c=home&a=AprovarActividad" method="post">
+                     <div class="text-center form-group">
+                        <label>Fecha</label>
+                        <input type="hidden" id="ide" name="ide">
+                        <input type="hidden" id="token_id" name="token_id">
+                        <input type="hidden" id="action_id" name="action_id">
+                        <input type="date" min="<?= date('Y-m-d'); ?>" required name="date" class="form-control " value="">
+                     </div>
+                     <div class="text-center form-group">
+                        <button class=" btn btn-primary btn-round">Guardar</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>

@@ -48,7 +48,7 @@ class HomeController
 			setcookie('icon','error',time()+3);
 			setcookie('text','Esta peticion ha vencido, intentelo nuevamente',time()+3);
 			require_once 'view/headerl.php';
-			require_once 'view/home/peticion.php';
+			require_once 'view/home/Landing.php';
 			require_once 'view/footer.php';
 			header('Location:?#formularioPet');  
 		}
@@ -193,7 +193,7 @@ class HomeController
 		// die;
 		//  print_r($_REQUEST);die;
 		$this->model->AceptarPeticion($home);
-		header("Location: index.php?c=pdf");
+		header("Location: index.php?c=home&a=Index");
 	}
 }
 

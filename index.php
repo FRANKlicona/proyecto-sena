@@ -5,6 +5,7 @@ session_start();
 date_default_timezone_set('America/Bogota');
 //Se requiere la base de datos
 require_once 'model/database.php';
+require_once 'model/listados.php';
 //Se pregunta si existe una variable de sesion para agregarlo a la variable sesion
 $session= isset($_SESSION['auth'])?$_SESSION['auth']:'';
 

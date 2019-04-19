@@ -191,7 +191,7 @@
                               <tbody>
                                  <?php foreach ($this->model->ListarPeticion(false) as $r) : ?>
                                     <tr>
-                                       <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $r->tok_id; ?>"><?= $r->tok_name ; ?></a></strong>, el <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
+                                       <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $r->tok_id; ?>"><?= $r->tok_name; ?></a></strong>, el <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
 
 
                                        <td class="td-actions text-right">
@@ -275,7 +275,7 @@
                               <tbody>
                                  <?php foreach ($this->model->ListarPeticion(true) as $r) : ?>
                                     <tr>
-                                       <td class="text-left">En la ficha <strong><?= $r->tok_name . " "; ?></strong>, el <strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
+                                       <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $r->tok_id; ?>"><?= $r->tok_name; ?></a></strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
                                        <td class="td-actions text-right">
                                           <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                              <i class="now-ui-icons location_bookmark"></i>
@@ -406,3 +406,33 @@
       </div>
    </div>
 <?php endif; ?>
+<div class="modal modal-mini fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header justify-content-center">
+            <button type="button" class="close " data-dismiss="modal" aria-hidden="true">
+               <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <h4 class="title title-up text-center">Escoja una fecha</h4>
+         </div>
+         <div class="modal-body">
+            <div class="card">
+               <div class="card-body">
+                  <form class="form-group" action="?c=home&a=AprovarActividad" method="post">
+                     <div class="text-center form-group">
+                        <label>Fecha</label>
+                        <input type="hidden" id="ide" name="ide">
+                        <input type="hidden" id="token_id" name="token_id">
+                        <input type="hidden" id="action_id" name="action_id">
+                        <input type="date" min="<?= date('Y-m-d'); ?>" required name="date" class="form-control " value="">
+                     </div>
+                     <div class="text-center form-group">
+                        <button class=" btn btn-primary btn-round">Guardar</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

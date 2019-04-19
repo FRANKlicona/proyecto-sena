@@ -110,12 +110,10 @@ class Actividad
             $stm = $this->pdo
                 ->prepare(
                     "SELECT *,acciones.name as exe_name 
-                           FROM actividades
-                           INNER JOIN acciones on action_id = acciones.id
-                           WHERE actividades.id = ?"
+                        FROM actividades
+                        INNER JOIN acciones on action_id = acciones.id
+                        WHERE actividades.id = ?"
                 );
-
-
             $stm->execute(array($id));
             return $stm->fetch(PDO::FETCH_OBJ);
         } catch (Exception $e) {

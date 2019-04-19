@@ -57,7 +57,6 @@ $total_pages = ceil($cant / 13);
                                     ?>
                                 <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
                                 <?php
-
                             }
                         }
                     }
@@ -120,7 +119,7 @@ $total_pages = ceil($cant / 13);
                                         <?= $r->exe_name; ?>
                                     </td>
                                     <td>
-                                        <a href="?c=ficha&a=Crud&id=<?= $r->tok_id; ?>&d=" class="btn btn-link " data-toggle="tooltip" data-placement="top" title="<?= $r->pro_name; ?>" data-container="body" data-animation="true"><?= $r->tok_name; ?></a>
+                                        <a href="?c=ficha&a=Info&id=<?= $r->tok_id; ?>&d=" class="btn btn-link " data-toggle="tooltip" data-placement="top" title="<?= $r->pro_name; ?>" data-container="body" data-animation="true"><?= $r->tok_name; ?></a>
 
                                     </td>
                                     <td>

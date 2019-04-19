@@ -82,7 +82,7 @@ class Home
 			// die;
 			// print_r($data);
 			$stm = $this->pdo
-				->prepare("DELETE FROM peticiones WHERE id = ?");
+				->prepare("UPDATE peticiones set checkit = 'SI' WHERE id = ?");
 			$stm->execute(array($data->ide));
 			setcookie("icon", 'success', time() + 2);
 			setcookie("text", 'Solicitud aceptada correctamente', time() + 2);
@@ -124,6 +124,7 @@ class Home
 						  INNER JOIN acciones     ON action_id    = acciones.id
 						  INNER JOIN dimensiones  ON acciones.dimension_id = dimensiones.id
 						  $opc 
+						  AND checkit = 'NO'
 						  limit 2");
 			$stm->execute();
 			return $stm->fetchAll(PDO::FETCH_OBJ);
