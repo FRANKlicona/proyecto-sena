@@ -20,17 +20,17 @@ class Accion
     {
         try {
             $result = array();
-
+            $dimension = ($_SESSION['dimension_id']!='7') ? "WHERE dimension_id = ".$_SESSION['dimension_id'] : "" ;
             $stm = $this->pdo->prepare("SELECT 
                 acciones.id as id,
                 acciones.name,
                 dimensiones.id as dim_id,
                 dimensiones.name as dim_name 
                 FROM acciones 
-                INNER JOIN dimensiones on dimension_id=dimensiones.id");
+                INNER JOIN dimensiones on dimension_id=dimensiones.id
+                $dimension");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
-            die;
         } catch (Exception $e) {
             die($e->getMessage());
         }

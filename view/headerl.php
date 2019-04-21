@@ -45,12 +45,6 @@
                     <span class="button-bar"></span>
                     <span class="button-bar"></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-header">Dropdown header</a>
-                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToActivity()"' : 'href="?c=Home&a=Landing#activities"'; ?>>Actividades Programadas</a>
-                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToCalendar()"' : 'href="?c=Home&a=Landing#calendar"'; ?>>Calendario de Peticiones</a>
-                    <a class="dropdown-item" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Peticion</a>
-                </div>
             </div>
             <div class="navbar-translate">
                 <a class="navbar-brand" href="?c=home&a=Landing">
@@ -65,21 +59,19 @@
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="assets/img/blurred-image-1.jpg">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="http://presentation.creative-tim.com">Nosotros</a>
+                        <a class="nav-link" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToActivity()"' : 'href="?c=Home&a=Landing#activities"'; ?>>Actividades Programadas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://cysbolivar.blogspot.com/">Blog</a>
+                        <a class="nav-link" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToCalendar()"' : 'href="?c=Home&a=Landing#calendar"'; ?>>Calendario de Peticiones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" <?= (isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Peticion</a>
                     </li>
                     <?php if (!isset($_REQUEST['a']) || $_REQUEST['a'] != 'Login') : ?>
                         <li class="nav-item">
                             <a class="nav-link" href="?c=home&a=Login">Iniciar Sesion</a>
                         </li>
-                    <?php endif;
-                if (!isset($_REQUEST['a']) || $_REQUEST['a'] != 'Ingreso') : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?c=home&a=Ingreso">Registrarse</a>
-                        </li>
-                    <?php endif; ?>
+                    <?php endif;?>
                 </ul>
             </div>
         </div>

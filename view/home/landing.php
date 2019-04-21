@@ -45,7 +45,7 @@
 					<div class="col-md-5">
 						<!-- First image on the right side, above the article -->
 						<div class="image-container image-right" style="background-image: url('assets/img/IMG_20171120_094738_HDR.jpg')"></div>
-						<h3>Para medir la efectividad que los 9 componentes estratégicos, se establecieron tres indicadores:</h3>
+						<h3>Para medir la efectividad que las 9 dimensiones, se establecieron tres indicadores:</h3>
 						<p>
 							<h6>
 								Aumento Nivel del Logro Educativo de los Aprendices
@@ -77,7 +77,7 @@
 					<!-- Tabs with Background on Card -->
 					<div class="card">
 						<div class="card-header">
-							<ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+							<ul class="nav nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
 								<li class="nav-item">
 									<a class="nav-link" data-toggle="tab" href="#psico" role="tab">Psicologia</a>
 								</li>

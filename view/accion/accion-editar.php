@@ -24,6 +24,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 pr-1">
+                                <?php if($_SESSION['dimension_id']=='7') :?>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Dimension</label>
                                     <select name="dimension_id" required class="form-control">
@@ -33,9 +34,11 @@
                                                 <?= $d->name; ?>
                                             </option>
                                         <?php endforeach; ?>
-
                                     </select>
                                 </div>
+                                <?php else: ?>
+                                <input type="hidden" name="dimension_id" value="<?= $_SESSION['dimension_id']; ?>">
+                                <?php endif ;?>
                             </div>
                         </div>
                         <div class="text-right form-group">

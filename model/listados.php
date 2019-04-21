@@ -66,21 +66,21 @@ class Lista
 			$token = "AND fichas.id = " . $_REQUEST['id'];
 			$dimension = ($_SESSION['dimension_id'] != '7') ? " AND acciones.dimension_id = " . $_SESSION['dimension_id']  : "";
 			$stm = $this->pdo->prepare("SELECT 
-						peticiones.id as ide,
+						actividades.id as id,
+						date ,
 						date_create,
-						requester,
-								checkit,
+						checkit,
 						fichas.id               as tok_id,
 						fichas.name             as tok_name,
 						acciones.name           as acc_name,
 						acciones.id             as acc_id,
                   acciones.dimension_id   as acc_did
-					 FROM peticiones 
-						  INNER JOIN fichas       ON token_id     = fichas.id  
-						  INNER JOIN acciones     ON action_id    = acciones.id						  
-						  $opc
-						  $dimension
-						  $token ");
+					FROM actividades 
+						INNER JOIN fichas       ON token_id     = fichas.id  
+						INNER JOIN acciones     ON action_id    = acciones.id						  
+						$opc
+						$dimension
+						$token ");
 			// print_r($stm);
 			// die;
 			$stm->execute();

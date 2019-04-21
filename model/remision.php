@@ -3,24 +3,6 @@ class Remision
 {
     private $pdo;
 
-    public $id;
-    public $referal_type;
-    public $date_create;
-    public $n_orden;
-    public $reason_referal;
-    public $instructor_name;
-    public $instructor_firm;
-    public $situation_found;
-    public $promises;
-    public $psico_firm_before;
-    public $student_firm;
-    public $date_eval;
-    public $eval_track;
-    public $date_promises;
-    public $psico_firm_after;
-    public $identification_id;
-    public $program_id;
-
     public function __CONSTRUCT()
     {
         try {

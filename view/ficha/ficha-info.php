@@ -156,33 +156,23 @@
                            <table class="table">
                               <thead class=" text-primary">
                                  <th>
-                                    Name
+                                    Actividad
                                  </th>
                                  <th>
-                                    Country
-                                 </th>
-                                 <th>
-                                    City
-                                 </th>
-                                 <th class="text-right">
-                                    Salary
+                                    Fecha
                                  </th>
                               </thead>
                               <tbody>
-                                 <tr>
-                                    <td>
-                                       Aceptadas
-                                    </td>
-                                    <td>
-                                       Niger
-                                    </td>
-                                    <td>
-                                       Oud-Turnhout
-                                    </td>
-                                    <td class="text-right">
-                                       $36,738
-                                    </td>
-                                 </tr>
+                                 <?php foreach ($this->listado->ListarActividad('accepted') as $actividad) : ?>
+                                    <tr>
+                                       <td>
+                                          <?= $actividad->acc_name; ?>
+                                       </td>
+                                       <td>
+                                          <?= $actividad->date; ?>
+                                       </td>
+                                    </tr>
+                                 <?php endforeach; ?>
                               </tbody>
                            </table>
                         </div>
@@ -190,33 +180,23 @@
                            <table class="table">
                               <thead class=" text-primary">
                                  <th>
-                                    Name
+                                    Actividad
                                  </th>
                                  <th>
-                                    Country
-                                 </th>
-                                 <th>
-                                    City
-                                 </th>
-                                 <th class="text-right">
-                                    Salary
+                                    Fecha
                                  </th>
                               </thead>
                               <tbody>
-                                 <tr>
-                                    <td>
-                                       Pendientes
-                                    </td>
-                                    <td>
-                                       Niger
-                                    </td>
-                                    <td>
-                                       Oud-Turnhout
-                                    </td>
-                                    <td class="text-right">
-                                       $36,738
-                                    </td>
-                                 </tr>
+                                 <?php foreach ($this->listado->ListarActividad('denied') as $actividad) : ?>
+                                    <tr>
+                                       <td>
+                                          <?= $actividad->acc_name; ?>
+                                       </td>
+                                       <td>
+                                          <?= $actividad->date; ?>
+                                       </td>
+                                    </tr>
+                                 <?php endforeach; ?>
                               </tbody>
                            </table>
                         </div>
@@ -224,71 +204,25 @@
                            <table class="table">
                               <thead class=" text-primary">
                                  <th>
-                                    Name
+                                    Actividad
                                  </th>
                                  <th>
-                                    Country
-                                 </th>
-                                 <th>
-                                    City
-                                 </th>
-                                 <th class="text-right">
-                                    Salary
+                                    Fecha
                                  </th>
                               </thead>
                               <tbody>
-                                 <tr>
-                                    <td>
-                                       Rechazadas
-                                    </td>
-                                    <td>
-                                       Niger
-                                    </td>
-                                    <td>
-                                       Oud-Turnhout
-                                    </td>
-                                    <td class="text-right">
-                                       $36,738
-                                    </td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                        </div>
-                        <div class="tab-pane" id="settings" role="tabpanel">
-                           <p>
-                              <table class="table">
-                                 <thead class=" text-primary">
-                                    <th>
-                                       Name
-                                    </th>
-                                    <th>
-                                       Country
-                                    </th>
-                                    <th>
-                                       City
-                                    </th>
-                                    <th class="text-right">
-                                       Salary
-                                    </th>
-                                 </thead>
-                                 <tbody>
+                                 <?php foreach ($this->listado->ListarActividad('pending') as $actividad) : ?>
                                     <tr>
                                        <td>
-                                          Rechazadas
+                                          <?= $actividad->acc_name; ?>
                                        </td>
                                        <td>
-                                          Niger
-                                       </td>
-                                       <td>
-                                          Oud-Turnhout
-                                       </td>
-                                       <td class="text-right">
-                                          $36,738
+                                          <?= $actividad->date; ?>
                                        </td>
                                     </tr>
-                                 </tbody>
-                              </table>
-                           </p>
+                                 <?php endforeach; ?>
+                              </tbody>
+                           </table>
                         </div>
                      </div>
                   </div>
