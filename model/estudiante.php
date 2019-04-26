@@ -23,12 +23,12 @@ class Estudiante
             die($e->getMessage());
         }
     }
-    public function Listar()
+    public function Listar($i,$c)
     {
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT 
+            $stm = $this->pdo->prepare( "SELECT 
                 estudiantes.id as id,
                 estudiantes.name as student_name,
                 last_name,
@@ -39,10 +39,11 @@ class Estudiante
                 email,
                 identification,
                 HR,
-                fichas.id as token_id,
-                fichas.name as token_name 
+                fichas.id as tok_id,
+                fichas.name as tok_name 
                 FROM estudiantes 
-                INNER JOIN fichas on token_id=fichas.id");
+                INNER JOIN fichas on token_id=fichas.id
+                LIMIT " . $c . ', ' . $i);
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -161,6 +162,34 @@ class Estudiante
 
                     )
                 );
+                
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function RegistrarFaker()
+    {
+        try {
+            for ($i=0; $i < 52 ; $i++) {
+                $faker = Faker\Factory::create('es_ES');
+                $sql = "INSERT INTO estudiantes (name,last_name,gender,age,status,cell,email,identification,HR,token_id) 
+                VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? ,?)";
+                $this->pdo->prepare($sql)
+                    ->execute(
+                        array(
+                            $faker->firstName . ' '. $faker->firstName,
+                            $faker->lastName.' '. $faker->lastName,
+                            $faker->numberBetween(1,2),
+                            $faker->numberBetween(16, 25),
+                            1,
+                            $faker->phoneNumber,
+                            $faker->freeEmail,
+                            $faker->numberBetween(1000000000, 1500000000),
+                            $faker-> numberBetween(1,8),
+                            $faker->numberBetween(1, 2)
+                        )
+                    );
+            }
         } catch (Exception $e) {
             die($e->getMessage());
         }

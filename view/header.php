@@ -53,7 +53,7 @@
 				<ul class="nav">
 					<li class="">
 						<a data-toggle="collapse" href="#pagesExamplesA" aria-expanded="<?= $_REQUEST['c'] == 'actividad' ? "true" : "false"; ?>" class="collapsed">
-							<i class="now-ui-icons design_image"></i>
+							<i class="now-ui-icons design_bullet-list-67"></i>
 							<p>
 								Actividades<b class="caret"></b>
 							</p>
@@ -90,16 +90,11 @@
 										<p>encuestas</p>
 									</a>
 								</li>
-								<li>
-									<a href="?c=remision">
-										<i class="fas fa-circle"></i>
-										<p>Remisiones</p>
-									</a>
-								</li>
+
 							</ul>
 					<li>
 						<a data-toggle="collapse" href="#pagesExamplesB" class="collapsed">
-							<i class="now-ui-icons design_image"></i>
+							<i class="now-ui-icons design-2_ruler-pencil"></i>
 							<p>
 								Gestion de ambientes<b class="caret"></b>
 							</p>
@@ -128,8 +123,14 @@
 						</div>
 					</li>
 					<li>
+						<a href="?c=remision">
+							<i class="now-ui-icons business_badge"></i>
+							<p>Remisiones</p>
+						</a>
+					</li>
+					<li>
 						<a href="?c=pdf">
-							<i class="now-ui-icons arrows-1_cloud-download-93"></i>
+							<i class="now-ui-icons files_single-copy-04"></i>
 							<p>Informes</p>
 						</a>
 					</li>
@@ -189,10 +190,10 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#pablo">
-									<i class="now-ui-icons location_world "></i>
+								<a class="nav-link" href="?c=home&a=Index">
+									<i class="now-ui-icons business_bank "></i>
 									<p>
-										<span class="d-lg-none d-md-block">Account</span>
+										<span class="d-lg-none d-md-block">Inicio</span>
 									</p>
 								</a>
 							</li>
@@ -204,11 +205,8 @@
 									</p>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-									<?php if (!isset($_SESSION)) : ?>
-										<a class="dropdown-item" href="?c=home&a=Login">Iniciar Sesion</a>
-									<?php endif; ?>
-									<a class="dropdown-item" href="?c=home&a=Salir">Cerrar Sesion</a>
-									<a class="dropdown-item" href="?c=home&a=Landing">Mi perfil</a>
+									<a class="dropdown-item" href="?c=home&a=Salir">
+										<i class="now-ui-iconss media-1_button-power"></i>Cerrar Sesion</a>
 								</div>
 							</li>
 

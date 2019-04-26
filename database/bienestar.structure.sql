@@ -217,7 +217,6 @@ CREATE TABLE `registros` (
 
 CREATE TABLE `remisiones` (
   `id` int(11) NOT NULL,
-  `referal_type` enum('trabajo_social','psicologia','','') NOT NULL,
   `date_create` date NOT NULL,
   `n_orden` int(11) NOT NULL,
   `reason_referal` text NOT NULL,
@@ -228,7 +227,7 @@ CREATE TABLE `remisiones` (
   `psico_firm_before` longblob NOT NULL,
   `student_firm` longblob NOT NULL,
   `date_eval` date NOT NULL,
-  `eval_track` enum('si','no','','') NOT NULL,
+  `eval_track` enum('si','no') NOT NULL,
   `date_promises` date NOT NULL,
   `psico_firm_after` longblob NOT NULL,
   `stutent_id` int(11) NOT NULL

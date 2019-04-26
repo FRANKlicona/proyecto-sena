@@ -23,4 +23,7 @@ body.preloader-site {
 input:valid {
   border-color: rgb(77, 179, 82);
 }
+input:invalid {
+	border-color: rgb(179, 155, 77);
+}
 

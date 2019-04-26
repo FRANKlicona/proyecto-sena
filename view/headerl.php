@@ -39,15 +39,8 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-primary fixed-top <?= ($_REQUEST['a'] != 'Nada') ? 'navbar-transparent' : "" ?> " color-on-scroll="400">
         <div class="container">
-            <div class="dropdown button-dropdown">
-                <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
-                    <span class="button-bar"></span>
-                    <span class="button-bar"></span>
-                    <span class="button-bar"></span>
-                </a>
-            </div>
             <div class="navbar-translate">
-                <a class="navbar-brand" href="?c=home&a=Landing">
+                <a class="navbar-brand" href="?c=Home&a=Landing">
                     Bienestar al aprendiz
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">

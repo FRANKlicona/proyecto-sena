@@ -324,7 +324,7 @@ class Home
 				$name = $row[0]->name . ' ' . $row[0]->last_name;
 				$subject = "Sistema de recuperacion de contraseña ";
 				$content = $row[0]->name . " " . $row[0]->last_name . ", tu contraseña actualizada sera reestablesidaa
-								haciendo click <a href ='http://localhost/OneDrive%20-%20Servicio%20Nacional%20de%20Aprendizaje/proyecto-sena/?c=Home&a=Recuperar&r=" . $token . "
+								haciendo click <a href ='http://localhost/OneDrive%20-%20Servicio%20Nacional%20de%20Aprendizaje/proyecto-sena/?c=Home&a=Recuperar&r=" . md5($token) . "
 								&id=" . $row[0]->id . "'>aqui</a>";
 				require_once('email.php');
 

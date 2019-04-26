@@ -1,4 +1,4 @@
-<?php 
+<?php
 $order = isset($_REQUEST['order']) ? $_REQUEST['order'] : '';
 $change = isset($_REQUEST['change']) ? $_REQUEST['change'] : '1';
 $shr = isset($_REQUEST['shr']) ? ' and fichas.name = ' . $_REQUEST['shr'] : '';
@@ -39,29 +39,29 @@ $total_pages = ceil($cant / 13);
                                 if ($total_pages > 1) {
                                     if ($page != 1) {
                                         ?>
-                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
-                                <?php
+                                        <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                                    <?php
 
-                            }
-                            for ($i = 1; $i <= $total_pages; $i++) {
-                                if ($page == $i) {
-                                    ?>
-                                <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
-                                <?php
+                                }
+                                for ($i = 1; $i <= $total_pages; $i++) {
+                                    if ($page == $i) {
+                                        ?>
+                                            <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
+                                        <?php
 
-                            } else {
-                                ?>
-                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
-                                <?php
-                                if ($page != $total_pages) {
-                                    ?>
-                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
-                                <?php
+                                    } else {
+                                        ?>
+                                            <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
+                                            <?php
+                                            if ($page != $total_pages) {
+                                                ?>
+                                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                                            <?php
+                                        }
+                                    }
+                                }
                             }
-                        }
-                    }
-                }
-                ?>
+                            ?>
                             </ul>
                         </div>
                         <div class="col-md-2 col-sm-3 col-6 ">
@@ -111,30 +111,38 @@ $total_pages = ceil($cant / 13);
                                 </th>
                             </thead>
                             <tbody>
-                                <?php 
-                                foreach ($this->model->Listar(13, $init, $order, $change, $shr) as $r) :
-                                    ?>
-                                <tr>
-                                    <td>
-                                        <?= $r->exe_name; ?>
-                                    </td>
-                                    <td>
-                                        <a href="?c=ficha&a=Info&id=<?= $r->tok_id; ?>&d=" class="btn btn-link " data-toggle="tooltip" data-placement="top" title="<?= $r->pro_name; ?>" data-container="body" data-animation="true"><?= $r->tok_name; ?></a>
+                                <?php
+                                if (isset($init)) :
+                                    foreach ($this->model->Listar(13, $init, $order, $change, $shr) as $r) :
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <?= $r->exe_name; ?>
+                                            </td>
+                                            <td>
+                                                <a href="?c=ficha&a=Info&id=<?= $r->tok_id; ?>&d=" class="btn btn-link " data-toggle="tooltip" data-placement="top" title="<?= $r->pro_name; ?>" data-container="body" data-animation="true"><?= $r->tok_name; ?></a>
 
-                                    </td>
-                                    <td>
-                                        <?= $r->date; ?>
-                                    </td>
+                                            </td>
+                                            <td>
+                                                <?= $r->date; ?>
+                                            </td>
 
-                                    <td class="text-center">
-                                        <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
-                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?=$r->id; ?>">
-                                                <i class="now-ui-icons ui-2_settings-90"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
+                                            <td class="text-center">
+                                                <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
+                                                    <a type=button" class="btn btn-sm btn-info btn-round" href="?c=actividad&a=Crud&id=<?= $r->id; ?>">
+                                                        <i class="now-ui-icons ui-2_settings-90"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach;
+                            else : ?>
+                                    <tr>
+                                        <td>
+                                            Nose de encuentran resultados
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -213,4 +221,4 @@ $total_pages = ceil($cant / 13);
             </div>
         </div>
     </div>
-    </di v> 
+    </di v>

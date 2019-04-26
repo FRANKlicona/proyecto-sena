@@ -13,9 +13,16 @@ class remisionController
 
     public function Index()
     {
-        require_once 'view/header.php';
-        require_once 'view/remision/remision.php';
-        require_once 'view/footer.php';
+        if ($_SESSION['dimension_id']==5 || $_SESSION['dimension_id'] == 7 ) {
+            require_once 'view/header.php';
+            require_once 'view/remision/remision.php';
+            require_once 'view/footer.php';
+        }else{
+            setcookie('icon','error',time()+3);
+            setcookie('text','Usted o se encuentra con acceso a este apartado', time()+3);
+            header('Location:?c=Home&a=Index');
+            
+        }
     }
 
     public function Crud()
@@ -33,27 +40,13 @@ class remisionController
 
     public function Guardar()
     {
-
-
         $remision = new Remision();
 
         $remision->id                   = $_REQUEST['id'];
-        $remision->referal_type         = $_REQUEST['referal_type'];
-        $remision->date_create          = $_REQUEST['date_create'];
-        $remision->n_orden              = $_REQUEST['n_orden'];
         $remision->reason_referal       = $_REQUEST['reason_referal'];
         $remision->instructor_name      = $_REQUEST['instructor_name'];
-        $remision->instructor_firm      = $_REQUEST['instructor_firm'];
-        $remision->situation_found      = $_REQUEST['situation_found'];
-        $remision->promises             = $_REQUEST['promises'];
-        $remision->psico_firm_before    = $_REQUEST['psico_firm_before'];
-        $remision->student_firm         = $_REQUEST['student_firm'];
-        $remision->date_eval            = $_REQUEST['date_eval'];
-        $remision->eval_track           = $_REQUEST['eval_track'];
-        $remision->date_promises        = $_REQUEST['date_promises'];
-        $remision->psico_firm_after     = $_REQUEST['psico_firm_after'];
         $remision->identification_id    = $_REQUEST['identification_id'];
-        $remision->program_id           = $_REQUEST['program_id'];
+        $remision->instructor_email      = $_REQUEST['instructor_email'];
 
         $remision->id > 0
             ? $this->model->Actualizar($remision)

@@ -32,6 +32,7 @@ class Actividad
                     $ch = '';
                     break;
             }
+            $d = ($_SESSION['dimension_id']!=7) ? "AND acciones.dimension_id = ".$_SESSION['dimension_id'] : "" ;
 
             $o = ($o != '') ? $o : 'date_create';
             $stm = $this->pdo->prepare("SELECT 
@@ -41,12 +42,13 @@ class Actividad
                 fichas.name     as tok_name,
                 acciones.id     as exe_id,
                 acciones.name   as exe_name,
-                programas.name  as pro_name
+                programas.name  as pro_name,
+                acciones.dimension_id as exe_dim
                 FROM actividades 
                 INNER JOIN fichas   on token_id = fichas.id
                 INNER JOIN acciones on action_id= acciones.id
                 INNER JOIN programas on program_id= programas.id
-                WHERE checkit = 'NO'" . $shr . "
+                WHERE checkit = 'NO'" . $shr .$d."
                 ORDER BY " . $o . " " . $ch . " 
                 LIMIT " . $c . ', ' . $i);
             // print_r($stm);
@@ -62,12 +64,13 @@ class Actividad
     {
         try {
             $result = array();
-
+            $d = ($_SESSION['dimension_id'] != 7) ? "AND acciones.dimension_id = " . $_SESSION['dimension_id'] : "";
             $stm = $this->pdo->prepare("SELECT 
                 COUNT(*) as cant
                 FROM actividades 
                 INNER JOIN fichas   on token_id = fichas.id
-                WHERE checkit = 'NO' $shr");
+                INNER JOIN acciones on action_id = acciones.id
+                WHERE checkit = 'NO' ".$shr. $d);
             // print_r($stm);
             // die;
             $stm->execute();

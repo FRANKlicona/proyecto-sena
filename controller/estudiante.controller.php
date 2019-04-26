@@ -1,5 +1,6 @@
 <?php
 require_once 'model/estudiante.php';
+require_once 'vendor\fzaninotto\faker\src\autoload.php';
 
 class EstudianteController
 {
@@ -55,6 +56,10 @@ class EstudianteController
             : $this->model->Registrar($estudiante);
 
         header("Location: index.php?c=estudiante");
+    }
+    public function Faker()
+    {
+        $this->model->RegistrarFaker();
     }
 
     public function Eliminar()

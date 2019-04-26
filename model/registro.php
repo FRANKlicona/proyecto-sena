@@ -25,7 +25,7 @@ class Registro
     {
         try {
             $result = array();
-
+            $d = ($_SESSION['dimension_id'] != 7) ? "WHERE acciones.dimension_id = " . $_SESSION['dimension_id'] : "";
             $stm = $this->pdo->prepare( "SELECT 
                     registros.id,
                     students,
@@ -38,7 +38,8 @@ class Registro
                     acciones.name           as acc_name
                 FROM registros 
                 INNER JOIN actividades  on activity_id          = actividades.id 
-                INNER JOIN acciones     ON actividades.action_id= acciones.id ");
+                INNER JOIN acciones     ON actividades.action_id= acciones.id 
+                $d");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
             die;
@@ -118,15 +119,13 @@ class Registro
                         $data->date,
                         $data->duration,
                         $data->id
-
-
                     )
                 );
         } catch (Exception $e) {
             die($e->getMessage());
+
         }
     }
-
     public function Registrar(registro $data)
     {
         try {

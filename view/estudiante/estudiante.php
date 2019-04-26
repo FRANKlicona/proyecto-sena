@@ -24,7 +24,7 @@ $total_pages = ceil($cant / 13);
 			<div class="card">
 				<div class="card-header">
 					<h4 class="card-title"> Lista de
-						<?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=estudiante&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
+						<?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=estudiante&a=Faker"><i class="now-ui-icons ui-1_simple-add"></i></a>
 					</h4>
 
 				</div>
@@ -64,7 +64,7 @@ $total_pages = ceil($cant / 13);
 												<?= $r->identification; ?>
 											</td>
 											<td>
-												<?= $r->token_id; ?>
+												<?= $r->tok_name; ?>
 											</td>
 											<td class="text-center">
 												<div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
@@ -120,28 +120,25 @@ $total_pages = ceil($cant / 13);
 											?>
 											<li class="page-item"><a class="page-link" href="index.php?c=estudiante&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
 										<?php
-
-									}
-									for ($i = 1; $i <= $total_pages; $i++) {
-										if ($page == $i) {
-											?>
+										}
+										for ($i = 1; $i <= $total_pages; $i++) {
+												if ($page == $i) {
+												?>
 												<li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
-											<?php
-
-										} else {
-											?>
+												<?php
+												} else {
+												?>
 												<li class="page-item"><a class="page-link" href="index.php?c=estudiante&page=<?= $i; ?>"><?= $i; ?></a></li>
 												<?php
-												if ($page != $total_pages) {
-													?>
-													<li class="page-item"><a class="page-link" href="index.php?c=estudiante&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
-												<?php
-
-											}
+												}
 										}
+										if ($page != $total_pages) {
+											?>
+											<li class="page-item"><a class="page-link" href="index.php?c=estudiante&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
+										<?php
+										}								
 									}
-								}
-								?>
+									?>
 								</ul>
 							</nav>
 						</table>

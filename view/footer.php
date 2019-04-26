@@ -68,7 +68,7 @@
     }
 </script>
 <?php
-if ($_REQUEST['c'] == 'Home' && ($_REQUEST['a'] == '' || $_REQUEST['a']) == 'Landing') : ?>
+if ($_REQUEST['c'] == 'Home') : ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
@@ -157,9 +157,7 @@ if (isset($_REQUEST['a'])) :
             });
         </script>
     <?php endif;
-endif
-?>
-<?php
+endif;
 if (isset($_COOKIE['auth'])) {
     if ($_COOKIE['auth']) {
         echo "
@@ -282,11 +280,11 @@ if (isset($_COOKIE["icon"])) {
             responsive: true,
             tooltips: {
                 mode: 'index',
-                intersect: false,
+                intersect: true,
             },
             hover: {
                 mode: 'nearest',
-                intersect: true
+                intersect: false
             },
             scales: {
                 xAxes: [{
