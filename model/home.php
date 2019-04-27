@@ -94,7 +94,7 @@ class Home
 	{
 		try {
 			$result = array();
-			$stm = $this->pdo->prepare("SELECT * FROM dimensiones");
+			$stm = $this->pdo->prepare("SELECT * FROM dimensiones limit 6");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);

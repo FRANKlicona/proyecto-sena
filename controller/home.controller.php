@@ -39,19 +39,21 @@ class HomeController
 		session_destroy();
 		header('Location:?c=Home&a=Landing');
 	}
-	public function Peticion(){   
-		if ($_COOKIE['validation']) {
-			require_once 'view/headerl.php';
-			require_once 'view/home/peticion.php';
-			require_once 'view/footer.php';  
-		}else{
-			setcookie('icon','error',time()+3);
-			setcookie('text','Esta peticion ha vencido, intentelo nuevamente',time()+3);
-			require_once 'view/headerl.php';
-			require_once 'view/home/Landing.php';
-			require_once 'view/footer.php';
-			header('Location:?#formularioPet');  
-		}
+	public function Peticion(){
+		// if( isset($_COOKIE['validation'])){
+		// 	if ($_COOKIE['validation']) {
+				require_once 'view/headerl.php';
+				require_once 'view/home/peticion.php';
+				require_once 'view/footer.php';  
+		// 	}
+		// 	}else{
+		// 		setcookie('icon','error',time()+3);
+		// 		setcookie('text','Esta peticion ha vencido, intentelo nuevamente',time()+3);
+		// 		require_once 'view/headerl.php';
+		// 		require_once 'view/home/Landing.php';
+		// 		require_once 'view/footer.php';
+		// 		header('Location:?#formularioPet');  
+		// }
 	}
 	public function Nada()
 	{

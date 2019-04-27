@@ -90,5 +90,9 @@ class Lista
 			die($e->getMessage());
 		}
 	}
+
+	public function ListarDimension(){
+		
+	}
 }
 ?>
