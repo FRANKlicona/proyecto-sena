@@ -79,7 +79,7 @@
 						<div class="card-header">
 							<ul class="nav nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#psico" role="tab">Psicologia</a>
+									<a class="nav-link" data-toggle="tab" href="#psico" role="tab">Orientacion</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" data-toggle="tab" href="#health" role="tab">Salud</a>
@@ -97,7 +97,7 @@
 									<a class="nav-link" data-toggle="tab" href="#lider" role="tab">Liderazgo</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#all" role="tab">Todas</a>
+									<a class="nav-link" data-toggle="tab" href="#all" role="tab">Comunidad</a>
 								</li>
 							</ul>
 						</div>
@@ -160,7 +160,7 @@
 								</div>
 								<div class="tab-pane" id="all" role="tabpanel">
 									<ul>
-										<?php foreach ($this->model->ListarAccion("") as $a) : ?>
+										<?php foreach ($this->model->ListarAccion(8) as $a) : ?>
 											<li>
 												<?= $a->name; ?>
 											</li>

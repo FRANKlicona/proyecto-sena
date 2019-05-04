@@ -77,7 +77,7 @@
                                         <label for="exampleInputEmail1">Accion</label>
                                         <select name="action_id" required class="form-control">
                                             <option  disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
-                                            <?php foreach ($this->model->ListarAccion("") as $d) : ?>
+                                            <?php foreach ($this->model->ListarAccion($_SESSION['dimension_id']) as $d) : ?>
                                             <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->action_id) ? 'Selected' : '') : ""; ?> value="
                                             <?= $d->id; ?>">
                                                 <?= $d->name; ?>

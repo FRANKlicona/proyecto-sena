@@ -162,7 +162,7 @@ class Home
 	public function ListarAccion($opc)
 	{
 		try {
-			if ($opc != "") {
+			if ($opc != 9) {
 				$opc = "WHERE dimension_id = $opc";
 			} else {
 				$opc = "";
