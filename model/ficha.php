@@ -118,6 +118,9 @@ class Ficha
                             date_start  = ?,
                             date_finish = ?,
                             journey     = ?,
+                            status      = ?,
+                            place       = ?,
+                            formation_level= ?,
                             program_id  = ?					
                     WHERE id = ?";
 
@@ -144,11 +147,17 @@ class Ficha
     public function Registrar(ficha $data)
     {
         try {
-            $sql = "INSERT INTO fichas (name,student,date_start,date_finish,journey,pass_code,program_id) 
-                VALUES ( ? , ? , ? , ? , ? , ? , ?)";
-            // print_r($_REQUEST);
-            // echo $sql."llega aqui";
-            // die;
+            $sql = "INSERT INTO fichas (name,student,date_start,date_finish,journey,status,place,formation_level,pass_code,program_id) 
+                VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)";
+            $alpha = "123QWERTYUIOPA456sdSDFGHJKLZXCVBNM789";
+            $data->pass_code = "";
+            $longitud = 3;
+            for ($i = 0; $i < $longitud; $i++) {
+                $data->pass_code .= $alpha[rand(0, strlen($alpha) - 1)];
+            } 
+            // echo "<pre>";
+            // print_r($data);
+            // echo "</pre>";
             $this->pdo->prepare($sql)
                 ->execute(
                     array(
@@ -157,6 +166,9 @@ class Ficha
                         $data->date_start,
                         $data->date_finish,
                         $data->journey,
+                        $data->status,
+                        $data->place,
+                        $data->formation_level,
                         $data->pass_code,
                         $data->program_id
                     )

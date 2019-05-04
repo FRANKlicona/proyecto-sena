@@ -1,4 +1,5 @@
 <?php
+$v = isset($_REQUEST['v']) ? $_REQUEST['v'] : "";
 $order = isset($_REQUEST['order']) ? $_REQUEST['order'] : '';
 $change = isset($_REQUEST['change']) ? $_REQUEST['change'] : '1';
 $shr = isset($_REQUEST['shr']) ? ' and fichas.name = ' . $_REQUEST['shr'] : '';
@@ -29,7 +30,7 @@ $total_pages = ceil($cant / 13);
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-4 col-sm-6">
-                            <h4 class="card-title"> Actividades de
+                            <h4 class="card-title"> Listado de
                                 <?= strtoupper($_REQUEST['c']); ?>
                             </h4>
                         </div>
@@ -113,7 +114,7 @@ $total_pages = ceil($cant / 13);
                             <tbody>
                                 <?php
                                 if (isset($init)) :
-                                    foreach ($this->model->Listar(13, $init, $order, $change, $shr) as $r) :
+                                    foreach ($this->model->Listar(13, $init, $order, $change, $shr, $v) as $r) :
                                         ?>
                                         <tr>
                                             <td>
@@ -139,7 +140,14 @@ $total_pages = ceil($cant / 13);
                             else : ?>
                                     <tr>
                                         <td>
-                                            Nose de encuentran resultados
+                                            Nose de encuentran resultados de actividades pendientes o realizadas
+                                            <?php
+                                            if (!isset($_REQUEST['v'])) :
+                                                ?>
+                                                <a href="">¿Desea ver las actividades vencidas?</a>
+                                            <?php
+                                        endif;
+                                        ?>
                                         </td>
                                     </tr>
                                 <?php endif; ?>

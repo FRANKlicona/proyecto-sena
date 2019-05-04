@@ -13,20 +13,53 @@
                     <form class="form-group" action="?c=programa&a=Guardar" method="post">
                         <input type="hidden" name="id" value="<?= $programa->id ?>">
                         <div class="row">
-                            <div class="col-md-6 pr-1">
+                            <div class="col-md-11 pr-1">
                                 <div class="form-group">
                                     <label>Nombre Del Programa</label>
-                                    <input type="text" name="name" value="<?= isset($_REQUEST['id']) ? $programa->name : "" ?>" class="form-control">
+                                    <input required type="text" name="name" value="<?= isset($_REQUEST['id']) ? $programa->name : "" ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-11 pr-1">
+                            <div class="col-md-10 pr-1">
                                 <div class="form-group">
                                     <label>Estado</label>
-                                    <select name="status" class="form-control">
+                                    <select required name="status" class="form-control">
+                                        <option selected disabled value="">Escoja el estado del programa</option>
                                         <option value="1">Activo</option>
                                         <option value="2">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-8 pr-1">
+                                <div class="form-group">
+                                    <label>Modalidad</label>
+                                    <select required name="mode" class="form-control">
+                                        <option selected disabled value="">Escoja la modalidad del progama</option>
+                                        <option value="1">Virtual</option>
+                                        <option value="2">Presencial</option>
+                                        <option value="3">A Distancia</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Tipo</label>
+                                    <select required name="type" class="form-control">
+                                        <option selected disabled value="">Escoja el tipo de progama</option>
+                                        <option value="1">Articulacion con la media</option>
+                                        <option value="2">Programa Sena</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>Convenio</label>
+                                    <select required name="agreement" class="form-control">
+                                        <option selected disabled value="">Escoja un convenio</option>
+                                        <option value="1">IDER</option>
+                                        <option value="2">TECNAR</option>
+                                        <option value="3">Ninguno</option>
                                     </select>
                                 </div>
                             </div>

@@ -22,7 +22,9 @@ class Programa
             $stm = $this->pdo->prepare( "SELECT 
                 id,                
                 name,
-                status
+                status,
+                mode,
+                type
                 FROM programas
                 ORDER BY name DESC 
                 LIMIT ".$c . ', ' . $i );
@@ -76,8 +78,10 @@ class Programa
     {
         try {
             $sql = "UPDATE programas SET  
-                        name     = ?,
-                        status   = ?						
+                        name    = ?,
+                        status  = ?,
+                        mode    =?,
+                        type    =?						
                     WHERE id = ?";
                 //print_r($data);
                 // die($sql);
@@ -87,6 +91,8 @@ class Programa
                     array(
                         $data->name,
                         $data->status,
+                        $data->mode,
+                        $data->type,
                         $data->id
                     )
                 );
@@ -98,8 +104,8 @@ class Programa
     public function Registrar(programa $data)
     {
         try {
-            $sql = "INSERT INTO programas (name,status) 
-                VALUES ( ? , ? )";
+            $sql = "INSERT INTO programas (name,status,mode,type) 
+                VALUES ( ? , ? , ? , ? )";
             // print_r($_REQUEST);
             // echo $sql."llega aqui";
             // die;
@@ -107,7 +113,9 @@ class Programa
                 ->execute(
                     array(
                         $data->name,
-                        $data->status
+                        $data->status,
+                        $data->mode,
+                        $data->type
                     )
                 );
         } catch (Exception $e) {

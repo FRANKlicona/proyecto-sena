@@ -40,6 +40,8 @@ class ProgramaController
         $programa->id      = $_REQUEST['id'];
         $programa->name    = $_REQUEST['name'];
         $programa->status   = $_REQUEST['status'];
+        $programa->mode   = $_REQUEST['mode'];
+        $programa->type   = $_REQUEST['type'];
     
         $programa->id > 0
             ? $this->model->Actualizar($programa)

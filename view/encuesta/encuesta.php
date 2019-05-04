@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">
+                    <h4 class="card-title">Listado de
                         <?= strtoupper($_REQUEST['c'].'s'); ?><a class="btn btn-sm btn-primary btn-round pull-right" href="?c=encuesta&a=Crud<?= isset($_REQUEST['v']) ? $_REQUEST['v'] : ""; ?>"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
                 </div>

@@ -200,10 +200,10 @@
 						<div class="input-group input-lg">
 
 							<select name="token_id" required class="form-control" style="height:45px">
-								<option disabled="" selected value="">Ficha</option>
+								<option disabled selected value="">Ficha</option>
 								<?php foreach ($this->model->ListarFicha() as $d) : ?>
-									<option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?> ">
-										<?= $d->name; ?>
+									<option value="<?= $d->id; ?> ">
+										<?= $d->name." - ".$d->dimension; ?>
 									</option>
 								<?php endforeach; ?>
 							</select>

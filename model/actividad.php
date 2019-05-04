@@ -17,7 +17,7 @@ class Actividad
         }
     }
 
-    public function Listar($i, $c, $o, $ch, $shr)
+    public function Listar($i, $c, $o, $ch, $shr,$v)
     {
         try {
             $result = array();
@@ -33,7 +33,8 @@ class Actividad
                     break;
             }
             $d = ($_SESSION['dimension_id']!=7) ? "AND acciones.dimension_id = ".$_SESSION['dimension_id'] : "" ;
-
+            $v = ($v=="v")?"VENCIDA":"NO";
+            $v = ($v == "s") ? "SI" : "NO";
             $o = ($o != '') ? $o : 'date_create';
             $stm = $this->pdo->prepare("SELECT 
                 actividades.id,                
@@ -48,7 +49,7 @@ class Actividad
                 INNER JOIN fichas   on token_id = fichas.id
                 INNER JOIN acciones on action_id= acciones.id
                 INNER JOIN programas on program_id= programas.id
-                WHERE checkit = 'NO'" . $shr .$d."
+                WHERE checkit = '$v'" . $shr .$d."
                 ORDER BY " . $o . " " . $ch . " 
                 LIMIT " . $c . ', ' . $i);
             // print_r($stm);

@@ -23,7 +23,7 @@ $total_pages = ceil($cant / 13);
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Actividades de
+                    <h4 class="card-title"> Listado de
                         <?= strtoupper($_REQUEST['c']); ?> <a class="btn btn-sm btn-primary btn-round pull-right" href="?c=programa&a=Crud"><i class="now-ui-icons ui-1_simple-add"></i></a>
                     </h4>
 

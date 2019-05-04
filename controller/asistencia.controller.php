@@ -2,7 +2,7 @@
 require_once 'model/accion.php';
 require_once 'model/validacion.php';
 
-class AccionController
+class AsistenciaController
 {
 
    private $model;

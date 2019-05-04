@@ -63,7 +63,7 @@
 								<li>
 									<a href="?c=accion">
 										<i class="fas fa-circle"></i>
-										<p>acciones</p>
+										<p><b>acciones</b></p>
 									</a>
 								</li>
 								<li>
@@ -75,19 +75,19 @@
 								<li>
 									<a href="?c=registro">
 										<i class="fas fa-circle"></i>
-										<p>Registros de Actividad</p>
+										<p><b>Registros de Actividad</b></p>
 									</a>
 								</li>
 								<li>
 									<a href="?c=asistencia">
 										<i class="fas fa-circle"></i>
-										<p>Registros de Asistencia</p>
+										<p><b>Registros de Asistencia</b></p>
 									</a>
 								</li>
 								<li>
 									<a href="?c=encuesta">
 										<i class="fas fa-circle"></i>
-										<p>encuestas</p>
+										<p><b>encuestas</b></p>
 									</a>
 								</li>
 

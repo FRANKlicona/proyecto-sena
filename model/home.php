@@ -181,7 +181,12 @@ class Home
 		try {
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM fichas");
+			$stm = $this->pdo->prepare("SELECT 
+					fichas.id as id,
+					fichas.name as name,
+					programas.name as dimension 
+					FROM fichas
+					INNER JOIN programas on program_id = programas.id");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);

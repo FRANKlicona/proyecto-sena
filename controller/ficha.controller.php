@@ -52,8 +52,7 @@ class FichaController
 
     public function Guardar()
     {
-
-
+        // print_r($_REQUEST);
         $ficha = new Ficha();
 
         $ficha->id      = $_REQUEST['id'];
@@ -62,7 +61,9 @@ class FichaController
         $ficha->date_start = $_REQUEST['date_start'];
         $ficha->date_finish    = $_REQUEST['date_finish'];
         $ficha->journey    = $_REQUEST['journey'];
-        $ficha->pass_code = $_REQUEST['pass_code'];
+        $ficha->status      = $_REQUEST['status'];
+        $ficha->place       = $_REQUEST['place'];
+        $ficha->formation_level = $_REQUEST['formation_level'];
         $ficha->program_id = $_REQUEST['program_id'];
         
         $ficha->id > 0
