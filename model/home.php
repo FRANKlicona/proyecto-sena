@@ -133,7 +133,7 @@ class Home
 			die($e->getMessage());
 		}
 	}	
-	public function ListarActividad($opc)
+	public function ListarActividad($opc,$rk)
 	{
 		try {
 			$result = array();
@@ -146,7 +146,7 @@ class Home
 					 acciones.id   as exe_id 
 					 FROM actividades 
 					 INNER JOIN acciones on action_id= acciones.id
-					 WHERE checkit = 'NO' $opc");
+					 WHERE checkit = '$rk' $opc");
 			$stm->execute();
 
 			$sql = "UPDATE actividades SET  

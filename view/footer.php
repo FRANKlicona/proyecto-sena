@@ -47,6 +47,11 @@
 <script src='assets\fullcalendar-4.0.1\packages\timegrid\main.js'></script>
 <script src='assets\fullcalendar-4.0.1\packages\interaction\main.js'></script>
 <script src='assets\fullcalendar-4.0.1\packages\bootstrap\main.js'></script>
+<?php
+$datetime = new DateTime('now');
+$datetime_string = $datetime->format('c');
+?>
+
 <script>
     function passValue2($id, $token, $action) {
         document.getElementById('ide').value = $id;
@@ -73,6 +78,7 @@ if ($_REQUEST['c'] == 'Home') : ?>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
+                now: <?php echo json_encode($datetime_string) ?>,
                 plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
                 themeSystem: 'bootstrap',
                 timeZone: 'NYC',
@@ -114,15 +120,37 @@ if (isset($_REQUEST['a'])) :
             document.addEventListener('DOMContentLoaded', function() {
                 var calendarEl = document.getElementById('calendar');
                 var calendar = new FullCalendar.Calendar(calendarEl, {
+                    nowIndicator: true,
+                    hiddenDays: [0],
                     plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
                     themeSystem: 'bootstrap',
                     timeZone: 'NYC',
+                    businessHours: {
+                        daysOfWeek: [1, 2, 3, 4, 5, 6],
+                        startTime: '06:00',
+                        endTime: '18:00',
+                    },
                     events: [
-                        <?php foreach ($this->model->ListarActividad($_SESSION['dimension_id']) as $r) : ?> 
-                            {
+                        <?php foreach ($this->model->ListarActividad($_SESSION['dimension_id'], "NO") as $r) : ?> {
                                 id: '<?= $r->id; ?>',
                                 start: '<?= $r->date; ?>',
                                 title: '<?= $r->exe_name; ?>',
+                                color: '#6ab04c'
+                            },
+                        <?php endforeach; ?>
+                        <?php foreach ($this->model->ListarActividad($_SESSION['dimension_id'], "VENCIDA") as $r) : ?> {
+                                id: '<?= $r->id; ?>',
+                                start: '<?= $r->date; ?>',
+                                title: '<?= $r->exe_name; ?>',
+                                color: '#dfe6e9',
+                                textColor: '#1e272e'
+                            },
+                        <?php endforeach; ?>
+                        <?php foreach ($this->model->ListarActividad($_SESSION['dimension_id'], "SI") as $r) : ?> {
+                                id: '<?= $r->id; ?>',
+                                start: '<?= $r->date; ?>',
+                                title: '<?= $r->exe_name; ?>',
+                                color: '#f0932b'
                             },
                         <?php endforeach; ?>
                     ],
@@ -143,14 +171,13 @@ if (isset($_REQUEST['a'])) :
                         week: 'S',
                         day: 'D',
                     },
+
                     header: {
-                        left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                        left: 'dayGridMonth,listWeek,listDay',
                         center: 'title',
                         right: 'prev,today,next'
                     },
-                    // plugins: ['timeGrid'],
-                    // plugins: ['list'],
-                    // defaultView: 'listWeek',
+                    defaultView: 'listWeek',
                 });
                 // calendar.changeView('timeGridWeek')
                 calendar.setOption('locale', 'es');

@@ -1,14 +1,14 @@
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
-    <div class="row offset-md-1">
-        <div class="col-md-11">
+    <div class="row ">
+        <!-- <div class="col-md-11"> -->
             <div class="card">
                 <div class="card-body">
                     <div id="calendar"></div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 </div>
 <div class="modal fade modal-mini modal-neutral" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
@@ -65,7 +65,7 @@
                                         <select name="token_id" required class="form-control">
                                             <option  disabled="" <?= !isset($_REQUEST['id']) ? 'Selected' : ''; ?> value="">Seleccione la ficha correspondiente</option>
                                             <?php foreach ($this->model->ListarFicha() as $d) : ?>
-                                            <option <?= isset($_REQUEST['id']) ? (($d->id == $actividad->token_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
+                                            <option value="<?= $d->id; ?>">
                                                 <?= $d->name; ?>
                                             </option>
                                             <?php endforeach; ?>
