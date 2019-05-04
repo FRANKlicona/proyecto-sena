@@ -118,7 +118,8 @@ if (isset($_REQUEST['a'])) :
                     themeSystem: 'bootstrap',
                     timeZone: 'NYC',
                     events: [
-                        <?php foreach ($this->model->ListarActividad() as $r) : ?> {
+                        <?php foreach ($this->model->ListarActividad($_SESSION['dimension_id']) as $r) : ?> 
+                            {
                                 id: '<?= $r->id; ?>',
                                 start: '<?= $r->date; ?>',
                                 title: '<?= $r->exe_name; ?>',

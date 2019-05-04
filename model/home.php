@@ -133,11 +133,11 @@ class Home
 			die($e->getMessage());
 		}
 	}	
-	public function ListarActividad()
+	public function ListarActividad($opc)
 	{
 		try {
 			$result = array();
-
+			$opc = ($opc != 9) ? "AND acciones.dimension_id = $opc" : "" ;
 			$stm = $this->pdo->prepare("SELECT 
 					 actividades.id as id,
 					 date,
@@ -146,7 +146,7 @@ class Home
 					 acciones.id   as exe_id 
 					 FROM actividades 
 					 INNER JOIN acciones on action_id= acciones.id
-					 WHERE checkit = 'NO'");
+					 WHERE checkit = 'NO' $opc");
 			$stm->execute();
 
 			$sql = "UPDATE actividades SET  
