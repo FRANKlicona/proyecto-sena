@@ -1,4 +1,4 @@
-<?php 
+<?php
 $c = $this->model->Cantidad();
 $cant = $c[0]->cant;
 if ($cant > 0) {
@@ -38,30 +38,42 @@ $total_pages = ceil($cant / 13);
                                 <th>
                                     Estado
                                 </th>
+                                <th>
+                                    Modalidad
+                                </th>
+                                <th>
+                                    Tipo
+                                </th>
                                 <th class="text-center">
                                     Acciones
                                 </th>
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
                                 foreach ($this->model->Listar(13, $init) as $r) :
                                     ?>
-                                <tr>
-                                    <td>
-                                        <?php echo $r->name; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $r->status; ?>
-                                    </td>
+                                    <tr>
+                                        <td>
+                                            <?php echo $r->name; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $r->status; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $r->mode; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $r->type; ?>
+                                        </td>
 
-                                    <td class="text-center">
-                                        <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
-                                            <a type=button" class="btn btn-sm btn-info btn-round" href="?c=programa&a=Crud&id=<?php echo $r->id; ?>">
-                                                <i class="now-ui-icons ui-2_settings-90"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm btn-group-round" role="group" aria-label="Basic example">
+                                                <a type=button" class="btn btn-sm btn-info btn-round" href="?c=programa&a=Crud&id=<?php echo $r->id; ?>">
+                                                    <i class="now-ui-icons ui-2_settings-90"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
                             </tbody>
                             <nav>
@@ -70,30 +82,30 @@ $total_pages = ceil($cant / 13);
                                     if ($total_pages > 1) {
                                         if ($page != 1) {
                                             ?>
-                                    <li class="page-item"><a class="page-link" href="index.php?c=programa&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
-                                    <?php
+                                            <li class="page-item"><a class="page-link" href="index.php?c=programa&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                                        <?php
 
+                                    }
+                                    for ($i = 1; $i <= $total_pages; $i++) {
+                                        if ($page == $i) {
+                                            ?>
+                                                <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
+                                            <?php
+
+                                        } else {
+                                            ?>
+                                                <li class="page-item"><a class="page-link" href="index.php?c=progama&page=<?= $i; ?>"><?= $i; ?></a></li>
+                                                <?php
+                                                if ($page != $total_pages) {
+                                                    ?>
+                                                    <li class="page-item"><a class="page-link" href="index.php?c=programa&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                                                <?php
+
+                                            }
+                                        }
+                                    }
                                 }
-                                for ($i = 1; $i <= $total_pages; $i++) {
-                                    if ($page == $i) {
-                                        ?>
-                                    <li class="page-item active"><a class="page-link" href="#"><?= $page; ?></a></li>
-                                    <?php
-
-                                } else {
-                                    ?>
-                                    <li class="page-item"><a class="page-link" href="index.php?c=progama&page=<?= $i; ?>"><?= $i; ?></a></li>
-                                    <?php
-                                    if ($page != $total_pages) {
-                                        ?>
-                                    <li class="page-item"><a class="page-link" href="index.php?c=programa&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
-                                    <?php
-
-                                }
-                            }
-                        }
-                    }
-                    ?>
+                                ?>
                                 </ul>
                             </nav>
                         </table>
@@ -173,4 +185,4 @@ $total_pages = ceil($cant / 13);
             </div>
         </div>
     </div>
-</div> 
+</div>

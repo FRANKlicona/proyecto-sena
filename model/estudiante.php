@@ -34,7 +34,7 @@ class Estudiante
                 last_name,
                 gender,
                 age,
-                status,
+                estudiantes.status as status,
                 cell,
                 email,
                 identification,
