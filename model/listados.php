@@ -13,17 +13,8 @@ class Lista
 	{
 		try {
 			$result = array();
-			if ($opc == 'pending') {
-				$opc = "WHERE checkit = 'NO'";
-			}
-			if ($opc == 'denied') {
-				$opc = "WHERE checkit = 'RECHAZADA'";
-			}
-			if ($opc == 'accepted') {
-				$opc = "WHERE checkit = 'SI'";
-			}
 			$token = "AND fichas.id = ". $_REQUEST['id'];
-			$dimension = ($_SESSION['dimension_id']!= '7') ? " AND acciones.dimension_id = ".$_SESSION['dimension_id']  : "" ;
+			$dimension = ($_SESSION['dimension_id']!= '9') ? " AND acciones.dimension_id = ".$_SESSION['dimension_id']  : "" ;
 			$stm = $this->pdo->prepare( "SELECT 
 						peticiones.id as ide,
 						date_create,
@@ -37,7 +28,7 @@ class Lista
 					 FROM peticiones 
 						  INNER JOIN fichas       ON token_id     = fichas.id  
 						  INNER JOIN acciones     ON action_id    = acciones.id						  
-						  $opc
+						  WHERE checkit = '$opc'
 						  $dimension
 						  $token ");
 			// print_r($stm);

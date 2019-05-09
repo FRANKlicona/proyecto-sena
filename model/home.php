@@ -102,15 +102,13 @@ class Home
 			die($e->getMessage());
 		}
 	}
-	public function ListarPeticion($opc)
+	public function ListarPeticion()
 	{
 		try {
 			$result = array();
-			if ($opc) {
-				$opc = " WHERE dimensiones.id = ".$_SESSION['dimension_id'];
-			}else {
-				$opc ="";
-			}
+			
+			$d = isset($_SESSION)?(($_SESSION['dimension_id'] != 9) ? "AND acciones.dimension_id = ".$_SESSION['dimension_id'] : ""):"";
+
 			$stm = $this->pdo->prepare("SELECT 
 						  peticiones.id as ide,
 						  date_create,
@@ -123,8 +121,8 @@ class Home
 						  INNER JOIN fichas       ON token_id     = fichas.id  
 						  INNER JOIN acciones     ON action_id    = acciones.id
 						  INNER JOIN dimensiones  ON acciones.dimension_id = dimensiones.id
-						  $opc 
-						  AND checkit = 'NO'
+						  WHERE checkit = 'NO'
+						  $d 
 						  limit 2");
 			$stm->execute();
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -159,15 +157,11 @@ class Home
 			die($e->getMessage());
 		}
 	}
-	public function ListarAccion($opc)
+	public function ListarAccion()
 	{
 		try {
-			if ($opc != 9) {
-				$opc = "WHERE dimension_id = $opc";
-			} else {
-				$opc = "";
-			}
 			$result = array();
+			$opc = isset($_SESSION['dimension_id']) ? (($_SESSION['dimension_id'] != 9) ? "AND dimension_id = " . $_SESSION['dimension_id'] : "") : "";
 			$stm = $this->pdo->prepare("SELECT * FROM acciones $opc");
 			$stm->execute();
 

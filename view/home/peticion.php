@@ -32,21 +32,21 @@
                                                 <label style="color:white" for="action_id" class="btn btn-icon btn-md btn-round btn-warning">3</label>
                                                 <label style="color:white" for="reasons" class="btn btn-icon btn-md btn-round btn-warning">4</label> </div>
                                             <div class="col-10">
-
                                                 <h3>
                                                     <input name="token_id" type="hidden" value="<?= $_REQUEST['ficha'] ?>">
                                                     <input name="requester" type="hidden" value="<?= $_REQUEST['requester'] ?>">
                                                     <input name="email" type="hidden" value="<?= $_REQUEST['email'] ?>">
                                                     <div class="">
+
                                                         <select id="poblation" required name="poblation" class="input-group btn btn-round btn-link btn-neutral ">
-                                                            <option selected disabled="" class="text-left" value="">Para un?</option>
+                                                            <option selected disabled="" class="text-left" value="">Poblacion?</option>
                                                             <option style="color:black; background:none;" value="1">Grupo</option>
                                                             <option style="color:black; background:none;" value="2">Aprendiz</option>
                                                         </select>
                                                     </div>
                                                     <div class="">
                                                         <select id="dimension_id" required name="dimension_id" class="input-group btn btn-round btn-link btn-neutral ">
-                                                            <option selected disabled="" value="">Dimension</option>
+                                                            <option selected disabled="" value="">Dimension?</option>
                                                             <?php foreach ($this->model->ListarDimensiones("") as $d) : ?>
                                                                 <option style="color:black; background:none;" value="<?= $d->id; ?>"><?= $d->name; ?></option>
                                                             <?php endforeach; ?>
@@ -54,15 +54,15 @@
                                                     </div>
                                                     <div class="">
                                                         <select id="action_id" required name="action_id" class="input-group btn btn-round btn-link btn-neutral ">
-                                                            <option selected disabled="" value="">Escoja una actividad</option>
-                                                            <?php foreach ($this->model->ListarAccion("") as $d) : ?>
+                                                            <option selected disabled="" value="">Actividad?</option>
+                                                            <?php foreach ($this->model->ListarAccion() as $d) : ?>
                                                                 <option style="color:black; background:none;" value="<?= $d->id; ?>"><?= $d->name; ?></option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
                                                     <div class="">
                                                         <select id="reasons" required name="reasons" class="input-group btn btn-round btn-link btn-neutral ">
-                                                            <option selected disabled="" value="">Escoja un Motivo?</option>
+                                                            <option selected disabled="" value="">Motivo?</option>
                                                             <option style="color:black; background:none;" value="r1">Problematica encontrada</option>
                                                             <option style="color:black; background:none;" value="r2">Eventualidad Presentada</option>
                                                             <option style="color:black; background:none;" value="r3">Sin Especificar</option>

@@ -60,17 +60,17 @@
                      <ul class="nav nav-tabs justify-content-center" role="tablist">
                         <li class="nav-item">
                            <a class="nav-link active" data-toggle="tab" href="#pending" role="tab">
-                              <i class="now-ui-icons objects_umbrella-13"></i> Pendientes
+                              <i class="now-ui-icons ui-1_bell-53"></i> Pendientes
                            </a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" data-toggle="tab" href="#denied" role="tab">
-                              <i class="now-ui-icons shopping_cart-simple"></i> Rechazadas
+                              <i class="now-ui-icons ui-1_simple-remove"></i> Rechazadas
                            </a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" data-toggle="tab" href="#accepted" role="tab">
-                              <i class="now-ui-icons shopping_shop"></i> Aceptadas
+                              <i class="now-ui-icons ui-1_check"></i> Aceptadas
                            </a>
                         </li>
                      </ul>
@@ -82,7 +82,7 @@
                            <div class="table-full-width table-responsive">
                               <table class="table">
                                  <tbody>
-                                    <?php foreach ($this->listado->ListarPeticion('pending') as $peticion) : ?>
+                                    <?php foreach ($this->listado->ListarPeticion('NO') as $peticion) : ?>
                                        <tr>
                                           <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $peticion->tok_id; ?>"><?= $peticion->tok_name; ?></a></strong>, el <strong><?= $peticion->requester . " "; ?></strong> solicito <strong><?= $peticion->acc_name . " "; ?></strong></td>
                                           <td class="td-actions text-right">
@@ -103,7 +103,7 @@
                            <div class="table-full-width table-responsive">
                               <table class="table">
                                  <tbody>
-                                    <?php foreach ($this->listado->ListarPeticion('denied') as $peticion) : ?>
+                                    <?php foreach ($this->listado->ListarPeticion('RECHAZADA') as $peticion) : ?>
                                        <tr>
                                           <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $peticion->tok_id; ?>"><?= $peticion->tok_name; ?></a></strong>, el <strong><?= $peticion->requester . " "; ?></strong> solicito <strong><?= $peticion->acc_name . " "; ?></strong></td>
                                        </tr>
@@ -116,7 +116,7 @@
                            <div class="table-full-width table-responsive">
                               <table class="table">
                                  <tbody>
-                                    <?php foreach ($this->listado->ListarPeticion('accepted') as $peticion) : ?>
+                                    <?php foreach ($this->listado->ListarPeticion('SI') as $peticion) : ?>
                                        <tr>
                                           <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $peticion->tok_id; ?>"><?= $peticion->tok_name; ?></a></strong>, el <strong><?= $peticion->requester . " "; ?></strong> solicito <strong><?= $peticion->acc_name . " "; ?></strong></td>
                                        </tr>
@@ -133,18 +133,18 @@
                      <h6 class=""> Actividades</h6>
                      <ul class="nav nav-tabs justify-content-center" role="tablist">
                         <li class="nav-item">
-                           <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
-                              <i class="now-ui-icons objects_umbrella-13"></i> Pendientes
+                           <a class="nav-link  active " data-toggle="tab" href="#home" role="tab">
+                              <i class="now-ui-icons ui-1_bell-53"></i> Pendientes
                            </a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
-                              <i class="now-ui-icons shopping_cart-simple"></i> Vencidas
+                              <i class="now-ui-icons travel_info"></i> Vencidas
                            </a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
-                              <i class="now-ui-icons shopping_shop"></i> Realizadas
+                              <i class="now-ui-icons ui-1_check"></i> Realizadas
                            </a>
                         </li>
                      </ul>
@@ -163,7 +163,7 @@
                                  </th>
                               </thead>
                               <tbody>
-                                 <?php foreach ($this->listado->ListarActividad('accepted') as $actividad) : ?>
+                                 <?php foreach ($this->listado->ListarActividad('pending') as $actividad) : ?>
                                     <tr>
                                        <td>
                                           <?= $actividad->acc_name; ?>
@@ -211,7 +211,7 @@
                                  </th>
                               </thead>
                               <tbody>
-                                 <?php foreach ($this->listado->ListarActividad('pending') as $actividad) : ?>
+                                 <?php foreach ($this->listado->ListarActividad('accepted') as $actividad) : ?>
                                     <tr>
                                        <td>
                                           <?= $actividad->acc_name; ?>
