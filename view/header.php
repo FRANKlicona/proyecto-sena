@@ -205,6 +205,35 @@
 									</p>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+
+									<div class="card card-user">
+										<div class="image">
+											<img src="assets/img/bg5.jpg" alt="...">
+										</div>
+										<div class="card-body">
+											<div class="author">
+												<a href="#">
+													<img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+												</a>
+												<p class="description">
+													<h5 class="title">Mike Andrew</h5>
+													michael24
+												</p>
+											</div>
+										</div>
+										<hr>
+										<div class="button-container">
+											<button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+												<i class="fab fa-facebook-f"></i>
+											</button>
+											<button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+												<i class="fab fa-twitter"></i>
+											</button>
+											<button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+												<i class="fab fa-google-plus-g"></i>
+											</button>
+										</div>
+									</div>
 									<a class="dropdown-item" href="?c=home&a=Salir">
 										<i class="now-ui-iconss media-1_button-power"></i>Cerrar Sesion</a>
 								</div>
