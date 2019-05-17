@@ -52,10 +52,10 @@
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
-                                                    <div class="">
+                                                    <div id="actions" class="">
                                                         <select id="action_id" required name="action_id" class="input-group btn btn-round btn-link btn-neutral ">
                                                             <option selected disabled="" value="">Actividad?</option>
-                                                            <?php foreach ($this->model->ListarAccion() as $d) : ?>
+                                                            <?php foreach ($this->model->ListarAccion($dim) as $d) : ?>
                                                                 <option style="color:black; background:none;" value="<?= $d->id; ?>"><?= $d->name; ?></option>
                                                             <?php endforeach; ?>
                                                         </select>

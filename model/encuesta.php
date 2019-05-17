@@ -66,9 +66,21 @@ class Encuesta
         }
     }
 
+    public function ListarPrograma(){
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT * FROM programas");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function ListarRegistro()
     {
         try {
+            $opc = ($_SESSION['dimension_id']!=9) ? "WHERE acciones.dimension_id = ".$_SESSION['dimension_id'] : "" ;
             $result = array();
             $stm = $this->pdo->prepare("SELECT 
                 registros.id as id,
@@ -76,6 +88,7 @@ class Encuesta
                 FROM registros
                 INNER JOIN actividades ON registros.activity_id = actividades.id
                 INNER JOIN acciones ON actividades.action_id = acciones.id
+                $opc
                 ");
             $stm->execute();
 

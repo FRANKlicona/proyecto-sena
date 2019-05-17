@@ -24,11 +24,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 pr-1">
-                                <?php if($_SESSION['dimension_id']=='7') :?>
+                                <?php if($_SESSION['dimension_id']=='9') :?>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Dimension</label>
                                     <select name="dimension_id" required class="form-control">
-                                        <option <?= !isset($_REQUEST['id']) ?  'Selected' : ''; ?> disable value="">Por favor escoja una Dimension</option>
+                                        <option <?= !isset($_REQUEST['id']) ?  'Selected' : ''; ?> disabled value="">Por favor escoja una Dimension</option>
                                         <?php foreach ($this->model->ListarDimension() as $d) : ?>
                                             <option <?= isset($_REQUEST['id']) ? (($d->id == $accion->dimension_id) ? 'Selected' : '') : ""; ?> value="<?= $d->id; ?>">
                                                 <?= $d->name; ?>

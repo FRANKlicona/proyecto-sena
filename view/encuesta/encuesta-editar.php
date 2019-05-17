@@ -2,7 +2,7 @@
 </div>
 <div class="content">
     <div class="row offset-md-3 ">
-        <div class="col-md-7 ">
+        <div class="col-md-12 ">
             <div class="card">
                 <div class="card-header">
                     <h5 class="title">
@@ -40,6 +40,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nombre De La Actividad</label>
                                     <select name="register_id" class="form-control">
+                                        <option value="" selected disabled>Escoja una Actividad</option>
                                         <?php foreach ($this->model->ListarRegistro() as $d) : ?>
                                             <option value="<?= $d->id; ?>"><?= $d->name; ?></option>
                                         <?php endforeach; ?>
@@ -50,7 +51,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Programa De Formacion</label>
                                     <select name="program_id" class="form-control">
-                                        <?php foreach ($this->model->ListarProgram() as $d) : ?>
+                                        <option value="" disabled selected>Escoja un programa</option>
+                                        <?php foreach ($this->model->ListarPrograma() as $d) : ?>
                                             <option value="<?= $d->id; ?>"><?= $d->name; ?></option>
                                         <?php endforeach; ?>
 

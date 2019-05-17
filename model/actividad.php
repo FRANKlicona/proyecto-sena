@@ -32,9 +32,9 @@ class Actividad
                     $ch = '';
                     break;
             }
-            $d = ($_SESSION['dimension_id']!=7) ? "AND acciones.dimension_id = ".$_SESSION['dimension_id'] : "" ;
-            $v = ($v=="v")?"VENCIDA":"NO";
-            $v = ($v == "s") ? "SI" : "NO";
+            $d = ($_SESSION['dimension_id']!=9) ? " AND acciones.dimension_id = ".$_SESSION['dimension_id'] : "" ;
+            $shr = ($shr != "") ? " AND fichas.name ='$shr'" : "";
+            $v = ($v=='-1')?"VENCIDA":"NO";
             $o = ($o != '') ? $o : 'date_create';
             $stm = $this->pdo->prepare("SELECT 
                 actividades.id,                
@@ -61,17 +61,24 @@ class Actividad
             die($e->getMessage());
         }
     }
-    public function Cantidad($shr)
+    public function Cantidad($shr,$v)
     {
         try {
+
+            // echo '<pre>';
+            // print_r($_SERVER);
+            // echo '</pre>';
+            // die;
             $result = array();
-            $d = ($_SESSION['dimension_id'] != 7) ? "AND acciones.dimension_id = " . $_SESSION['dimension_id'] : "";
+            $shr = ($shr!="") ? " AND fichas.name ='$shr'" : "" ;
+            $d = ($_SESSION['dimension_id'] != 9) ? " AND acciones.dimension_id = " . $_SESSION['dimension_id'] : "";
+            $v = ($v=='-1') ? "WHERE checkit !='NO'" : "WHERE checkit ='NO'" ;
             $stm = $this->pdo->prepare("SELECT 
                 COUNT(*) as cant
                 FROM actividades 
                 INNER JOIN fichas   on token_id = fichas.id
                 INNER JOIN acciones on action_id = acciones.id
-                WHERE checkit = 'NO' ".$shr. $d);
+                ".$v.$shr. $d);
             // print_r($stm);
             // die;
             $stm->execute();
@@ -86,7 +93,8 @@ class Actividad
     {
         try {
             $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM acciones");
+            $opc = ($_SESSION['dimension_id']!="9") ? "WHERE dimension_id = ".$_SESSION['dimension_id'] : "" ;
+            $stm = $this->pdo->prepare("SELECT * FROM acciones $opc");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);

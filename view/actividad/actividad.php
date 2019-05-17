@@ -1,9 +1,9 @@
 <?php
-$v = isset($_REQUEST['v']) ? $_REQUEST['v'] : "";
+$v = isset($_REQUEST['v']) ? $_REQUEST['v'] : "1";
 $order = isset($_REQUEST['order']) ? $_REQUEST['order'] : '';
 $change = isset($_REQUEST['change']) ? $_REQUEST['change'] : '1';
-$shr = isset($_REQUEST['shr']) ? ' and fichas.name = ' . $_REQUEST['shr'] : '';
-$c = $this->model->Cantidad($shr);
+$shr = isset($_REQUEST['shr']) ?  $_REQUEST['shr'] : '';
+$c = $this->model->Cantidad($shr, $v);
 $cant = $c[0]->cant;
 if ($cant > 0) {
     $page = false;
@@ -40,7 +40,7 @@ $total_pages = ceil($cant / 13);
                                 if ($total_pages > 1) {
                                     if ($page != 1) {
                                         ?>
-                                        <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page - 1; ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                                        <li class="page-item"><a class="page-link" href="<?= Index::url(); ?>&page=<?= $page - 1; ?>&v=<?= $v; ?>"><span aria-hidden="true">&laquo;</span></a></li>
                                     <?php
 
                                 }
@@ -52,11 +52,11 @@ $total_pages = ceil($cant / 13);
 
                                     } else {
                                         ?>
-                                            <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $i; ?>"><?= $i; ?></a></li>
+                                            <li class="page-item"><a class="page-link" href="<?= Index::url(); ?>&page=<?= $i; ?>&v=<?= $v; ?>"><?= $i; ?></a></li>
                                             <?php
                                             if ($page != $total_pages) {
                                                 ?>
-                                                <li class="page-item"><a class="page-link" href="index.php?c=actividad&page=<?= $page + 1; ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                                                <li class="page-item"><a class="page-link" href="<?= Index::url(); ?>&page=<?= $page + 1; ?>&v=<?= $v; ?>"><span aria-hidden="true">&raquo;</span></a></li>
                                             <?php
                                         }
                                     }
@@ -69,7 +69,7 @@ $total_pages = ceil($cant / 13);
                             <h6 class="pull-right"><?= $cant . ' '; ?>resultados</h6>
                         </div>
                         <div class="col-md-3 col-sm-10 col-10">
-                            <form action="?c=Actividad" method="POST">
+                            <form action="?c=actividad&order=<?= $order; ?>&change=<?= $change; ?>&v=<?= $v; ?>" method="POST">
                                 <div class="input-group no-border">
                                     <input required type="text" value="" name="shr" class="form-control" minlength="7" maxlength="7" pattern="[0-9!?-]{7,7}" placeholder="buscar...">
                                     <div class="input-group-append">
@@ -93,17 +93,17 @@ $total_pages = ceil($cant / 13);
                         <table id="myTable" class="table">
                             <thead class=" text-primary">
                                 <th>
-                                    <a href="?c=Actividad&order=exe_name&change=<?= $change * -1; ?>">
+                                    <a href="<?= Index::url(); ?>&order=exe_name&change=<?= $change * -1; ?>">
                                         Actividad
                                     </a>
                                 </th>
                                 <th>
-                                    <a href="?c=Actividad&order=tok_name&change=<?= $change * -1; ?>">
+                                    <a href="<?= Index::url(); ?>&order=tok_name&change=<?= $change * -1; ?>">
                                         Ficha
                                     </a>
                                 </th>
                                 <th>
-                                    <a href="?c=Actividad&order=date&change=<?= $change * -1; ?>">
+                                    <a href="<?= Index::url(); ?>&order=date&change=<?= $change * -1; ?>">
                                         Fecha
                                     </a>
                                 </th>
@@ -141,13 +141,7 @@ $total_pages = ceil($cant / 13);
                                     <tr>
                                         <td>
                                             Nose de encuentran resultados de actividades pendientes o realizadas
-                                            <?php
-                                            if (!isset($_REQUEST['v'])) :
-                                                ?>
-                                                <a href="">¿Desea ver las actividades vencidas?</a>
-                                            <?php
-                                        endif;
-                                        ?>
+                                            <a href="<?= Index::url(); ?>&v=<?= $v * -1; ?>">¿Desea ver las actividades vencidas?</a>
                                         </td>
                                     </tr>
                                 <?php endif; ?>

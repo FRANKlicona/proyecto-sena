@@ -1,5 +1,17 @@
 <?php
-//Se da inicio de secciones
+//Se define la variable global URL
+$url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+class Index {
+    public function url()
+    {
+        global $url;
+        return $url;
+    }
+}
+global $Index;
+$Index = new Index();
+
+//Se da inicio a secciones
 session_start();
 //Se establece la zona horaria
 date_default_timezone_set('America/Bogota');

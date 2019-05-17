@@ -25,7 +25,7 @@ class Registro
     {
         try {
             $result = array();
-            $d = ($_SESSION['dimension_id'] != 7) ? "WHERE acciones.dimension_id = " . $_SESSION['dimension_id'] : "";
+            $d = ($_SESSION['dimension_id'] != 9) ? "WHERE acciones.dimension_id = " . $_SESSION['dimension_id'] : "";
             $stm = $this->pdo->prepare( "SELECT 
                     registros.id,
                     students,
@@ -51,7 +51,7 @@ class Registro
     {
         try {
             $result = array();
-
+            $opc = ($_SESSION['dimension_id']!=9) ? "WHERE acciones.dimension_id = ".$_SESSION['dimension_id'] : "" ;
             $stm = $this->pdo->prepare( "SELECT 
                 actividades.id,
                 date,
@@ -60,7 +60,7 @@ class Registro
                 FROM actividades 
                 INNER JOIN acciones on action_id= acciones.id
                 INNER JOIN fichas   on token_id = fichas.id
-                WHERE checkit = 'NO' ");
+                WHERE checkit = 'NO' $opc ");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);

@@ -20,7 +20,7 @@ class Accion
     {
         try {
             $result = array();
-            $dimension = ($_SESSION['dimension_id']!='7') ? "WHERE dimension_id = ".$_SESSION['dimension_id'] : "" ;
+            $dimension = ($_SESSION['dimension_id']!=9) ? "WHERE dimension_id = ".$_SESSION['dimension_id'] : "" ;
             $stm = $this->pdo->prepare("SELECT 
                 acciones.id as id,
                 acciones.name,
@@ -39,7 +39,7 @@ class Accion
     {
         try {
             $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM dimensiones");
+            $stm = $this->pdo->prepare("SELECT * FROM dimensiones LIMIT 8");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_OBJ);

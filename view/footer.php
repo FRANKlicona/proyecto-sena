@@ -449,6 +449,29 @@ if (isset($_COOKIE["icon"])) {
         });
     });
 </script>
+<?php
+if (isset($_REQUEST['a'])) {
+    if ($_REQUEST['a'] = "peticion") {
+        ?>
+        <script>
+            $.(document).ready(function() {
+                function get_actions() {
+                    $.ajax({
+                        url: "../model/home.php",
+                        method: "POST",
+                        data: document.getElementById('dimension_id').value,
+                        type: "POST",
+                        success: function(data){
+                            $.(#actions).html(data)
+                        }
+                    })
+                }
+            });
+        </script>
+    <?php
+}
+}
+?>
 </body>
 
 </html>

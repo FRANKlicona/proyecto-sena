@@ -186,7 +186,7 @@ class Estudiante
                             $faker->freeEmail,
                             $faker->numberBetween(1000000000, 1500000000),
                             $faker-> numberBetween(1,8),
-                            $faker->numberBetween(1, 2)
+                            $faker->numberBetween(1, 2,4,5)
                         )
                     );
             }

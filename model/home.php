@@ -157,13 +157,18 @@ class Home
 			die($e->getMessage());
 		}
 	}
-	public function ListarAccion()
+	public function ListarAccion($dim)
 	{
 		try {
 			$result = array();
-			$opc = isset($_SESSION['dimension_id']) ? (($_SESSION['dimension_id'] != 9) ? "AND dimension_id = " . $_SESSION['dimension_id'] : "") : "";
-			$stm = $this->pdo->prepare("SELECT * FROM acciones $opc");
-			$stm->execute();
+			if (!isset($dim)){
+				$opc = isset($_SESSION['dimension_id']) ? (($_SESSION['dimension_id'] != 9) ? "AND dimension_id = " . $_SESSION['dimension_id'] : "") : "";
+				$stm = $this->pdo->prepare("SELECT * FROM acciones $opc");
+				$stm->execute();
+			} else {
+				$stm = $this->pdo->prepare("SELECT * FROM acciones WHERE dimension_id = $dim");
+				$stm->execute();
+			}
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
 		} catch (Exception $e) {

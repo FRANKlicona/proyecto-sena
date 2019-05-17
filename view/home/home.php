@@ -1,4 +1,4 @@
-<?php if ($_SESSION['dimension_id'] == '7') : ?>
+<?php if ($_SESSION['dimension_id'] == '9') : ?>
    <div class="panel-header panel-header-md">
       <div class="wrapper">
          <canvas id="chart-0"></canvas>
