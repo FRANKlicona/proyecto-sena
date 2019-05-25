@@ -198,7 +198,7 @@
                                           <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                              <i class="now-ui-icons location_bookmark"></i>
                                           </button>
-                                          <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>)" data-toggle="modal" data-target="#myModal2">
+                                          <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>,<?= $r->no_reff ?>)" data-toggle="modal" data-target="#myModal2">
                                              <i class="now-ui-icons ui-1_check"></i>
                                           </button>
 
@@ -273,14 +273,15 @@
                         <div class="table-full-width table-responsive">
                            <table class="table">
                               <tbody>
-                                 <?php foreach ($this->model->ListarPeticion(true) as $r) : ?>
+                                 <?php foreach ($this->model->ListarPeticion(true) as $r) :?>
+                                 
                                     <tr>
                                        <td class="text-left">En la ficha <strong><a href="?c=Ficha&a=Info&id=<?= $r->tok_id; ?>"><?= $r->tok_name; ?></a></strong><?= $r->requester . " "; ?></strong> solicito <strong><?= $r->acc_name . " "; ?></strong></td>
                                        <td class="td-actions text-right">
                                           <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                              <i class="now-ui-icons location_bookmark"></i>
                                           </button>
-                                          <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>)" data-toggle="modal" data-target="#myModal2">
+                                          <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>,'<?=$r->no_reff?>')" data-toggle="modal" data-target="#myModal2">
                                              <i class="now-ui-icons ui-1_check"></i>
                                           </button>
                                        </td>
@@ -424,6 +425,7 @@
                         <input type="hidden" id="ide" name="ide">
                         <input type="hidden" id="token_id" name="token_id">
                         <input type="hidden" id="action_id" name="action_id">
+                        <input type="hidden" id="no_reff" name="no_reff">
                         <input type="date" min="<?= date('Y-m-d'); ?>" required name="date" class="form-control " value="">
                      </div>
                      <div class="text-center form-group">

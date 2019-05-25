@@ -40,20 +40,28 @@ class HomeController
 		header('Location:?c=Home&a=Landing');
 	}
 	public function Peticion(){
-		// if( isset($_COOKIE['validation'])){
-		// 	if ($_COOKIE['validation']) {
-				require_once 'view/headerl.php';
-				require_once 'view/home/peticion.php';
-				require_once 'view/footer.php';  
-		// 	}
-		// 	}else{
-		// 		setcookie('icon','error',time()+3);
-		// 		setcookie('text','Esta peticion ha vencido, intentelo nuevamente',time()+3);
-		// 		require_once 'view/headerl.php';
-		// 		require_once 'view/home/Landing.php';
-		// 		require_once 'view/footer.php';
-		// 		header('Location:?#formularioPet');  
-		// }
+		$home = new Home();
+		if (isset($_REQUEST['no_reff'])) {
+			$home = $this->model->ObtenerPeticion($_REQUEST['no_reff']);
+			require_once 'view/headerl.php';
+			require_once 'view/home/peticion.php';
+			require_once 'view/footer.php';
+		}else{
+            if( isset($_COOKIE['validation'])){
+            	if ($_COOKIE['validation']) {
+            require_once 'view/headerl.php';
+            require_once 'view/home/peticion.php';
+            require_once 'view/footer.php';
+            	}
+        	}else{
+        		setcookie('icon','error',time()+3);
+        		setcookie('text','Esta peticion ha vencido, intentelo nuevamente',time()+3);
+        		require_once 'view/headerl.php';
+        		require_once 'view/home/Landing.php';
+        		require_once 'view/footer.php';
+        		header('Location:?#formularioPet');
+        }
+        }
 	}
 	public function Nada()
 	{
@@ -177,20 +185,23 @@ class HomeController
 		$home->action_id   = $_REQUEST['action_id'];
 		$home->requester   = $_REQUEST['requester'];
 		$home->token_id    = $_REQUEST['token_id'];
+		$home->poblation   = $_REQUEST['poblation'];
+		$home->reasons     = $_REQUEST['reasons'];
 		$home->email    = $_REQUEST['email'];
 
 		$this->model->RegistrarPeticion($home);
 
-		header("Location: index.php?c=home&a=Landing");
+		header("Location: index.php?c=Home&a=Landing");
 	}
 	public function AprovarActividad(){
 
 		$home = new Home();
-		
+		print_r($home);
 		$home->ide   = $_REQUEST['ide'];
 		$home->token_id    = $_REQUEST['token_id'];
 		$home->action_id   = $_REQUEST['action_id'];
-		$home->date        = $_REQUEST['date'];  
+		$home->date        = $_REQUEST['date'];
+		$home->no_reff        = $_REQUEST['no_reff'];  
 		// print_r($home);
 		// die;
 		//  print_r($_REQUEST);die;

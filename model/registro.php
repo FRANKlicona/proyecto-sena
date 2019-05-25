@@ -51,7 +51,7 @@ class Registro
     {
         try {
             $result = array();
-            $opc = ($_SESSION['dimension_id']!=9) ? "WHERE acciones.dimension_id = ".$_SESSION['dimension_id'] : "" ;
+            $opc = ($_SESSION['dimension_id']!=9) ? "AND acciones.dimension_id = ".$_SESSION['dimension_id'] : "" ;
             $stm = $this->pdo->prepare( "SELECT 
                 actividades.id,
                 date,
@@ -129,6 +129,7 @@ class Registro
     public function Registrar(registro $data)
     {
         try {
+            // Se realiza la insercion a la base de datos del nuevo registro
             $sql = "INSERT INTO registros (students,men,women,duration,activity_id) 
                 VALUES ( ? ,? ,?,?,$data->activity_id)";
             $this->pdo->prepare($sql)
@@ -140,6 +141,7 @@ class Registro
                         $data->duration
                     )
                 );
+            // Se actializa el estado de la activia a "SI" indicando que se realizo
             $sql = "UPDATE actividades SET checkit = 'SI' WHERE id = ?";
             $this->pdo->prepare($sql)
                 ->execute(
@@ -147,6 +149,41 @@ class Registro
                         $data->activity_id
                     )
                 );
+            // se extrae el No Referecia de la actividad
+            $stm = $this->pdo
+                ->prepare("SELECT no_reff,date FROM actividades WHERE id = ?");
+            $stm->execute(array($data->activity_id));
+            $row = $stm->fetch(PDO::FETCH_OBJ);
+                // se encuentra la coincidencia con el No Referencia en las peticiones
+            $stm = $this->pdo
+                ->prepare( "SELECT * FROM peticiones WHERE no_reff = ?");
+            $stm->execute(array($row->no_reff));
+            $pet = $stm->fetch(PDO::FETCH_OBJ);
+            setcookie('icon','success',time()+3);
+            setcookie('text','Registro realizado correctamente',time() +3);
+            // una vez obtenido los datos de la peticion se notifica del nuevo estado de la actividad
+            // print_r($row->no_reff);
+            // die;
+            $to = $pet->email;
+            $name = $pet->requester;
+            $subject = "La actividad que solicito fue realizada";
+            $content = " $pet->requester la solicitud con No. de Referecian <b>$pet->no_reff</b> se realizo el dia  $row->date </br></hr>
+            <table>
+                <tr>
+                    <td>Estudiantes</td>
+                    <td>Hombre</td>
+                    <td>Mujeres</td>
+                </tr>
+                <tr>
+                    <td>$data->students</td>
+                    <td>$data->men</td>
+                    <td>$data->women</td>
+                </tr>
+            </table>";
+            require_once('email.php');
+
+            $Email = new Email();
+            $Email->GenerarEmail($to, $name, $subject, $content);
         } catch (Exception $e) {
             die($e->getMessage());
         }

@@ -53,10 +53,11 @@ $datetime_string = $datetime->format('c');
 ?>
 
 <script>
-    function passValue2($id, $token, $action) {
+    function passValue2($id, $token, $action,$no_reff) {
         document.getElementById('ide').value = $id;
         document.getElementById('token_id').value = $token;
         document.getElementById('action_id').value = $action;
+        document.getElementById('no_reff').value = $no_reff;
     }
 
     function passValue($value) {
@@ -360,6 +361,15 @@ if (isset($_COOKIE["icon"])) {
             }, 1000);
         }
     }
+
+    function scrollToFind() {
+
+        if ($('#findPet').length != 0) {
+            $("html, body").animate({
+                scrollTop: $('#findPet').offset().top
+            }, 1000);
+        }
+    }
 </script>
 <script>
     var utils = Samples.utils;
@@ -461,7 +471,7 @@ if (isset($_REQUEST['a'])) {
                         method: "POST",
                         data: document.getElementById('dimension_id').value,
                         type: "POST",
-                        success: function(data){
+                        success: function(data) {
                             $.(#actions).html(data)
                         }
                     })

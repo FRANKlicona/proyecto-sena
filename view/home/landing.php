@@ -203,7 +203,7 @@
 								<option disabled selected value="">Ficha</option>
 								<?php foreach ($this->model->ListarFicha() as $d) : ?>
 									<option value="<?= $d->id; ?> ">
-										<?= $d->name." - ".$d->dimension; ?>
+										<?= $d->name . " - " . $d->dimension; ?>
 									</option>
 								<?php endforeach; ?>
 							</select>
@@ -218,6 +218,25 @@
 							</div>
 						</div>
 						<button name="submit" type="submit" class="btn btn-primary btn-round btn-block btn-lg">Pedir</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section section-contact-us text-center">
+		<div class="container">
+			<h2 class="title" id="findPet">Ver estado de Actividad</h2>
+			<div class="row">
+
+				<div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
+					<form action="?c=home&a=BuscarPeticion" method="post">
+						<div class="row">
+							<div class="input-group input-lg">
+								<input type="text" name="no_reff" required class="form-control" placeholder="No. de Referencia">
+							</div>
+						</div>
+						<button name="submit" type="submit" class="btn btn-primary btn-round btn-block btn-lg">Buscar</button>
 					</form>
 				</div>
 			</div>
