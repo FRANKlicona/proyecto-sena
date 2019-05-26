@@ -230,7 +230,7 @@
 			<div class="row">
 
 				<div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
-					<form action="?c=home&a=BuscarPeticion" method="post">
+					<form action="?c=home&a=Peticion" method="post">
 						<div class="row">
 							<div class="input-group input-lg">
 								<input type="text" name="no_reff" required class="form-control" placeholder="No. de Referencia">

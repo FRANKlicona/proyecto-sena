@@ -40,9 +40,15 @@ class HomeController
 		header('Location:?c=Home&a=Landing');
 	}
 	public function Peticion(){
-		$home = new Home();
+		// $home = new Home();
 		if (isset($_REQUEST['no_reff'])) {
-			$home = $this->model->ObtenerPeticion($_REQUEST['no_reff']);
+			$pet = $this->model->ObtenerPeticion($_REQUEST['no_reff']);
+			$act = $this->model->ObtenerActividad($_REQUEST['no_reff']);
+			// echo "<pre>";
+			// print_r($pet);
+			// print_r($act);
+			// echo"</pre>";
+			// die;
 			require_once 'view/headerl.php';
 			require_once 'view/home/peticion.php';
 			require_once 'view/footer.php';
@@ -59,7 +65,6 @@ class HomeController
         		require_once 'view/headerl.php';
         		require_once 'view/home/Landing.php';
         		require_once 'view/footer.php';
-        		header('Location:?#formularioPet');
         }
         }
 	}
@@ -201,6 +206,7 @@ class HomeController
 		$home->token_id    = $_REQUEST['token_id'];
 		$home->action_id   = $_REQUEST['action_id'];
 		$home->date        = $_REQUEST['date'];
+		$home->poblation	 = $_REQUEST['poblation'];		
 		$home->no_reff        = $_REQUEST['no_reff'];  
 		// print_r($home);
 		// die;

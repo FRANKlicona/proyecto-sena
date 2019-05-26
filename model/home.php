@@ -74,8 +74,8 @@ class Home
 		try {
 		// 	print_r($data);
 		// die;
-			$sql = "INSERT INTO actividades (date,no_reff,token_id,action_id) 
-					 VALUES ('$data->date','$data->no_reff',$data->token_id,$data->action_id)";
+			$sql = "INSERT INTO actividades (date,poblation,no_reff,token_id,action_id) 
+					 VALUES ('$data->date','$data->poblation','$data->no_reff',$data->token_id,$data->action_id)";
 			// echo $sql;
 			// die;            
 			$this->pdo->prepare($sql)
@@ -131,6 +131,7 @@ class Home
 						  date_create,
 						  requester,
 						  no_reff,
+						  poblation,
 						  fichas.id               as tok_id,
 						  fichas.name             as tok_name,
 						  acciones.name           as acc_name,
@@ -224,15 +225,33 @@ class Home
 			die($e->getMessage());
 		}
 	}
+	public function ObtenerActividad($id)
+	{
+		try {
+			$result = array();
+
+			$stm = $this->pdo->prepare("SELECT * FROM registros 
+			INNER JOIN actividades ON activity_id 			   = actividades.id
+			INNER JOIN fichas 	  ON actividades.token_id = fichas.id
+			WHERE actividades.no_reff =  '$id'");
+			// print_r($stm);
+			// die;
+			$stm->execute(array());
+
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
 	public function ObtenerFicha($id)
 	{
 		try {
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM fichas WHERE id = '$id'");
-			$stm->execute();
+			$stm = $this->pdo->prepare("SELECT * FROM fichas WHERE id = ?");
+			$stm->execute(array($id));
 
-			return $stm->fetchAll(PDO::FETCH_OBJ);
+			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}
@@ -242,10 +261,10 @@ class Home
 		try {
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM peticiones WHERE no_reff = '$id'");
-			$stm->execute();
+			$stm = $this->pdo->prepare("SELECT * FROM peticiones WHERE no_reff = ?");
+			$stm->execute(array($id));
 
-			return $stm->fetchAll(PDO::FETCH_OBJ);
+			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

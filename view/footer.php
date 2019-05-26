@@ -53,11 +53,12 @@ $datetime_string = $datetime->format('c');
 ?>
 
 <script>
-    function passValue2($id, $token, $action,$no_reff) {
+    function passValue2($id, $token, $action,$no_reff,$poblation) {
         document.getElementById('ide').value = $id;
         document.getElementById('token_id').value = $token;
         document.getElementById('action_id').value = $action;
         document.getElementById('no_reff').value = $no_reff;
+        document.getElementById('poblation').value = $poblation;
     }
 
     function passValue($value) {

@@ -19,7 +19,7 @@
                                                 de la ficha <strong>
                                                     <?php
                                                     $id = $_REQUEST['ficha'];
-                                                    echo $this->model->ObtenerFicha($id)[0]->name;
+                                                    echo $this->model->ObtenerFicha($id)->name;
                                                     ?>
                                                 </strong>solocita
                                             </h2>
@@ -91,15 +91,45 @@
                             </h2>
                         </div>
                         <div class="card-body">
-                            <div class="col-md-6">
-                                <h3 class="title">
-                                    Peticion
-                                </h3>
-                            </div>
-                            <div class="col-md-6">
-                                <h3 class="title">
-                                    Actividad
-                                </h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3 class="title">
+                                        Peticion
+                                    </h3>
+                                    <p><b>Fecha de solicitud: </b> <?= $pet->date_create; ?></p>
+                                    <p><b>Solicitante :</b> <?= $pet->requester; ?></p>
+                                    <p><b>Correo : </b><?= $pet->email; ?></p>
+                                    <p><b>Estado : </b>
+                                        <?php if ($pet->checkit == 'SI') : ?>
+                                            Su solicitud con No referencia <?= $act->no_reff; ?> fue aceptada y fue programada para el <?= $act->date; ?>
+                                        <?php else :; ?>
+                                            Su solicitud aun no ha sido aceptada por favor intente en otro momento
+                                        <?php endif; ?>
+                                    </p>
+                                </div>
+                                <?php if ($pet->checkit == 'SI') : ?>
+                                    <div class="col-md-6">
+                                        <h3 class="title">
+                                            Actividad
+                                        </h3>
+                                        <p><b>Esta actividad fue aceptada el  </b> <?= $act->date_create; ?></p>
+                                        <p><b>Ficha :</b> <?= $act->name; ?></p>
+                                        <p><b>Sede : </b><?= $act->place ;?></p>
+                                        <p><b>Estado : </b> 
+                                        <?php if($act->checkit == 'SI') :?>
+                                        Esta actividad ya fue realizada el <?= $act->date; ?>
+                                        <?php else:?>
+                                        Esta actividad fue programada para el dia <?= $act->date; ?> aun no se ha realizado
+                                        <?php endif ;?>
+                                    </p>
+                                    </div>
+                                <?php else : ?>
+                                    <div class="col-md-6">
+                                        <h3 class="title">
+                                            No existe actividad con dicho No referencia
+                                        </h3>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -110,4 +140,4 @@
             </div>
         </div>
         <!-- </div>
-    </div> -->
+        </div> -->

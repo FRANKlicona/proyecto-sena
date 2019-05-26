@@ -198,7 +198,7 @@
                                           <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                              <i class="now-ui-icons location_bookmark"></i>
                                           </button>
-                                          <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>,<?= $r->no_reff ?>)" data-toggle="modal" data-target="#myModal2">
+                                          <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>,'<?=$r->no_reff?>','<?= $r->poblation ?>')" data-toggle="modal" data-target="#myModal2">
                                              <i class="now-ui-icons ui-1_check"></i>
                                           </button>
 
@@ -281,7 +281,7 @@
                                           <button type="button" rel="tooltip" title="" class="btn btn-warning btn-round btn-icon btn-icon-mini btn-neutral">
                                              <i class="now-ui-icons location_bookmark"></i>
                                           </button>
-                                          <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>,'<?=$r->no_reff?>')" data-toggle="modal" data-target="#myModal2">
+                                          <button title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" onclick="passValue2(<?= $r->ide ?>,<?= $r->tok_id ?>,<?= $r->acc_id ?>,'<?=$r->no_reff?>','<?= $r->poblation ?>')" data-toggle="modal" data-target="#myModal2">
                                              <i class="now-ui-icons ui-1_check"></i>
                                           </button>
                                        </td>
@@ -426,6 +426,7 @@
                         <input type="hidden" id="token_id" name="token_id">
                         <input type="hidden" id="action_id" name="action_id">
                         <input type="hidden" id="no_reff" name="no_reff">
+                        <input type="hidden" id="poblation" name="poblation">
                         <input type="date" min="<?= date('Y-m-d'); ?>" required name="date" class="form-control " value="">
                      </div>
                      <div class="text-center form-group">
