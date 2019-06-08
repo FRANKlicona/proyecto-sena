@@ -37,16 +37,20 @@ class HomeController
 	{
 		unset($_SESSION);
 		session_destroy();
-		header('Location:?c=Home&a=Landing');
+		require_once 'view/headerl.php';
+		require_once 'view/home/landing.php';
+		require_once 'view/footer.php';
 	}
 	public function Peticion(){
 		// $home = new Home();
 		if (isset($_REQUEST['no_reff'])) {
 			$pet = $this->model->ObtenerPeticion($_REQUEST['no_reff']);
 			$act = $this->model->ObtenerActividad($_REQUEST['no_reff']);
+			$reg = $this->model->ObtenerRegistro($act->id);
 			// echo "<pre>";
 			// print_r($pet);
 			// print_r($act);
+			// print_r($reg);
 			// echo"</pre>";
 			// die;
 			require_once 'view/headerl.php';

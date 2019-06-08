@@ -177,7 +177,7 @@
 	<div class="section">
 		<div class="container">
 			<div class="tab-content gallery">
-				<div id="calendar"></div>
+				<div id="calendari"></div>
 			</div>
 		</div>
 	</div>

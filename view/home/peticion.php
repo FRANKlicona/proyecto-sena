@@ -37,6 +37,7 @@
                                                         <input name="token_id" type="hidden" value="<?= $_REQUEST['ficha'] ?>">
                                                         <input name="requester" type="hidden" value="<?= $_REQUEST['requester'] ?>">
                                                         <input name="email" type="hidden" value="<?= $_REQUEST['email'] ?>">
+                                                        <input type="hidden" name="dimension_id" value="<?= $_REQUEST['dimension_id']; ?>">
                                                         <div class="">
 
                                                             <select id="poblation" required name="poblation" class="input-group btn btn-round btn-link btn-neutral ">
@@ -45,20 +46,29 @@
                                                                 <option style="color:black; background:none;" value="2">Aprendiz</option>
                                                             </select>
                                                         </div>
-                                                        <div class="">
-                                                            <select id="dimension_id" required name="dimension_id" class="input-group btn btn-round btn-link btn-neutral ">
-                                                                <option selected disabled="" value="">Dimension?</option>
-                                                                <?php foreach ($this->model->ListarDimensiones("") as $d) : ?>
-                                                                    <option style="color:black; background:none;" value="<?= $d->id; ?>"><?= $d->name; ?></option>
-                                                                <?php endforeach; ?>
-                                                            </select>
+                                                        
+                                                        <div>
+                                                            <div class="nav-item dropdown">
+                                                                <a href="#" class="dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
+                                                                    <p>Dimension?</p>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
+                                                                    <?php foreach ($this->model->ListarDimensiones("") as $d) : ?>
+                                                                        <ul><a style="color:black" href=" <?= Index::url(); ?>&dimension_id=<?= $d->id; ?>"><?= $d->name; ?></a></ul>
+                                                                    <?php endforeach; ?>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div id="actions" class="">
                                                             <select id="action_id" required name="action_id" class="input-group btn btn-round btn-link btn-neutral ">
                                                                 <option selected disabled="" value="">Actividad?</option>
-                                                                <?php foreach ($this->model->ListarAccion($dim) as $d) : ?>
-                                                                    <option style="color:black; background:none;" value="<?= $d->id; ?>"><?= $d->name; ?></option>
-                                                                <?php endforeach; ?>
+                                                                <?php if (isset($_REQUEST['dimension_id'])) : ?>
+                                                                    <?php foreach ($this->model->ListarAccion($_REQUEST['dimension_id']) as $d) : ?>
+                                                                        <option style="color:black; background:none;" value="<?= $d->id; ?>"><?= $d->name; ?></option>
+                                                                    <?php endforeach;
+                                                            else : ?>
+                                                                    <option disabled="" value="">Por favor esocoja una dimension</option>
+                                                                <?php endif; ?>
                                                             </select>
                                                         </div>
                                                         <div class="">
@@ -101,7 +111,7 @@
                                     <p><b>Correo : </b><?= $pet->email; ?></p>
                                     <p><b>Estado : </b>
                                         <?php if ($pet->checkit == 'SI') : ?>
-                                            Su solicitud con No referencia <?= $act->no_reff; ?> fue aceptada y fue programada para el <?= $act->date; ?>
+                                            Su solicitud con No referencia <?= $pet->no_reff; ?> fue aceptada y fue programada para el <?= $act->date; ?>
                                         <?php else :; ?>
                                             Su solicitud aun no ha sido aceptada por favor intente en otro momento
                                         <?php endif; ?>
@@ -112,16 +122,16 @@
                                         <h3 class="title">
                                             Actividad
                                         </h3>
-                                        <p><b>Esta actividad fue aceptada el  </b> <?= $act->date_create; ?></p>
+                                        <p><b>Esta actividad fue aceptada el </b> <?= $act->date_create; ?></p>
                                         <p><b>Ficha :</b> <?= $act->name; ?></p>
-                                        <p><b>Sede : </b><?= $act->place ;?></p>
-                                        <p><b>Estado : </b> 
-                                        <?php if($act->checkit == 'SI') :?>
-                                        Esta actividad ya fue realizada el <?= $act->date; ?>
-                                        <?php else:?>
-                                        Esta actividad fue programada para el dia <?= $act->date; ?> aun no se ha realizado
-                                        <?php endif ;?>
-                                    </p>
+                                        <p><b>Sede : </b><?= $act->place; ?></p>
+                                        <p><b>Estado : </b>
+                                            <?php if ($act->checkit == 'SI') : ?>
+                                                Esta actividad ya fue realizada el <?= $act->date; ?>
+                                            <?php else : ?>
+                                                Esta actividad fue programada para el dia <?= $act->date; ?> aun no se ha realizado
+                                            <?php endif; ?>
+                                        </p>
                                     </div>
                                 <?php else : ?>
                                     <div class="col-md-6">
@@ -140,4 +150,4 @@
             </div>
         </div>
         <!-- </div>
-        </div> -->
+            </div> -->

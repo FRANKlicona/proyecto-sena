@@ -230,13 +230,25 @@ class Home
 		try {
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM registros 
-			INNER JOIN actividades ON activity_id 			   = actividades.id
-			INNER JOIN fichas 	  ON actividades.token_id = fichas.id
-			WHERE actividades.no_reff =  '$id'");
+			$stm = $this->pdo->prepare("SELECT * FROM actividades
+			WHERE actividades.no_reff =   ?");
 			// print_r($stm);
 			// die;
-			$stm->execute(array());
+			$stm->execute(array($id));
+
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
+	
+	public function ObtenerPeticion($id)
+	{
+		try {
+			$result = array();
+
+			$stm = $this->pdo->prepare("SELECT * FROM peticiones WHERE no_reff = ?");
+			$stm->execute(array($id));
 
 			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e) {
@@ -256,12 +268,12 @@ class Home
 			die($e->getMessage());
 		}
 	}
-	public function ObtenerPeticion($id)
+	public function ObtenerRegistro( $id)
 	{
 		try {
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM peticiones WHERE no_reff = ?");
+			$stm = $this->pdo->prepare( "SELECT * FROM registros WHERE activity_id = ?");
 			$stm->execute(array($id));
 
 			return $stm->fetch(PDO::FETCH_OBJ);

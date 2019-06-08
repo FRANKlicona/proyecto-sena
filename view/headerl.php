@@ -55,7 +55,7 @@
                         <a class="nav-link" <?= ((isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') || !isset($_REQUEST['a'])) ? 'onclick="scrollToActivity()"' : 'href="?c=Home&a=Landing#activities"'; ?>>Actividades Programadas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" <?= ((isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') || !isset($_REQUEST['a'])) ? 'onclick="scrollToCalendar()"' : 'href="?c=Home&a=Landing#calendar"'; ?>>Calendario de Peticiones</a>
+                        <a class="nav-link" <?= ((isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') || !isset($_REQUEST['a'])) ? 'onclick="scrollToCalendar()"' : 'href="?c=Home&a=Landing#calendari"'; ?>>Calendario de Peticiones</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
@@ -63,9 +63,9 @@
                             <p>Peticiones</p>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
-                            <a class="nav-link" <?= ((isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') || !isset($_REQUEST['a'])) ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Genarar Peticion</a>
+                            <a class="nav-link" style="color:black" <?= ((isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') || !isset($_REQUEST['a'])) ? 'onclick="scrollToRequire()"' : 'href="?c=Home&a=Landing#formularioPet"'; ?>>Genarar Peticion</a>
 
-                            <a class="nav-link" <?= ((isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') || !isset($_REQUEST['a'])) ? 'onclick="scrollToFind()"' : 'href="?c=Home&a=Landing#findPet"'; ?>>Revisar Peticion</a>
+                            <a class="nav-link" style="color:black" <?= ((isset($_REQUEST['a']) && $_REQUEST['a'] == 'Landing') || !isset($_REQUEST['a'])) ? 'onclick="scrollToFind()"' : 'href="?c=Home&a=Landing#findPet"'; ?>>Revisar Peticion</a>
 
                         </div>
                     </li>

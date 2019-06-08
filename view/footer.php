@@ -75,17 +75,17 @@ $datetime_string = $datetime->format('c');
     }
 </script>
 <?php
-if ($_REQUEST['c'] == 'Home') : ?>
+//if ($_REQUEST['c'] == 'Home') : ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
+            var calendarEl = document.getElementById('calendari');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 now: <?php echo json_encode($datetime_string) ?>,
                 plugins: ['dayGrid', 'timeGrid', 'list', 'interaction', 'bootstrap'],
                 themeSystem: 'bootstrap',
                 timeZone: 'NYC',
                 events: [
-                    <?php foreach ($this->model->ListarActividad() as $r) : ?> {
+                    <?php foreach ($this->model->ListarActividad('9',"NO") as $r) : ?> {
                             id: '<?= $r->id; ?>',
                             start: '<?= $r->date; ?>',
                             title: '<?= $r->exe_name; ?>',
@@ -115,7 +115,7 @@ if ($_REQUEST['c'] == 'Home') : ?>
             calendar.render();
         });
     </script>
-<?php endif;
+<?php //endif;
 if (isset($_REQUEST['a'])) :
     if ($_REQUEST['a'] == 'Calendario') : ?>
         <script>
@@ -347,9 +347,9 @@ if (isset($_COOKIE["icon"])) {
 
     function scrollToCalendar() {
 
-        if ($('#calendar').length != 0) {
+        if ($('#calendari').length != 0) {
             $("html, body").animate({
-                scrollTop: $('#calendar').offset().top
+                scrollTop: $('#calendari').offset().top
             }, 1000);
         }
     }
